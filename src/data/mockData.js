@@ -22,32 +22,63 @@ export const platformComparisonData = [
 ];
 
 export const allGames = [
-    { id: 1, name: 'Honor of Kings', studioRegion: 'China', genre: 'MOBA', platform: 'App Store', monthlyDownloads: 12500000, monthlyRevenue: 220000000, rating: 4.8, boostScore: 15, businessModel: 'Freemium' },
-    { id: 2, name: 'PUBG Mobile', studioRegion: 'China', genre: 'Shooter', platform: 'Google Play', monthlyDownloads: 18000000, monthlyRevenue: 175000000, rating: 4.5, boostScore: 12, businessModel: 'Battle Pass' },
-    { id: 3, name: 'Genshin Impact', studioRegion: 'China', genre: 'RPG', platform: 'Cross-Platform', monthlyDownloads: 9000000, monthlyRevenue: 140000000, rating: 4.7, boostScore: 22, businessModel: 'Gacha' },
-    { id: 4, name: 'Royal Match', studioRegion: 'Turkey', genre: 'Puzzle', platform: 'App Store', monthlyDownloads: 15000000, monthlyRevenue: 110000000, rating: 4.9, boostScore: 35, businessModel: 'Freemium' },
-    { id: 5, name: 'Roblox', studioRegion: 'USA', genre: 'Sandbox', platform: 'Google Play', monthlyDownloads: 22000000, monthlyRevenue: 105000000, rating: 4.4, boostScore: 8, businessModel: 'UGC' },
-    { id: 6, name: 'Candy Crush Saga', studioRegion: 'UK', genre: 'Puzzle', platform: 'Google Play', monthlyDownloads: 11000000, monthlyRevenue: 95000000, rating: 4.6, boostScore: 5, businessModel: 'Freemium' },
-    { id: 7, name: 'Coin Master', studioRegion: 'Israel', genre: 'Casual', platform: 'Google Play', monthlyDownloads: 6000000, monthlyRevenue: 85000000, rating: 4.5, boostScore: 9, businessModel: 'Gacha' },
-    { id: 8, name: 'Honkai: Star Rail', studioRegion: 'China', genre: 'RPG', platform: 'App Store', monthlyDownloads: 5000000, monthlyRevenue: 80000000, rating: 4.8, boostScore: 45, businessModel: 'Gacha' },
-    { id: 9, name: 'Monopoly GO!', studioRegion: 'USA', genre: 'Casual', platform: 'App Store', monthlyDownloads: 14000000, monthlyRevenue: 120000000, rating: 4.7, boostScore: 28, businessModel: 'Freemium' },
-    { id: 10, name: 'Clash of Clans', studioRegion: 'Finland', genre: 'Strategy', platform: 'Google Play', monthlyDownloads: 4000000, monthlyRevenue: 60000000, rating: 4.6, boostScore: 4, businessModel: 'Freemium' },
-    { id: 11, name: 'Pokémon GO', studioRegion: 'USA', genre: 'AR', platform: 'App Store', monthlyDownloads: 3500000, monthlyRevenue: 55000000, rating: 4.3, boostScore: 7, businessModel: 'Freemium' },
-    { id: 12, name: 'Fate/Grand Order', studioRegion: 'Japan', genre: 'RPG', platform: 'Google Play', monthlyDownloads: 800000, monthlyRevenue: 48000000, rating: 4.6, boostScore: 11, businessModel: 'Gacha' },
-    { id: 13, name: 'Free Fire', studioRegion: 'Singapore', genre: 'Shooter', platform: 'Amazon', monthlyDownloads: 25000000, monthlyRevenue: 45000000, rating: 4.2, boostScore: 18, businessModel: 'Battle Pass' },
-    { id: 14, name: 'Gardenscapes', studioRegion: 'Russia', genre: 'Puzzle', platform: 'Google Play', monthlyDownloads: 5000000, monthlyRevenue: 42000000, rating: 4.4, boostScore: 6, businessModel: 'Freemium' },
-    { id: 15, name: 'Dragon Ball Z Dokkan', studioRegion: 'Japan', genre: 'RPG', platform: 'App Store', monthlyDownloads: 1200000, monthlyRevenue: 38000000, rating: 4.7, boostScore: 14, businessModel: 'Gacha' },
-    { id: 16, name: 'Whiteout Survival', studioRegion: 'China', genre: 'Strategy', platform: 'Google Play', monthlyDownloads: 4500000, monthlyRevenue: 75000000, rating: 4.5, boostScore: 32, businessModel: 'Hybrid' },
-    { id: 17, name: 'Subway Surfers', studioRegion: 'Denmark', genre: 'Arcade', platform: 'Amazon', monthlyDownloads: 30000000, monthlyRevenue: 2500000, rating: 4.5, boostScore: 3, businessModel: 'Ads' },
-    { id: 18, name: 'Brawl Stars', studioRegion: 'Finland', genre: 'Action', platform: 'App Store', monthlyDownloads: 6000000, monthlyRevenue: 52000000, rating: 4.7, boostScore: 21, businessModel: 'Battle Pass' },
-    { id: 19, name: 'Call of Duty: Mobile', studioRegion: 'USA', genre: 'Shooter', platform: 'Google Play', monthlyDownloads: 7000000, monthlyRevenue: 45000000, rating: 4.6, boostScore: 10, businessModel: 'Battle Pass' },
-    { id: 20, name: 'League of Legends: WR', studioRegion: 'USA', genre: 'MOBA', platform: 'App Store', monthlyDownloads: 3500000, monthlyRevenue: 28000000, rating: 4.4, boostScore: 8, businessModel: 'Skins' },
-    { id: 21, name: 'Uma Musume', studioRegion: 'Japan', genre: 'Sim', platform: 'Google Play', monthlyDownloads: 500000, monthlyRevenue: 35000000, rating: 4.8, boostScore: 9, businessModel: 'Gacha' },
-    { id: 22, name: 'Eggy Party', studioRegion: 'China', genre: 'Party', platform: 'App Store', monthlyDownloads: 8000000, monthlyRevenue: 30000000, rating: 4.6, boostScore: 40, businessModel: 'Skins' },
-    { id: 23, name: 'Monster Strike', studioRegion: 'Japan', genre: 'RPG', platform: 'Google Play', monthlyDownloads: 900000, monthlyRevenue: 32000000, rating: 4.5, boostScore: 5, businessModel: 'Gacha' },
-    { id: 24, name: 'Township', studioRegion: 'Russia', genre: 'Sim', platform: 'Amazon', monthlyDownloads: 4000000, monthlyRevenue: 28000000, rating: 4.5, boostScore: 6, businessModel: 'Freemium' },
-    { id: 25, name: 'Fishdom', studioRegion: 'Russia', genre: 'Puzzle', platform: 'App Store', monthlyDownloads: 4500000, monthlyRevenue: 26000000, rating: 4.4, boostScore: 7, businessModel: 'Freemium' },
+    { id: 1, name: 'Honor of Kings', studioRegion: 'China', genre: 'MOBA', platform: 'App Store', monthlyDownloads: 12500000, monthlyRevenue: 220000000, rating: 4.8, boostScore: 15, businessModel: 'Freemium', icon: '👑', color: '#fbbf24' },
+    { id: 2, name: 'PUBG Mobile', studioRegion: 'China', genre: 'Shooter', platform: 'Google Play', monthlyDownloads: 18000000, monthlyRevenue: 175000000, rating: 4.5, boostScore: 12, businessModel: 'Battle Pass', icon: '🍳', color: '#10b981' },
+    { id: 3, name: 'Genshin Impact', studioRegion: 'China', genre: 'RPG', platform: 'Cross-Platform', monthlyDownloads: 9000000, monthlyRevenue: 140000000, rating: 4.7, boostScore: 22, businessModel: 'Gacha', icon: '🌌', color: '#8b5cf6' },
+    { id: 4, name: 'Royal Match', studioRegion: 'Turkey', genre: 'Puzzle', platform: 'App Store', monthlyDownloads: 15000000, monthlyRevenue: 110000000, rating: 4.9, boostScore: 35, businessModel: 'Freemium', icon: '🏰', color: '#f59e0b' },
+    { id: 5, name: 'Roblox', studioRegion: 'USA', genre: 'Sandbox', platform: 'Google Play', monthlyDownloads: 22000000, monthlyRevenue: 105000000, rating: 4.4, boostScore: 8, businessModel: 'UGC', icon: '🟥', color: '#ef4444' },
+    { id: 6, name: 'Candy Crush Saga', studioRegion: 'UK', genre: 'Puzzle', platform: 'Google Play', monthlyDownloads: 11000000, monthlyRevenue: 95000000, rating: 4.6, boostScore: 5, businessModel: 'Freemium', icon: '🍬', color: '#ec4899' },
+    { id: 7, name: 'Coin Master', studioRegion: 'Israel', genre: 'Casual', platform: 'Google Play', monthlyDownloads: 6000000, monthlyRevenue: 85000000, rating: 4.5, boostScore: 9, businessModel: 'Gacha', icon: '🐷', color: '#fcd34d' },
+    { id: 8, name: 'Honkai: Star Rail', studioRegion: 'China', genre: 'RPG', platform: 'App Store', monthlyDownloads: 5000000, monthlyRevenue: 80000000, rating: 4.8, boostScore: 45, businessModel: 'Gacha', icon: '🚆', color: '#6366f1' },
+    { id: 9, name: 'Monopoly GO!', studioRegion: 'USA', genre: 'Casual', platform: 'App Store', monthlyDownloads: 14000000, monthlyRevenue: 120000000, rating: 4.7, boostScore: 28, businessModel: 'Freemium', icon: '🎲', color: '#10b981' },
+    { id: 10, name: 'Clash of Clans', studioRegion: 'Finland', genre: 'Strategy', platform: 'Google Play', monthlyDownloads: 4000000, monthlyRevenue: 60000000, rating: 4.6, boostScore: 4, businessModel: 'Freemium', icon: '⚔️', color: '#f97316' },
 ];
+
+export const storeRankings = {
+    topFree: [
+        { id: 'tf1', name: 'ChatGPT', publisher: 'OpenAI', downloads: '20,000,000', change: '+5%', icon: '🤖', color: '#10b981' },
+        { id: 'tf2', name: 'TikTok', publisher: 'Bytedance', downloads: '22,000,000', change: '+2%', icon: '🎵', color: '#000000' },
+        { id: 'tf3', name: 'Google Gemini', publisher: 'Google LLC', downloads: '10,000,000', change: '+12%', icon: '✨', color: '#4285f4' },
+        { id: 'tf4', name: 'Instagram', publisher: 'Meta', downloads: '18,000,000', change: '-1%', icon: '📸', color: '#e1306c' },
+        { id: 'tf5', name: 'Facebook', publisher: 'Meta', downloads: '15,000,000', change: '0%', icon: '👥', color: '#1877f2' },
+    ],
+    topGrossing: [
+        { id: 'tg1', name: 'TikTok', publisher: 'Bytedance', revenue: '$120,000,000', change: '+8%', icon: '🎵', color: '#000000' },
+        { id: 'tg2', name: 'ChatGPT', publisher: 'OpenAI', revenue: '$110,000,000', change: '+15%', icon: '🤖', color: '#10b981' },
+        { id: 'tg3', name: 'Google One', publisher: 'Google LLC', revenue: '$85,000,000', change: '+3%', icon: '☁️', color: '#34a853' },
+        { id: 'tg4', name: 'YouTube', publisher: 'Google LLC', revenue: '$75,000,000', change: '+5%', icon: '📺', color: '#ff0000' },
+        { id: 'tg5', name: 'Roblox', publisher: 'Roblox Corp', revenue: '$70,000,000', change: '+4%', icon: '🟥', color: '#ef4444' },
+    ],
+    topFeatured: [
+        { id: 'tfu1', name: 'YouTube Kids', score: 890, icon: '🧒', color: '#ff0000' },
+        { id: 'tfu2', name: 'Toca Boca World', score: 766, icon: '🏠', color: '#f43f5e' },
+        { id: 'tfu3', name: 'Disney+', score: 720, icon: '🏰', color: '#06b6d4' },
+        { id: 'tfu4', name: 'CapCut', score: 648, icon: '🎬', color: '#000000' },
+        { id: 'tfu5', name: 'Duolingo', score: 554, icon: '🦉', color: '#84cc16' },
+    ]
+};
+
+export const appDetailsData = {
+    'TikTok': {
+        revenue: '$120,000,000',
+        downloads: '50,000,000',
+        geoDist: [
+            { region: 'United States', percentage: 32, color: '#3b82f6' },
+            { region: 'China', percentage: 25, color: '#ef4444' },
+            { region: 'Japan', percentage: 12, color: '#f59e0b' },
+            { region: 'Others', percentage: 31, color: '#94a3b8' },
+        ],
+        performanceHistory: [
+            { day: 'Mon', revenue: 3.2, downloads: 1.2 },
+            { day: 'Tue', revenue: 3.5, downloads: 1.5 },
+            { day: 'Wed', revenue: 3.1, downloads: 1.1 },
+            { day: 'Thu', revenue: 4.2, downloads: 1.8 },
+            { day: 'Fri', revenue: 4.8, downloads: 2.1 },
+            { day: 'Sat', revenue: 5.5, downloads: 2.5 },
+            { day: 'Sun', revenue: 5.2, downloads: 2.3 },
+        ]
+    }
+};
 
 export const genres = ['MOBA', 'Shooter', 'RPG', 'Puzzle', 'Strategy', 'Casual', 'Action', 'Sim', 'ARCADE'];
 export const businessModels = ['Freemium', 'Battle Pass', 'Gacha', 'Ads', 'Hybrid', 'Skins', 'UGC'];
@@ -91,3 +122,4 @@ export const aiSuggestions = [
         relevantGenres: ["RPG", "Action"]
     }
 ];
+

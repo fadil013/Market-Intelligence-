@@ -176,6 +176,65 @@ const PredictiveAI = () => {
                 </div>
             </div>
 
+            {/* Future Winners requested by TL */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="glass-panel p-6">
+                    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <TrendingUp className="text-emerald-400" />
+                        Predicted Category Boost (Next 5 Months)
+                    </h3>
+                    <div className="space-y-4">
+                        {[
+                            { name: 'Hypercasual 2.0', boost: 45, color: '#ec4899', icon: '⚡' },
+                            { name: 'Cross-Platform RPG', boost: 32, color: '#8b5cf6', icon: '⚔️' },
+                            { name: 'AI-Integrated Sandbox', boost: 28, color: '#06b6d4', icon: '✨' },
+                            { name: 'Social Party Games', boost: 15, color: '#f59e0b', icon: '🥳' },
+                        ].map((cat, i) => (
+                            <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-xl">{cat.icon}</span>
+                                    <span className="text-white font-semibold">{cat.name}</span>
+                                </div>
+                                <div className="text-right">
+                                    <span className="text-emerald-400 font-black">+{cat.boost}%</span>
+                                    <p className="text-[10px] text-gray-500 uppercase font-black">Growth Signal</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="glass-panel p-6">
+                    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <CheckCircle className="text-emerald-400" />
+                        High-Confidence Game Forecast
+                    </h3>
+                    <div className="space-y-4">
+                        {[
+                            { name: 'Honkai: Star Rail', signal: 'Strong Buy', gain: '+42%', color: '#6366f1' },
+                            { name: 'Monopoly GO!', signal: 'Accumulate', gain: '+25%', color: '#10b981' },
+                            { name: 'Royal Match', signal: 'Hold/Peak', gain: '+10%', color: '#f59e0b' },
+                            { name: 'Whiteout Survival', signal: 'Breakout', gain: '+38%', color: '#3b82f6' },
+                        ].map((game, i) => (
+                            <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-slate-900/40 border border-white/5 hover:border-white/20 transition-all cursor-crosshair">
+                                <div>
+                                    <span className="text-white font-bold">{game.name}</span>
+                                    <div className="flex items-center gap-2 mt-1">
+                                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-gray-400 font-bold uppercase">{game.signal}</span>
+                                    </div>
+                                </div>
+                                <div className="text-right">
+                                    <span className="text-emerald-400 font-black text-lg">{game.gain}</span>
+                                    <div className="w-16 h-1 bg-white/10 rounded-full mt-1">
+                                        <div className="h-full bg-emerald-500 rounded-full" style={{ width: '80%' }} />
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
             {/* Model Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="glass-panel p-6 border-l-4 border-emerald-500">

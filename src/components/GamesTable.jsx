@@ -70,7 +70,12 @@ const GamesTable = React.memo(({ games, genres, businessModels }) => {
                             <td className="text-muted">{index + 1}</td>
                             <td>
                                 <div className="game-cell">
-                                    <div className="game-avatar">{game.name.charAt(0)}</div>
+                                    <div
+                                        className="game-avatar text-xl flex items-center justify-center p-0 overflow-hidden"
+                                        style={{ backgroundColor: `${game.color}20`, border: `1px solid ${game.color}40` }}
+                                    >
+                                        {game.icon || game.name.charAt(0)}
+                                    </div>
                                     <div>
                                         <div className="game-name">{game.name}</div>
                                         <div className="game-region">{game.studioRegion}</div>
@@ -78,7 +83,12 @@ const GamesTable = React.memo(({ games, genres, businessModels }) => {
                                 </div>
                             </td>
                             <td><span className="genre-badge">{game.genre}</span></td>
-                            <td className="text-muted">{game.platform}</td>
+                            <td>
+                                <div className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors">
+                                    <span className="text-[10px] text-purple-400 font-bold px-1.5 py-0.5 rounded border border-purple-500/30 bg-purple-500/10">LINK</span>
+                                    <span className="text-muted text-sm">{game.platform}</span>
+                                </div>
+                            </td>
                             <td className="text-right">{formatNumber(game.monthlyDownloads)}</td>
                             <td className="text-right text-success">${formatNumber(game.monthlyRevenue)}</td>
                             <td>
@@ -100,5 +110,6 @@ const GamesTable = React.memo(({ games, genres, businessModels }) => {
         </div>
     );
 });
+
 
 export default GamesTable;
