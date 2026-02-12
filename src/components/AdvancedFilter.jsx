@@ -4,11 +4,11 @@ import { Search, Map, Calendar, Tag, Filter, ChevronDown } from 'lucide-react';
 const FilterSection = ({ title, icon: Icon, children }) => {
     return (
         <div className="mb-8 last:mb-0">
-            <div className="flex items-center gap-2 mb-4 text-gray-400">
+            <div className="filter-section-title">
                 {Icon && <Icon size={16} className="text-purple-500" />}
-                <h4 className="text-xs uppercase tracking-tighter font-black">{title}</h4>
+                <h4>{title}</h4>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
                 {children}
             </div>
         </div>
@@ -16,10 +16,9 @@ const FilterSection = ({ title, icon: Icon, children }) => {
 };
 
 const FilterOption = ({ label, count, active }) => (
-    <div className={`flex items-center justify-between gap-4 px-3 py-2 rounded-lg cursor-pointer transition-all ${active ? 'bg-purple-600/20 text-purple-400 ring-1 ring-purple-600/30' : 'text-gray-400 hover:bg-white/5 hover:text-white'
-        }`}>
+    <div className={`filter-option-item ${active ? 'active' : ''}`}>
         <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">{label}</span>
-        {count !== undefined && <span className="text-[10px] font-black opacity-40 ml-auto">{count}</span>}
+        {count !== undefined && <span className="filter-option-count">{count}</span>}
     </div>
 );
 
@@ -48,10 +47,12 @@ const AdvancedFilter = () => {
                 </FilterSection>
 
                 <FilterSection title="Geography" icon={Map}>
-                    <div className="flex flex-wrap gap-2 pt-2">
+                    <div className="geo-tags-container">
                         {['Worldwide', 'USA', 'China', 'Japan', 'Europe'].map((geo, idx) => (
-                            <span key={idx} className={`px-2.5 py-1 rounded-md text-[10px] font-black cursor-pointer border transition-all ${geo === 'Worldwide' ? 'bg-purple-600 border-purple-500 text-white' : 'border-white/10 text-gray-500 hover:text-white hover:border-white/30'
-                                }`}>
+                            <span
+                                key={idx}
+                                className={`geo-tag ${geo === 'Worldwide' ? 'active' : ''}`}
+                            >
                                 {geo}
                             </span>
                         ))}
@@ -59,7 +60,7 @@ const AdvancedFilter = () => {
                 </FilterSection>
 
                 <FilterSection title="Time Period" icon={Calendar}>
-                    <div className="flex flex-col gap-2 pt-2">
+                    <div className="pt-2">
                         <div className="glass-panel p-3 flex justify-between items-center bg-slate-900/40 border-white/5 cursor-pointer hover:border-white/20 transition-all">
                             <span className="text-[10px] font-black text-gray-300 uppercase letter-spacing-widest">Feb 2026</span>
                             <ChevronDown size={14} className="text-gray-500" />
@@ -67,11 +68,11 @@ const AdvancedFilter = () => {
                     </div>
                 </FilterSection>
 
-                <div className="mt-8 pt-8 border-t border-white/5">
-                    <button className="w-full py-3.5 bg-purple-600 hover:bg-purple-500 text-white text-[11px] font-black uppercase tracking-widest rounded-xl transition-all shadow-lg shadow-purple-900/40 active:scale-[0.98]">
+                <div className="filter-actions">
+                    <button className="btn-apply">
                         Apply Analytics Filter
                     </button>
-                    <button className="w-full mt-3 py-2 text-gray-500 hover:text-white text-[10px] font-black uppercase tracking-wider transition-colors">
+                    <button className="btn-reset">
                         Reset to Defaults
                     </button>
                 </div>

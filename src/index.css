@@ -1232,3 +1232,126 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Hardened Filter Section Styles */
+.filter-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #94a3b8;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.filter-option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.filter-option-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.filter-option-item.active {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.3);
+}
+
+.filter-option-count {
+  font-size: 10px;
+  font-weight: 900;
+  opacity: 0.5;
+}
+
+.geo-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 8px;
+}
+
+.geo-tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 900;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.geo-tag:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.geo-tag.active {
+  background: #7c3aed;
+  border-color: #8b5cf6;
+  color: white;
+}
+
+.filter-actions {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-apply {
+  width: 100%;
+  padding: 14px;
+  background: #7c3aed;
+  color: white;
+  border-radius: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
+}
+
+.btn-apply:hover {
+  background: #8b5cf6;
+}
+
+.btn-apply:active {
+  transform: scale(0.98);
+}
+
+.btn-reset {
+  width: 100%;
+  padding: 8px;
+  background: transparent;
+  color: #64748b;
+  border: none;
+  border-radius: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+  color: white;
+}
