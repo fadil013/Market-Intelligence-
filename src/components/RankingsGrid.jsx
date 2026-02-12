@@ -1,3 +1,6 @@
+import React from 'react';
+import { TrendingUp, TrendingDown, Minus, Crown } from 'lucide-react';
+
 const RankingItem = ({ item, type, rank, onClick, compact }) => {
     return (
         <div
@@ -38,7 +41,7 @@ const RankingItem = ({ item, type, rank, onClick, compact }) => {
 
 const RankingsGrid = ({ rankings, onAppSelect, collapsed }) => {
     return (
-        <div className={`grid grid-cols-1 ${collapsed ? 'md:grid-cols-1 lg:grid-cols-2 lg:max-w-4xl' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6 mb-8`}>
+        <div className={`grid grid-cols-1 ${collapsed ? 'md:grid-cols-1 lg:grid-cols-2 lg:max-w-4xl' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6 mb-8 rankings-grid-root`}>
             {/* Top Free */}
             <div className="glass-panel p-5">
                 <div className="flex items-center justify-between mb-6">
@@ -71,23 +74,21 @@ const RankingsGrid = ({ rankings, onAppSelect, collapsed }) => {
                 </div>
             </div>
 
-            {/* Top Featured - Only show if not collapsed or on large screen */}
-            {(!collapsed || (collapsed && window.innerWidth > 1600)) && (
-                <div className="glass-panel p-5">
-                    <div className="flex items-center justify-between mb-6">
-                        <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                            <Crown className="text-amber-400" size={18} />
-                            Top Featured
-                        </h3>
-                        <span className="text-xs text-gray-400 uppercase tracking-wider font-bold">Score</span>
-                    </div>
-                    <div className="space-y-1">
-                        {rankings.topFeatured.map((item, index) => (
-                            <RankingItem key={item.id} item={item} rank={index + 1} type="featured" onClick={onAppSelect} compact={collapsed} />
-                        ))}
-                    </div>
+            {/* Top Featured */}
+            <div className={`glass-panel p-5 ${collapsed ? 'hidden xl:block' : ''}`}>
+                <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                        <Crown className="text-amber-400" size={18} />
+                        Top Featured
+                    </h3>
+                    <span className="text-xs text-gray-400 uppercase tracking-wider font-bold">Score</span>
                 </div>
-            )}
+                <div className="space-y-1">
+                    {rankings.topFeatured.map((item, index) => (
+                        <RankingItem key={item.id} item={item} rank={index + 1} type="featured" onClick={onAppSelect} compact={collapsed} />
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };

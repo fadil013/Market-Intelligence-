@@ -1,3 +1,5 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Smartphone, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Sidebar = ({ collapsed, onToggle }) => {
