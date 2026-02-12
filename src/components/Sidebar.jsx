@@ -1,8 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Smartphone } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Smartphone, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Sidebar = () => {
+const Sidebar = ({ collapsed, onToggle }) => {
   const navItems = [
     { icon: LayoutDashboard, label: 'Overview', path: '/' },
     { icon: TrendingUp, label: 'Trends & Boosts', path: '/trends' },
@@ -12,10 +10,17 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-logo">
-        <Smartphone size={32} />
-        <span>MID Pro</span>
+        <Smartphone size={32} className="min-w-[32px]" />
+        {!collapsed && <span>MID Pro</span>}
+        <button
+          onClick={onToggle}
+          className="sidebar-toggle-btn"
+          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+        >
+          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+        </button>
       </div>
 
       <nav className="sidebar-nav">
@@ -24,17 +29,24 @@ const Sidebar = () => {
             key={item.path}
             to={item.path}
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            title={collapsed ? item.label : ''}
           >
-            <item.icon size={20} />
-            <span>{item.label}</span>
+            <item.icon size={20} className="min-w-[20px]" />
+            {!collapsed && <span>{item.label}</span>}
           </NavLink>
         ))}
       </nav>
 
       <div className="sidebar-footer">
         <div className="sidebar-footer-card">
-          <h4>Stay Updated</h4>
-          <p>v1.2.0 • Data Sync Active</p>
+          {collapsed ? (
+            <div className="text-center font-black text-purple-400">v1.2</div>
+          ) : (
+            <>
+              <h4>Stay Updated</h4>
+              <p>v1.2.0 • Data Sync Active</p>
+            </>
+          )}
         </div>
       </div>
     </aside>

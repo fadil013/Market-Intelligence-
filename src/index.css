@@ -48,6 +48,11 @@ body {
   display: flex;
   flex-direction: column;
   z-index: 100;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.collapsed {
+  width: 80px;
 }
 
 .sidebar-logo {
@@ -55,6 +60,45 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
+}
+
+.sidebar-toggle-btn {
+  position: absolute;
+  right: -12px;
+  top: 32px;
+  width: 24px;
+  height: 24px;
+  background: var(--accent-purple);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 110;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle-btn:hover {
+  transform: scale(1.1);
+  background: #a78bfa;
+}
+
+.sidebar.collapsed .sidebar-logo {
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.sidebar.collapsed .sidebar-nav {
+  padding: 0 12px;
+}
+
+.sidebar.collapsed .nav-link {
+  justify-content: center;
+  padding: 14px 0;
 }
 
 .sidebar-logo svg {
@@ -68,6 +112,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  white-space: nowrap;
 }
 
 .sidebar-nav {
@@ -131,11 +176,69 @@ body {
   padding: 32px;
   min-height: 100vh;
   position: relative;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-collapsed .main-content {
+  margin-left: 80px;
 }
 
 .page-container {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
+  height: 100%;
+}
+
+/* Detail Panel Styling */
+.detail-panel {
+  width: 450px;
+  min-width: 450px;
+  height: calc(100vh - 64px);
+  position: sticky;
+  top: 32px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.overview-grid-container {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+.main-dashboard-area {
+  flex: 1;
+  min-width: 0;
+  /* Critical for flex shrinking */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@media (max-width: 1400px) {
+  .detail-panel {
+    width: 380px;
+    min-width: 380px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .overview-grid-container {
+    flex-direction: column;
+  }
+
+  .detail-panel {
+    width: 100%;
+    position: relative;
+    top: 0;
+    height: auto;
+    max-height: 80vh;
+  }
 }
 
 /* Page Header */

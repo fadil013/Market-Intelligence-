@@ -27,38 +27,52 @@ const Overview = () => {
     };
 
     return (
-        <div className="flex gap-8 relative">
-            <AdvancedFilter />
+        <div className="overview-grid-container relative">
+            {/* Column 1: Filters (Sticky) */}
+            <div className="hidden lg:block">
+                <AdvancedFilter />
+            </div>
 
-            <div className="flex-1 min-w-0">
+            {/* Column 2: Main Context (Fluid) */}
+            <div className={`main-dashboard-area ${selectedApp ? 'selected-view' : ''}`}>
                 <div className="page-header">
                     <div>
                         <h1 className="page-title text-4xl font-black tracking-tighter mb-2">Market Overview</h1>
-                        <p className="page-subtitle text-gray-400 text-lg">Cross-platform intelligence & store rankings</p>
+                        <p className="page-subtitle text-gray-400 text-sm">Cross-platform intelligence & store rankings</p>
                     </div>
-                    <div className="live-badge scale-125">
-                        <div className="dot"></div>
-                        <span>Live Data</span>
-                    </div>
+                    {!selectedApp && (
+                        <div className="live-badge scale-125">
+                            <div className="dot"></div>
+                            <span>Live Data</span>
+                        </div>
+                    )}
                 </div>
 
-                {/* New Rankings Section requested by TL */}
-                <RankingsGrid rankings={storeRankings} onAppSelect={handleAppSelect} />
+                <div className="space-y-8 pb-10">
+                    {/* Rankings focus */}
+                    <RankingsGrid rankings={storeRankings} onAppSelect={handleAppSelect} collapsed={!!selectedApp} />
 
-                <div className="grid grid-cols-1 gap-8">
-                    <StatsGrid kpiData={kpiSummary} />
-                    <PlatformComparisonChart data={platformComparisonData} />
-                    <GamesTable games={allGames} genres={genres} businessModels={businessModels} />
+                    {/* Stats focus: Only show mini version if an app is selected to save space */}
+                    {!selectedApp && (
+                        <div className="grid grid-cols-1 gap-8 animate-in fade-in duration-500">
+                            <StatsGrid kpiData={kpiSummary} />
+                            <PlatformComparisonChart data={platformComparisonData} />
+                            <GamesTable games={allGames} genres={genres} businessModels={businessModels} />
+                        </div>
+                    )}
                 </div>
             </div>
 
+            {/* Column 3: Detail Panel (Sticky / Parallel) */}
             {selectedApp && (
-                <AppDetailView
-                    key={selectedApp} // Force remount for 'Safe' hydration
-                    appName={selectedApp}
-                    data={appDetailsData[selectedApp]}
-                    onClose={() => setSelectedApp(null)}
-                />
+                <div className="detail-panel-wrapper animate-in slide-in-from-right duration-300">
+                    <AppDetailView
+                        key={selectedApp}
+                        appName={selectedApp}
+                        data={appDetailsData[selectedApp]}
+                        onClose={() => setSelectedApp(null)}
+                    />
+                </div>
             )}
         </div>
     );
