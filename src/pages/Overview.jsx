@@ -19,7 +19,11 @@ const Overview = () => {
     const [selectedApp, setSelectedApp] = useState(null);
 
     const handleAppSelect = (app) => {
-        setSelectedApp(app.name);
+        // Safe Approach: Explicitly clear selection first to ensure a 'Clean Slate' transition
+        setSelectedApp(null);
+        setTimeout(() => {
+            setSelectedApp(app.name);
+        }, 50);
     };
 
     return (
@@ -29,7 +33,7 @@ const Overview = () => {
             <div className="flex-1 min-w-0">
                 <div className="page-header">
                     <div>
-                        <h1 className="page-title text-5xl font-black tracking-tighter mb-2">Market Overview</h1>
+                        <h1 className="page-title text-4xl font-black tracking-tighter mb-2">Market Overview</h1>
                         <p className="page-subtitle text-gray-400 text-lg">Cross-platform intelligence & store rankings</p>
                     </div>
                     <div className="live-badge scale-125">
@@ -50,8 +54,9 @@ const Overview = () => {
 
             {selectedApp && (
                 <AppDetailView
+                    key={selectedApp} // Force remount for 'Safe' hydration
                     appName={selectedApp}
-                    data={appDetailsData[selectedApp] || appDetailsData['TikTok']} // Defaulting for demo
+                    data={appDetailsData[selectedApp]}
                     onClose={() => setSelectedApp(null)}
                 />
             )}

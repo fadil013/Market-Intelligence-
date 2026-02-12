@@ -7,9 +7,12 @@ import { X, TrendingUp, Download, DollarSign, Star, Globe, Smartphone, Activity 
 
 const AppDetailView = ({ appName, data, onClose }) => {
     if (!data) return (
-        <div className="glass-panel p-8 text-center">
-            <h3 className="text-white font-bold">No detail data available for this app yet.</h3>
-            <button onClick={onClose} className="mt-4 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20">Close</button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+            <div className="glass-panel p-8 text-center max-w-sm">
+                <h3 className="text-white font-bold mb-4">No data available for "{appName}" in this demo.</h3>
+                <p className="text-gray-400 text-sm mb-6">Try clicking TikTok, ChatGPT, or Google Gemini for full analytics.</p>
+                <button onClick={onClose} className="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-500 transition-all font-bold uppercase text-xs tracking-widest">Back to Dashboard</button>
+            </div>
         </div>
     );
 
@@ -32,11 +35,11 @@ const AppDetailView = ({ appName, data, onClose }) => {
                         <div className="text-center md:text-left flex-1">
                             <h2 className="text-4xl font-black text-white mb-2">{appName}</h2>
                             <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-                                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-bold ring-1 ring-purple-500/30">Entertainment</span>
-                                <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold ring-1 ring-blue-500/30">Short Video</span>
+                                <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-bold ring-1 ring-purple-500/30">{data.category || 'App'}</span>
+                                {data.studio && <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold ring-1 ring-blue-500/30">{data.studio}</span>}
                                 <div className="flex items-center gap-1 text-amber-400">
                                     <Star size={14} fill="currentColor" />
-                                    <span className="text-sm font-bold">4.8</span>
+                                    <span className="text-sm font-bold">{data.rating || '4.5'}</span>
                                 </div>
                             </div>
                         </div>

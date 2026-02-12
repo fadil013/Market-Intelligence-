@@ -62,20 +62,66 @@ export const appDetailsData = {
     'TikTok': {
         revenue: '$120,000,000',
         downloads: '50,000,000',
+        category: 'Social Media / Video',
+        studio: 'Bytedance',
+        rating: 4.7,
         geoDist: [
             { region: 'United States', percentage: 32, color: '#3b82f6' },
             { region: 'China', percentage: 25, color: '#ef4444' },
             { region: 'Japan', percentage: 12, color: '#f59e0b' },
-            { region: 'Others', percentage: 31, color: '#94a3b8' },
+            { region: 'Others', percentage: 31, color: '#64748b' }
         ],
         performanceHistory: [
             { day: 'Mon', revenue: 3.2, downloads: 1.2 },
-            { day: 'Tue', revenue: 3.5, downloads: 1.5 },
+            { day: 'Tue', revenue: 3.5, downloads: 1.3 },
             { day: 'Wed', revenue: 3.1, downloads: 1.1 },
-            { day: 'Thu', revenue: 4.2, downloads: 1.8 },
-            { day: 'Fri', revenue: 4.8, downloads: 2.1 },
-            { day: 'Sat', revenue: 5.5, downloads: 2.5 },
-            { day: 'Sun', revenue: 5.2, downloads: 2.3 },
+            { day: 'Thu', revenue: 3.8, downloads: 1.4 },
+            { day: 'Fri', revenue: 4.2, downloads: 1.6 },
+            { day: 'Sat', revenue: 4.5, downloads: 1.8 },
+            { day: 'Sun', revenue: 4.1, downloads: 1.5 }
+        ]
+    },
+    'ChatGPT': {
+        revenue: '$20,000,000',
+        downloads: '20,000,000',
+        category: 'Productivity / AI',
+        studio: 'OpenAI',
+        rating: 4.8,
+        geoDist: [
+            { region: 'USA', percentage: 45, color: '#3b82f6' },
+            { region: 'Europe', percentage: 30, color: '#10b981' },
+            { region: 'India', percentage: 15, color: '#f59e0b' },
+            { region: 'Others', percentage: 10, color: '#64748b' }
+        ],
+        performanceHistory: [
+            { day: 'Mon', revenue: 0.5, downloads: 0.2 },
+            { day: 'Tue', revenue: 0.6, downloads: 0.3 },
+            { day: 'Wed', revenue: 0.5, downloads: 0.2 },
+            { day: 'Thu', revenue: 0.7, downloads: 0.4 },
+            { day: 'Fri', revenue: 0.8, downloads: 0.5 },
+            { day: 'Sat', revenue: 1.0, downloads: 0.7 },
+            { day: 'Sun', revenue: 0.9, downloads: 0.6 }
+        ]
+    },
+    'Google Gemini': {
+        revenue: '$5,000,000',
+        downloads: '10,000,000',
+        category: 'Tools / AI',
+        studio: 'Google LLC',
+        rating: 4.6,
+        geoDist: [
+            { region: 'USA', percentage: 50, color: '#3b82f6' },
+            { region: 'Japan', percentage: 20, color: '#f59e0b' },
+            { region: 'Others', percentage: 30, color: '#64748b' }
+        ],
+        performanceHistory: [
+            { day: 'Mon', revenue: 0.1, downloads: 0.1 },
+            { day: 'Tue', revenue: 0.2, downloads: 0.2 },
+            { day: 'Wed', revenue: 0.2, downloads: 0.1 },
+            { day: 'Thu', revenue: 0.3, downloads: 0.3 },
+            { day: 'Fri', revenue: 0.4, downloads: 0.4 },
+            { day: 'Sat', revenue: 0.5, downloads: 0.5 },
+            { day: 'Sun', revenue: 0.4, downloads: 0.4 }
         ]
     }
 };
