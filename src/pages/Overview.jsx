@@ -5,6 +5,7 @@ import GamesTable from '../components/GamesTable';
 import RankingsGrid from '../components/RankingsGrid';
 import AdvancedFilter from '../components/AdvancedFilter';
 import AppDetailView from '../components/AppDetailView';
+import TrendingCategories from '../components/TrendingCategories';
 import {
     kpiSummary,
     platformComparisonData,
@@ -72,6 +73,7 @@ const Overview = () => {
                             </div>
                         </div>
                         
+                        <TrendingCategories />
                         <RankingsGrid rankings={currentRankings} onAppSelect={handleAppSelect} collapsed={false} />
                         <StatsGrid kpiData={kpiSummary} />
                         
