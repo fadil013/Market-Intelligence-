@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Search, Map, Calendar, Tag, Filter, ChevronDown } from 'lucide-react';
 
 const FilterSection = ({ title, icon: Icon, children }) => {
     return (
-        <div className="mb-8 last:mb-0">
+        <div className="mb-6 last:mb-0">
             <div className="filter-section-title">
-                {Icon && <Icon size={16} style={{ color: '#3b82f6' }} />}
+                {Icon && <Icon size={16} style={{ color: '#6b7280' }} />}
                 <h4>{title}</h4>
             </div>
             <div className="space-y-1">
@@ -21,14 +21,25 @@ const FilterOption = ({ label, count, active, onClick }) => (
         onClick={onClick}
         style={{ cursor: 'pointer' }}
     >
-        <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">{label}</span>
+        <span className="text-sm font-medium">{label}</span>
         {count !== undefined && <span className="filter-option-count">{count}</span>}
     </div>
 );
 
-const AdvancedFilter = ({ selectedDomain = 'Games', onDomainChange }) => {
+const AdvancedFilter = ({ 
+    selectedDomain = 'Games', 
+    onDomainChange,
+    activeFilters = {},
+    onFilterChange,
+    onApply,
+    onReset 
+}) => {
     return (
-        <aside className="advanced-filter hidden lg:flex flex-col">
+        <aside className="filter-panel-right">
+            <div className="filter-header">
+                <h3 className="filter-title">Filters</h3>
+            </div>
+
             <div className="filter-search-container">
                 <Search className="filter-search-icon" size={18} />
                 <input
@@ -38,7 +49,7 @@ const AdvancedFilter = ({ selectedDomain = 'Games', onDomainChange }) => {
                 />
             </div>
 
-            <div className="flex-1 pr-2 scrollbar-hide">
+            <div className="filter-content">
                 <FilterSection title="Domains" icon={Filter}>
                     <FilterOption 
                         label="Games" 
@@ -55,17 +66,38 @@ const AdvancedFilter = ({ selectedDomain = 'Games', onDomainChange }) => {
                 </FilterSection>
 
                 <FilterSection title="Top Categories" icon={Tag}>
-                    <FilterOption label="Casual" count="127,415" />
-                    <FilterOption label="Hypercasual" count="57,790" />
-                    <FilterOption label="Midcore" count="23,364" />
+                    <FilterOption 
+                        label="All Categories" 
+                        active={activeFilters.category === 'All'}
+                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'All' })}
+                    />
+                    <FilterOption 
+                        label="Casual" 
+                        count="127,415"
+                        active={activeFilters.category === 'Casual'}
+                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'Casual' })}
+                    />
+                    <FilterOption 
+                        label="Hypercasual" 
+                        count="57,790"
+                        active={activeFilters.category === 'Hypercasual'}
+                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'Hypercasual' })}
+                    />
+                    <FilterOption 
+                        label="Midcore" 
+                        count="23,364"
+                        active={activeFilters.category === 'Midcore'}
+                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'Midcore' })}
+                    />
                 </FilterSection>
 
                 <FilterSection title="Geography" icon={Map}>
                     <div className="geo-tags-container">
-                        {['Worldwide', 'USA', 'China', 'Japan', 'Europe'].map((geo, idx) => (
+                        {['Worldwide', 'USA', 'China', 'Japan', 'Europe'].map((geo) => (
                             <span
-                                key={idx}
-                                className={`geo-tag ${geo === 'Worldwide' ? 'active' : ''}`}
+                                key={geo}
+                                className={`geo-tag ${activeFilters.geography === geo ? 'active' : ''}`}
+                                onClick={() => onFilterChange && onFilterChange({ ...activeFilters, geography: geo })}
                             >
                                 {geo}
                             </span>
@@ -75,21 +107,21 @@ const AdvancedFilter = ({ selectedDomain = 'Games', onDomainChange }) => {
 
                 <FilterSection title="Time Period" icon={Calendar}>
                     <div className="pt-2">
-                        <div className="glass-panel p-3 flex justify-between items-center" style={{ background: 'rgba(15,23,42,0.4)', borderColor: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}>
-                            <span style={{ fontSize: '10px', fontWeight: 900, color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Feb 2026</span>
-                            <ChevronDown size={14} style={{ color: '#64748b' }} />
+                        <div className="time-period-select" onClick={() => {}}>
+                            <span>{activeFilters.timePeriod || 'Feb 2026'}</span>
+                            <ChevronDown size={14} />
                         </div>
                     </div>
                 </FilterSection>
+            </div>
 
-                <div className="filter-actions">
-                    <button className="btn-apply">
-                        Apply Analytics Filter
-                    </button>
-                    <button className="btn-reset">
-                        Reset to Defaults
-                    </button>
-                </div>
+            <div className="filter-actions">
+                <button className="btn-apply" onClick={onApply}>
+                    Apply Filters
+                </button>
+                <button className="btn-reset" onClick={onReset}>
+                    Reset to Defaults
+                </button>
             </div>
         </aside>
     );

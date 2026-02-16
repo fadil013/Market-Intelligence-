@@ -19,9 +19,14 @@ import {
 const Overview = () => {
     const [selectedApp, setSelectedApp] = useState(null);
     const [selectedDomain, setSelectedDomain] = useState('Games');
+    const [activeFilters, setActiveFilters] = useState({
+        domain: 'Games',
+        category: 'All',
+        geography: 'Worldwide',
+        timePeriod: 'Feb 2026'
+    });
 
     const handleAppSelect = (app) => {
-        // Safe Approach: Explicitly clear selection first to ensure a 'Clean Slate' transition
         setSelectedApp(null);
         setTimeout(() => {
             setSelectedApp(app.name);
@@ -30,64 +35,75 @@ const Overview = () => {
 
     const handleDomainChange = (domain) => {
         setSelectedDomain(domain);
+        setActiveFilters({ ...activeFilters, domain });
     };
 
-    // Dynamically select rankings based on domain filter
+    const handleApplyFilters = () => {
+        console.log('Applying filters:', activeFilters);
+        // In real app, this would trigger API call or data refetch
+        alert(`Filters applied:\nDomain: ${activeFilters.domain}\nCategory: ${activeFilters.category}\nRegion: ${activeFilters.geography}\nPeriod: ${activeFilters.timePeriod}`);
+    };
+
+    const handleResetFilters = () => {
+        setActiveFilters({
+            domain: 'Games',
+            category: 'All',
+            geography: 'Worldwide',
+            timePeriod: 'Feb 2026'
+        });
+        setSelectedDomain('Games');
+    };
+
     const currentRankings = useMemo(() => {
         return selectedDomain === 'Games' ? gameRankings : appRankings;
     }, [selectedDomain]);
 
     return (
-        <div className="overview-grid-container relative">
-            {/* Column 1: Filters (Sticky) */}
-            <div className="hidden lg:block">
-                <AdvancedFilter 
-                    selectedDomain={selectedDomain}
-                    onDomainChange={handleDomainChange}
-                />
-            </div>
-
-            {/* Column 2: Main Context (Fluid) */}
-            <div className={`main-dashboard-area ${selectedApp ? 'selected-view' : ''}`}>
-                <div className="page-header">
-                    <div>
-                        <h1 className="page-title text-4xl font-black tracking-tighter mb-2">Market Overview</h1>
-                        <p className="page-subtitle text-gray-400 text-sm">Cross-platform intelligence & store rankings</p>
+        <div className="overview-container-new">
+            {/* Main Content - Left Side */}
+            <div className="main-content-area">
+                {!selectedApp ? (
+                    <div className="space-y-8">
+                        <div className="page-header-new">
+                            <h1 className="page-title-new">Market Overview</h1>
+                            <div className="live-badge-new">
+                                <div className="dot"></div>
+                                <span>Live Data</span>
+                            </div>
+                        </div>
+                        
+                        <RankingsGrid rankings={currentRankings} onAppSelect={handleAppSelect} collapsed={false} />
+                        <StatsGrid kpiData={kpiSummary} />
+                        
+                        <div className="section-header">
+                            <h2 className="section-title">Platform Revenue Comparison</h2>
+                        </div>
+                        <PlatformComparisonChart data={platformComparisonData} />
+                        
+                        <div className="section-header">
+                            <h2 className="section-title">Top Games Leaderboard</h2>
+                        </div>
+                        <GamesTable games={allGames} genres={genres} businessModels={businessModels} onGameSelect={handleAppSelect} />
                     </div>
-                    {!selectedApp && (
-                        <div className="live-badge scale-125">
-                            <div className="dot"></div>
-                            <span>Live Data</span>
-                        </div>
-                    )}
-                </div>
-
-                <div className="space-y-8 pb-10">
-                    {/* Rankings focus */}
-                    <RankingsGrid rankings={currentRankings} onAppSelect={handleAppSelect} collapsed={!!selectedApp} />
-
-                    {/* Stats focus: Only show mini version if an app is selected to save space */}
-                    {!selectedApp && (
-                        <div className="grid grid-cols-1 gap-8 animate-in fade-in duration-500">
-                            <StatsGrid kpiData={kpiSummary} />
-                            <PlatformComparisonChart data={platformComparisonData} />
-                            <GamesTable games={allGames} genres={genres} businessModels={businessModels} onGameSelect={handleAppSelect} />
-                        </div>
-                    )}
-                </div>
-            </div>
-
-            {/* Column 3: Detail Panel (Sticky / Parallel) */}
-            {selectedApp && (
-                <div className="detail-panel-wrapper animate-in slide-in-from-right duration-300">
+                ) : (
                     <AppDetailView
                         key={selectedApp}
                         appName={selectedApp}
                         data={appDetailsData[selectedApp]}
                         onClose={() => setSelectedApp(null)}
                     />
-                </div>
-            )}
+                )}
+            </div>
+
+            {/* Filter Panel - Right Side */}
+            <AdvancedFilter 
+                selectedDomain={selectedDomain}
+                onDomainChange={handleDomainChange}
+                activeFilters={activeFilters}
+                onFilterChange={setActiveFilters}
+                onApply={handleApplyFilters}
+                onReset={handleResetFilters}
+            />
         </div>
     );
 };
