@@ -67,20 +67,20 @@ const AppDetailView = ({ appName, data, onClose, gameData }) => {
             </div>
             <div className="flex-1 overflow-y-auto p-6">
                 {/* Header */}
-                <div className="flex flex-col items-center text-center gap-4 mb-10">
+                <div className="flex flex-col items-center text-center gap-6 mb-12">
                     <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-slate-800 ring-4 ring-white/5 shadow-2xl">
                         🎮
                     </div>
                     <div>
-                        <h2 className="text-2xl font-black text-white mb-3">{appName}</h2>
-                        <p className="text-sm text-gray-400 font-medium">Category Performance Analytics</p>
+                        <h2 className="text-2xl font-black text-white mb-5 leading-tight">{appName}</h2>
+                        <p className="text-sm text-gray-400 font-medium leading-relaxed">Category Performance Analytics</p>
                     </div>
                 </div>
 
                 {/* Trending Categories Header */}
-                <div className="flex items-center gap-3 mb-6 pb-3 border-b border-white/5">
+                <div className="flex items-center gap-3 mb-6 pb-3 pt-2 border-b border-white/5">
                     <Flame className="text-orange-400" size={24} />
-                    <h3 className="text-xl font-bold text-white">Top Trending Categories</h3>
+                    <h3 className="text-xl font-bold text-white leading-tight">Top Trending Categories</h3>
                 </div>
 
                 {/* Category Cards */}
