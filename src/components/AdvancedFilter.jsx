@@ -41,7 +41,7 @@ const AdvancedFilter = ({
             </div>
 
             <div className="filter-search-container">
-                <Search className="filter-search-icon" size={18} />
+                <Search className="filter-search-icon" size={20} />
                 <input
                     type="text"
                     placeholder="Search apps or tags..."
