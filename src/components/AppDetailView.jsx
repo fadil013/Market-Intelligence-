@@ -5,16 +5,53 @@ import {
 } from 'recharts';
 import { X, TrendingUp, Download, DollarSign, Star, Globe, Smartphone, Activity, Flame, Target, Trophy, Zap } from 'lucide-react';
 
-const AppDetailView = ({ appName, data, onClose }) => {
-    // Generic analytics for games without specific data
-    const categoryData = [
-        { name: 'Puzzle', games: 2847, revenue: 892000000, trend: '+42%', color: '#f59e0b', icon: '🧩' },
-        { name: 'Shooting', games: 1523, revenue: 1200000000, trend: '+38%', color: '#ef4444', icon: '🎯' },
-        { name: 'Racing', games: 892, revenue: 645000000, trend: '+35%', color: '#06b6d4', icon: '🏎️' },
-        { name: 'RPG', games: 1245, revenue: 1800000000, trend: '+28%', color: '#8b5cf6', icon: '⚔️' },
-        { name: 'Strategy', games: 756, revenue: 534000000, trend: '+22%', color: '#10b981', icon: '🎲' },
-        { name: 'Casual', games: 3421, revenue: 723000000, trend: '+18%', color: '#ec4899', icon: '🎮' }
-    ];
+const AppDetailView = ({ appName, data, onClose, gameData }) => {
+    // Generate unique analytics based on the specific game
+    const generateCategoryData = () => {
+        const baseData = [
+            { name: 'Puzzle', games: 2847, revenue: 892000000, trend: '+42%', color: '#f59e0b', icon: '🧩' },
+            { name: 'Shooting', games: 1523, revenue: 1200000000, trend: '+38%', color: '#ef4444', icon: '🎯' },
+            { name: 'Racing', games: 892, revenue: 645000000, trend: '+35%', color: '#06b6d4', icon: '🏎️' },
+            { name: 'RPG', games: 1245, revenue: 1800000000, trend: '+28%', color: '#8b5cf6', icon: '⚔️' },
+            { name: 'Strategy', games: 756, revenue: 534000000, trend: '+22%', color: '#10b981', icon: '🎲' },
+            { name: 'Casual', games: 3421, revenue: 723000000, trend: '+18%', color: '#ec4899', icon: '🎮' }
+        ];
+
+        // If we have game data, prioritize its genre
+        if (gameData?.genre) {
+            const genreMap = {
+                'Puzzle': 0,
+                'Shooter': 1,
+                'Racing': 2,
+                'RPG': 3,
+                'Strategy': 4,
+                'Casual': 5,
+                'MOBA': 3, // Treat MOBA as RPG category
+                'Sandbox': 5 // Treat Sandbox as Casual
+            };
+            
+            const priorityIndex = genreMap[gameData.genre] ?? 0;
+            
+            // Reorder to show the game's genre first with boosted stats
+            const reordered = [...baseData];
+            const priorityItem = reordered[priorityIndex];
+            
+            // Boost the stats for the specific game's genre
+            priorityItem.games = Math.floor(priorityItem.games * 1.2);
+            priorityItem.revenue = Math.floor(priorityItem.revenue * 1.15);
+            const trendNum = parseInt(priorityItem.trend);
+            priorityItem.trend = `+${trendNum + 5}%`;
+            
+            reordered.splice(priorityIndex, 1);
+            reordered.unshift(priorityItem);
+            
+            return reordered;
+        }
+        
+        return baseData;
+    };
+    
+    const categoryData = generateCategoryData();
 
     if (!data) return (
         <div className="detail-panel glass-panel flex flex-col h-full" style={{ background: 'rgba(15,23,42,0.95)' }}>
@@ -87,22 +124,60 @@ const AppDetailView = ({ appName, data, onClose }) => {
                 <div className="mt-8">
                     <div className="flex items-center gap-3 mb-6">
                         <Target className="text-blue-400" size={22} />
-                        <h3 className="text-lg font-bold text-white">Market Insights</h3>
+                        <h3 className="text-lg font-bold text-white">Market Insights for {gameData?.genre || 'This Genre'}</h3>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="glass-panel p-4">
                             <Trophy className="text-amber-400 mb-3" size={20} />
-                            <p className="text-xs text-gray-400 uppercase mb-1">Top Genre</p>
-                            <p className="text-white font-bold">RPG Games</p>
-                            <p className="text-emerald-400 text-sm font-bold mt-1">$1.8B Revenue</p>
+                            <p className="text-xs text-gray-400 uppercase mb-1">Market Position</p>
+                            <p className="text-white font-bold">{gameData?.genre || 'Gaming'} Leader</p>
+                            <p className="text-emerald-400 text-sm font-bold mt-1">
+                                {gameData?.rating ? `${gameData.rating}⭐ Rating` : 'Top Rated'}
+                            </p>
                         </div>
                         <div className="glass-panel p-4">
                             <Zap className="text-purple-400 mb-3" size={20} />
-                            <p className="text-xs text-gray-400 uppercase mb-1">Fastest Growing</p>
-                            <p className="text-white font-bold">Puzzle Games</p>
-                            <p className="text-emerald-400 text-sm font-bold mt-1">+42% Growth</p>
+                            <p className="text-xs text-gray-400 uppercase mb-1">Growth Momentum</p>
+                            <p className="text-white font-bold">{categoryData[0]?.name || 'Top Category'}</p>
+                            <p className="text-emerald-400 text-sm font-bold mt-1">
+                                {gameData?.boostScore ? `+${gameData.boostScore}% Boost` : categoryData[0]?.trend || '+42% Growth'}
+                            </p>
                         </div>
                     </div>
+                    
+                    {gameData && (
+                        <div className="mt-6 glass-panel p-5" style={{ 
+                            background: 'linear-gradient(135deg, rgba(107,114,128,0.12), rgba(75,85,99,0.08))',
+                            borderLeft: `3px solid ${gameData.color || '#6b7280'}`
+                        }}>
+                            <div className="flex items-center gap-4 mb-4">
+                                <div 
+                                    className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl"
+                                    style={{ background: `${gameData.color || '#6b7280'}20`, border: `2px solid ${gameData.color || '#6b7280'}40` }}
+                                >
+                                    {gameData.icon || '🎮'}
+                                </div>
+                                <div className="flex-1">
+                                    <h4 className="text-white font-bold text-base">{appName} Performance</h4>
+                                    <p className="text-gray-400 text-xs mt-1">{gameData.studioRegion || 'Global'} • {gameData.platform || 'Multi-platform'}</p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-3 gap-4">
+                                <div>
+                                    <p className="text-gray-400 text-[10px] uppercase font-bold mb-1">Downloads</p>
+                                    <p className="text-white font-bold text-sm">{(gameData.monthlyDownloads / 1000000).toFixed(1)}M</p>
+                                </div>
+                                <div>
+                                    <p className="text-gray-400 text-[10px] uppercase font-bold mb-1">Revenue</p>
+                                    <p className="text-emerald-400 font-bold text-sm">${(gameData.monthlyRevenue / 1000000).toFixed(0)}M</p>
+                                </div>
+                                <div>
+                                    <p className="text-gray-400 text-[10px] uppercase font-bold mb-1">Boost Score</p>
+                                    <p className="text-purple-400 font-bold text-sm">+{gameData.boostScore}%</p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
