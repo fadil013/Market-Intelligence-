@@ -122,9 +122,16 @@ const AppDetailView = ({ appName, data, onClose, gameData }) => {
 
                 {/* Market Insights */}
                 <div className="mt-8">
-                    <div className="flex items-center gap-3 mb-6">
-                        <Target className="text-blue-400" size={22} />
-                        <h3 className="text-lg font-bold text-white">Market Insights for {gameData?.genre || 'This Genre'}</h3>
+                    <div className="flex items-start gap-3 mb-6">
+                        <div className="mt-1">
+                            <Target className="text-blue-400" size={20} />
+                        </div>
+                        <div className="flex-1">
+                            <h3 className="text-lg font-bold text-white leading-tight">Market Insights</h3>
+                            {gameData?.genre && (
+                                <p className="text-sm text-gray-400 mt-1">{gameData.genre} Category</p>
+                            )}
+                        </div>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="glass-panel p-4">
