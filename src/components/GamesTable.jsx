@@ -29,10 +29,6 @@ const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) 
     return (
         <div className="glass-panel table-container">
             <div className="table-header">
-                <div>
-                    <h3 className="chart-title">Top Games Leaderboard</h3>
-                    <p className="chart-subtitle">Ranked by boost score (day-over-day growth)</p>
-                </div>
                 <div className="filters">
                     <select className="filter-select" value={genreFilter} onChange={(e) => setGenreFilter(e.target.value)}>
                         <option value="All">All Genres</option>

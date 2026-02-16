@@ -40,9 +40,9 @@ const Overview = () => {
     };
 
     const handleApplyFilters = () => {
-        console.log('Applying filters:', activeFilters);
-        // In real app, this would trigger API call or data refetch
-        alert(`Filters applied:\nDomain: ${activeFilters.domain}\nCategory: ${activeFilters.category}\nRegion: ${activeFilters.geography}\nPeriod: ${activeFilters.timePeriod}`);
+        console.log('Filters applied:', activeFilters);
+        // Filters applied - in production this would trigger API call or data refetch
+        // No alert needed - filters are already visible in the UI
     };
 
     const handleResetFilters = () => {

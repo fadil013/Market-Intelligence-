@@ -3,9 +3,19 @@ import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
     BarChart, Bar, Cell, PieChart, Pie
 } from 'recharts';
-import { X, TrendingUp, Download, DollarSign, Star, Globe, Smartphone, Activity } from 'lucide-react';
+import { X, TrendingUp, Download, DollarSign, Star, Globe, Smartphone, Activity, Flame, Target, Trophy, Zap } from 'lucide-react';
 
 const AppDetailView = ({ appName, data, onClose }) => {
+    // Generic analytics for games without specific data
+    const categoryData = [
+        { name: 'Puzzle', games: 2847, revenue: 892000000, trend: '+42%', color: '#f59e0b', icon: '🧩' },
+        { name: 'Shooting', games: 1523, revenue: 1200000000, trend: '+38%', color: '#ef4444', icon: '🎯' },
+        { name: 'Racing', games: 892, revenue: 645000000, trend: '+35%', color: '#06b6d4', icon: '🏎️' },
+        { name: 'RPG', games: 1245, revenue: 1800000000, trend: '+28%', color: '#8b5cf6', icon: '⚔️' },
+        { name: 'Strategy', games: 756, revenue: 534000000, trend: '+22%', color: '#10b981', icon: '🎲' },
+        { name: 'Casual', games: 3421, revenue: 723000000, trend: '+18%', color: '#ec4899', icon: '🎮' }
+    ];
+
     if (!data) return (
         <div className="detail-panel glass-panel flex flex-col h-full" style={{ background: 'rgba(15,23,42,0.95)' }}>
             <div className="sticky top-0 z-20 p-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)', background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(12px)' }}>
@@ -18,21 +28,81 @@ const AppDetailView = ({ appName, data, onClose }) => {
                     Back to Listings
                 </button>
             </div>
-            <div className="flex-1 flex items-center justify-center p-8">
-                <div className="text-center" style={{ maxWidth: '320px' }}>
-                    <div style={{ width: '64px', height: '64px', borderRadius: '16px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', margin: '0 auto 24px' }}>
-                        📊
+            <div className="flex-1 overflow-y-auto p-6">
+                {/* Header */}
+                <div className="flex flex-col items-center text-center gap-4 mb-8">
+                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-slate-800 ring-4 ring-white/5 shadow-2xl">
+                        🎮
                     </div>
-                    <h3 className="text-white font-bold" style={{ fontSize: '18px', marginBottom: '8px' }}>Analytics Unavailable</h3>
-                    <p style={{ color: '#64748b', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px' }}>
-                        Detailed analytics for <strong style={{ color: '#94a3b8' }}>"{appName}"</strong> are not available in this demo. Try selecting TikTok, ChatGPT, or Google Gemini for full insights.
-                    </p>
-                    <button 
-                        onClick={onClose} 
-                        style={{ width: '100%', padding: '12px', background: '#2563eb', color: 'white', borderRadius: '10px', fontWeight: 700, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', border: 'none', cursor: 'pointer' }}
-                    >
-                        Back to Dashboard
-                    </button>
+                    <div>
+                        <h2 className="text-2xl font-black text-white mb-2">{appName}</h2>
+                        <p className="text-sm text-gray-400">Category Performance Analytics</p>
+                    </div>
+                </div>
+
+                {/* Trending Categories Header */}
+                <div className="flex items-center gap-3 mb-6">
+                    <Flame className="text-orange-400" size={24} />
+                    <h3 className="text-xl font-bold text-white">Top Trending Categories</h3>
+                </div>
+
+                {/* Category Cards */}
+                <div className="space-y-4">
+                    {categoryData.map((category, idx) => (
+                        <div 
+                            key={idx}
+                            className="glass-panel p-5 hover:bg-white/5 transition-all cursor-pointer"
+                            style={{ borderLeft: `3px solid ${category.color}` }}
+                        >
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <div 
+                                        className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
+                                        style={{ background: `${category.color}20`, border: `1px solid ${category.color}40` }}
+                                    >
+                                        {category.icon}
+                                    </div>
+                                    <div>
+                                        <h4 className="text-white font-bold text-lg">{category.name}</h4>
+                                        <div className="flex items-center gap-3 mt-1">
+                                            <span className="text-gray-400 text-xs">{category.games.toLocaleString()} games</span>
+                                            <span className="text-gray-600">•</span>
+                                            <span className="text-gray-400 text-xs">${(category.revenue / 1000000).toFixed(0)}M revenue</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="text-right">
+                                    <div className="flex items-center gap-2 text-emerald-400 font-bold text-lg">
+                                        <TrendingUp size={18} />
+                                        {category.trend}
+                                    </div>
+                                    <span className="text-xs text-gray-500">30d growth</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Market Insights */}
+                <div className="mt-8">
+                    <div className="flex items-center gap-3 mb-6">
+                        <Target className="text-blue-400" size={22} />
+                        <h3 className="text-lg font-bold text-white">Market Insights</h3>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="glass-panel p-4">
+                            <Trophy className="text-amber-400 mb-3" size={20} />
+                            <p className="text-xs text-gray-400 uppercase mb-1">Top Genre</p>
+                            <p className="text-white font-bold">RPG Games</p>
+                            <p className="text-emerald-400 text-sm font-bold mt-1">$1.8B Revenue</p>
+                        </div>
+                        <div className="glass-panel p-4">
+                            <Zap className="text-purple-400 mb-3" size={20} />
+                            <p className="text-xs text-gray-400 uppercase mb-1">Fastest Growing</p>
+                            <p className="text-white font-bold">Puzzle Games</p>
+                            <p className="text-emerald-400 text-sm font-bold mt-1">+42% Growth</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
