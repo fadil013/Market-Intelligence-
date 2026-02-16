@@ -28,11 +28,23 @@ const Overview = () => {
         }, 50);
     };
 
+    const handleDomainChange = (domain) => {
+        setSelectedDomain(domain);
+    };
+
+    // Dynamically select rankings based on domain filter
+    const currentRankings = useMemo(() => {
+        return selectedDomain === 'Games' ? gameRankings : appRankings;
+    }, [selectedDomain]);
+
     return (
         <div className="overview-grid-container relative">
             {/* Column 1: Filters (Sticky) */}
             <div className="hidden lg:block">
-                <AdvancedFilter />
+                <AdvancedFilter 
+                    selectedDomain={selectedDomain}
+                    onDomainChange={handleDomainChange}
+                />
             </div>
 
             {/* Column 2: Main Context (Fluid) */}
@@ -52,7 +64,7 @@ const Overview = () => {
 
                 <div className="space-y-8 pb-10">
                     {/* Rankings focus */}
-                    <RankingsGrid rankings={storeRankings} onAppSelect={handleAppSelect} collapsed={!!selectedApp} />
+                    <RankingsGrid rankings={currentRankings} onAppSelect={handleAppSelect} collapsed={!!selectedApp} />
 
                     {/* Stats focus: Only show mini version if an app is selected to save space */}
                     {!selectedApp && (
