@@ -64,7 +64,7 @@ const Overview = () => {
             {/* Main Content - Left Side */}
             <div className="main-content-area">
                 {!selectedApp ? (
-                    <div className="space-y-8">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', paddingBottom: '48px' }}>
                         <div className="page-header-new">
                             <h1 className="page-title-new">Market Overview</h1>
                             <div className="live-badge-new">
@@ -74,18 +74,32 @@ const Overview = () => {
                         </div>
                         
                         <TrendingCategories />
+                        
                         <RankingsGrid rankings={currentRankings} onAppSelect={handleAppSelect} collapsed={false} />
-                        <StatsGrid kpiData={kpiSummary} />
                         
-                        <div className="section-header">
-                            <h2 className="section-title">Platform Revenue Comparison</h2>
+                        <div style={{ marginTop: '16px' }}>
+                            <div className="section-header" style={{ marginBottom: '20px' }}>
+                                <h2 className="section-title">Key Performance Indicators</h2>
+                                <div style={{ fontSize: '12px', color: '#9ca3af', fontWeight: 600 }}>Real-time metrics</div>
+                            </div>
+                            <StatsGrid kpiData={kpiSummary} />
                         </div>
-                        <PlatformComparisonChart data={platformComparisonData} />
                         
-                        <div className="section-header">
-                            <h2 className="section-title">Top Games Leaderboard</h2>
+                        <div style={{ marginTop: '16px' }}>
+                            <div className="section-header" style={{ marginBottom: '20px' }}>
+                                <h2 className="section-title">Platform Revenue Comparison</h2>
+                                <div style={{ fontSize: '12px', color: '#9ca3af', fontWeight: 600 }}>Cross-platform analysis</div>
+                            </div>
+                            <PlatformComparisonChart data={platformComparisonData} />
                         </div>
-                        <GamesTable games={allGames} genres={genres} businessModels={businessModels} onGameSelect={handleAppSelect} />
+                        
+                        <div style={{ marginTop: '16px' }}>
+                            <div className="section-header" style={{ marginBottom: '20px' }}>
+                                <h2 className="section-title">Top Games Leaderboard</h2>
+                                <div style={{ fontSize: '12px', color: '#9ca3af', fontWeight: 600 }}>Top 15 performers</div>
+                            </div>
+                            <GamesTable games={allGames} genres={genres} businessModels={businessModels} onGameSelect={handleAppSelect} />
+                        </div>
                     </div>
                 ) : (
                     <AppDetailView
