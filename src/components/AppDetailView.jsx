@@ -7,10 +7,34 @@ import { X, TrendingUp, Download, DollarSign, Star, Globe, Smartphone, Activity 
 
 const AppDetailView = ({ appName, data, onClose }) => {
     if (!data) return (
-        <div className="glass-panel p-8 text-center max-w-sm mx-auto mt-20">
-            <h3 className="text-white font-bold mb-4">No data available for "{appName}" in this demo.</h3>
-            <p className="text-gray-400 text-sm mb-6">Try clicking TikTok, ChatGPT, or Google Gemini for full analytics.</p>
-            <button onClick={onClose} className="w-full py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-500 transition-all font-bold uppercase text-xs tracking-widest">Back to Dashboard</button>
+        <div className="detail-panel glass-panel flex flex-col h-full" style={{ background: 'rgba(15,23,42,0.95)' }}>
+            <div className="sticky top-0 z-20 p-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)', background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(12px)' }}>
+                <button
+                    onClick={onClose}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-widest"
+                    style={{ background: 'rgba(255,255,255,0.05)', color: '#94a3b8', cursor: 'pointer', border: 'none' }}
+                >
+                    <X size={14} />
+                    Back to Listings
+                </button>
+            </div>
+            <div className="flex-1 flex items-center justify-center p-8">
+                <div className="text-center" style={{ maxWidth: '320px' }}>
+                    <div style={{ width: '64px', height: '64px', borderRadius: '16px', background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '28px', margin: '0 auto 24px' }}>
+                        📊
+                    </div>
+                    <h3 className="text-white font-bold" style={{ fontSize: '18px', marginBottom: '8px' }}>Analytics Unavailable</h3>
+                    <p style={{ color: '#64748b', fontSize: '14px', lineHeight: '1.6', marginBottom: '24px' }}>
+                        Detailed analytics for <strong style={{ color: '#94a3b8' }}>"{appName}"</strong> are not available in this demo. Try selecting TikTok, ChatGPT, or Google Gemini for full insights.
+                    </p>
+                    <button 
+                        onClick={onClose} 
+                        style={{ width: '100%', padding: '12px', background: '#2563eb', color: 'white', borderRadius: '10px', fontWeight: 700, fontSize: '12px', textTransform: 'uppercase', letterSpacing: '0.08em', border: 'none', cursor: 'pointer' }}
+                    >
+                        Back to Dashboard
+                    </button>
+                </div>
+            </div>
         </div>
     );
 
@@ -19,7 +43,8 @@ const AppDetailView = ({ appName, data, onClose }) => {
             <div className="sticky top-0 z-20 p-4 border-b border-white/5 bg-slate-900/60 backdrop-blur-md flex items-center justify-between">
                 <button
                     onClick={onClose}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all text-xs font-bold uppercase tracking-widest"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-widest"
+                    style={{ background: 'rgba(255,255,255,0.05)', color: '#94a3b8', cursor: 'pointer', border: 'none' }}
                 >
                     <X size={14} />
                     Back to Listings
@@ -39,7 +64,7 @@ const AppDetailView = ({ appName, data, onClose }) => {
                     <div className="flex-1">
                         <h2 className="text-3xl font-black text-white mb-2">{appName}</h2>
                         <div className="flex flex-wrap items-center justify-center gap-3">
-                            <span className="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-400 text-[10px] font-bold ring-1 ring-purple-500/30 uppercase tracking-wider">{data.category || 'App'}</span>
+                            <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa', boxShadow: '0 0 0 1px rgba(59,130,246,0.3)' }}>{data.category || 'App'}</span>
                             <div className="flex items-center gap-1 text-amber-400">
                                 <Star size={12} fill="currentColor" />
                                 <span className="text-xs font-bold">{data.rating || '4.5'}</span>
@@ -61,13 +86,13 @@ const AppDetailView = ({ appName, data, onClose }) => {
 
                 {/* Stats Stack */}
                 <div className="space-y-6 mb-8">
-                    <div className="glass-panel p-5 bg-gradient-to-br from-purple-500/10 to-transparent">
+                    <div className="glass-panel p-5" style={{ background: 'linear-gradient(to bottom right, rgba(59,130,246,0.08), transparent)' }}>
                         <div className="flex items-start justify-between mb-2">
                             <div>
                                 <p className="text-gray-400 text-xs font-medium mb-1">Estimated Revenue</p>
                                 <h3 className="text-2xl font-black text-white">{data.revenue}</h3>
                             </div>
-                            <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
+                            <div className="p-2 rounded-lg" style={{ background: 'rgba(59,130,246,0.15)', color: '#3b82f6' }}>
                                 <DollarSign size={18} />
                             </div>
                         </div>
@@ -79,15 +104,15 @@ const AppDetailView = ({ appName, data, onClose }) => {
                                     <YAxis hide />
                                     <Tooltip
                                         contentStyle={{ background: '#1e293b', border: 'none', borderRadius: '12px', fontSize: '10px' }}
-                                        itemStyle={{ color: '#a855f7' }}
+                                        itemStyle={{ color: '#3b82f6' }}
                                     />
-                                    <Line type="monotone" dataKey="revenue" stroke="#a855f7" strokeWidth={3} dot={false} animationDuration={1000} />
+                                    <Line type="monotone" dataKey="revenue" stroke="#3b82f6" strokeWidth={3} dot={false} animationDuration={1000} />
                                 </LineChart>
                             </ResponsiveContainer>
                         </div>
                     </div>
 
-                    <div className="glass-panel p-5 bg-gradient-to-br from-emerald-500/10 to-transparent">
+                    <div className="glass-panel p-5" style={{ background: 'linear-gradient(to bottom right, rgba(16,185,129,0.08), transparent)' }}>
                         <div className="flex items-start justify-between mb-2">
                             <div>
                                 <p className="text-gray-400 text-xs font-medium mb-1">Total Downloads</p>

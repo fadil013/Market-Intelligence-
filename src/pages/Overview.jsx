@@ -71,7 +71,7 @@ const Overview = () => {
                         <div className="grid grid-cols-1 gap-8 animate-in fade-in duration-500">
                             <StatsGrid kpiData={kpiSummary} />
                             <PlatformComparisonChart data={platformComparisonData} />
-                            <GamesTable games={allGames} genres={genres} businessModels={businessModels} />
+                            <GamesTable games={allGames} genres={genres} businessModels={businessModels} onGameSelect={handleAppSelect} />
                         </div>
                     )}
                 </div>

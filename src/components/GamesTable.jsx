@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { TrendingUp, TrendingDown, Star } from 'lucide-react';
 
-const GamesTable = React.memo(({ games, genres, businessModels }) => {
+const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) => {
     const [genreFilter, setGenreFilter] = useState('All');
     const [modelFilter, setModelFilter] = useState('All');
     const [sortBy, setSortBy] = useState('boostScore');
@@ -66,7 +66,7 @@ const GamesTable = React.memo(({ games, genres, businessModels }) => {
                 </thead>
                 <tbody>
                     {filteredGames.map((game, index) => (
-                        <tr key={game.id}>
+                        <tr key={game.id} onClick={() => onGameSelect && onGameSelect(game)} style={{ cursor: onGameSelect ? 'pointer' : 'default' }}>
                             <td className="text-muted">{index + 1}</td>
                             <td>
                                 <div className="game-cell">
@@ -86,10 +86,10 @@ const GamesTable = React.memo(({ games, genres, businessModels }) => {
                             <td>
                                 <div 
                                     className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors"
-                                    onClick={() => game.storeUrl && window.open(game.storeUrl, '_blank')}
+                                    onClick={(e) => { e.stopPropagation(); game.storeUrl && window.open(game.storeUrl, '_blank'); }}
                                     title={`Open ${game.name} in store`}
                                 >
-                                    <span className="text-[10px] text-purple-400 font-bold px-1.5 py-0.5 rounded border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/20 transition-colors">LINK</span>
+                                    <span className="link-badge-blue">LINK</span>
                                     <span className="text-muted text-sm">{game.platform}</span>
                                 </div>
                             </td>

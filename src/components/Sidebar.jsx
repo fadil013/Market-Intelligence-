@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Smartphone, ChevronLeft, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Activity } from 'lucide-react';
 
-const Sidebar = ({ collapsed, onToggle }) => {
+const Sidebar = () => {
   const navItems = [
     { icon: LayoutDashboard, label: 'Overview', path: '/' },
     { icon: TrendingUp, label: 'Trends & Boosts', path: '/trends' },
@@ -12,17 +12,10 @@ const Sidebar = ({ collapsed, onToggle }) => {
   ];
 
   return (
-    <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+    <aside className="sidebar">
       <div className="sidebar-logo">
-        <Smartphone size={32} className="min-w-[32px]" />
-        {!collapsed && <span>MID Pro</span>}
-        <button
-          onClick={onToggle}
-          className="sidebar-toggle-btn"
-          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-        >
-          {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
-        </button>
+        <Activity size={28} className="min-w-[28px]" style={{ color: '#3b82f6' }} />
+        <span>Nexus</span>
       </div>
 
       <nav className="sidebar-nav">
@@ -31,24 +24,17 @@ const Sidebar = ({ collapsed, onToggle }) => {
             key={item.path}
             to={item.path}
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-            title={collapsed ? item.label : ''}
           >
             <item.icon size={20} className="min-w-[20px]" />
-            {!collapsed && <span>{item.label}</span>}
+            <span>{item.label}</span>
           </NavLink>
         ))}
       </nav>
 
       <div className="sidebar-footer">
         <div className="sidebar-footer-card">
-          {collapsed ? (
-            <div className="text-center font-black text-purple-400">v1.2</div>
-          ) : (
-            <>
-              <h4>Stay Updated</h4>
-              <p>v1.2.0 • Data Sync Active</p>
-            </>
-          )}
+          <h4>Intelligence Active</h4>
+          <p>v2.0.0 · Real-time sync</p>
         </div>
       </div>
     </aside>

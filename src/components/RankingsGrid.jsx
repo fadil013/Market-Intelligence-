@@ -1,5 +1,6 @@
 import React from 'react';
 import { TrendingUp, TrendingDown, Minus, Crown, ExternalLink } from 'lucide-react';
+// Professional blue color scheme
 
 const RankingItem = ({ item, type, rank, onClick, compact }) => {
     const handleLinkClick = (e) => {
@@ -24,11 +25,11 @@ const RankingItem = ({ item, type, rank, onClick, compact }) => {
                 </div>
                 <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                        <h4 className={`text-white font-semibold ${compact ? 'text-xs' : 'text-sm'} group-hover:text-purple-400 transition-colors truncate max-w-[100px]`}>{item.name}</h4>
+                        <h4 className={`text-white font-semibold ${compact ? 'text-xs' : 'text-sm'} transition-colors truncate max-w-[100px]`} style={{ ':hover': { color: '#60a5fa' } }}>{item.name}</h4>
                         {item.storeUrl && !compact && (
                             <span 
                                 onClick={handleLinkClick}
-                                className="text-[9px] text-purple-400 font-bold px-1.5 py-0.5 rounded border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/30 transition-colors opacity-0 group-hover:opacity-100 flex items-center gap-0.5"
+                                className="link-badge-blue opacity-0 group-hover:opacity-100 flex items-center gap-0.5"
                                 title="Open in store"
                             >
                                 LINK<ExternalLink size={8} />
@@ -80,7 +81,7 @@ const RankingsGrid = ({ rankings, onAppSelect, collapsed }) => {
             <div className="glass-panel p-5">
                 <div className="flex items-center justify-between mb-6">
                     <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                        <span className="w-2 h-2 rounded-full" style={{ background: '#3b82f6' }}></span>
                         Top Grossing
                     </h3>
                     {!collapsed && <span className="text-xs text-gray-400 uppercase tracking-wider font-bold">Revenue</span>}

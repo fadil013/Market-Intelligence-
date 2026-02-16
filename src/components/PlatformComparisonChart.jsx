@@ -54,8 +54,8 @@ const PlatformComparisonChart = React.memo(({ data }) => {
                     <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                         <defs>
                             <linearGradient id="colorGoogle" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3} />
-                                <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
+                                <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3} />
+                                <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                             </linearGradient>
                             <linearGradient id="colorApple" x1="0" y1="0" x2="0" y2="1">
                                 <stop offset="5%" stopColor="#ec4899" stopOpacity={0.3} />
@@ -70,7 +70,7 @@ const PlatformComparisonChart = React.memo(({ data }) => {
                         <XAxis dataKey="month" stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} />
                         <YAxis stroke="#94a3b8" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `$${value / 1000}K`} />
                         <Tooltip content={<CustomTooltip />} />
-                        <Area type="monotone" dataKey="googlePlay" name="Google Play" stroke="#8b5cf6" strokeWidth={2} fill="url(#colorGoogle)" />
+                        <Area type="monotone" dataKey="googlePlay" name="Google Play" stroke="#3b82f6" strokeWidth={2} fill="url(#colorGoogle)" />
                         <Area type="monotone" dataKey="appStore" name="App Store" stroke="#ec4899" strokeWidth={2} fill="url(#colorApple)" />
                         <Area type="monotone" dataKey="amazon" name="Amazon" stroke="#06b6d4" strokeWidth={2} fill="url(#colorAmazon)" />
                     </AreaChart>

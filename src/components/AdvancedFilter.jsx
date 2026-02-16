@@ -5,7 +5,7 @@ const FilterSection = ({ title, icon: Icon, children }) => {
     return (
         <div className="mb-8 last:mb-0">
             <div className="filter-section-title">
-                {Icon && <Icon size={16} className="text-purple-500" />}
+                {Icon && <Icon size={16} style={{ color: '#3b82f6' }} />}
                 <h4>{title}</h4>
             </div>
             <div className="space-y-1">
@@ -75,9 +75,9 @@ const AdvancedFilter = ({ selectedDomain = 'Games', onDomainChange }) => {
 
                 <FilterSection title="Time Period" icon={Calendar}>
                     <div className="pt-2">
-                        <div className="glass-panel p-3 flex justify-between items-center bg-slate-900/40 border-white/5 cursor-pointer hover:border-white/20 transition-all">
-                            <span className="text-[10px] font-black text-gray-300 uppercase letter-spacing-widest">Feb 2026</span>
-                            <ChevronDown size={14} className="text-gray-500" />
+                        <div className="glass-panel p-3 flex justify-between items-center" style={{ background: 'rgba(15,23,42,0.4)', borderColor: 'rgba(255,255,255,0.05)', cursor: 'pointer' }}>
+                            <span style={{ fontSize: '10px', fontWeight: 900, color: '#cbd5e1', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Feb 2026</span>
+                            <ChevronDown size={14} style={{ color: '#64748b' }} />
                         </div>
                     </div>
                 </FilterSection>

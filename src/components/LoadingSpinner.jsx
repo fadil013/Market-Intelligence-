@@ -4,8 +4,8 @@ const LoadingSpinner = () => {
     return (
         <div className="flex items-center justify-center h-full w-full min-h-[400px]">
             <div className="relative w-16 h-16">
-                <div className="absolute top-0 left-0 w-full h-full border-4 border-purple-500/30 rounded-full"></div>
-                <div className="absolute top-0 left-0 w-full h-full border-4 border-purple-500 rounded-full border-t-transparent animate-spin"></div>
+                <div className="absolute top-0 left-0 w-full h-full border-4 rounded-full" style={{ borderColor: 'rgba(59,130,246,0.2)' }}></div>
+                <div className="absolute top-0 left-0 w-full h-full border-4 rounded-full animate-spin" style={{ borderColor: '#3b82f6', borderTopColor: 'transparent' }}></div>
             </div>
         </div>
     );
