@@ -84,8 +84,12 @@ const GamesTable = React.memo(({ games, genres, businessModels }) => {
                             </td>
                             <td><span className="genre-badge">{game.genre}</span></td>
                             <td>
-                                <div className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors">
-                                    <span className="text-[10px] text-purple-400 font-bold px-1.5 py-0.5 rounded border border-purple-500/30 bg-purple-500/10">LINK</span>
+                                <div 
+                                    className="flex items-center gap-2 cursor-pointer hover:text-white transition-colors"
+                                    onClick={() => game.storeUrl && window.open(game.storeUrl, '_blank')}
+                                    title={`Open ${game.name} in store`}
+                                >
+                                    <span className="text-[10px] text-purple-400 font-bold px-1.5 py-0.5 rounded border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/20 transition-colors">LINK</span>
                                     <span className="text-muted text-sm">{game.platform}</span>
                                 </div>
                             </td>

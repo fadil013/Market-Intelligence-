@@ -1,16 +1,35 @@
-# React + Vite
+# 🎮 Market Intelligence Dashboard (MID Pro)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-fidelity, production-ready analytics dashboard for mobile market intelligence, engineered for "Absolute Perfection" in performance and user experience.
 
-Currently, two official plugins are available:
+## ✨ Project Mission
+To provide a seamless, single-screen experience for analyzing competitive app data, store rankings, and predictive market trends with zero perceptual latency.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> [!NOTE]
+> **Active Development**: The user is currently developing the **Mobile App version** of this dashboard. Copilot should consider mobile-first or cross-platform consistency when suggest changes to the web dashboard.
 
-## React Compiler
+## 🚀 Technical Highlights
+- **Single-Screen Layout**: Collapsible navigation and sticky side-panel details eliminate horizontal scrolling.
+- **Safe Hydration**: Architectural pattern to ensure zero "data flashes" when switching between complex chart datasets.
+- **Hardened CSS**: Critical UI components use robust Vanilla CSS to ensure visual integrity across deployments.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+- **Framework**: React + Vite
+- **Styling**: Tailwind CSS + Vanilla CSS (Hardened)
+- **Visualization**: Recharts
+- **Icons**: Lucide-React
 
-## Expanding the ESLint configuration
+## 📂 Key Architecture
+- `/src/pages/Overview.jsx`: Primary dashboard logic (Filters | Rankings | Details).
+- `/src/components/AppDetailView.jsx`: High-density side-panel analytics.
+- `/src/components/Sidebar.jsx`: Collapsible navigation system.
+- `/src/data/mockData.js`: Central source of truth for dashboard metrics.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📈 Roadmap (Next for Copilot)
+1. **API Integration**: Transition from `mockData.js` to real-time endpoints (e.g., Sensor Tower).
+2. **Filter Logic**: Implement the backend/frontend filtering logic for the `AdvancedFilter` component.
+3. **List Virtualization**: Integrate `react-window` for large-scale store ranking datasets.
+
+---
+
+**Developed for Absolute Perfection.** 🥂🫡

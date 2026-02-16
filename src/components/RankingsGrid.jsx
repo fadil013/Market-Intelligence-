@@ -1,10 +1,17 @@
 import React from 'react';
-import { TrendingUp, TrendingDown, Minus, Crown } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Crown, ExternalLink } from 'lucide-react';
 
 const RankingItem = ({ item, type, rank, onClick, compact }) => {
+    const handleLinkClick = (e) => {
+        e.stopPropagation(); // Prevent triggering the main onClick
+        if (item.storeUrl) {
+            window.open(item.storeUrl, '_blank');
+        }
+    };
+
     return (
         <div
-            className={`flex items-center justify-between ${compact ? 'p-2' : 'p-3'} rounded-xl hover:bg-white/5 cursor-pointer transition-all border border-transparent hover:border-white/10 group`}
+            className={`flex items-center justify-between ${compact ? 'p-2' : 'p-3'} rounded-xl hover:bg-white/5 cursor-pointer transition-all border border-transparent hover:border-white/10 group relative`}
             onClick={() => onClick(item)}
         >
             <div className="flex items-center gap-3">
@@ -16,7 +23,18 @@ const RankingItem = ({ item, type, rank, onClick, compact }) => {
                     {item.icon}
                 </div>
                 <div className="min-w-0">
-                    <h4 className={`text-white font-semibold ${compact ? 'text-xs' : 'text-sm'} group-hover:text-purple-400 transition-colors truncate max-w-[120px]`}>{item.name}</h4>
+                    <div className="flex items-center gap-2">
+                        <h4 className={`text-white font-semibold ${compact ? 'text-xs' : 'text-sm'} group-hover:text-purple-400 transition-colors truncate max-w-[100px]`}>{item.name}</h4>
+                        {item.storeUrl && !compact && (
+                            <span 
+                                onClick={handleLinkClick}
+                                className="text-[9px] text-purple-400 font-bold px-1.5 py-0.5 rounded border border-purple-500/30 bg-purple-500/10 hover:bg-purple-500/30 transition-colors opacity-0 group-hover:opacity-100 flex items-center gap-0.5"
+                                title="Open in store"
+                            >
+                                LINK<ExternalLink size={8} />
+                            </span>
+                        )}
+                    </div>
                     {!compact && <p className="text-gray-500 text-xs truncate max-w-[120px]">{item.publisher || `Featured Score: ${item.score}`}</p>}
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Search, Map, Calendar, Tag, Filter, ChevronDown } from 'lucide-react';
 
 const FilterSection = ({ title, icon: Icon, children }) => {
@@ -15,14 +15,18 @@ const FilterSection = ({ title, icon: Icon, children }) => {
     );
 };
 
-const FilterOption = ({ label, count, active }) => (
-    <div className={`filter-option-item ${active ? 'active' : ''}`}>
+const FilterOption = ({ label, count, active, onClick }) => (
+    <div 
+        className={`filter-option-item ${active ? 'active' : ''}`}
+        onClick={onClick}
+        style={{ cursor: 'pointer' }}
+    >
         <span className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">{label}</span>
         {count !== undefined && <span className="filter-option-count">{count}</span>}
     </div>
 );
 
-const AdvancedFilter = () => {
+const AdvancedFilter = ({ selectedDomain = 'Games', onDomainChange }) => {
     return (
         <aside className="advanced-filter hidden lg:flex flex-col">
             <div className="filter-search-container">
@@ -36,8 +40,18 @@ const AdvancedFilter = () => {
 
             <div className="flex-1 pr-2 scrollbar-hide">
                 <FilterSection title="Domains" icon={Filter}>
-                    <FilterOption label="Games" count="257,176" active />
-                    <FilterOption label="Apps" count="167,776" />
+                    <FilterOption 
+                        label="Games" 
+                        count="257,176" 
+                        active={selectedDomain === 'Games'}
+                        onClick={() => onDomainChange && onDomainChange('Games')}
+                    />
+                    <FilterOption 
+                        label="Apps" 
+                        count="167,776" 
+                        active={selectedDomain === 'Apps'}
+                        onClick={() => onDomainChange && onDomainChange('Apps')}
+                    />
                 </FilterSection>
 
                 <FilterSection title="Top Categories" icon={Tag}>

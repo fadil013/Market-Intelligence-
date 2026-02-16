@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import StatsGrid from '../components/StatsGrid';
 import PlatformComparisonChart from '../components/PlatformComparisonChart';
 import GamesTable from '../components/GamesTable';
@@ -11,12 +11,14 @@ import {
     allGames,
     genres,
     businessModels,
-    storeRankings,
+    gameRankings,
+    appRankings,
     appDetailsData
 } from '../data/mockData';
 
 const Overview = () => {
     const [selectedApp, setSelectedApp] = useState(null);
+    const [selectedDomain, setSelectedDomain] = useState('Games');
 
     const handleAppSelect = (app) => {
         // Safe Approach: Explicitly clear selection first to ensure a 'Clean Slate' transition

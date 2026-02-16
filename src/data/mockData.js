@@ -22,41 +22,70 @@ export const platformComparisonData = [
 ];
 
 export const allGames = [
-    { id: 1, name: 'Honor of Kings', studioRegion: 'China', genre: 'MOBA', platform: 'App Store', monthlyDownloads: 12500000, monthlyRevenue: 220000000, rating: 4.8, boostScore: 15, businessModel: 'Freemium', icon: '👑', color: '#fbbf24' },
-    { id: 2, name: 'PUBG Mobile', studioRegion: 'China', genre: 'Shooter', platform: 'Google Play', monthlyDownloads: 18000000, monthlyRevenue: 175000000, rating: 4.5, boostScore: 12, businessModel: 'Battle Pass', icon: '🍳', color: '#10b981' },
-    { id: 3, name: 'Genshin Impact', studioRegion: 'China', genre: 'RPG', platform: 'Cross-Platform', monthlyDownloads: 9000000, monthlyRevenue: 140000000, rating: 4.7, boostScore: 22, businessModel: 'Gacha', icon: '🌌', color: '#8b5cf6' },
-    { id: 4, name: 'Royal Match', studioRegion: 'Turkey', genre: 'Puzzle', platform: 'App Store', monthlyDownloads: 15000000, monthlyRevenue: 110000000, rating: 4.9, boostScore: 35, businessModel: 'Freemium', icon: '🏰', color: '#f59e0b' },
-    { id: 5, name: 'Roblox', studioRegion: 'USA', genre: 'Sandbox', platform: 'Google Play', monthlyDownloads: 22000000, monthlyRevenue: 105000000, rating: 4.4, boostScore: 8, businessModel: 'UGC', icon: '🟥', color: '#ef4444' },
-    { id: 6, name: 'Candy Crush Saga', studioRegion: 'UK', genre: 'Puzzle', platform: 'Google Play', monthlyDownloads: 11000000, monthlyRevenue: 95000000, rating: 4.6, boostScore: 5, businessModel: 'Freemium', icon: '🍬', color: '#ec4899' },
-    { id: 7, name: 'Coin Master', studioRegion: 'Israel', genre: 'Casual', platform: 'Google Play', monthlyDownloads: 6000000, monthlyRevenue: 85000000, rating: 4.5, boostScore: 9, businessModel: 'Gacha', icon: '🐷', color: '#fcd34d' },
-    { id: 8, name: 'Honkai: Star Rail', studioRegion: 'China', genre: 'RPG', platform: 'App Store', monthlyDownloads: 5000000, monthlyRevenue: 80000000, rating: 4.8, boostScore: 45, businessModel: 'Gacha', icon: '🚆', color: '#6366f1' },
-    { id: 9, name: 'Monopoly GO!', studioRegion: 'USA', genre: 'Casual', platform: 'App Store', monthlyDownloads: 14000000, monthlyRevenue: 120000000, rating: 4.7, boostScore: 28, businessModel: 'Freemium', icon: '🎲', color: '#10b981' },
-    { id: 10, name: 'Clash of Clans', studioRegion: 'Finland', genre: 'Strategy', platform: 'Google Play', monthlyDownloads: 4000000, monthlyRevenue: 60000000, rating: 4.6, boostScore: 4, businessModel: 'Freemium', icon: '⚔️', color: '#f97316' },
+    { id: 1, name: 'Honor of Kings', studioRegion: 'China', genre: 'MOBA', platform: 'App Store', monthlyDownloads: 12500000, monthlyRevenue: 220000000, rating: 4.8, boostScore: 15, businessModel: 'Freemium', icon: '👑', color: '#fbbf24', storeUrl: 'https://apps.apple.com/app/honor-of-kings' },
+    { id: 2, name: 'PUBG Mobile', studioRegion: 'China', genre: 'Shooter', platform: 'Google Play', monthlyDownloads: 18000000, monthlyRevenue: 175000000, rating: 4.5, boostScore: 12, businessModel: 'Battle Pass', icon: '🍳', color: '#10b981', storeUrl: 'https://play.google.com/store/apps/details?id=com.tencent.ig' },
+    { id: 3, name: 'Genshin Impact', studioRegion: 'China', genre: 'RPG', platform: 'Cross-Platform', monthlyDownloads: 9000000, monthlyRevenue: 140000000, rating: 4.7, boostScore: 22, businessModel: 'Gacha', icon: '🌌', color: '#8b5cf6', storeUrl: 'https://genshin.hoyoverse.com' },
+    { id: 4, name: 'Royal Match', studioRegion: 'Turkey', genre: 'Puzzle', platform: 'App Store', monthlyDownloads: 15000000, monthlyRevenue: 110000000, rating: 4.9, boostScore: 35, businessModel: 'Freemium', icon: '🏰', color: '#f59e0b', storeUrl: 'https://apps.apple.com/app/royal-match' },
+    { id: 5, name: 'Roblox', studioRegion: 'USA', genre: 'Sandbox', platform: 'Google Play', monthlyDownloads: 22000000, monthlyRevenue: 105000000, rating: 4.4, boostScore: 8, businessModel: 'UGC', icon: '🟥', color: '#ef4444', storeUrl: 'https://play.google.com/store/apps/details?id=com.roblox.client' },
+    { id: 6, name: 'Candy Crush Saga', studioRegion: 'UK', genre: 'Puzzle', platform: 'Google Play', monthlyDownloads: 11000000, monthlyRevenue: 95000000, rating: 4.6, boostScore: 5, businessModel: 'Freemium', icon: '🍬', color: '#ec4899', storeUrl: 'https://play.google.com/store/apps/details?id=com.king.candycrushsaga' },
+    { id: 7, name: 'Coin Master', studioRegion: 'Israel', genre: 'Casual', platform: 'Google Play', monthlyDownloads: 6000000, monthlyRevenue: 85000000, rating: 4.5, boostScore: 9, businessModel: 'Gacha', icon: '🐷', color: '#fcd34d', storeUrl: 'https://play.google.com/store/apps/details?id=com.moonactive.coinmaster' },
+    { id: 8, name: 'Honkai: Star Rail', studioRegion: 'China', genre: 'RPG', platform: 'App Store', monthlyDownloads: 5000000, monthlyRevenue: 80000000, rating: 4.8, boostScore: 45, businessModel: 'Gacha', icon: '🚆', color: '#6366f1', storeUrl: 'https://apps.apple.com/app/honkai-star-rail' },
+    { id: 9, name: 'Monopoly GO!', studioRegion: 'USA', genre: 'Casual', platform: 'App Store', monthlyDownloads: 14000000, monthlyRevenue: 120000000, rating: 4.7, boostScore: 28, businessModel: 'Freemium', icon: '🎲', color: '#10b981', storeUrl: 'https://apps.apple.com/app/monopoly-go' },
+    { id: 10, name: 'Clash of Clans', studioRegion: 'Finland', genre: 'Strategy', platform: 'Google Play', monthlyDownloads: 4000000, monthlyRevenue: 60000000, rating: 4.6, boostScore: 4, businessModel: 'Freemium', icon: '⚔️', color: '#f97316', storeUrl: 'https://play.google.com/store/apps/details?id=com.supercell.clashofclans' },
 ];
 
-export const storeRankings = {
+// Game Rankings
+export const gameRankings = {
     topFree: [
-        { id: 'tf1', name: 'ChatGPT', publisher: 'OpenAI', downloads: '20,000,000', change: '+5%', icon: '🤖', color: '#10b981' },
-        { id: 'tf2', name: 'TikTok', publisher: 'Bytedance', downloads: '22,000,000', change: '+2%', icon: '🎵', color: '#000000' },
-        { id: 'tf3', name: 'Google Gemini', publisher: 'Google LLC', downloads: '10,000,000', change: '+12%', icon: '✨', color: '#4285f4' },
-        { id: 'tf4', name: 'Instagram', publisher: 'Meta', downloads: '18,000,000', change: '-1%', icon: '📸', color: '#e1306c' },
-        { id: 'tf5', name: 'Facebook', publisher: 'Meta', downloads: '15,000,000', change: '0%', icon: '👥', color: '#1877f2' },
+        { id: 'gf1', name: 'Honkai: Star Rail', publisher: 'HoYoverse', downloads: '5,000,000', change: '+45%', icon: '🚆', color: '#6366f1', type: 'game', storeUrl: 'https://apps.apple.com/app/honkai-star-rail' },
+        { id: 'gf2', name: 'Royal Match', publisher: 'Dream Games', downloads: '15,000,000', change: '+35%', icon: '🏰', color: '#f59e0b', type: 'game', storeUrl: 'https://apps.apple.com/app/royal-match' },
+        { id: 'gf3', name: 'Monopoly GO!', publisher: 'Scopely', downloads: '14,000,000', change: '+28%', icon: '🎲', color: '#10b981', type: 'game', storeUrl: 'https://apps.apple.com/app/monopoly-go' },
+        { id: 'gf4', name: 'Roblox', publisher: 'Roblox Corp', downloads: '22,000,000', change: '+8%', icon: '🟥', color: '#ef4444', type: 'game', storeUrl: 'https://play.google.com/store/apps/details?id=com.roblox.client' },
+        { id: 'gf5', name: 'Genshin Impact', publisher: 'HoYoverse', downloads: '9,000,000', change: '+22%', icon: '🌌', color: '#8b5cf6', type: 'game', storeUrl: 'https://genshin.hoyoverse.com' },
     ],
     topGrossing: [
-        { id: 'tg1', name: 'TikTok', publisher: 'Bytedance', revenue: '$120,000,000', change: '+8%', icon: '🎵', color: '#000000' },
-        { id: 'tg2', name: 'ChatGPT', publisher: 'OpenAI', revenue: '$110,000,000', change: '+15%', icon: '🤖', color: '#10b981' },
-        { id: 'tg3', name: 'Google One', publisher: 'Google LLC', revenue: '$85,000,000', change: '+3%', icon: '☁️', color: '#34a853' },
-        { id: 'tg4', name: 'YouTube', publisher: 'Google LLC', revenue: '$75,000,000', change: '+5%', icon: '📺', color: '#ff0000' },
-        { id: 'tg5', name: 'Roblox', publisher: 'Roblox Corp', revenue: '$70,000,000', change: '+4%', icon: '🟥', color: '#ef4444' },
+        { id: 'gg1', name: 'Honor of Kings', publisher: 'Tencent', revenue: '$220,000,000', change: '+15%', icon: '👑', color: '#fbbf24', type: 'game', storeUrl: 'https://apps.apple.com/app/honor-of-kings' },
+        { id: 'gg2', name: 'PUBG Mobile', publisher: 'Tencent', revenue: '$175,000,000', change: '+12%', icon: '🍳', color: '#10b981', type: 'game', storeUrl: 'https://play.google.com/store/apps/details?id=com.tencent.ig' },
+        { id: 'gg3', name: 'Genshin Impact', publisher: 'HoYoverse', revenue: '$140,000,000', change: '+22%', icon: '🌌', color: '#8b5cf6', type: 'game', storeUrl: 'https://genshin.hoyoverse.com' },
+        { id: 'gg4', name: 'Monopoly GO!', publisher: 'Scopely', revenue: '$120,000,000', change: '+28%', icon: '🎲', color: '#10b981', type: 'game', storeUrl: 'https://apps.apple.com/app/monopoly-go' },
+        { id: 'gg5', name: 'Royal Match', publisher: 'Dream Games', revenue: '$110,000,000', change: '+35%', icon: '🏰', color: '#f59e0b', type: 'game', storeUrl: 'https://apps.apple.com/app/royal-match' },
     ],
     topFeatured: [
-        { id: 'tfu1', name: 'YouTube Kids', score: 890, icon: '🧒', color: '#ff0000' },
-        { id: 'tfu2', name: 'Toca Boca World', score: 766, icon: '🏠', color: '#f43f5e' },
-        { id: 'tfu3', name: 'Disney+', score: 720, icon: '🏰', color: '#06b6d4' },
-        { id: 'tfu4', name: 'CapCut', score: 648, icon: '🎬', color: '#000000' },
-        { id: 'tfu5', name: 'Duolingo', score: 554, icon: '🦉', color: '#84cc16' },
+        { id: 'gfu1', name: 'Honkai: Star Rail', score: 945, icon: '🚆', color: '#6366f1', type: 'game', storeUrl: 'https://apps.apple.com/app/honkai-star-rail' },
+        { id: 'gfu2', name: 'Royal Match', score: 890, icon: '🏰', color: '#f59e0b', type: 'game', storeUrl: 'https://apps.apple.com/app/royal-match' },
+        { id: 'gfu3', name: 'Monopoly GO!', score: 835, icon: '🎲', color: '#10b981', type: 'game', storeUrl: 'https://apps.apple.com/app/monopoly-go' },
+        { id: 'gfu4', name: 'Candy Crush Saga', score: 720, icon: '🍬', color: '#ec4899', type: 'game', storeUrl: 'https://play.google.com/store/apps/details?id=com.king.candycrushsaga' },
+        { id: 'gfu5', name: 'Coin Master', score: 685, icon: '🐷', color: '#fcd34d', type: 'game', storeUrl: 'https://play.google.com/store/apps/details?id=com.moonactive.coinmaster' },
     ]
 };
+
+// App Rankings
+export const appRankings = {
+    topFree: [
+        { id: 'af1', name: 'ChatGPT', publisher: 'OpenAI', downloads: '20,000,000', change: '+5%', icon: '🤖', color: '#10b981', type: 'app', storeUrl: 'https://apps.apple.com/app/chatgpt' },
+        { id: 'af2', name: 'TikTok', publisher: 'Bytedance', downloads: '22,000,000', change: '+2%', icon: '🎵', color: '#000000', type: 'app', storeUrl: 'https://www.tiktok.com' },
+        { id: 'af3', name: 'Google Gemini', publisher: 'Google LLC', downloads: '10,000,000', change: '+12%', icon: '✨', color: '#4285f4', type: 'app', storeUrl: 'https://play.google.com/store/apps/details?id=com.google.android.apps.bard' },
+        { id: 'af4', name: 'Instagram', publisher: 'Meta', downloads: '18,000,000', change: '-1%', icon: '📸', color: '#e1306c', type: 'app', storeUrl: 'https://www.instagram.com' },
+        { id: 'af5', name: 'Facebook', publisher: 'Meta', downloads: '15,000,000', change: '0%', icon: '👥', color: '#1877f2', type: 'app', storeUrl: 'https://www.facebook.com' },
+    ],
+    topGrossing: [
+        { id: 'ag1', name: 'TikTok', publisher: 'Bytedance', revenue: '$120,000,000', change: '+8%', icon: '🎵', color: '#000000', type: 'app', storeUrl: 'https://www.tiktok.com' },
+        { id: 'ag2', name: 'ChatGPT', publisher: 'OpenAI', revenue: '$110,000,000', change: '+15%', icon: '🤖', color: '#10b981', type: 'app', storeUrl: 'https://apps.apple.com/app/chatgpt' },
+        { id: 'ag3', name: 'Google One', publisher: 'Google LLC', revenue: '$85,000,000', change: '+3%', icon: '☁️', color: '#34a853', type: 'app', storeUrl: 'https://one.google.com' },
+        { id: 'ag4', name: 'YouTube', publisher: 'Google LLC', revenue: '$75,000,000', change: '+5%', icon: '📺', color: '#ff0000', type: 'app', storeUrl: 'https://www.youtube.com' },
+        { id: 'ag5', name: 'Spotify', publisher: 'Spotify AB', revenue: '$65,000,000', change: '+7%', icon: '🎧', color: '#1db954', type: 'app', storeUrl: 'https://www.spotify.com' },
+    ],
+    topFeatured: [
+        { id: 'afu1', name: 'YouTube Kids', score: 890, icon: '🧒', color: '#ff0000', type: 'app', storeUrl: 'https://www.youtubekids.com' },
+        { id: 'afu2', name: 'Toca Boca World', score: 766, icon: '🏠', color: '#f43f5e', type: 'app', storeUrl: 'https://tocaboca.com' },
+        { id: 'afu3', name: 'Disney+', score: 720, icon: '🏰', color: '#06b6d4', type: 'app', storeUrl: 'https://www.disneyplus.com' },
+        { id: 'afu4', name: 'CapCut', score: 648, icon: '🎬', color: '#000000', type: 'app', storeUrl: 'https://www.capcut.com' },
+        { id: 'afu5', name: 'Duolingo', score: 554, icon: '🦉', color: '#84cc16', type: 'app', storeUrl: 'https://www.duolingo.com' },
+    ]
+};
+
+// Default to game rankings (backwards compatibility)
+export const storeRankings = gameRankings;
 
 export const appDetailsData = {
     'TikTok': {
