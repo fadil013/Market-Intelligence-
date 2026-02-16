@@ -15,7 +15,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar-logo">
         <Activity size={28} className="min-w-[28px]" style={{ color: '#3b82f6' }} />
-        <span>Nexus</span>
+        <span>Onyx Games</span>
       </div>
 
       <nav className="sidebar-nav">

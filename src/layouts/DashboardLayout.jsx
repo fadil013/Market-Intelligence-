@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { Activity, LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb } from 'lucide-react';
+import { Gamepad2, LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb } from 'lucide-react';
 
 const DashboardLayout = () => {
     const navItems = [
@@ -15,8 +15,8 @@ const DashboardLayout = () => {
         <div className="app-container-new">
             <header className="top-nav">
                 <div className="top-nav-brand">
-                    <Activity size={24} style={{ color: '#6b7280' }} />
-                    <span className="brand-name">Nexus</span>
+                    <Gamepad2 size={24} style={{ color: '#6b7280' }} />
+                    <span className="brand-name">Onyx Games</span>
                 </div>
                 <nav className="top-nav-tabs">
                     {navItems.map((item) => (
