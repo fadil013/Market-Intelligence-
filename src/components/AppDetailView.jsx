@@ -67,18 +67,18 @@ const AppDetailView = ({ appName, data, onClose, gameData }) => {
             </div>
             <div className="flex-1 overflow-y-auto p-6">
                 {/* Header */}
-                <div className="flex flex-col items-center text-center gap-4 mb-8">
+                <div className="flex flex-col items-center text-center gap-4 mb-10">
                     <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-slate-800 ring-4 ring-white/5 shadow-2xl">
                         🎮
                     </div>
                     <div>
-                        <h2 className="text-2xl font-black text-white mb-2">{appName}</h2>
-                        <p className="text-sm text-gray-400">Category Performance Analytics</p>
+                        <h2 className="text-2xl font-black text-white mb-3">{appName}</h2>
+                        <p className="text-sm text-gray-400 font-medium">Category Performance Analytics</p>
                     </div>
                 </div>
 
                 {/* Trending Categories Header */}
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-6 pb-3 border-b border-white/5">
                     <Flame className="text-orange-400" size={24} />
                     <h3 className="text-xl font-bold text-white">Top Trending Categories</h3>
                 </div>
@@ -209,12 +209,12 @@ const AppDetailView = ({ appName, data, onClose, gameData }) => {
 
             <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
                 {/* Header */}
-                <div className="flex flex-col items-center text-center gap-6 mb-8">
+                <div className="flex flex-col items-center text-center gap-6 mb-10">
                     <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-slate-800 ring-4 ring-white/5 shadow-2xl">
                         {appName === 'TikTok' ? '🎵' : (appName === 'ChatGPT' ? '🤖' : '📱')}
                     </div>
                     <div className="flex-1">
-                        <h2 className="text-3xl font-black text-white mb-2">{appName}</h2>
+                        <h2 className="text-3xl font-black text-white mb-3">{appName}</h2>
                         <div className="flex flex-wrap items-center justify-center gap-3">
                             <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa', boxShadow: '0 0 0 1px rgba(59,130,246,0.3)' }}>{data.category || 'App'}</span>
                             <div className="flex items-center gap-1 text-amber-400">
