@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, TrendingDown, Minus, Crown, ExternalLink } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Crown, ExternalLink, Zap, Target, Award, Trophy } from 'lucide-react';
 // Professional blue color scheme
 
 const RankingItem = ({ item, type, rank, onClick, compact }) => {
@@ -60,7 +60,7 @@ const RankingItem = ({ item, type, rank, onClick, compact }) => {
 
 const RankingsGrid = ({ rankings, onAppSelect, collapsed }) => {
     return (
-        <div className={`grid grid-cols-1 ${collapsed ? 'md:grid-cols-1 lg:grid-cols-2 lg:max-w-4xl' : 'md:grid-cols-2 lg:grid-cols-3'} gap-6 mb-8 rankings-grid-root`}>
+        <div className={`grid grid-cols-1 ${collapsed ? 'md:grid-cols-1 lg:grid-cols-2 lg:max-w-4xl' : 'md:grid-cols-2 lg:grid-cols-4'} gap-6 mb-8 rankings-grid-root`}>
             {/* Top Free */}
             <div className="glass-panel p-5">
                 <div className="flex items-center justify-between mb-6">
@@ -106,6 +106,50 @@ const RankingsGrid = ({ rankings, onAppSelect, collapsed }) => {
                     {rankings.topFeatured.map((item, index) => (
                         <RankingItem key={item.id} item={item} rank={index + 1} type="featured" onClick={onAppSelect} compact={collapsed} />
                     ))}
+                </div>
+            </div>
+
+            {/* Market Pulse - NEW 4th Panel */}
+            <div className={`glass-panel p-5 ${collapsed ? 'hidden xl:block' : ''}`}>
+                <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                        <Zap className="text-purple-400" size={18} />
+                        Market Pulse
+                    </h3>
+                </div>
+                <div className="space-y-4">
+                    {/* Top Mover */}
+                    <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Trophy className="text-emerald-400" size={16} />
+                            <h4 className="text-xs font-bold text-emerald-400 uppercase">Top Mover</h4>
+                        </div>
+                        <p className="text-white font-bold text-sm">Royal Match</p>
+                        <p className="text-emerald-400 font-bold text-lg">+45%</p>
+                        <p className="text-gray-400 text-xs mt-1">24h growth</p>
+                    </div>
+
+                    {/* Most Downloaded */}
+                    <div className="bg-gradient-to-br from-blue-500/10 to-blue-500/5 border border-blue-500/20 rounded-xl p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Target className="text-blue-400" size={16} />
+                            <h4 className="text-xs font-bold text-blue-400 uppercase">Most Downloaded</h4>
+                        </div>
+                        <p className="text-white font-bold text-sm">Roblox</p>
+                        <p className="text-blue-400 font-bold text-lg">22M</p>
+                        <p className="text-gray-400 text-xs mt-1">This week</p>
+                    </div>
+
+                    {/* Revenue Leader */}
+                    <div className="bg-gradient-to-br from-amber-500/10 to-amber-500/5 border border-amber-500/20 rounded-xl p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Award className="text-amber-400" size={16} />
+                            <h4 className="text-xs font-bold text-amber-400 uppercase">Revenue Leader</h4>
+                        </div>
+                        <p className="text-white font-bold text-sm">Honor of Kings</p>
+                        <p className="text-amber-400 font-bold text-lg">$220M</p>
+                        <p className="text-gray-400 text-xs mt-1">Monthly revenue</p>
+                    </div>
                 </div>
             </div>
         </div>
