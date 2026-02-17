@@ -185,6 +185,9 @@ body {
 }
 
 .filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 24px 24px 16px;
   border-bottom: 1px solid var(--glass-border);
 }
@@ -1869,17 +1872,6 @@ body {
   .stats-grid {
     grid-template-columns: 1fr !important;
     gap: 12px;
-  }
-
-  /* Rankings Grid - Single Column */
-  .rankings-grid-layout {
-    grid-template-columns: 1fr !important;
-    gap: 16px;
-  }
-
-  /* Trending Categories Grid */
-  .trending-categories-grid {
-    grid-template-columns: 1fr !important;
   }
 
   /* Detail Panel - Full Screen on Mobile */
