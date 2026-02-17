@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { Gamepad2, LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb } from 'lucide-react';
+import { Gamepad2, LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Menu, X } from 'lucide-react';
 
 const DashboardLayout = () => {
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    
     const navItems = [
         { icon: LayoutDashboard, label: 'Overview', path: '/' },
         { icon: TrendingUp, label: 'Trends & Boosts', path: '/trends' },
@@ -24,13 +26,41 @@ const DashboardLayout = () => {
                             key={item.path}
                             to={item.path}
                             className={({ isActive }) => `nav-tab ${isActive ? 'active' : ''}`}
+                            onClick={() => setMobileMenuOpen(false)}
                         >
                             <item.icon size={18} />
                             <span>{item.label}</span>
                         </NavLink>
                     ))}
                 </nav>
+                <button 
+                    className="mobile-menu-toggle" 
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
             </header>
+            
+            {/* Mobile Menu Overlay */}
+            {mobileMenuOpen && (
+                <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}>
+                    <nav className="mobile-menu" onClick={(e) => e.stopPropagation()}>
+                        {navItems.map((item) => (
+                            <NavLink
+                                key={item.path}
+                                to={item.path}
+                                className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                <item.icon size={20} />
+                                <span>{item.label}</span>
+                            </NavLink>
+                        ))}
+                    </nav>
+                </div>
+            )}
+            
             <main className="main-content-new">
                 <Outlet />
             </main>

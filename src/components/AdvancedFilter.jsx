@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Map, Calendar, Tag, Filter, ChevronDown } from 'lucide-react';
+import { Search, Map, Calendar, Tag, Filter, ChevronDown, X } from 'lucide-react';
 
 const FilterSection = ({ title, icon: Icon, children }) => {
     return (
@@ -32,12 +32,20 @@ const AdvancedFilter = ({
     activeFilters = {},
     onFilterChange,
     onApply,
-    onReset 
+    onReset,
+    onClose
 }) => {
     return (
         <aside className="filter-panel-right">
             <div className="filter-header">
                 <h3 className="filter-title">Filters</h3>
+                <button 
+                    className="filter-close-btn"
+                    onClick={onClose}
+                    aria-label="Close filters"
+                >
+                    <X size={20} />
+                </button>
             </div>
 
             <div className="filter-search-container">

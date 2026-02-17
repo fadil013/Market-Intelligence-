@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { SlidersHorizontal } from 'lucide-react';
 import StatsGrid from '../components/StatsGrid';
 import PlatformComparisonChart from '../components/PlatformComparisonChart';
 import GamesTable from '../components/GamesTable';
@@ -22,6 +23,7 @@ const Overview = () => {
     const [selectedGameData, setSelectedGameData] = useState(null);
     const [selectedDomain, setSelectedDomain] = useState('Games');
     const [filtersApplied, setFiltersApplied] = useState(false);
+    const [filtersPanelOpen, setFiltersPanelOpen] = useState(false);
     const [activeFilters, setActiveFilters] = useState({
         domain: 'Games',
         category: 'All',
@@ -113,6 +115,19 @@ const Overview = () => {
 
     return (
         <div className="overview-container-new">
+            {/* Mobile Filter Toggle Button */}
+            <button 
+                className="mobile-filter-toggle"
+                onClick={() => setFiltersPanelOpen(true)}
+                aria-label="Open filters"
+            >
+                <SlidersHorizontal size={20} />
+                <span>Filters</span>
+                {filtersApplied && activeFilters.category !== 'All' && (
+                    <div className="filter-badge">1</div>
+                )}
+            </button>
+            
             {/* Main Content - Left Side */}
             <div className="main-content-area">
                 {!selectedApp ? (
@@ -244,14 +259,27 @@ const Overview = () => {
             </div>
 
             {/* Filter Panel - Right Side */}
-            <AdvancedFilter 
-                selectedDomain={selectedDomain}
-                onDomainChange={handleDomainChange}
-                activeFilters={activeFilters}
-                onFilterChange={setActiveFilters}
-                onApply={handleApplyFilters}
-                onReset={handleResetFilters}
-            />
+            <div className={`filter-panel-wrapper ${filtersPanelOpen ? 'mobile-open' : ''}`}>
+                {/* Mobile overlay */}
+                {filtersPanelOpen && (
+                    <div 
+                        className="filter-panel-overlay" 
+                        onClick={() => setFiltersPanelOpen(false)}
+                    />
+                )}
+                <AdvancedFilter 
+                    selectedDomain={selectedDomain}
+                    onDomainChange={handleDomainChange}
+                    activeFilters={activeFilters}
+                    onFilterChange={setActiveFilters}
+                    onApply={() => {
+                        handleApplyFilters();
+                        setFiltersPanelOpen(false);
+                    }}
+                    onReset={handleResetFilters}
+                    onClose={() => setFiltersPanelOpen(false)}
+                />
+            </div>
         </div>
     );
 };
