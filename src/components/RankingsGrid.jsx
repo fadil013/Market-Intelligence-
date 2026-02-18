@@ -1,5 +1,7 @@
 import React from 'react';
 import { TrendingUp, TrendingDown, Minus, Crown, ExternalLink, Zap, Target, Award, Trophy } from 'lucide-react';
+import VelocityBadge from './VelocityBadge';
+import RankSparkline from './RankSparkline';
 // Professional blue color scheme
 
 const RankingItem = ({ item, type, rank, onClick, compact }) => {
@@ -37,10 +39,22 @@ const RankingItem = ({ item, type, rank, onClick, compact }) => {
                         )}
                     </div>
                     {!compact && <p className="text-gray-500 text-xs truncate max-w-[120px]">{item.publisher || `Featured Score: ${item.score}`}</p>}
+                    {/* Velocity Sparkline */}
+                    {!compact && item.rankHistory && (
+                        <div className="mt-1">
+                            <RankSparkline rankHistory={item.rankHistory} width={80} height={20} />
+                        </div>
+                    )}
                 </div>
             </div>
 
             <div className="text-right">
+                {/* Velocity Badge */}
+                {!compact && item.velocityScore !== undefined && (
+                    <div className="mb-1">
+                        <VelocityBadge score={item.velocityScore} size="sm" />
+                    </div>
+                )}
                 <p className={`text-white font-bold ${compact ? 'text-[10px]' : 'text-sm'}`}>
                     {type === 'grossing' ? item.revenue : item.downloads || ''}
                 </p>

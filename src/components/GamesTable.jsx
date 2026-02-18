@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { TrendingUp, TrendingDown, Star } from 'lucide-react';
+import VelocityBadge from './VelocityBadge';
+import PlatformIndicators from './PlatformIndicators';
 
 const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) => {
     const [genreFilter, setGenreFilter] = useState('All');
@@ -15,6 +17,7 @@ const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) 
                 if (sortBy === 'downloads') return b.monthlyDownloads - a.monthlyDownloads;
                 if (sortBy === 'revenue') return b.monthlyRevenue - a.monthlyRevenue;
                 if (sortBy === 'rating') return b.rating - a.rating;
+                if (sortBy === 'velocity') return (b.velocityScore || 0) - (a.velocityScore || 0);
                 return 0;
             })
             .slice(0, 15);
@@ -40,6 +43,7 @@ const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) 
                     </select>
                     <select className="filter-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
                         <option value="boostScore">Boost Score</option>
+                        <option value="velocity">Velocity Score</option>
                         <option value="downloads">Downloads</option>
                         <option value="revenue">Revenue</option>
                         <option value="rating">Rating</option>
@@ -57,6 +61,8 @@ const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) 
                         <th className="right">Downloads</th>
                         <th className="right">Revenue</th>
                         <th className="center">Rating</th>
+                        <th className="center">Velocity</th>
+                        <th className="center">Cross-Platform</th>
                         <th className="right">Boost</th>
                     </tr>
                 </thead>
@@ -96,6 +102,16 @@ const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) 
                                     <Star size={14} fill="currentColor" />
                                     <span>{game.rating}</span>
                                 </div>
+                            </td>
+                            <td className="center">
+                                {game.velocityScore !== undefined && (
+                                    <VelocityBadge score={game.velocityScore} size="sm" />
+                                )}
+                            </td>
+                            <td className="center">
+                                {game.platformPresence && (
+                                    <PlatformIndicators platformPresence={game.platformPresence} compact={true} />
+                                )}
                             </td>
                             <td>
                                 <div className={`boost ${game.boostScore > 0 ? 'positive' : 'negative'}`}>
