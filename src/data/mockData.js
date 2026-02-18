@@ -322,3 +322,210 @@ export const regionalGrowth = [
     }
 ];
 
+// Genre Intelligence Data (Phase 4)
+export const genreIntelligence = [
+    {
+        name: 'RPG',
+        icon: '⚔️',
+        subGenre: 'Action RPG, Turn-Based, MMO',
+        growthRate: 58,
+        gameCount: 145,
+        totalDownloads: 95000000,
+        totalRevenue: 580000000,
+        isHybrid: false,
+        mechanics: [
+            { name: 'Gacha System', popularity: 92 },
+            { name: 'Character Progression', popularity: 88 },
+            { name: 'Turn-Based Combat', popularity: 65 },
+            { name: 'Open World', popularity: 72 }
+        ],
+        topGames: [
+            { name: 'Genshin Impact', icon: '🌌' },
+            { name: 'Honkai: Star Rail', icon: '🚆' }
+        ]
+    },
+    {
+        name: 'Puzzle',
+        icon: '🧩',
+        subGenre: 'Match-3, Physics, Logic',
+        growthRate: 42,
+        gameCount: 320,
+        totalDownloads: 125000000,
+        totalRevenue: 420000000,
+        isHybrid: false,
+        mechanics: [
+            { name: 'Match-3', popularity: 85 },
+            { name: 'Power-Ups', popularity: 78 },
+            { name: 'Daily Challenges', popularity: 82 },
+            { name: 'Lives System', popularity: 90 }
+        ],
+        topGames: [
+            { name: 'Royal Match', icon: '🏰' },
+            { name: 'Candy Crush Saga', icon: '🍬' }
+        ]
+    },
+    {
+        name: 'Casual',
+        icon: '🎲',
+        subGenre: 'Hypercasual, Idle, Merge',
+        growthRate: 78,
+        gameCount: 580,
+        totalDownloads: 180000000,
+        totalRevenue: 320000000,
+        isHybrid: false,
+        mechanics: [
+            { name: 'One-Tap Gameplay', popularity: 95 },
+            { name: 'Idle Mechanics', popularity: 68 },
+            { name: 'Daily Rewards', popularity: 88 },
+            { name: 'Ad-Based Boosts', popularity: 75 }
+        ],
+        topGames: [
+            { name: 'Monopoly GO!', icon: '🎲' },
+            { name: 'Coin Master', icon: '🐷' }
+        ]
+    },
+    {
+        name: 'MOBA',
+        icon: '👑',
+        subGenre: '5v5, MOBA Lite, Auto-Chess',
+        growthRate: 35,
+        gameCount: 42,
+        totalDownloads: 65000000,
+        totalRevenue: 650000000,
+        isHybrid: true,
+        hybridComponents: ['Strategy', 'Action'],
+        mechanics: [
+            { name: '5v5 Battles', popularity: 90 },
+            { name: 'Hero Collection', popularity: 85 },
+            { name: 'Ranked System', popularity: 92 },
+            { name: 'Team Synergy', popularity: 78 }
+        ],
+        topGames: [
+            { name: 'Honor of Kings', icon: '👑' },
+            { name: 'Mobile Legends', icon: '⚡' }
+        ]
+    },
+    {
+        name: 'Shooter',
+        icon: '🔫',
+        subGenre: 'Battle Royale, FPS, TPS',
+        growthRate: 48,
+        gameCount: 95,
+        totalDownloads: 110000000,
+        totalRevenue: 480000000,
+        isHybrid: true,
+        hybridComponents: ['Action', 'Strategy'],
+        mechanics: [
+            { name: 'Battle Royale', popularity: 88 },
+            { name: 'Weapon Customization', popularity: 82 },
+            { name: 'Squad System', popularity: 85 },
+            { name: 'Loot System', popularity: 90 }
+        ],
+        topGames: [
+            { name: 'PUBG Mobile', icon: '🍳' },
+            { name: 'Call of Duty Mobile', icon: '🎯' }
+        ]
+    },
+    {
+        name: 'Strategy',
+        icon: '🏰',
+        subGenre: 'Tower Defense, 4X, RTS',
+        growthRate: 38,
+        gameCount: 125,
+        totalDownloads: 55000000,
+        totalRevenue: 280000000,
+        isHybrid: false,
+        mechanics: [
+            { name: 'Base Building', popularity: 88 },
+            { name: 'Resource Management', popularity: 92 },
+            { name: 'Alliance System', popularity: 75 },
+            { name: 'PvP Battles', popularity: 80 }
+        ],
+        topGames: [
+            { name: 'Clash of Clans', icon: '⚔️' },
+            { name: 'Rise of Kingdoms', icon: '🏛️' }
+        ]
+    },
+    {
+        name: 'Action',
+        icon: '⚡',
+        subGenre: 'Platformer, Fighting, Brawler',
+        growthRate: 52,
+        gameCount: 210,
+        totalDownloads: 88000000,
+        totalRevenue: 340000000,
+        isHybrid: false,
+        mechanics: [
+            { name: 'Real-Time Combat', popularity: 90 },
+            { name: 'Combo System', popularity: 75 },
+            { name: 'Boss Battles', popularity: 82 },
+            { name: 'Skill Trees', popularity: 70 }
+        ],
+        topGames: [
+            { name: 'Brawl Stars', icon: '🌟' },
+            { name: 'Stumble Guys', icon: '🏃' }
+        ]
+    },
+    {
+        name: 'Simulation',
+        icon: '🏡',
+        subGenre: 'Life Sim, Business Sim, Sports Sim',
+        growthRate: 45,
+        gameCount: 165,
+        totalDownloads: 72000000,
+        totalRevenue: 220000000,
+        isHybrid: false,
+        mechanics: [
+            { name: 'Sandbox Building', popularity: 85 },
+            { name: 'Time Management', popularity: 78 },
+            { name: 'Career Progression', popularity: 68 },
+            { name: 'Social Interaction', popularity: 82 }
+        ],
+        topGames: [
+            { name: 'The Sims Mobile', icon: '👨‍👩‍👧‍👦' },
+            { name: 'Farming Simulator', icon: '🚜' }
+        ]
+    },
+    {
+        name: 'Sports',
+        icon: '⚽',
+        subGenre: 'Soccer, Basketball, Racing',
+        growthRate: 32,
+        gameCount: 88,
+        totalDownloads: 48000000,
+        totalRevenue: 195000000,
+        isHybrid: false,
+        mechanics: [
+            { name: 'Team Management', popularity: 88 },
+            { name: 'Career Mode', popularity: 82 },
+            { name: 'Ultimate Team', popularity: 92 },
+            { name: 'Online Multiplayer', popularity: 85 }
+        ],
+        topGames: [
+            { name: 'FIFA Mobile', icon: '⚽' },
+            { name: 'NBA 2K Mobile', icon: '🏀' }
+        ]
+    },
+    {
+        name: 'Sandbox',
+        icon: '🟥',
+        subGenre: 'Creative, Building, UGC',
+        growthRate: 68,
+        gameCount: 45,
+        totalDownloads: 95000000,
+        totalRevenue: 420000000,
+        isHybrid: true,
+        hybridComponents: ['Simulation', 'Social'],
+        mechanics: [
+            { name: 'User-Generated Content', popularity: 98 },
+            { name: 'Building Tools', popularity: 90 },
+            { name: 'Multiplayer Worlds', popularity: 95 },
+            { name: 'Avatar Customization', popularity: 88 }
+        ],
+        topGames: [
+            { name: 'Roblox', icon: '🟥' },
+            { name: 'Minecraft', icon: '⛏️' }
+        ]
+    }
+];
+

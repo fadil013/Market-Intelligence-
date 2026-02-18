@@ -10,7 +10,8 @@ import {
     Cell,
 } from 'recharts';
 import { TrendingUp, Flame, ArrowUpRight } from 'lucide-react';
-import { allGames } from '../data/mockData';
+import { allGames, genreIntelligence } from '../data/mockData';
+import GenreIntelligence from '../components/GenreIntelligence';
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -133,6 +134,17 @@ const BoostTracker = () => {
                     and seasonal battle passes driving engagement. Consider prioritizing these categories
                     for new releases or feature updates.
                 </p>
+            </div>
+
+            {/* Genre Intelligence - Phase 4 */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        🎮 Genre & Sub-Genre Intelligence
+                    </h3>
+                    <p className="text-gray-400">Hybrid detection, mechanics tagging, and genre trend analysis</p>
+                </div>
+                <GenreIntelligence genreData={genreIntelligence} />
             </div>
         </div>
     );
