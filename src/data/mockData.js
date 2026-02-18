@@ -3617,4 +3617,238 @@ export const betaGamesData = [
     }
 ];
 
+// Phase 17: Trend Forecast Score (MASTER FEATURE)
+export const forecastData = [
+    {
+        gameName: 'Monopoly GO',
+        currentRank: 2,
+        forecastScore: {
+            score: 92,
+            confidence: 'high',
+            horizon: '30-60 days',
+            trend: 'up',
+            breakdown: {
+                velocity: 23, // 25% weight = 92 points
+                regional: 19, // 20% weight = 95 points
+                genre: 18, // 20% weight = 90 points
+                revenue: 19, // 20% weight = 95 points
+                sentiment: 13 // 15% weight = 87 points
+            }
+        },
+        riskFactors: [
+            'Seasonal dip after holidays could slow growth',
+            'Increasing ad fatigue in core markets',
+            'Competitor copycat launches in Q2 2026',
+            'IP licensing costs impacting profitability'
+        ]
+    },
+    {
+        gameName: 'Royal Match',
+        currentRank: 5,
+        forecastScore: {
+            score: 88,
+            confidence: 'high',
+            horizon: '30-60 days',
+            trend: 'up',
+            breakdown: {
+                velocity: 22,
+                regional: 18,
+                genre: 17,
+                revenue: 18,
+                sentiment: 13
+            }
+        },
+        riskFactors: [
+            'Match-3 genre showing saturation signals',
+            'King entering market with new IP',
+            'UA costs rising 15% quarter-over-quarter',
+            'Retention declining in mature markets'
+        ]
+    },
+    {
+        gameName: 'Roblox',
+        currentRank: 8,
+        forecastScore: {
+            score: 85,
+            confidence: 'high',
+            horizon: '30-60 days',
+            trend: 'up',
+            breakdown: {
+                velocity: 21,
+                regional: 18,
+                genre: 17,
+                revenue: 17,
+                sentiment: 12
+            }
+        },
+        riskFactors: [
+            'Platform moderation concerns affecting brand safety',
+            'Epic Games launching competing UGC platform',
+            'Developer revenue share disputes',
+            'Rising infrastructure costs with scale'
+        ]
+    },
+    {
+        gameName: 'Genshin Impact',
+        currentRank: 12,
+        forecastScore: {
+            score: 78,
+            confidence: 'medium',
+            horizon: '30-60 days',
+            trend: 'up',
+            breakdown: {
+                velocity: 19,
+                regional: 16,
+                genre: 15,
+                revenue: 17,
+                sentiment: 11
+            }
+        },
+        riskFactors: [
+            'Content update cadence slowing down',
+            'Zenless Zone Zero cannibalizing player base',
+            'Gacha regulation risks in China and EU',
+            'Burnout among veteran players'
+        ]
+    },
+    {
+        gameName: 'Stumble Guys',
+        currentRank: 18,
+        forecastScore: {
+            score: 72,
+            confidence: 'medium',
+            horizon: '30-60 days',
+            trend: 'up',
+            breakdown: {
+                velocity: 18,
+                regional: 15,
+                genre: 14,
+                revenue: 14,
+                sentiment: 11
+            }
+        },
+        riskFactors: [
+            'Fall Guys partnership with Epic creating headwinds',
+            'Hyper-casual market consolidation',
+            'Limited monetization ceiling',
+            'Event fatigue among daily players'
+        ]
+    },
+    {
+        gameName: 'Subway Surfers',
+        currentRank: 25,
+        forecastScore: {
+            score: 58,
+            confidence: 'medium',
+            horizon: '30-60 days',
+            trend: 'stable',
+            breakdown: {
+                velocity: 14,
+                regional: 12,
+                genre: 11,
+                revenue: 12,
+                sentiment: 9
+            }
+        },
+        riskFactors: [
+            'Endless runner genre declining overall',
+            '10-year-old IP showing age',
+            'Limited innovation in recent updates',
+            'Younger audiences shifting to newer IPs'
+        ]
+    },
+    {
+        gameName: 'Candy Crush Saga',
+        currentRank: 35,
+        forecastScore: {
+            score: 52,
+            confidence: 'medium',
+            horizon: '30-60 days',
+            trend: 'stable',
+            breakdown: {
+                velocity: 12,
+                regional: 11,
+                genre: 10,
+                revenue: 11,
+                sentiment: 8
+            }
+        },
+        riskFactors: [
+            'Franchise aging with declining new user acquisition',
+            'King focusing resources on newer IPs',
+            'Casual puzzle market saturation',
+            'Ad-based competitors lowering benchmark ARPU'
+        ]
+    },
+    {
+        gameName: 'Among Us',
+        currentRank: 42,
+        forecastScore: {
+            score: 45,
+            confidence: 'low',
+            horizon: '30-60 days',
+            trend: 'stable',
+            breakdown: {
+                velocity: 10,
+                regional: 9,
+                genre: 9,
+                revenue: 9,
+                sentiment: 8
+            }
+        },
+        riskFactors: [
+            'Social deduction trend peaked in 2021',
+            'New game mode adoption below expectations',
+            'Fortnite and Roblox absorbing social gaming time',
+            'Limited content pipeline announced'
+        ]
+    },
+    {
+        gameName: 'PUBG Mobile',
+        currentRank: 48,
+        forecastScore: {
+            score: 38,
+            confidence: 'medium',
+            horizon: '30-60 days',
+            trend: 'down',
+            breakdown: {
+                velocity: 8,
+                regional: 8,
+                genre: 7,
+                revenue: 8,
+                sentiment: 7
+            }
+        },
+        riskFactors: [
+            'Free Fire dominating emerging markets',
+            'Battle royale genre fatigue post-COVID',
+            'Tencent prioritizing Honor of Kings investments',
+            'Cheating issues affecting player sentiment'
+        ]
+    },
+    {
+        gameName: 'Angry Birds 2',
+        currentRank: 67,
+        forecastScore: {
+            score: 28,
+            confidence: 'low',
+            horizon: '30-60 days',
+            trend: 'down',
+            breakdown: {
+                velocity: 6,
+                regional: 6,
+                genre: 5,
+                revenue: 6,
+                sentiment: 5
+            }
+        },
+        riskFactors: [
+            'Physics puzzler genre in long-term decline',
+            'Rovio entertainment acquisition strategy shift',
+            'Franchise exhaustion after 15+ years',
+            'Core IP no longer resonating with Gen Z'
+        ]
+    }
+];
+
 

@@ -12,8 +12,9 @@ import {
     ComposedChart,
 } from 'recharts';
 import { Brain, TrendingUp, AlertCircle, CheckCircle, Calendar } from 'lucide-react';
-import { predictiveData, betaGamesData } from '../data/mockData';
+import { predictiveData, betaGamesData, forecastData } from '../data/mockData';
 import BetaLaunchMonitoring from '../components/BetaLaunchMonitoring';
+import TrendForecastScore from '../components/TrendForecastScore';
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -59,6 +60,11 @@ const PredictiveAI = () => {
 
     return (
         <div className="space-y-8">
+            {/* Trend Forecast Score - Phase 17 MASTER FEATURE */}
+            <div className="glass-panel p-6">
+                <TrendForecastScore forecastData={forecastData} />
+            </div>
+
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
