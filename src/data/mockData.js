@@ -2865,4 +2865,304 @@ export const publisherData = [
     }
 ];
 
+// Phase 14: Store Optimization Intelligence (ASO Tracking)
+export const asoData = [
+    {
+        gameName: 'Royal Match',
+        asoChanges: [
+            {
+                date: '2026-02-15',
+                change: 'Icon update',
+                before: 'Blue crown on white',
+                after: 'Gold crown on purple gradient',
+                rankImpact: '+28',
+                downloadImpact: '+42%'
+            },
+            {
+                date: '2026-02-01',
+                change: 'Title optimization',
+                before: 'Royal Match',
+                after: 'Royal Match - Puzzle Quest',
+                rankImpact: '+55',
+                downloadImpact: '+78%'
+            },
+            {
+                date: '2026-01-20',
+                change: 'Video preview',
+                before: 'No video',
+                after: 'Gameplay trailer added',
+                rankImpact: '+12',
+                downloadImpact: '+18%'
+            },
+            {
+                date: '2026-01-10',
+                change: 'Screenshots reorder',
+                before: 'Tutorial first',
+                after: 'Action shots first',
+                rankImpact: '+8',
+                downloadImpact: '+15%'
+            }
+        ],
+        keywordRankings: {
+            'match 3': { rank: 3, change: +2 },
+            'puzzle game': { rank: 8, change: +5 },
+            'king games': { rank: 15, change: -1 },
+            'casual puzzle': { rank: 12, change: +3 }
+        }
+    },
+    {
+        gameName: 'Monopoly GO',
+        asoChanges: [
+            {
+                date: '2026-02-18',
+                change: 'Title tweak',
+                before: 'Monopoly GO!',
+                after: 'Monopoly GO! - Board Game',
+                rankImpact: '+45',
+                downloadImpact: '+67%'
+            },
+            {
+                date: '2026-02-05',
+                change: 'Icon update',
+                before: 'Classic Mr. Monopoly',
+                after: '3D animated Mr. Monopoly',
+                rankImpact: '+38',
+                downloadImpact: '+52%'
+            },
+            {
+                date: '2026-01-25',
+                change: 'Description update',
+                before: 'Classic board game',
+                after: 'Build, trade, and conquer with friends',
+                rankImpact: '+6',
+                downloadImpact: '+9%'
+            }
+        ],
+        keywordRankings: {
+            'monopoly': { rank: 1, change: 0 },
+            'board game': { rank: 4, change: +3 },
+            'family game': { rank: 18, change: +7 },
+            'multiplayer': { rank: 45, change: -2 }
+        }
+    },
+    {
+        gameName: 'Roblox',
+        asoChanges: [
+            {
+                date: '2026-02-12',
+                change: 'Screenshots reorder',
+                before: 'Avatar customization first',
+                after: 'Popular games first',
+                rankImpact: '+15',
+                downloadImpact: '+25%'
+            },
+            {
+                date: '2026-01-30',
+                change: 'Video preview',
+                before: '30-second trailer',
+                after: '45-second UGC showcase',
+                rankImpact: '+22',
+                downloadImpact: '+35%'
+            },
+            {
+                date: '2026-01-15',
+                change: 'Title optimization',
+                before: 'Roblox',
+                after: 'Roblox - Ultimate Virtual Universe',
+                rankImpact: '+18',
+                downloadImpact: '+28%'
+            }
+        ],
+        keywordRankings: {
+            'roblox': { rank: 1, change: 0 },
+            'sandbox game': { rank: 2, change: +1 },
+            'create games': { rank: 10, change: +4 },
+            'virtual world': { rank: 22, change: +8 }
+        }
+    },
+    {
+        gameName: 'Candy Crush Saga',
+        asoChanges: [
+            {
+                date: '2026-02-20',
+                change: 'Icon update',
+                before: 'Red candy on white',
+                after: 'Rainbow candies on vibrant bg',
+                rankImpact: '+32',
+                downloadImpact: '+48%'
+            },
+            {
+                date: '2026-02-08',
+                change: 'Screenshots reorder',
+                before: 'Level progression',
+                after: 'Power-up combos first',
+                rankImpact: '+11',
+                downloadImpact: '+19%'
+            },
+            {
+                date: '2026-01-28',
+                change: 'Description update',
+                before: 'Match candies to win',
+                after: 'Join 1 billion players in the sweetest puzzle adventure',
+                rankImpact: '+5',
+                downloadImpact: '+12%'
+            }
+        ],
+        keywordRankings: {
+            'candy crush': { rank: 1, change: 0 },
+            'match 3': { rank: 2, change: +1 },
+            'puzzle': { rank: 5, change: +2 },
+            'candy game': { rank: 3, change: +1 }
+        }
+    },
+    {
+        gameName: 'Stumble Guys',
+        asoChanges: [
+            {
+                date: '2026-02-22',
+                change: 'Title tweak',
+                before: 'Stumble Guys',
+                after: 'Stumble Guys - Multiplayer Royale',
+                rankImpact: '+52',
+                downloadImpact: '+73%'
+            },
+            {
+                date: '2026-02-10',
+                change: 'Video preview',
+                before: 'Static gameplay',
+                after: 'Epic fails compilation',
+                rankImpact: '+35',
+                downloadImpact: '+58%'
+            },
+            {
+                date: '2026-02-03',
+                change: 'Icon update',
+                before: 'Single character',
+                after: 'Crowd of colorful characters',
+                rankImpact: '+27',
+                downloadImpact: '+41%'
+            },
+            {
+                date: '2026-01-22',
+                change: 'Screenshots reorder',
+                before: 'Menu screens first',
+                after: 'Race chaos first',
+                rankImpact: '+14',
+                downloadImpact: '+23%'
+            }
+        ],
+        keywordRankings: {
+            'battle royale': { rank: 8, change: +5 },
+            'party game': { rank: 6, change: +3 },
+            'multiplayer': { rank: 15, change: +8 },
+            'fun game': { rank: 25, change: +12 }
+        }
+    },
+    {
+        gameName: 'Free Fire',
+        asoChanges: [
+            {
+                date: '2026-02-19',
+                change: 'Icon update',
+                before: 'Character portrait',
+                after: 'Squad action shot',
+                rankImpact: '+41',
+                downloadImpact: '+62%'
+            },
+            {
+                date: '2026-02-07',
+                change: 'Title optimization',
+                before: 'Free Fire',
+                after: 'Free Fire MAX - Battle Royale',
+                rankImpact: '+48',
+                downloadImpact: '+71%'
+            },
+            {
+                date: '2026-01-26',
+                change: 'Screenshots reorder',
+                before: 'Character customization',
+                after: 'Combat action first',
+                rankImpact: '+19',
+                downloadImpact: '+31%'
+            }
+        ],
+        keywordRankings: {
+            'battle royale': { rank: 3, change: +2 },
+            'shooter': { rank: 7, change: +4 },
+            'free fire': { rank: 1, change: 0 },
+            'survival game': { rank: 12, change: +5 }
+        }
+    },
+    {
+        gameName: 'Subway Surfers',
+        asoChanges: [
+            {
+                date: '2026-02-16',
+                change: 'Video preview',
+                before: 'Standard gameplay',
+                after: 'World tour highlights',
+                rankImpact: '+29',
+                downloadImpact: '+44%'
+            },
+            {
+                date: '2026-02-04',
+                change: 'Icon update',
+                before: 'Jake character',
+                after: 'New seasonal character',
+                rankImpact: '+23',
+                downloadImpact: '+36%'
+            },
+            {
+                date: '2026-01-18',
+                change: 'Description update',
+                before: 'Endless runner',
+                after: 'Surf through cities worldwide in the ultimate endless runner',
+                rankImpact: '+7',
+                downloadImpact: '+14%'
+            }
+        ],
+        keywordRankings: {
+            'subway surfers': { rank: 1, change: 0 },
+            'endless runner': { rank: 2, change: +1 },
+            'running game': { rank: 6, change: +3 },
+            'casual game': { rank: 28, change: +5 }
+        }
+    },
+    {
+        gameName: 'Brawl Stars',
+        asoChanges: [
+            {
+                date: '2026-02-21',
+                change: 'Title tweak',
+                before: 'Brawl Stars',
+                after: 'Brawl Stars - Fast-Paced MOBA',
+                rankImpact: '+44',
+                downloadImpact: '+65%'
+            },
+            {
+                date: '2026-02-11',
+                change: 'Screenshots reorder',
+                before: 'Brawlers showcase',
+                after: 'Team battles first',
+                rankImpact: '+16',
+                downloadImpact: '+27%'
+            },
+            {
+                date: '2026-01-29',
+                change: 'Icon update',
+                before: 'Crow character',
+                after: 'All brawlers collage',
+                rankImpact: '+33',
+                downloadImpact: '+49%'
+            }
+        ],
+        keywordRankings: {
+            'brawl stars': { rank: 1, change: 0 },
+            'moba': { rank: 5, change: +3 },
+            'supercell': { rank: 8, change: +2 },
+            'multiplayer battle': { rank: 14, change: +6 }
+        }
+    }
+];
+
 

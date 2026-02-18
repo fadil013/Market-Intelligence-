@@ -10,11 +10,12 @@ import {
     Cell,
 } from 'recharts';
 import { TrendingUp, Flame, ArrowUpRight } from 'lucide-react';
-import { allGames, genreIntelligence, mechanicData, cloneData, seasonalData } from '../data/mockData';
+import { allGames, genreIntelligence, mechanicData, cloneData, seasonalData, asoData } from '../data/mockData';
 import GenreIntelligence from '../components/GenreIntelligence';
 import MechanicTagging from '../components/MechanicTagging';
 import CloneDetection from '../components/CloneDetection';
 import SeasonalityOverlay from '../components/SeasonalityOverlay';
+import StoreOptimization from '../components/StoreOptimization';
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -181,6 +182,17 @@ const BoostTracker = () => {
                     <p className="text-gray-400">External events context, performance correlation, and upcoming opportunities</p>
                 </div>
                 <SeasonalityOverlay seasonalData={seasonalData} />
+            </div>
+
+            {/* Store Optimization Intelligence - Phase 14 */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        🔍 Store Optimization Intelligence
+                    </h3>
+                    <p className="text-gray-400">ASO trend monitoring, keyword rankings, and data-driven visibility improvements</p>
+                </div>
+                <StoreOptimization asoData={asoData} />
             </div>
         </div>
     );
