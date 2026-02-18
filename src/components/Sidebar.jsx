@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Activity } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Activity, Bell } from 'lucide-react';
 
 const Sidebar = () => {
   const navItems = [
@@ -8,6 +8,7 @@ const Sidebar = () => {
     { icon: TrendingUp, label: 'Trends & Boosts', path: '/trends' },
     { icon: BarChart3, label: 'Market Compare', path: '/market' },
     { icon: Brain, label: 'Predictive AI', path: '/predictive' },
+    { icon: Bell, label: 'Breakout Alerts', path: '/alerts' },
     { icon: Lightbulb, label: 'Suggestions', path: '/suggestions' },
   ];
 

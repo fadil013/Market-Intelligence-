@@ -1804,4 +1804,248 @@ export const cloneData = [
     }
 ];
 
+// Breakout Alerts Data
+export const alertsData = [
+    {
+        type: 'rank',
+        severity: 'critical',
+        hoursAgo: 2,
+        title: 'Honkai: Star Rail - Massive Rank Jump',
+        message: 'Game jumped +187 ranks in the last 48 hours across iOS and Android',
+        metrics: [
+            { label: 'Rank Change', value: '+187', positive: true },
+            { label: 'Current Rank', value: '#8', positive: true },
+            { label: 'Velocity Score', value: '+320%', positive: true }
+        ]
+    },
+    {
+        type: 'revenue',
+        severity: 'critical',
+        hoursAgo: 5,
+        title: 'Monopoly GO! Revenue Milestone',
+        message: 'Crossed $15M estimated revenue in the last 7 days - fastest growing board game',
+        metrics: [
+            { label: 'Est. Revenue', value: '$15.2M', positive: true },
+            { label: 'Growth', value: '+245%', positive: true },
+            { label: 'ARPU', value: '$42.50', positive: true }
+        ]
+    },
+    {
+        type: 'regional',
+        severity: 'high',
+        hoursAgo: 8,
+        title: 'Royal Match Spiking in Southeast Asia',
+        message: 'Downloads increased by +380% in Indonesia, Thailand, and Philippines markets',
+        metrics: [
+            { label: 'Region Growth', value: '+380%', positive: true },
+            { label: 'Indonesia', value: '+420%', positive: true },
+            { label: 'Market Share', value: '12%', positive: false }
+        ]
+    },
+    {
+        type: 'mechanic',
+        severity: 'high',
+        hoursAgo: 12,
+        title: 'Merge + Roguelike Combo Trending',
+        message: 'New mechanic combination showing +92% week-over-week growth in adoption',
+        metrics: [
+            { label: 'WoW Growth', value: '+92%', positive: true },
+            { label: 'Games Using', value: '17', positive: false },
+            { label: 'Avg Rating', value: '4.6', positive: true }
+        ]
+    },
+    {
+        type: 'publisher',
+        severity: 'medium',
+        hoursAgo: 18,
+        title: 'New Publisher "Pocket Gems" Enters Top 20',
+        message: 'First time publisher reached Top 20 grossing with "Episode - Choose Your Story"',
+        metrics: [
+            { label: 'Current Rank', value: '#18', positive: true },
+            { label: 'Days to Top 20', value: '45', positive: false },
+            { label: 'Est. Revenue', value: '$1.2M', positive: true }
+        ]
+    },
+    {
+        type: 'rank',
+        severity: 'high',
+        hoursAgo: 22,
+        title: 'Stumble Guys - Rapid Climb',
+        message: 'Jumped +145 ranks in 24 hours following major update with new levels',
+        metrics: [
+            { label: 'Rank Jump', value: '+145', positive: true },
+            { label: 'Update Impact', value: '+89%', positive: true },
+            { label: 'New Users', value: '2.3M', positive: true }
+        ]
+    },
+    {
+        type: 'revenue',
+        severity: 'high',
+        hoursAgo: 28,
+        title: 'Genshin Impact - Revenue Surge',
+        message: 'New banner release generated $8.5M in first 72 hours - strongest banner this year',
+        metrics: [
+            { label: '72h Revenue', value: '$8.5M', positive: true },
+            { label: 'vs Last Banner', value: '+67%', positive: true },
+            { label: 'IAP Conversion', value: '18.5%', positive: true }
+        ]
+    },
+    {
+        type: 'regional',
+        severity: 'medium',
+        hoursAgo: 36,
+        title: 'Brawl Stars Growing in Latin America',
+        message: 'Strong growth in Brazil and Mexico following Spanish language update',
+        metrics: [
+            { label: 'Brazil Growth', value: '+210%', positive: true },
+            { label: 'Mexico Growth', value: '+185%', positive: true },
+            { label: 'Retention', value: '68%', positive: true }
+        ]
+    },
+    {
+        type: 'mechanic',
+        severity: 'medium',
+        hoursAgo: 45,
+        title: 'Battle Pass Mechanics Gaining Traction',
+        message: 'Non-shooter games adopting battle pass seeing +78% ARPU increase',
+        metrics: [
+            { label: 'ARPU Impact', value: '+78%', positive: true },
+            { label: 'Adoption Rate', value: '34%', positive: false },
+            { label: 'Player Sentiment', value: 'Mixed', positive: false }
+        ]
+    },
+    {
+        type: 'publisher',
+        severity: 'low',
+        hoursAgo: 52,
+        title: 'Supercell Soft Launch Detected',
+        message: 'New game "Squad Busters" detected in soft launch - Netherlands and Canada',
+        metrics: [
+            { label: 'Countries', value: '2', positive: false },
+            { label: 'Early Rating', value: '4.3', positive: true },
+            { label: 'CPI', value: '$2.80', positive: false }
+        ]
+    },
+    {
+        type: 'rank',
+        severity: 'critical',
+        hoursAgo: 60,
+        title: 'Among Us - Viral Resurgence',
+        message: 'New update triggered viral moment - jumped +230 ranks in 48 hours',
+        metrics: [
+            { label: 'Rank Jump', value: '+230', positive: true },
+            { label: 'Twitter Mentions', value: '1.2M', positive: true },
+            { label: 'DAU Growth', value: '+340%', positive: true }
+        ]
+    },
+    {
+        type: 'revenue',
+        severity: 'medium',
+        hoursAgo: 72,
+        title: 'Marvel Snap - First $10M Week',
+        message: 'Card battler crossed $10M weekly revenue milestone for first time',
+        metrics: [
+            { label: 'Week Revenue', value: '$10.3M', positive: true },
+            { label: 'vs Last Week', value: '+45%', positive: true },
+            { label: 'Whale Spending', value: '$580 avg', positive: true }
+        ]
+    },
+    {
+        type: 'regional',
+        severity: 'high',
+        hoursAgo: 84,
+        title: 'Clash Royale Revival in India',
+        message: 'Esports tournament in India drove +290% downloads and +180% revenue',
+        metrics: [
+            { label: 'India Downloads', value: '+290%', positive: true },
+            { label: 'India Revenue', value: '+180%', positive: true },
+            { label: 'Tournament Views', value: '8.5M', positive: true }
+        ]
+    },
+    {
+        type: 'mechanic',
+        severity: 'critical',
+        hoursAgo: 96,
+        title: 'Idle + Gacha Combo Exploding',
+        message: 'Mechanic combination showing massive adoption - +145% games using this combo',
+        metrics: [
+            { label: 'Combo Growth', value: '+145%', positive: true },
+            { label: 'Games Using', value: '42', positive: false },
+            { label: 'Avg ARPU', value: '$8.50', positive: true }
+        ]
+    },
+    {
+        type: 'publisher',
+        severity: 'high',
+        hoursAgo: 108,
+        title: 'Scopely Acquisition Impact',
+        message: 'Post-acquisition strategy showing results - 3 games in Top 50 grossing',
+        metrics: [
+            { label: 'Top 50 Games', value: '3', positive: true },
+            { label: 'Revenue Growth', value: '+89%', positive: true },
+            { label: 'Market Share', value: '4.2%', positive: true }
+        ]
+    },
+    {
+        type: 'rank',
+        severity: 'medium',
+        hoursAgo: 120,
+        title: 'Wordle Clones Fading',
+        message: 'Original Wordle maintaining position while clones dropping -120 ranks on average',
+        metrics: [
+            { label: 'Clone Avg Drop', value: '-120', positive: false },
+            { label: 'Original Rank', value: '#12', positive: true },
+            { label: 'Market Consolidation', value: '78%', positive: false }
+        ]
+    },
+    {
+        type: 'revenue',
+        severity: 'low',
+        hoursAgo: 132,
+        title: 'Diablo Immortal Stabilizing',
+        message: 'After 6-month decline, revenue stabilized at $5M/week with new content cadence',
+        metrics: [
+            { label: 'Weekly Revenue', value: '$5.1M', positive: false },
+            { label: 'vs Last Month', value: '+2%', positive: true },
+            { label: 'Stability Score', value: '85%', positive: true }
+        ]
+    },
+    {
+        type: 'regional',
+        severity: 'low',
+        hoursAgo: 144,
+        title: 'Pokemon GO Asia-Pacific Growth',
+        message: 'Community Day event in APAC region drove +150% engagement surge',
+        metrics: [
+            { label: 'APAC Engagement', value: '+150%', positive: true },
+            { label: 'Event Participation', value: '12M', positive: true },
+            { label: 'IAP Conversion', value: '8.5%', positive: true }
+        ]
+    },
+    {
+        type: 'mechanic',
+        severity: 'low',
+        hoursAgo: 156,
+        title: 'NFT Integration Declining',
+        message: 'Games with NFT mechanics seeing -45% player retention compared to traditional games',
+        metrics: [
+            { label: 'Retention Impact', value: '-45%', positive: false },
+            { label: 'Games Removing', value: '8', positive: false },
+            { label: 'User Sentiment', value: 'Negative', positive: false }
+        ]
+    },
+    {
+        type: 'publisher',
+        severity: 'low',
+        hoursAgo: 168,
+        title: 'Epic Games Mobile Store Launch',
+        message: 'Alternative app store launched in EU - early impact shows 2% market share',
+        metrics: [
+            { label: 'EU Market Share', value: '2%', positive: false },
+            { label: 'Available Games', value: '47', positive: false },
+            { label: 'Avg CPI', value: '$1.20', positive: true }
+        ]
+    }
+];
+
 

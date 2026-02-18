@@ -9,6 +9,7 @@ const Trends = lazy(() => import('./pages/Trends'));
 const MarketCompare = lazy(() => import('./pages/MarketCompare'));
 const PredictiveAI = lazy(() => import('./pages/PredictiveAI'));
 const Suggestions = lazy(() => import('./pages/Suggestions'));
+const BreakoutAlertsPage = lazy(() => import('./pages/BreakoutAlertsPage'));
 
 function App() {
   return (
@@ -52,6 +53,14 @@ function App() {
             element={
               <Suspense fallback={<LoadingSpinner />}>
                 <Suggestions />
+              </Suspense>
+            }
+          />
+          <Route
+            path="alerts"
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <BreakoutAlertsPage />
               </Suspense>
             }
           />
