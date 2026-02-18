@@ -2546,4 +2546,323 @@ export const opportunityData = [
     }
 ];
 
+// Publisher & Studio Tracking Data
+export const publisherData = [
+    {
+        publisher: 'Supercell',
+        metrics: {
+            totalRevenue: '$187M/month',
+            marketShare: '8.5%',
+            gameCount: 5,
+            avgGameRevenue: '$37.4M',
+            hitRate: '100%',
+            acquisitionRisk: 'low'
+        },
+        specialization: {
+            genres: ['Strategy', 'Multiplayer'],
+            monetization: 'Freemium + IAP-heavy',
+            style: 'Polished 3D'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q3 2026',
+            genre: 'Squad Battler (Brawl Stars sequel)',
+            confidence: 'medium'
+        }
+    },
+    {
+        publisher: 'King (Activision)',
+        metrics: {
+            totalRevenue: '$152M/month',
+            marketShare: '6.9%',
+            gameCount: 8,
+            avgGameRevenue: '$19M',
+            hitRate: '62.5%',
+            acquisitionRisk: 'low'
+        },
+        specialization: {
+            genres: ['Puzzle', 'Match-3'],
+            monetization: 'Ads + IAP hybrid',
+            style: 'Colorful Casual'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q2 2026',
+            genre: 'Match-3 + RPG',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'Playrix',
+        metrics: {
+            totalRevenue: '$145M/month',
+            marketShare: '6.6%',
+            gameCount: 7,
+            avgGameRevenue: '$20.7M',
+            hitRate: '71.4%',
+            acquisitionRisk: 'medium'
+        },
+        specialization: {
+            genres: ['Puzzle', 'Merge', 'Match-3'],
+            monetization: 'Ads + IAP',
+            style: 'Narrative-driven'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q2 2026',
+            genre: 'Merge + City Builder',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'Tencent Games',
+        metrics: {
+            totalRevenue: '$234M/month',
+            marketShare: '10.6%',
+            gameCount: 18,
+            avgGameRevenue: '$13M',
+            hitRate: '55.6%',
+            acquisitionRisk: 'low'
+        },
+        specialization: {
+            genres: ['RPG', 'Shooter', 'MOBA'],
+            monetization: 'Gacha + Battle Pass',
+            style: 'High-budget AAA'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q1 2026',
+            genre: 'Open World RPG',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'Voodoo',
+        metrics: {
+            totalRevenue: '$42M/month',
+            marketShare: '1.9%',
+            gameCount: 45,
+            avgGameRevenue: '$933K',
+            hitRate: '22.2%',
+            acquisitionRisk: 'high'
+        },
+        specialization: {
+            genres: ['Hyper-casual', 'Arcade'],
+            monetization: 'Ads-heavy',
+            style: 'Minimalist'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q2 2026',
+            genre: 'Physics Puzzle',
+            confidence: 'medium'
+        }
+    },
+    {
+        publisher: 'Niantic',
+        metrics: {
+            totalRevenue: '$67M/month',
+            marketShare: '3.0%',
+            gameCount: 6,
+            avgGameRevenue: '$11.2M',
+            hitRate: '50%',
+            acquisitionRisk: 'high'
+        },
+        specialization: {
+            genres: ['AR', 'Location-based'],
+            monetization: 'IAP + Events',
+            style: 'Real-world integration'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q3 2026',
+            genre: 'AR Fantasy RPG',
+            confidence: 'medium'
+        }
+    },
+    {
+        publisher: 'Scopely',
+        metrics: {
+            totalRevenue: '$89M/month',
+            marketShare: '4.0%',
+            gameCount: 9,
+            avgGameRevenue: '$9.9M',
+            hitRate: '66.7%',
+            acquisitionRisk: 'medium'
+        },
+        specialization: {
+            genres: ['Strategy', 'Licensed IP'],
+            monetization: 'IAP + Subscriptions',
+            style: 'IP-driven'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q4 2026',
+            genre: 'Marvel Strategy',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'Zynga (Take-Two)',
+        metrics: {
+            totalRevenue: '$98M/month',
+            marketShare: '4.4%',
+            gameCount: 12,
+            avgGameRevenue: '$8.2M',
+            hitRate: '58.3%',
+            acquisitionRisk: 'low'
+        },
+        specialization: {
+            genres: ['Social', 'Casino', 'Puzzle'],
+            monetization: 'IAP + Ads',
+            style: 'Social-first'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q2 2026',
+            genre: 'Social Slots',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'Lilith Games',
+        metrics: {
+            totalRevenue: '$102M/month',
+            marketShare: '4.6%',
+            gameCount: 4,
+            avgGameRevenue: '$25.5M',
+            hitRate: '75%',
+            acquisitionRisk: 'high'
+        },
+        specialization: {
+            genres: ['Strategy', 'RPG'],
+            monetization: 'Gacha + VIP systems',
+            style: 'Mid-core depth'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q3 2026',
+            genre: 'Auto Chess RPG',
+            confidence: 'medium'
+        }
+    },
+    {
+        publisher: 'NetEase',
+        metrics: {
+            totalRevenue: '$123M/month',
+            marketShare: '5.6%',
+            gameCount: 15,
+            avgGameRevenue: '$8.2M',
+            hitRate: '53.3%',
+            acquisitionRisk: 'low'
+        },
+        specialization: {
+            genres: ['RPG', 'Shooter', 'MOBA'],
+            monetization: 'Gacha + Premium',
+            style: 'High production'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q1 2026',
+            genre: 'Survival RPG',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'Gram Games',
+        metrics: {
+            totalRevenue: '$38M/month',
+            marketShare: '1.7%',
+            gameCount: 8,
+            avgGameRevenue: '$4.75M',
+            hitRate: '62.5%',
+            acquisitionRisk: 'high'
+        },
+        specialization: {
+            genres: ['Merge', 'Puzzle'],
+            monetization: 'Ads + IAP',
+            style: 'Casual accessible'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q2 2026',
+            genre: 'Merge + Mystery',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'Rovio (Sega)',
+        metrics: {
+            totalRevenue: '$28M/month',
+            marketShare: '1.3%',
+            gameCount: 11,
+            avgGameRevenue: '$2.5M',
+            hitRate: '36.4%',
+            acquisitionRisk: 'low'
+        },
+        specialization: {
+            genres: ['Casual', 'Puzzle', 'Match-3'],
+            monetization: 'IAP + Branded content',
+            style: 'IP-leveraged'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q3 2026',
+            genre: 'Angry Birds Spin-off',
+            confidence: 'medium'
+        }
+    },
+    {
+        publisher: 'Moon Active',
+        metrics: {
+            totalRevenue: '$72M/month',
+            marketShare: '3.3%',
+            gameCount: 3,
+            avgGameRevenue: '$24M',
+            hitRate: '66.7%',
+            acquisitionRisk: 'high'
+        },
+        specialization: {
+            genres: ['Casino', 'Slots'],
+            monetization: 'IAP-heavy',
+            style: 'Vegas-themed'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q4 2026',
+            genre: 'Social Slots',
+            confidence: 'low'
+        }
+    },
+    {
+        publisher: 'Wildlife Studios',
+        metrics: {
+            totalRevenue: '$56M/month',
+            marketShare: '2.5%',
+            gameCount: 7,
+            avgGameRevenue: '$8M',
+            hitRate: '71.4%',
+            acquisitionRisk: 'medium'
+        },
+        specialization: {
+            genres: ['Casual', 'Match-3', 'Puzzle'],
+            monetization: 'Ads + IAP',
+            style: 'Polished casual'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q2 2026',
+            genre: 'Match-3 Adventure',
+            confidence: 'high'
+        }
+    },
+    {
+        publisher: 'miHoYo',
+        metrics: {
+            totalRevenue: '$245M/month',
+            marketShare: '11.1%',
+            gameCount: 3,
+            avgGameRevenue: '$81.7M',
+            hitRate: '100%',
+            acquisitionRisk: 'low'
+        },
+        specialization: {
+            genres: ['Action RPG', 'Gacha'],
+            monetization: 'Gacha + Battle Pass',
+            style: 'Anime AAA'
+        },
+        nextLaunchPrediction: {
+            timing: 'Q4 2026',
+            genre: 'Zenless Zone Zero expansion',
+            confidence: 'high'
+        }
+    }
+];
+
 
