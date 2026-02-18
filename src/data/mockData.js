@@ -198,3 +198,127 @@ export const aiSuggestions = [
     }
 ];
 
+// Regional Growth Data (Phase 3)
+export const regionalGrowth = [
+    {
+        name: 'North America',
+        growthRate: 45,
+        downloads: 85000000,
+        revenue: 420000000,
+        marketShare: 28,
+        trend: 'up',
+        isEmerging: false,
+        countries: ['USA', 'Canada', 'Mexico'],
+        topGames: [
+            { name: 'Roblox', icon: '🟥', downloads: 22000000 },
+            { name: 'ChatGPT', icon: '🤖', downloads: 20000000 },
+            { name: 'Monopoly GO!', icon: '🎲', downloads: 14000000 }
+        ]
+    },
+    {
+        name: 'Asia Pacific',
+        growthRate: 68,
+        downloads: 180000000,
+        revenue: 850000000,
+        marketShare: 42,
+        trend: 'up',
+        isEmerging: false,
+        countries: ['China', 'Japan', 'South Korea', 'India', 'Southeast Asia'],
+        topGames: [
+            { name: 'Honor of Kings', icon: '👑', downloads: 12500000 },
+            { name: 'PUBG Mobile', icon: '🍳', downloads: 18000000 },
+            { name: 'Genshin Impact', icon: '🌌', downloads: 9000000 }
+        ]
+    },
+    {
+        name: 'Europe',
+        growthRate: 38,
+        downloads: 65000000,
+        revenue: 310000000,
+        marketShare: 18,
+        trend: 'up',
+        isEmerging: false,
+        countries: ['UK', 'Germany', 'France', 'Italy', 'Spain'],
+        topGames: [
+            { name: 'Royal Match', icon: '🏰', downloads: 15000000 },
+            { name: 'Candy Crush Saga', icon: '🍬', downloads: 11000000 },
+            { name: 'Subway Surfers', icon: '🚇', downloads: 7000000 }
+        ]
+    },
+    {
+        name: 'Latin America',
+        growthRate: 92,
+        downloads: 45000000,
+        revenue: 85000000,
+        marketShare: 8,
+        trend: 'up',
+        isEmerging: true,
+        countries: ['Brazil', 'Argentina', 'Colombia', 'Chile'],
+        topGames: [
+            { name: 'Subway Surfers', icon: '🚇', downloads: 7000000 },
+            { name: 'Coin Master', icon: '🐷', downloads: 6000000 },
+            { name: 'PUBG Mobile', icon: '🍳', downloads: 5500000 }
+        ]
+    },
+    {
+        name: 'Middle East',
+        growthRate: 78,
+        downloads: 38000000,
+        revenue: 120000000,
+        marketShare: 6,
+        trend: 'up',
+        isEmerging: true,
+        countries: ['UAE', 'Saudi Arabia', 'Turkey', 'Egypt'],
+        topGames: [
+            { name: 'Royal Match', icon: '🏰', downloads: 8000000 },
+            { name: 'PUBG Mobile', icon: '🍳', downloads: 6500000 },
+            { name: 'Coin Master', icon: '🐷', downloads: 4200000 }
+        ]
+    },
+    {
+        name: 'Africa',
+        growthRate: 125,
+        downloads: 22000000,
+        revenue: 35000000,
+        marketShare: 3,
+        trend: 'up',
+        isEmerging: true,
+        countries: ['South Africa', 'Nigeria', 'Kenya', 'Egypt'],
+        topGames: [
+            { name: 'Subway Surfers', icon: '🚇', downloads: 4500000 },
+            { name: 'Candy Crush Saga', icon: '🍬', downloads: 3800000 },
+            { name: 'PUBG Mobile', icon: '🍳', downloads: 3200000 }
+        ]
+    },
+    {
+        name: 'Southeast Asia',
+        growthRate: 105,
+        downloads: 72000000,
+        revenue: 180000000,
+        marketShare: 12,
+        trend: 'up',
+        isEmerging: true,
+        countries: ['Indonesia', 'Philippines', 'Thailand', 'Vietnam', 'Malaysia'],
+        topGames: [
+            { name: 'PUBG Mobile', icon: '🍳', downloads: 12000000 },
+            { name: 'Genshin Impact', icon: '🌌', downloads: 5500000 },
+            { name: 'Roblox', icon: '🟥', downloads: 8500000 }
+        ]
+    },
+    {
+        name: 'Oceania',
+        growthRate: 32,
+        downloads: 12000000,
+        revenue: 58000000,
+        marketShare: 2,
+        trend: 'up',
+        isEmerging: false,
+        countries: ['Australia', 'New Zealand'],
+        topGames: [
+            { name: 'Roblox', icon: '🟥', downloads: 3200000 },
+            { name: 'Candy Crush Saga', icon: '🍬', downloads: 2800000 },
+            { name: 'Royal Match', icon: '🏰', downloads: 2500000 }
+        ]
+    }
+];
+

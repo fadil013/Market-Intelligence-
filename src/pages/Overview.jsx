@@ -7,6 +7,7 @@ import RankingsGrid from '../components/RankingsGrid';
 import AdvancedFilter from '../components/AdvancedFilter';
 import AppDetailView from '../components/AppDetailView';
 import TrendingCategories from '../components/TrendingCategories';
+import RegionHeatmap from '../components/RegionHeatmap';
 import {
     kpiSummary,
     platformComparisonData,
@@ -15,7 +16,8 @@ import {
     businessModels,
     gameRankings,
     appRankings,
-    appDetailsData
+    appDetailsData,
+    regionalGrowth
 } from '../data/mockData';
 
 const Overview = () => {
@@ -24,6 +26,7 @@ const Overview = () => {
     const [selectedDomain, setSelectedDomain] = useState('Games');
     const [filtersApplied, setFiltersApplied] = useState(false);
     const [filtersPanelOpen, setFiltersPanelOpen] = useState(false);
+    const [regionalMetric, setRegionalMetric] = useState('growth');
     const [activeFilters, setActiveFilters] = useState({
         domain: 'Games',
         category: 'All',
@@ -206,6 +209,73 @@ const Overview = () => {
                         
                         {/* Trending Categories After Top Games */}
                         <TrendingCategories />
+                        
+                        {/* Regional Growth Heatmap - Phase 3 */}
+                        <div style={{ marginTop: '16px' }}>
+                            <div className="section-header" style={{ marginBottom: '20px' }}>
+                                <h2 className="section-title">Regional Growth Heatmap</h2>
+                                <div style={{ 
+                                    display: 'flex', 
+                                    gap: '8px',
+                                    alignItems: 'center'
+                                }}>
+                                    <button
+                                        onClick={() => setRegionalMetric('growth')}
+                                        style={{
+                                            padding: '6px 12px',
+                                            background: regionalMetric === 'growth' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                                            border: regionalMetric === 'growth' ? '1px solid #3b82f6' : '1px solid rgba(255, 255, 255, 0.1)',
+                                            borderRadius: '6px',
+                                            color: regionalMetric === 'growth' ? '#60a5fa' : '#9ca3af',
+                                            fontSize: '11px',
+                                            fontWeight: 700,
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s'
+                                        }}
+                                    >
+                                        GROWTH
+                                    </button>
+                                    <button
+                                        onClick={() => setRegionalMetric('downloads')}
+                                        style={{
+                                            padding: '6px 12px',
+                                            background: regionalMetric === 'downloads' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                                            border: regionalMetric === 'downloads' ? '1px solid #3b82f6' : '1px solid rgba(255, 255, 255, 0.1)',
+                                            borderRadius: '6px',
+                                            color: regionalMetric === 'downloads' ? '#60a5fa' : '#9ca3af',
+                                            fontSize: '11px',
+                                            fontWeight: 700,
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s'
+                                        }}
+                                    >
+                                        DOWNLOADS
+                                    </button>
+                                    <button
+                                        onClick={() => setRegionalMetric('revenue')}
+                                        style={{
+                                            padding: '6px 12px',
+                                            background: regionalMetric === 'revenue' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                                            border: regionalMetric === 'revenue' ? '1px solid #3b82f6' : '1px solid rgba(255, 255, 255, 0.1)',
+                                            borderRadius: '6px',
+                                            color: regionalMetric === 'revenue' ? '#60a5fa' : '#9ca3af',
+                                            fontSize: '11px',
+                                            fontWeight: 700,
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s'
+                                        }}
+                                    >
+                                        REVENUE
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="glass-panel" style={{ padding: '24px' }}>
+                                <div style={{ marginBottom: '16px' }}>
+                                    <p style={{ color: '#9ca3af', fontSize: '13px' }}>Track regional download growth, revenue trends, and emerging markets across the globe</p>
+                                </div>
+                                <RegionHeatmap regionalData={regionalGrowth} metric={regionalMetric} />
+                            </div>
+                        </div>
                         
                         <div style={{ marginTop: '16px' }}>
                             <div className="section-header" style={{ marginBottom: '20px' }}>
