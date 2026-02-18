@@ -174,6 +174,15 @@ const MarketCompare = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Monetization Analysis */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-xl font-bold text-white mb-2">Monetization Analysis</h3>
+                    <p className="text-gray-400 text-sm">ARPU rankings, IAP/Ads revenue breakdown, and paywall strategies</p>
+                </div>
+                <MonetizationAnalysis monetizationData={monetizationData} />
+            </div>
         </div>
     );
 };
