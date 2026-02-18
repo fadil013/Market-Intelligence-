@@ -1,6 +1,7 @@
 import React from 'react';
 import { Lightbulb, TrendingUp, Target, Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
-import { aiSuggestions } from '../data/mockData';
+import { aiSuggestions, opportunityData } from '../data/mockData';
+import AIOpportunityEngine from '../components/AIOpportunityEngine';
 
 const Suggestions = () => {
     const getCategoryColor = (category) => {
@@ -136,6 +137,17 @@ const Suggestions = () => {
                         <p className="text-gray-400 text-sm">45% better retention rates</p>
                     </div>
                 </div>
+            </div>
+
+            {/* AI Opportunity Engine - Phase 12 */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        🤖 AI Opportunity Engine
+                    </h3>
+                    <p className="text-gray-400">Market gap analysis with actionable game concept recommendations</p>
+                </div>
+                <AIOpportunityEngine opportunityData={opportunityData} />
             </div>
         </div>
     );

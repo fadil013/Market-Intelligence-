@@ -2302,4 +2302,248 @@ export const seasonalData = [
     }
 ];
 
+// AI Opportunity Engine Data
+export const opportunityData = [
+    {
+        niche: 'Idle + Pet Collection + PvP',
+        demandScore: 92,
+        competitionScore: 18,
+        revenuePotential: '$3-7M/month',
+        timeToSaturation: '8-12 months',
+        recommendation: 'HIGH PRIORITY',
+        reasoning: [
+            'Rising search volume (+178% MoM)',
+            'Only 2 established competitors in top 100',
+            'Strong IAP conversion potential (idle + gacha)',
+            'PvP adds retention hook missing in pure idle games'
+        ],
+        comparableGames: ['AFK Arena', 'Idle Heroes', 'Summoners War'],
+        suggestedMechanics: ['auto-battle', 'pet evolution', 'guild wars', 'gacha summoning', 'idle rewards']
+    },
+    {
+        niche: 'Roguelike + Deck Building + Co-op',
+        demandScore: 88,
+        competitionScore: 24,
+        revenuePotential: '$2-5M/month',
+        timeToSaturation: '6-10 months',
+        recommendation: 'HIGH PRIORITY',
+        reasoning: [
+            'Slay the Spire success proving demand (+$50M revenue)',
+            'Mobile co-op roguelikes underserved (only 3 quality titles)',
+            'Strong retention from run variety + social play',
+            'Premium + cosmetic IAP proven model'
+        ],
+        comparableGames: ['Slay the Spire', 'Monster Train', 'Dicey Dungeons'],
+        suggestedMechanics: ['synergy building', 'shared deck', 'permadeath', 'meta progression', 'daily challenges']
+    },
+    {
+        niche: 'Vampire Survivors + Battle Royale',
+        demandScore: 85,
+        competitionScore: 15,
+        revenuePotential: '$4-8M/month',
+        timeToSaturation: '5-8 months',
+        recommendation: 'HIGH PRIORITY',
+        reasoning: [
+            'Bullet heaven genre exploding (+340% search interest)',
+            'No established BR variant in top 50 yet',
+            'Fast session length perfect for mobile',
+            'Weapon skin monetization highly effective'
+        ],
+        comparableGames: ['Vampire Survivors', 'Brotato', 'Survivor.io'],
+        suggestedMechanics: ['auto-aim', 'weapon upgrades', 'last player standing', 'shrinking zone', 'power-up drops']
+    },
+    {
+        niche: 'Merge Mechanics + City Builder + Story',
+        demandScore: 81,
+        competitionScore: 42,
+        revenuePotential: '$2-4M/month',
+        timeToSaturation: '4-6 months',
+        recommendation: 'MEDIUM PRIORITY',
+        reasoning: [
+            'Merge games proven $20M+ revenue potential',
+            'Narrative layer adds differentiation (only 5 story-driven merge)',
+            'Female audience 65% - underserved demographic',
+            'Ad + IAP hybrid model performing well'
+        ],
+        comparableGames: ['Merge Mansion', 'Merge Gardens', 'EverMerge'],
+        suggestedMechanics: ['chain merging', 'quest system', 'character unlocks', 'decoration', 'energy system']
+    },
+    {
+        niche: 'Relaxation + ASMR + Puzzle',
+        demandScore: 79,
+        competitionScore: 28,
+        revenuePotential: '$1-3M/month',
+        timeToSaturation: '10-14 months',
+        recommendation: 'MEDIUM PRIORITY',
+        reasoning: [
+            'Wellness gaming growing 120% YoY',
+            'Low competition for premium ASMR puzzle hybrids',
+            'Strong retention (70%+ D7) from stress relief value',
+            'Apple Arcade / subscription model fit'
+        ],
+        comparableGames: ['Unpacking', 'A Little to the Left', 'Monument Valley'],
+        suggestedMechanics: ['tactile interactions', 'sound design focus', 'no timers', 'zen mode', 'satisfying animations']
+    },
+    {
+        niche: 'Auto Battler + NFT-Free Web3',
+        demandScore: 76,
+        competitionScore: 52,
+        revenuePotential: '$1-4M/month',
+        timeToSaturation: '3-5 months',
+        recommendation: 'MEDIUM PRIORITY',
+        reasoning: [
+            'Web3 gaming recovering from NFT crash',
+            'Token-gated tournaments have 85% retention',
+            'Axie Infinity proved $3B revenue potential',
+            'Must avoid NFT stigma - focus on play-and-earn'
+        ],
+        comparableGames: ['Axie Infinity', 'Splinterlands', 'Gods Unchained'],
+        suggestedMechanics: ['strategic positioning', 'unit synergies', 'seasonal rewards', 'ranked ladder', 'team composition']
+    },
+    {
+        niche: 'Sports Management + Real-Time Sim',
+        demandScore: 74,
+        competitionScore: 38,
+        revenuePotential: '$2-5M/month',
+        timeToSaturation: '7-11 months',
+        recommendation: 'MEDIUM PRIORITY',
+        reasoning: [
+            'FIFA Mobile $1B+ revenue proves sports demand',
+            'Management sims underserved (only 8 top titles)',
+            'Real-time match simulation adds engagement',
+            'Licensing deals create moat against clones'
+        ],
+        comparableGames: ['Top Eleven', 'Football Manager', 'NBA Live Mobile'],
+        suggestedMechanics: ['squad building', 'tactics board', 'transfer market', 'live match engine', 'season progression']
+    },
+    {
+        niche: 'Horror + Social Deduction + Mobile',
+        demandScore: 82,
+        competitionScore: 34,
+        revenuePotential: '$3-6M/month',
+        timeToSaturation: '6-9 months',
+        recommendation: 'HIGH PRIORITY',
+        reasoning: [
+            'Among Us $200M+ mobile revenue proves model',
+            'Horror theme underutilized (only 4 social deduction horror)',
+            'Viral potential through streaming/content creation',
+            'Cosmetic IAP average $8 ARPU in genre'
+        ],
+        comparableGames: ['Among Us', 'Project Winter', 'Dead by Daylight Mobile'],
+        suggestedMechanics: ['voice chat', 'role assignment', 'voting system', 'task completion', 'elimination rounds']
+    },
+    {
+        niche: 'Factory Builder + Tower Defense',
+        demandScore: 77,
+        competitionScore: 31,
+        revenuePotential: '$1-3M/month',
+        timeToSaturation: '9-14 months',
+        recommendation: 'MEDIUM PRIORITY',
+        reasoning: [
+            'Factorio PC success ($500M revenue) untapped on mobile',
+            'Hybrid genre gap - no top-tier factory-TD mobile game',
+            'Strong retention from optimization gameplay loop',
+            'Premium model viable with cosmetic DLC'
+        ],
+        comparableGames: ['Factorio', 'Mindustry', 'Infinitode 2'],
+        suggestedMechanics: ['conveyor belts', 'automated defenses', 'resource chains', 'tech tree', 'wave scaling']
+    },
+    {
+        niche: 'Cozy Game + Life Sim + Multiplayer',
+        demandScore: 86,
+        competitionScore: 26,
+        revenuePotential: '$2-6M/month',
+        timeToSaturation: '7-10 months',
+        recommendation: 'HIGH PRIORITY',
+        reasoning: [
+            'Stardew Valley mobile: $150M revenue proves demand',
+            'Cozy multiplayer gap (Animal Crossing vibes on mobile)',
+            'Female demographic 70% - high spending potential',
+            'Cosmetic + expansion pack monetization strong fit'
+        ],
+        comparableGames: ['Stardew Valley', 'Hay Day', 'Palia'],
+        suggestedMechanics: ['farming', 'relationship building', 'home decoration', 'seasonal events', 'co-op activities']
+    },
+    {
+        niche: 'Incremental Clicker + Space Exploration',
+        demandScore: 72,
+        competitionScore: 45,
+        revenuePotential: '$1-2M/month',
+        timeToSaturation: '5-7 months',
+        recommendation: 'LOW PRIORITY',
+        reasoning: [
+            'Idle clicker market saturated but space theme less common',
+            'Ad revenue model reliable ($1.2 eCPM average)',
+            'Low development cost vs potential return',
+            'Prestige mechanics drive long-term retention'
+        ],
+        comparableGames: ['Egg Inc', 'Antimatter Dimensions', 'Space Company'],
+        suggestedMechanics: ['exponential growth', 'prestige layers', 'planet colonization', 'research tree', 'offline progress']
+    },
+    {
+        niche: 'Puzzle + Dating Sim + Visual Novel',
+        demandScore: 80,
+        competitionScore: 36,
+        revenuePotential: '$2-4M/month',
+        timeToSaturation: '8-12 months',
+        recommendation: 'MEDIUM PRIORITY',
+        reasoning: [
+            'Choices / Episode apps: $300M+ combined revenue',
+            'Puzzle layer adds gameplay depth (Puzzle Quest model)',
+            'Strong female audience with premium IAP willingness',
+            'Chapter/story monetization proven ($5 avg IAP)'
+        ],
+        comparableGames: ['Choices', 'Episode', 'Puzzle Quest'],
+        suggestedMechanics: ['story branches', 'match-3 battles', 'relationship points', 'unlockable endings', 'wardrobe system']
+    },
+    {
+        niche: 'Shooting + Extraction + Mobile-First',
+        demandScore: 89,
+        competitionScore: 19,
+        revenuePotential: '$5-10M/month',
+        timeToSaturation: '6-9 months',
+        recommendation: 'HIGH PRIORITY',
+        reasoning: [
+            'Tarkov / DMZ popularized extraction gameplay ($500M+ PC)',
+            'No mobile-native extraction shooter in top 50',
+            'Battle pass monetization $12+ avg spend per user',
+            'Shorter session length (10-15min) perfect for mobile'
+        ],
+        comparableGames: ['Escape from Tarkov', 'Hunt: Showdown', 'The Cycle'],
+        suggestedMechanics: ['loot extraction', 'permadeath risk', 'stash progression', 'tactical movement', 'PvPvE']
+    },
+    {
+        niche: 'Card Battler + Auto Chess',
+        demandScore: 78,
+        competitionScore: 41,
+        revenuePotential: '$2-4M/month',
+        timeToSaturation: '5-8 months',
+        recommendation: 'LOW PRIORITY',
+        reasoning: [
+            'Marvel Snap proved fast card battler demand ($200M revenue)',
+            'Auto Chess mechanics declining but still 40M MAU',
+            'Hybrid underexplored - only 2 notable titles',
+            'High churn risk - needs strong IP or innovation'
+        ],
+        comparableGames: ['Marvel Snap', 'Teamfight Tactics', 'Hearthstone Battlegrounds'],
+        suggestedMechanics: ['card drafting', 'board positioning', 'synergy building', 'quick rounds', 'seasonal ranks']
+    },
+    {
+        niche: 'Rhythm Game + Roguelike Progression',
+        demandScore: 75,
+        competitionScore: 29,
+        revenuePotential: '$1-3M/month',
+        timeToSaturation: '10-15 months',
+        recommendation: 'WATCH',
+        reasoning: [
+            'Crypt of the NecroDancer proved concept ($5M revenue)',
+            'Mobile rhythm market stable but not growing',
+            'Niche audience but highly engaged (80% D30 retention)',
+            'Music licensing costs limit profitability'
+        ],
+        comparableGames: ['Crypt of the NecroDancer', 'Beat Saber', 'Geometry Dash'],
+        suggestedMechanics: ['beat-synced combat', 'procedural levels', 'unlock progression', 'custom songs', 'combo multipliers']
+    }
+];
+
 
