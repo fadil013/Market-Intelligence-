@@ -10,10 +10,11 @@ import {
     Cell,
 } from 'recharts';
 import { TrendingUp, Flame, ArrowUpRight } from 'lucide-react';
-import { allGames, genreIntelligence, mechanicData, cloneData } from '../data/mockData';
+import { allGames, genreIntelligence, mechanicData, cloneData, seasonalData } from '../data/mockData';
 import GenreIntelligence from '../components/GenreIntelligence';
 import MechanicTagging from '../components/MechanicTagging';
 import CloneDetection from '../components/CloneDetection';
+import SeasonalityOverlay from '../components/SeasonalityOverlay';
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -169,6 +170,17 @@ const BoostTracker = () => {
                     <p className="text-gray-400">Market saturation analysis, fast follower tracking, and competitive intelligence</p>
                 </div>
                 <CloneDetection cloneData={cloneData} />
+            </div>
+
+            {/* Seasonality & Event Overlay - Phase 11 */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        📅 Seasonality & Event Overlay
+                    </h3>
+                    <p className="text-gray-400">External events context, performance correlation, and upcoming opportunities</p>
+                </div>
+                <SeasonalityOverlay seasonalData={seasonalData} />
             </div>
         </div>
     );

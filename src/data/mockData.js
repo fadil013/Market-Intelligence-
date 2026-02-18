@@ -2048,4 +2048,258 @@ export const alertsData = [
     }
 ];
 
+// Seasonality & Event Overlay Data
+export const seasonalData = [
+    {
+        date: '2025-01-24',
+        type: 'cultural',
+        name: 'Lunar New Year',
+        description: 'Chinese New Year celebrations drive massive engagement in APAC region',
+        impact: 'high',
+        gamePerformance: {
+            'Asian-themed Games': { spike: '+280%', reason: 'Cultural relevance and themed events' },
+            'Casino & Slots': { spike: '+195%', reason: 'Traditional gambling customs' },
+            'RPG Games': { spike: '+145%', reason: 'Red envelope promotions and gift mechanics' }
+        }
+    },
+    {
+        date: '2025-02-14',
+        type: 'holiday',
+        name: 'Valentine\'s Day',
+        description: 'Romance-themed content and limited events boost engagement',
+        impact: 'medium',
+        gamePerformance: {
+            'Dating Sims': { spike: '+220%', reason: 'Direct thematic alignment' },
+            'Puzzle Games': { spike: '+120%', reason: 'Casual gifting and themed content' },
+            'Social Games': { spike: '+98%', reason: 'Friend interactions and sharing' }
+        }
+    },
+    {
+        date: '2025-03-15',
+        type: 'gaming',
+        name: 'GDC (Game Developers Conference)',
+        description: 'Major industry event with new game announcements and trends',
+        impact: 'medium',
+        gamePerformance: {
+            'Indie Games': { spike: '+165%', reason: 'Showcase exposure and press coverage' },
+            'Early Access': { spike: '+134%', reason: 'Developer visibility boost' }
+        }
+    },
+    {
+        date: '2025-03-23',
+        type: 'platform',
+        name: 'Apple Spring Event',
+        description: 'Apple product launches typically feature gaming showcases',
+        impact: 'high',
+        gamePerformance: {
+            'Featured Games': { spike: '+320%', reason: 'Direct Apple editorial feature' },
+            'AR Games': { spike: '+245%', reason: 'New hardware capabilities showcase' },
+            'Premium Games': { spike: '+180%', reason: 'Quality focus messaging' }
+        }
+    },
+    {
+        date: '2025-04-01',
+        type: 'cultural',
+        name: 'April Fools Day',
+        description: 'Viral marketing opportunities and playful content updates',
+        impact: 'low',
+        gamePerformance: {
+            'Casual Games': { spike: '+85%', reason: 'Humor and viral sharing potential' },
+            'Social Games': { spike: '+72%', reason: 'Meme-worthy content and pranks' }
+        }
+    },
+    {
+        date: '2025-05-01',
+        type: 'holiday',
+        name: 'May Day / Labor Day',
+        description: 'Holiday weekend in many countries drives mobile gaming time',
+        impact: 'medium',
+        gamePerformance: {
+            'Strategy Games': { spike: '+142%', reason: 'Extended play sessions on holiday' },
+            'Multiplayer Games': { spike: '+128%', reason: 'Social gatherings and co-play' },
+            'Puzzle Games': { spike: '+115%', reason: 'Casual weekend entertainment' }
+        }
+    },
+    {
+        date: '2025-06-10',
+        type: 'gaming',
+        name: 'Summer Game Fest',
+        description: 'Major gaming showcase event with AAA announcements',
+        impact: 'high',
+        gamePerformance: {
+            'Hyped Releases': { spike: '+295%', reason: 'Pre-launch marketing surge' },
+            'Similar Genre Games': { spike: '+185%', reason: 'Spillover interest from announcements' },
+            'Indie Showcases': { spike: '+156%', reason: 'Increased visibility from event' }
+        }
+    },
+    {
+        date: '2025-07-04',
+        type: 'holiday',
+        name: 'US Independence Day',
+        description: 'Major US holiday with increased leisure time',
+        impact: 'medium',
+        gamePerformance: {
+            'Patriotic Themes': { spike: '+210%', reason: 'Themed content resonates' },
+            'Party Games': { spike: '+167%', reason: 'Social gatherings and BBQs' },
+            'Casual Games': { spike: '+134%', reason: 'Holiday downtime entertainment' }
+        }
+    },
+    {
+        date: '2025-07-15',
+        type: 'platform',
+        name: 'Steam Summer Sale',
+        description: 'Massive PC gaming sale drives wishlists and engagement',
+        impact: 'high',
+        gamePerformance: {
+            'PC-Mobile Cross-Platform': { spike: '+245%', reason: 'Cross-promotion opportunities' },
+            'Premium Mobile Ports': { spike: '+198%', reason: 'Purchase intent spillover' },
+            'Strategy & Simulation': { spike: '+176%', reason: 'Genre popularity on Steam' }
+        }
+    },
+    {
+        date: '2025-08-15',
+        type: 'holiday',
+        name: 'Back to School Season',
+        description: 'Students purchasing new devices and looking for content',
+        impact: 'high',
+        gamePerformance: {
+            'Educational Games': { spike: '+310%', reason: 'Parent purchases for learning' },
+            'Puzzle & Brain Training': { spike: '+234%', reason: 'Academic preparation mindset' },
+            'Teen-focused Games': { spike: '+187%', reason: 'School social dynamics and new devices' }
+        }
+    },
+    {
+        date: '2025-08-25',
+        type: 'gaming',
+        name: 'Gamescom',
+        description: 'Europe\'s largest gaming event with major announcements',
+        impact: 'high',
+        gamePerformance: {
+            'EU Featured Games': { spike: '+265%', reason: 'Regional marketing focus' },
+            'Upcoming Releases': { spike: '+223%', reason: 'Demo buzz and streamer coverage' },
+            'Indie Darlings': { spike: '+189%', reason: 'Indie showcase exposure' }
+        }
+    },
+    {
+        date: '2025-09-10',
+        type: 'platform',
+        name: 'Apple iPhone Launch',
+        description: 'New iPhone models showcase mobile gaming capabilities',
+        impact: 'high',
+        gamePerformance: {
+            'Graphics Showcases': { spike: '+340%', reason: 'Hardware demo prominence' },
+            'Apple Arcade': { spike: '+278%', reason: 'Subscription bundling push' },
+            'Premium Games': { spike: '+215%', reason: 'Quality gaming messaging' }
+        }
+    },
+    {
+        date: '2025-10-15',
+        type: 'gaming',
+        name: 'Steam Next Fest',
+        description: 'Free game demos and indie developer showcase',
+        impact: 'medium',
+        gamePerformance: {
+            'Demo-Available Games': { spike: '+198%', reason: 'Direct trial opportunity' },
+            'Wishlist Surges': { spike: '+167%', reason: 'Discovery and interest capture' }
+        }
+    },
+    {
+        date: '2025-10-31',
+        type: 'holiday',
+        name: 'Halloween',
+        description: 'Horror and spooky-themed content drives seasonal engagement',
+        impact: 'high',
+        gamePerformance: {
+            'Horror Games': { spike: '+385%', reason: 'Perfect thematic alignment' },
+            'Halloween Events': { spike: '+298%', reason: 'Limited-time content urgency' },
+            'Dark Fantasy RPGs': { spike: '+214%', reason: 'Atmospheric fit with season' }
+        }
+    },
+    {
+        date: '2025-11-11',
+        type: 'cultural',
+        name: 'Singles Day (11.11)',
+        description: 'Massive shopping event in China and APAC region',
+        impact: 'high',
+        gamePerformance: {
+            'In-App Purchase Games': { spike: '+312%', reason: 'Consumer spending mentality peak' },
+            'E-commerce Mini-Games': { spike: '+267%', reason: 'Shopping platform integrations' },
+            'Gacha Games': { spike: '+234%', reason: 'Sale promotions and discounts' }
+        }
+    },
+    {
+        date: '2025-11-24',
+        type: 'holiday',
+        name: 'Thanksgiving',
+        description: 'US holiday weekend with family gatherings and leisure time',
+        impact: 'medium',
+        gamePerformance: {
+            'Family Games': { spike: '+198%', reason: 'Multi-generational play during gatherings' },
+            'Puzzle Games': { spike: '+165%', reason: 'Casual entertainment during downtime' },
+            'Party Games': { spike: '+147%', reason: 'Social gatherings and co-play' }
+        }
+    },
+    {
+        date: '2025-11-28',
+        type: 'cultural',
+        name: 'Black Friday',
+        description: 'Major shopping event with game sales and IAP promotions',
+        impact: 'high',
+        gamePerformance: {
+            'Premium Games': { spike: '+420%', reason: 'Deep discounts drive purchases' },
+            'IAP-Heavy Games': { spike: '+345%', reason: 'Bonus currency sales' },
+            'New Releases': { spike: '+267%', reason: 'Launch timing strategy' }
+        }
+    },
+    {
+        date: '2025-12-10',
+        type: 'platform',
+        name: 'Game Awards',
+        description: 'Industry awards show with major announcements and showcases',
+        impact: 'high',
+        gamePerformance: {
+            'Nominated Games': { spike: '+387%', reason: 'Award recognition buzz' },
+            'Announced Games': { spike: '+312%', reason: 'Reveal trailer virality' },
+            'Winner Games': { spike: '+445%', reason: 'Post-award surge and sales' }
+        }
+    },
+    {
+        date: '2025-12-20',
+        type: 'platform',
+        name: 'Google Play Winter Sale',
+        description: 'Android platform-wide sale driving downloads and revenue',
+        impact: 'high',
+        gamePerformance: {
+            'Featured Android Games': { spike: '+289%', reason: 'Platform editorial promotion' },
+            'Premium Games': { spike: '+245%', reason: 'Holiday gift purchases' },
+            'Subscription Games': { spike: '+198%', reason: 'Holiday trial offers' }
+        }
+    },
+    {
+        date: '2025-12-25',
+        type: 'holiday',
+        name: 'Christmas',
+        description: 'Peak holiday season with new device activations and gift card redemptions',
+        impact: 'high',
+        gamePerformance: {
+            'Top Chart Games': { spike: '+465%', reason: 'New device discovery and downloads' },
+            'Family-Friendly': { spike: '+398%', reason: 'Holiday gatherings and all-ages appeal' },
+            'Puzzle Games': { spike: '+345%', reason: 'Casual holiday entertainment' },
+            'Premium Games': { spike: '+312%', reason: 'Gift card redemptions surge' }
+        }
+    },
+    {
+        date: '2026-01-01',
+        type: 'holiday',
+        name: 'New Year\'s Day',
+        description: 'Resolution-focused content and new year engagement spike',
+        impact: 'medium',
+        gamePerformance: {
+            'Fitness Games': { spike: '+287%', reason: 'New Year health resolutions' },
+            'Productivity & Brain Training': { spike: '+234%', reason: 'Self-improvement goals' },
+            'Habit-Building Games': { spike: '+198%', reason: 'Resolution commitment mechanics' }
+        }
+    }
+];
+
 
