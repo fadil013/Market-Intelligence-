@@ -3445,4 +3445,176 @@ export const techStackData = [
     }
 ];
 
+// Phase 16: Beta / Soft Launch Monitoring
+export const betaGamesData = [
+    {
+        gameName: 'Project Stellar',
+        softLaunchMetrics: {
+            testMarkets: ['Philippines', 'Canada'],
+            launchDate: '2025-12-01',
+            daysInBeta: 75,
+            retention: {
+                day1: '48%',
+                day7: '22%',
+                day30: '9%'
+            },
+            arpu: '$1.85',
+            sessionLength: '12.3 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.85,
+            estimatedGlobalRevenue: '$15-25M/month',
+            recommendedLaunchTiming: 'Q2 2026',
+            confidence: 'high'
+        }
+    },
+    {
+        gameName: 'Merge Empire',
+        softLaunchMetrics: {
+            testMarkets: ['Australia', 'New Zealand'],
+            launchDate: '2026-01-10',
+            daysInBeta: 45,
+            retention: {
+                day1: '42%',
+                day7: '18%',
+                day30: '7%'
+            },
+            arpu: '$1.45',
+            sessionLength: '10.5 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.72,
+            estimatedGlobalRevenue: '$8-15M/month',
+            recommendedLaunchTiming: 'Q2 2026',
+            confidence: 'high'
+        }
+    },
+    {
+        gameName: 'Battle Legends',
+        softLaunchMetrics: {
+            testMarkets: ['Philippines', 'Singapore'],
+            launchDate: '2025-11-15',
+            daysInBeta: 90,
+            retention: {
+                day1: '38%',
+                day7: '15%',
+                day30: '5%'
+            },
+            arpu: '$1.12',
+            sessionLength: '9.8 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.68,
+            estimatedGlobalRevenue: '$5-12M/month',
+            recommendedLaunchTiming: 'Q3 2026',
+            confidence: 'medium'
+        }
+    },
+    {
+        gameName: 'Idle Fortress',
+        softLaunchMetrics: {
+            testMarkets: ['Canada'],
+            launchDate: '2026-01-20',
+            daysInBeta: 35,
+            retention: {
+                day1: '45%',
+                day7: '20%',
+                day30: '8%'
+            },
+            arpu: '$1.65',
+            sessionLength: '11.2 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.78,
+            estimatedGlobalRevenue: '$10-18M/month',
+            recommendedLaunchTiming: 'Q2 2026',
+            confidence: 'high'
+        }
+    },
+    {
+        gameName: 'Puzzle Quest Heroes',
+        softLaunchMetrics: {
+            testMarkets: ['Australia', 'Philippines'],
+            launchDate: '2025-12-15',
+            daysInBeta: 60,
+            retention: {
+                day1: '40%',
+                day7: '16%',
+                day30: '6%'
+            },
+            arpu: '$0.95',
+            sessionLength: '8.5 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.62,
+            estimatedGlobalRevenue: '$4-10M/month',
+            recommendedLaunchTiming: 'Q3 2026',
+            confidence: 'medium'
+        }
+    },
+    {
+        gameName: 'Racing Rivals',
+        softLaunchMetrics: {
+            testMarkets: ['Philippines', 'Canada', 'Singapore'],
+            launchDate: '2025-11-01',
+            daysInBeta: 105,
+            retention: {
+                day1: '52%',
+                day7: '25%',
+                day30: '11%'
+            },
+            arpu: '$2.10',
+            sessionLength: '14.5 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.88,
+            estimatedGlobalRevenue: '$20-35M/month',
+            recommendedLaunchTiming: 'Q2 2026',
+            confidence: 'high'
+        }
+    },
+    {
+        gameName: 'Card Clash',
+        softLaunchMetrics: {
+            testMarkets: ['Canada', 'Australia'],
+            launchDate: '2026-01-05',
+            daysInBeta: 50,
+            retention: {
+                day1: '35%',
+                day7: '12%',
+                day30: '4%'
+            },
+            arpu: '$0.78',
+            sessionLength: '7.2 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.48,
+            estimatedGlobalRevenue: '$2-6M/month',
+            recommendedLaunchTiming: 'Q4 2026',
+            confidence: 'low'
+        }
+    },
+    {
+        gameName: 'Tower Defense X',
+        softLaunchMetrics: {
+            testMarkets: ['Philippines'],
+            launchDate: '2025-12-20',
+            daysInBeta: 55,
+            retention: {
+                day1: '43%',
+                day7: '19%',
+                day30: '7%'
+            },
+            arpu: '$1.35',
+            sessionLength: '10.8 minutes'
+        },
+        predictionScores: {
+            globalSuccessProbability: 0.74,
+            estimatedGlobalRevenue: '$8-14M/month',
+            recommendedLaunchTiming: 'Q2 2026',
+            confidence: 'high'
+        }
+    }
+];
+
 

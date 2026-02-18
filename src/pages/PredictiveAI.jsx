@@ -12,7 +12,8 @@ import {
     ComposedChart,
 } from 'recharts';
 import { Brain, TrendingUp, AlertCircle, CheckCircle, Calendar } from 'lucide-react';
-import { predictiveData } from '../data/mockData';
+import { predictiveData, betaGamesData } from '../data/mockData';
+import BetaLaunchMonitoring from '../components/BetaLaunchMonitoring';
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -234,7 +235,16 @@ const PredictiveAI = () => {
                     </div>
                 </div>
             </div>
-
+            {/* Beta / Soft Launch Monitoring - Phase 16 */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        🚀 Beta / Soft Launch Monitoring
+                    </h3>
+                    <p className="text-gray-400">Pre-global launch intelligence, retention analysis, and success predictions</p>
+                </div>
+                <BetaLaunchMonitoring betaGamesData={betaGamesData} />
+            </div>
             {/* Model Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="glass-panel p-6 border-l-4 border-emerald-500">
