@@ -1599,4 +1599,209 @@ export const reviewData = [
     }
 ];
 
+// Clone & Copycat Detection Data
+export const cloneData = [
+    {
+        trendGame: 'Merge Dragons',
+        icon: '🐉',
+        cloneAnalysis: {
+            similarGamesCount: 63,
+            saturationLevel: 'critical',
+            topClones: [
+                { name: 'Merge Magic', publisher: 'Zynga', similarity: 0.89, launchDate: '45 days after original', performance: 'successful' },
+                { name: 'Merge Tales', publisher: 'Gram Games', similarity: 0.85, launchDate: '60 days after original', performance: 'moderate' },
+                { name: 'Dragon Merge', publisher: 'Tap Tap Games', similarity: 0.92, launchDate: '30 days after original', performance: 'successful' },
+                { name: 'Merge World', publisher: 'Playrix', similarity: 0.81, launchDate: '90 days after original', performance: 'moderate' },
+                { name: 'Fantasy Merge', publisher: 'Lion Studios', similarity: 0.87, launchDate: '75 days after original', performance: 'poor' }
+            ],
+            marketShareDistribution: {
+                original: 28,
+                topClones: 52,
+                others: 20
+            },
+            recommendation: 'Critical saturation - avoid market entry. Original losing market share to clones.'
+        }
+    },
+    {
+        trendGame: 'Among Us',
+        icon: '🔴',
+        cloneAnalysis: {
+            similarGamesCount: 47,
+            saturationLevel: 'high',
+            topClones: [
+                { name: 'Imposter 3D', publisher: 'Voodoo', similarity: 0.84, launchDate: '20 days after viral', performance: 'successful' },
+                { name: 'Suspects: Mystery Mansion', publisher: 'Wildlife Studios', similarity: 0.78, launchDate: '40 days after viral', performance: 'moderate' },
+                { name: 'Space Mafia', publisher: 'SayGames', similarity: 0.91, launchDate: '15 days after viral', performance: 'successful' },
+                { name: 'Crewmate Detective', publisher: 'AppLovin', similarity: 0.86, launchDate: '35 days after viral', performance: 'poor' }
+            ],
+            marketShareDistribution: {
+                original: 45,
+                topClones: 35,
+                others: 20
+            },
+            recommendation: 'High saturation but original maintains dominant position. Opportunity for differentiated mechanics.'
+        }
+    },
+    {
+        trendGame: 'Wordle',
+        icon: '📝',
+        cloneAnalysis: {
+            similarGamesCount: 89,
+            saturationLevel: 'critical',
+            topClones: [
+                { name: 'Word Master', publisher: 'Zynga', similarity: 0.95, launchDate: '10 days after viral', performance: 'successful' },
+                { name: 'Wordly', publisher: 'Gram Games', similarity: 0.93, launchDate: '12 days after viral', performance: 'successful' },
+                { name: 'Word Guess', publisher: 'Lion Studios', similarity: 0.90, launchDate: '8 days after viral', performance: 'moderate' },
+                { name: 'Daily Word', publisher: 'Voodoo', similarity: 0.88, launchDate: '15 days after viral', performance: 'successful' },
+                { name: 'Guess the Word', publisher: 'SayGames', similarity: 0.92, launchDate: '7 days after viral', performance: 'poor' }
+            ],
+            marketShareDistribution: {
+                original: 22,
+                topClones: 58,
+                others: 20
+            },
+            recommendation: 'Critical saturation - market completely flooded. Original overtaken by fast followers.'
+        }
+    },
+    {
+        trendGame: 'Vampire Survivors',
+        icon: '🧛',
+        cloneAnalysis: {
+            similarGamesCount: 34,
+            saturationLevel: 'high',
+            topClones: [
+                { name: 'Magic Survival', publisher: 'Leme Games', similarity: 0.82, launchDate: '50 days after original', performance: 'successful' },
+                { name: 'Survivor.io', publisher: 'Habby', similarity: 0.79, launchDate: '60 days after original', performance: 'successful' },
+                { name: 'Archero', publisher: 'Habby', similarity: 0.73, launchDate: '40 days after original', performance: 'successful' },
+                { name: 'Death Survivor', publisher: 'Lion Studios', similarity: 0.85, launchDate: '55 days after original', performance: 'moderate' }
+            ],
+            marketShareDistribution: {
+                original: 38,
+                topClones: 42,
+                others: 20
+            },
+            recommendation: 'High saturation with successful clones. Strong differentiation required for new entries.'
+        }
+    },
+    {
+        trendGame: 'Brawl Stars',
+        icon: '⭐',
+        cloneAnalysis: {
+            similarGamesCount: 28,
+            saturationLevel: 'medium',
+            topClones: [
+                { name: 'Heroes Strike', publisher: 'Wolffun Game', similarity: 0.76, launchDate: '90 days after original', performance: 'moderate' },
+                { name: 'Battle Arena', publisher: 'Tap Tap Games', similarity: 0.71, launchDate: '120 days after original', performance: 'poor' },
+                { name: 'Squad Busters', publisher: 'Lion Studios', similarity: 0.68, launchDate: '100 days after original', performance: 'poor' },
+                { name: 'Arena Heroes', publisher: 'AppLovin', similarity: 0.74, launchDate: '95 days after original', performance: 'moderate' }
+            ],
+            marketShareDistribution: {
+                original: 62,
+                topClones: 23,
+                others: 15
+            },
+            recommendation: 'Medium saturation - original dominates. Clone attempts mostly unsuccessful due to strong brand.'
+        }
+    },
+    {
+        trendGame: 'Stumble Guys',
+        icon: '🏃',
+        cloneAnalysis: {
+            similarGamesCount: 41,
+            saturationLevel: 'high',
+            topClones: [
+                { name: 'Fun Race 3D', publisher: 'Good Job Games', similarity: 0.80, launchDate: '25 days after original', performance: 'successful' },
+                { name: 'Fall Dudes', publisher: 'Voodoo', similarity: 0.88, launchDate: '20 days after original', performance: 'successful' },
+                { name: 'Run Royale', publisher: 'Lion Studios', similarity: 0.84, launchDate: '30 days after original', performance: 'moderate' },
+                { name: 'Knockout Race', publisher: 'SayGames', similarity: 0.82, launchDate: '35 days after original', performance: 'moderate' }
+            ],
+            marketShareDistribution: {
+                original: 42,
+                topClones: 38,
+                others: 20
+            },
+            recommendation: 'High saturation - competitive clone market. Differentiation through IP licensing recommended.'
+        }
+    },
+    {
+        trendGame: 'Marvel Snap',
+        icon: '🃏',
+        cloneAnalysis: {
+            similarGamesCount: 18,
+            saturationLevel: 'low',
+            topClones: [
+                { name: 'Card Clash', publisher: 'Tap Tap Games', similarity: 0.65, launchDate: '120 days after original', performance: 'poor' },
+                { name: 'Quick Cards', publisher: 'Lion Studios', similarity: 0.62, launchDate: '140 days after original', performance: 'poor' },
+                { name: 'Hero Cards', publisher: 'AppLovin', similarity: 0.68, launchDate: '130 days after original', performance: 'moderate' }
+            ],
+            marketShareDistribution: {
+                original: 75,
+                topClones: 15,
+                others: 10
+            },
+            recommendation: 'Low saturation - strong IP protection. Clones struggle without licensed characters.'
+        }
+    },
+    {
+        trendGame: 'Royal Match',
+        icon: '👑',
+        cloneAnalysis: {
+            similarGamesCount: 52,
+            saturationLevel: 'high',
+            topClones: [
+                { name: 'King\'s Choice', publisher: 'Gram Games', similarity: 0.83, launchDate: '40 days after original', performance: 'successful' },
+                { name: 'Castle Crush', publisher: 'Playrix', similarity: 0.79, launchDate: '55 days after original', performance: 'moderate' },
+                { name: 'Royal Tiles', publisher: 'Lion Studios', similarity: 0.86, launchDate: '35 days after original', performance: 'successful' },
+                { name: 'Match Kingdom', publisher: 'Voodoo', similarity: 0.81, launchDate: '50 days after original', performance: 'moderate' },
+                { name: 'Crown Match', publisher: 'SayGames', similarity: 0.84, launchDate: '45 days after original', performance: 'poor' }
+            ],
+            marketShareDistribution: {
+                original: 48,
+                topClones: 32,
+                others: 20
+            },
+            recommendation: 'High saturation but original maintains lead through marketing spend. High CPI competition.'
+        }
+    },
+    {
+        trendGame: 'State of Survival',
+        icon: '🧟',
+        cloneAnalysis: {
+            similarGamesCount: 37,
+            saturationLevel: 'medium',
+            topClones: [
+                { name: 'Zombie Strike', publisher: 'Tap Tap Games', similarity: 0.77, launchDate: '80 days after original', performance: 'moderate' },
+                { name: 'Last Shelter', publisher: 'Long Tech', similarity: 0.74, launchDate: '95 days after original', performance: 'successful' },
+                { name: 'Survival Squad', publisher: 'Lion Studios', similarity: 0.79, launchDate: '70 days after original', performance: 'poor' },
+                { name: 'Dead Empire', publisher: 'AppLovin', similarity: 0.76, launchDate: '85 days after original', performance: 'moderate' }
+            ],
+            marketShareDistribution: {
+                original: 55,
+                topClones: 30,
+                others: 15
+            },
+            recommendation: 'Medium saturation - genre crowded but differentiation through celebrity endorsements works.'
+        }
+    },
+    {
+        trendGame: 'Honkai: Star Rail',
+        icon: '🚆',
+        cloneAnalysis: {
+            similarGamesCount: 12,
+            saturationLevel: 'low',
+            topClones: [
+                { name: 'Star Heroes', publisher: 'Tap Tap Games', similarity: 0.58, launchDate: '150 days after original', performance: 'poor' },
+                { name: 'Galaxy Turn', publisher: 'Lion Studios', similarity: 0.61, launchDate: '160 days after original', performance: 'poor' },
+                { name: 'Space RPG', publisher: 'AppLovin', similarity: 0.64, launchDate: '145 days after original', performance: 'moderate' }
+            ],
+            marketShareDistribution: {
+                original: 82,
+                topClones: 10,
+                others: 8
+            },
+            recommendation: 'Low saturation - high production value creates clone barrier. Strong brand loyalty deters copycats.'
+        }
+    }
+];
+
 

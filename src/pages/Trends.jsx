@@ -10,9 +10,10 @@ import {
     Cell,
 } from 'recharts';
 import { TrendingUp, Flame, ArrowUpRight } from 'lucide-react';
-import { allGames, genreIntelligence, mechanicData } from '../data/mockData';
+import { allGames, genreIntelligence, mechanicData, cloneData } from '../data/mockData';
 import GenreIntelligence from '../components/GenreIntelligence';
 import MechanicTagging from '../components/MechanicTagging';
+import CloneDetection from '../components/CloneDetection';
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -157,6 +158,17 @@ const BoostTracker = () => {
                     <p className="text-gray-400">AI-powered mechanic detection, trend analysis, and combination insights</p>
                 </div>
                 <MechanicTagging mechanicData={mechanicData} />
+            </div>
+
+            {/* Clone & Copycat Detection - Phase 9 */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        🐑 Clone & Copycat Detection
+                    </h3>
+                    <p className="text-gray-400">Market saturation analysis, fast follower tracking, and competitive intelligence</p>
+                </div>
+                <CloneDetection cloneData={cloneData} />
             </div>
         </div>
     );
