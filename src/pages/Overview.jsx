@@ -8,6 +8,7 @@ import AdvancedFilter from '../components/AdvancedFilter';
 import AppDetailView from '../components/AppDetailView';
 import TrendingCategories from '../components/TrendingCategories';
 import RegionHeatmap from '../components/RegionHeatmap';
+import ReviewSentiment from '../components/ReviewSentiment';
 import {
     kpiSummary,
     platformComparisonData,
@@ -17,7 +18,8 @@ import {
     gameRankings,
     appRankings,
     appDetailsData,
-    regionalGrowth
+    regionalGrowth,
+    reviewData
 } from '../data/mockData';
 
 const Overview = () => {
@@ -274,6 +276,17 @@ const Overview = () => {
                                     <p style={{ color: '#9ca3af', fontSize: '13px' }}>Track regional download growth, revenue trends, and emerging markets across the globe</p>
                                 </div>
                                 <RegionHeatmap regionalData={regionalGrowth} metric={regionalMetric} />
+                            </div>
+                        </div>
+
+                        {/* Review Sentiment & Feature Mining - Phase 8 */}
+                        <div style={{ marginTop: '16px' }}>
+                            <div className="section-header" style={{ marginBottom: '20px' }}>
+                                <h2 className="section-title">💬 Review Sentiment & Feature Mining</h2>
+                                <div style={{ fontSize: '12px', color: '#9ca3af', fontWeight: 600 }}>NLP-powered user feedback analysis</div>
+                            </div>
+                            <div className="glass-panel" style={{ padding: '24px' }}>
+                                <ReviewSentiment reviewData={reviewData} />
                             </div>
                         </div>
                         

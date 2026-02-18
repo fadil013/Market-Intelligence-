@@ -1316,4 +1316,287 @@ export const mechanicData = {
     ]
 };
 
+// Review Sentiment & Feature Mining Data
+export const reviewData = [
+    {
+        gameName: 'Genshin Impact',
+        icon: '🌌',
+        sentimentScore: 0.82,
+        volatility: 'stable',
+        churnSignals: ['low'],
+        lovedFeatures: [
+            { feature: 'Graphics & Visuals', mentions: 2847, sentiment: 0.95 },
+            { feature: 'Open World Exploration', mentions: 2156, sentiment: 0.92 },
+            { feature: 'Character Design', mentions: 1923, sentiment: 0.91 },
+            { feature: 'Story & Lore', mentions: 1654, sentiment: 0.88 }
+        ],
+        complaints: [
+            { issue: 'Gacha Rates', mentions: 1234, sentiment: -0.72 },
+            { issue: 'Resin System', mentions: 987, sentiment: -0.68 },
+            { issue: 'Artifact RNG', mentions: 654, sentiment: -0.65 }
+        ],
+        featureRequests: [
+            { request: 'More Endgame Content', mentions: 876, votes: 1845 },
+            { request: 'Skip Dialogue Option', mentions: 543, votes: 1234 },
+            { request: 'Loadout System', mentions: 432, votes: 987 }
+        ]
+    },
+    {
+        gameName: 'Roblox',
+        icon: '🟦',
+        sentimentScore: 0.75,
+        volatility: 'volatile',
+        churnSignals: ['medium'],
+        lovedFeatures: [
+            { feature: 'User-Generated Content', mentions: 3421, sentiment: 0.94 },
+            { feature: 'Social Features', mentions: 2987, sentiment: 0.89 },
+            { feature: 'Variety of Games', mentions: 2345, sentiment: 0.87 },
+            { feature: 'Creator Tools', mentions: 1876, sentiment: 0.86 }
+        ],
+        complaints: [
+            { issue: 'Moderation Issues', mentions: 1543, sentiment: -0.78 },
+            { issue: 'Exploiters/Hackers', mentions: 1234, sentiment: -0.75 },
+            { issue: 'Server Lag', mentions: 876, sentiment: -0.65 }
+        ],
+        featureRequests: [
+            { request: 'Better Moderation Tools', mentions: 987, votes: 1956 },
+            { request: 'Voice Chat Improvements', mentions: 765, votes: 1432 },
+            { request: 'Cross-Platform Progress', mentions: 654, votes: 1245 }
+        ]
+    },
+    {
+        gameName: 'PUBG Mobile',
+        icon: '🎮',
+        sentimentScore: 0.68,
+        volatility: 'volatile',
+        churnSignals: ['medium'],
+        lovedFeatures: [
+            { feature: 'Realistic Gameplay', mentions: 2134, sentiment: 0.88 },
+            { feature: 'Graphics Quality', mentions: 1876, sentiment: 0.86 },
+            { feature: 'Squad Modes', mentions: 1543, sentiment: 0.84 },
+            { feature: 'Map Variety', mentions: 1234, sentiment: 0.82 }
+        ],
+        complaints: [
+            { issue: 'Hackers/Cheaters', mentions: 2345, sentiment: -0.89 },
+            { issue: 'Matchmaking Issues', mentions: 1432, sentiment: -0.72 },
+            { issue: 'Pay-to-Win Elements', mentions: 987, sentiment: -0.68 }
+        ],
+        featureRequests: [
+            { request: 'Better Anti-Cheat', mentions: 1234, votes: 2567 },
+            { request: 'Ranked Mode Improvements', mentions: 876, votes: 1678 },
+            { request: 'New Maps', mentions: 765, votes: 1456 }
+        ]
+    },
+    {
+        gameName: 'Coin Master',
+        icon: '🎰',
+        sentimentScore: 0.52,
+        volatility: 'crashing',
+        churnSignals: ['high'],
+        lovedFeatures: [
+            { feature: 'Simple Gameplay', mentions: 1234, sentiment: 0.76 },
+            { feature: 'Social Raids', mentions: 987, sentiment: 0.74 },
+            { feature: 'Collection Aspect', mentions: 876, sentiment: 0.72 },
+            { feature: 'Daily Rewards', mentions: 654, sentiment: 0.70 }
+        ],
+        complaints: [
+            { issue: 'Too Many Ads', mentions: 2876, sentiment: -0.92 },
+            { issue: 'Progression Too Slow', mentions: 2134, sentiment: -0.85 },
+            { issue: 'Pay-to-Win', mentions: 1876, sentiment: -0.82 },
+            { issue: 'Repetitive Gameplay', mentions: 1543, sentiment: -0.78 }
+        ],
+        featureRequests: [
+            { request: 'Less Ads', mentions: 1543, votes: 2987 },
+            { request: 'More Game Modes', mentions: 987, votes: 1654 },
+            { request: 'Better Progression', mentions: 876, votes: 1432 }
+        ]
+    },
+    {
+        gameName: 'Royal Match',
+        icon: '👑',
+        sentimentScore: 0.71,
+        volatility: 'stable',
+        churnSignals: ['low'],
+        lovedFeatures: [
+            { feature: 'Visual Polish', mentions: 1876, sentiment: 0.91 },
+            { feature: 'Level Design', mentions: 1543, sentiment: 0.87 },
+            { feature: 'No Energy System', mentions: 1234, sentiment: 0.89 },
+            { feature: 'Fair Monetization', mentions: 987, sentiment: 0.84 }
+        ],
+        complaints: [
+            { issue: 'Difficulty Spikes', mentions: 876, sentiment: -0.68 },
+            { issue: 'Repetitive Later Levels', mentions: 654, sentiment: -0.62 },
+            { issue: 'Limited Lives', mentions: 543, sentiment: -0.58 }
+        ],
+        featureRequests: [
+            { request: 'More Power-ups', mentions: 765, votes: 1345 },
+            { request: 'Daily Challenges', mentions: 654, votes: 1123 },
+            { request: 'Friends Leaderboard', mentions: 543, votes: 987 }
+        ]
+    },
+    {
+        gameName: 'Subway Surfers',
+        icon: '🛹',
+        sentimentScore: 0.78,
+        volatility: 'stable',
+        churnSignals: ['low'],
+        lovedFeatures: [
+            { feature: 'Fun & Addictive', mentions: 2345, sentiment: 0.93 },
+            { feature: 'Smooth Controls', mentions: 1987, sentiment: 0.90 },
+            { feature: 'Regular Updates', mentions: 1654, sentiment: 0.88 },
+            { feature: 'Character Variety', mentions: 1432, sentiment: 0.86 }
+        ],
+        complaints: [
+            { issue: 'Too Many Ads', mentions: 1234, sentiment: -0.74 },
+            { issue: 'Expensive IAPs', mentions: 876, sentiment: -0.66 },
+            { issue: 'Repetitive Gameplay', mentions: 654, sentiment: -0.58 }
+        ],
+        featureRequests: [
+            { request: 'New Locations', mentions: 987, votes: 1765 },
+            { request: 'Multiplayer Mode', mentions: 765, votes: 1456 },
+            { request: 'Daily Missions', mentions: 654, votes: 1234 }
+        ]
+    },
+    {
+        gameName: 'Candy Crush Saga',
+        icon: '🍬',
+        sentimentScore: 0.66,
+        volatility: 'stable',
+        churnSignals: ['medium'],
+        lovedFeatures: [
+            { feature: 'Classic Match-3', mentions: 2134, sentiment: 0.85 },
+            { feature: 'Level Variety', mentions: 1876, sentiment: 0.82 },
+            { feature: 'Satisfying Combos', mentions: 1543, sentiment: 0.84 },
+            { feature: 'Colorful Graphics', mentions: 1234, sentiment: 0.81 }
+        ],
+        complaints: [
+            { issue: 'Lives System', mentions: 1987, sentiment: -0.82 },
+            { issue: 'Pay-to-Win Levels', mentions: 1654, sentiment: -0.78 },
+            { issue: 'Constant IAP Prompts', mentions: 1234, sentiment: -0.75 },
+            { issue: 'Difficulty Walls', mentions: 987, sentiment: -0.72 }
+        ],
+        featureRequests: [
+            { request: 'Unlimited Lives Option', mentions: 1234, votes: 2345 },
+            { request: 'More Free Boosters', mentions: 987, votes: 1876 },
+            { request: 'Skip Tutorial', mentions: 765, votes: 1432 }
+        ]
+    },
+    {
+        gameName: 'Honor of Kings',
+        icon: '👑',
+        sentimentScore: 0.80,
+        volatility: 'stable',
+        churnSignals: ['low'],
+        lovedFeatures: [
+            { feature: 'Balanced Gameplay', mentions: 2567, sentiment: 0.91 },
+            { feature: 'Hero Diversity', mentions: 2134, sentiment: 0.89 },
+            { feature: 'Competitive Scene', mentions: 1876, sentiment: 0.87 },
+            { feature: 'Regular Updates', mentions: 1543, sentiment: 0.86 }
+        ],
+        complaints: [
+            { issue: 'Toxic Players', mentions: 1432, sentiment: -0.76 },
+            { issue: 'Matchmaking', mentions: 1123, sentiment: -0.68 },
+            { issue: 'Server Issues', mentions: 876, sentiment: -0.72 }
+        ],
+        featureRequests: [
+            { request: 'Better Reporting System', mentions: 987, votes: 1876 },
+            { request: 'More Game Modes', mentions: 876, votes: 1654 },
+            { request: 'Replay System', mentions: 765, votes: 1432 }
+        ]
+    },
+    {
+        gameName: 'Monopoly GO!',
+        icon: '🎲',
+        sentimentScore: 0.69,
+        volatility: 'volatile',
+        churnSignals: ['medium'],
+        lovedFeatures: [
+            { feature: 'Monopoly Theme', mentions: 1765, sentiment: 0.86 },
+            { feature: 'Social Events', mentions: 1543, sentiment: 0.83 },
+            { feature: 'Dice Rolling Fun', mentions: 1234, sentiment: 0.81 },
+            { feature: 'Collection Rewards', mentions: 987, sentiment: 0.79 }
+        ],
+        complaints: [
+            { issue: 'Energy System', mentions: 1654, sentiment: -0.78 },
+            { issue: 'Too Much Grinding', mentions: 1432, sentiment: -0.74 },
+            { issue: 'Expensive Dice Packs', mentions: 1123, sentiment: -0.72 },
+            { issue: 'Friend Attacks', mentions: 876, sentiment: -0.65 }
+        ],
+        featureRequests: [
+            { request: 'More Energy', mentions: 1123, votes: 2134 },
+            { request: 'Co-op Mode', mentions: 876, votes: 1654 },
+            { request: 'Trading System', mentions: 765, votes: 1432 }
+        ]
+    },
+    {
+        gameName: 'Clash of Clans',
+        icon: '⚔️',
+        sentimentScore: 0.76,
+        volatility: 'stable',
+        churnSignals: ['low'],
+        lovedFeatures: [
+            { feature: 'Clan System', mentions: 2456, sentiment: 0.92 },
+            { feature: 'Strategic Depth', mentions: 2134, sentiment: 0.89 },
+            { feature: 'Base Building', mentions: 1876, sentiment: 0.87 },
+            { feature: 'Regular Updates', mentions: 1654, sentiment: 0.85 }
+        ],
+        complaints: [
+            { issue: 'Long Upgrade Times', mentions: 1543, sentiment: -0.76 },
+            { issue: 'Progression Slowdown', mentions: 1234, sentiment: -0.72 },
+            { issue: 'Matchmaking Issues', mentions: 987, sentiment: -0.68 }
+        ],
+        featureRequests: [
+            { request: 'More Builder Options', mentions: 987, votes: 1765 },
+            { request: 'Better War Matchmaking', mentions: 876, votes: 1543 },
+            { request: 'Quality of Life Updates', mentions: 765, votes: 1376 }
+        ]
+    },
+    {
+        gameName: 'Honkai: Star Rail',
+        icon: '🚆',
+        sentimentScore: 0.84,
+        volatility: 'stable',
+        churnSignals: ['low'],
+        lovedFeatures: [
+            { feature: 'Story Quality', mentions: 2678, sentiment: 0.96 },
+            { feature: 'Character Writing', mentions: 2345, sentiment: 0.94 },
+            { feature: 'Turn-Based Combat', mentions: 2134, sentiment: 0.90 },
+            { feature: 'Generous Gacha', mentions: 1876, sentiment: 0.88 }
+        ],
+        complaints: [
+            { issue: 'Stamina System', mentions: 876, sentiment: -0.64 },
+            { issue: 'Endgame Content', mentions: 765, sentiment: -0.60 },
+            { issue: 'Material Grind', mentions: 654, sentiment: -0.58 }
+        ],
+        featureRequests: [
+            { request: 'More Story Chapters', mentions: 1234, votes: 2456 },
+            { request: 'Auto-Battle Improvements', mentions: 876, votes: 1654 },
+            { request: 'Skip Animations', mentions: 765, votes: 1432 }
+        ]
+    },
+    {
+        gameName: 'ChatGPT',
+        icon: '🤖',
+        sentimentScore: 0.87,
+        volatility: 'stable',
+        churnSignals: ['low'],
+        lovedFeatures: [
+            { feature: 'Helpful Responses', mentions: 4567, sentiment: 0.96 },
+            { feature: 'Versatility', mentions: 3876, sentiment: 0.94 },
+            { feature: 'Easy to Use', mentions: 3234, sentiment: 0.92 },
+            { feature: 'Fast Responses', mentions: 2987, sentiment: 0.90 }
+        ],
+        complaints: [
+            { issue: 'Rate Limits', mentions: 1234, sentiment: -0.72 },
+            { issue: 'Occasional Inaccuracies', mentions: 987, sentiment: -0.65 },
+            { issue: 'Subscription Cost', mentions: 765, sentiment: -0.58 }
+        ],
+        featureRequests: [
+            { request: 'More Free Messages', mentions: 1432, votes: 2876 },
+            { request: 'Image Generation', mentions: 1234, votes: 2456 },
+            { request: 'Voice Input', mentions: 987, votes: 1987 }
+        ]
+    }
+];
+
 
