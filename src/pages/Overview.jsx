@@ -187,8 +187,7 @@ const Overview = () => {
                             </div>
                         )}
                         
-                        <TrendingCategories />
-                        
+                        {/* Top Trending Games List First */}
                         {currentRankings.topFree.length > 0 ? (
                             <RankingsGrid rankings={currentRankings} onAppSelect={handleAppSelect} collapsed={false} />
                         ) : (
@@ -204,6 +203,9 @@ const Overview = () => {
                                 <p style={{ color: '#9ca3af', fontSize: '14px' }}>Try adjusting your filters to see more results</p>
                             </div>
                         )}
+                        
+                        {/* Trending Categories After Top Games */}
+                        <TrendingCategories />
                         
                         <div style={{ marginTop: '16px' }}>
                             <div className="section-header" style={{ marginBottom: '20px' }}>

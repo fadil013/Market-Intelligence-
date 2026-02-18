@@ -16,6 +16,13 @@ const DashboardLayout = () => {
     return (
         <div className="app-container-new">
             <header className="top-nav">
+                <button 
+                    className="mobile-menu-toggle" 
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
                 <div className="top-nav-brand">
                     <Gamepad2 size={24} style={{ color: '#6b7280' }} />
                     <span className="brand-name">Onyx Games</span>
@@ -33,19 +40,21 @@ const DashboardLayout = () => {
                         </NavLink>
                     ))}
                 </nav>
-                <button 
-                    className="mobile-menu-toggle" 
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
             </header>
             
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Sidebar - Slides from Left */}
             {mobileMenuOpen && (
                 <div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)}>
-                    <nav className="mobile-menu" onClick={(e) => e.stopPropagation()}>
+                    <nav className="mobile-menu-sidebar" onClick={(e) => e.stopPropagation()}>
+                        <div className="mobile-menu-header">
+                            <div className="flex items-center gap-3">
+                                <Gamepad2 size={22} style={{ color: '#6b7280' }} />
+                                <span style={{ fontSize: '18px', fontWeight: 700, color: '#f9fafb' }}>Onyx Games</span>
+                            </div>
+                            <button onClick={() => setMobileMenuOpen(false)} style={{ background: 'none', border: 'none', color: '#9ca3af', cursor: 'pointer', padding: '8px' }}>
+                                <X size={20} />
+                            </button>
+                        </div>
                         {navItems.map((item) => (
                             <NavLink
                                 key={item.path}
