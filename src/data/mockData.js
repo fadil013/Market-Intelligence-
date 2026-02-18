@@ -3165,4 +3165,284 @@ export const asoData = [
     }
 ];
 
+// Phase 15: Tech Stack & Engine Detection
+export const techStackData = [
+    {
+        gameName: 'Genshin Impact',
+        techStack: {
+            engine: 'Unity 2019.4',
+            language: 'C#',
+            backend: {
+                cloud: 'AWS',
+                services: ['EC2', 'S3', 'CloudFront', 'DynamoDB', 'ElastiCache']
+            },
+            sdks: [
+                { name: 'Unity Ads', version: '4.0' },
+                { name: 'Firebase', version: '10.0' },
+                { name: 'Adjust', version: '4.2' },
+                { name: 'Google Play', version: '21.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android', 'PC', 'PlayStation', 'Xbox']
+        },
+        insights: {
+            enginePopularity: 'Unity = 67% of Top 100 RPGs',
+            costEfficiency: 'AWS CloudFront reduces latency by 45% for global player base'
+        }
+    },
+    {
+        gameName: 'Roblox',
+        techStack: {
+            engine: 'Custom Roblox Engine',
+            language: 'Lua',
+            backend: {
+                cloud: 'AWS',
+                services: ['EC2', 'S3', 'RDS', 'Lambda', 'API Gateway']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.3' },
+                { name: 'Adjust', version: '4.5' },
+                { name: 'Facebook SDK', version: '15.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android', 'PC', 'Xbox']
+        },
+        insights: {
+            enginePopularity: 'Custom engines = 12% of Top 100 (UGC platforms)',
+            costEfficiency: 'AWS Lambda handles 100M+ daily user-generated events cost-effectively'
+        }
+    },
+    {
+        gameName: 'Candy Crush Saga',
+        techStack: {
+            engine: 'Unity 2022.3',
+            language: 'C#',
+            backend: {
+                cloud: 'AWS',
+                services: ['EC2', 'S3', 'DynamoDB', 'ElastiCache']
+            },
+            sdks: [
+                { name: 'Facebook SDK', version: '14.0' },
+                { name: 'Firebase', version: '10.1' },
+                { name: 'AppsFlyer', version: '6.8' },
+                { name: 'ironSource', version: '7.3' },
+                { name: 'Unity Ads', version: '4.4' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Unity = 89% of match-3 games',
+            costEfficiency: 'ElastiCache reduces leaderboard query costs by 62%'
+        }
+    },
+    {
+        gameName: 'PUBG Mobile',
+        techStack: {
+            engine: 'Unreal Engine 4.27',
+            language: 'C++',
+            backend: {
+                cloud: 'Tencent Cloud',
+                services: ['CVM', 'COS', 'TencentDB', 'CLB']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.0' },
+                { name: 'Adjust', version: '4.3' },
+                { name: 'Unity Ads', version: '4.1' },
+                { name: 'Google Play Games', version: '22.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Unreal = 78% of AAA mobile shooters',
+            costEfficiency: 'Tencent Cloud 35% cheaper in Asia-Pacific region'
+        }
+    },
+    {
+        gameName: 'Clash of Clans',
+        techStack: {
+            engine: 'Custom Supercell Engine',
+            language: 'C++',
+            backend: {
+                cloud: 'AWS',
+                services: ['EC2', 'S3', 'DynamoDB', 'SQS', 'SNS']
+            },
+            sdks: [
+                { name: 'Firebase', version: '9.5' },
+                { name: 'Adjust', version: '4.1' },
+                { name: 'Google Play', version: '20.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Custom engines = 5% of strategy games (AAA studios only)',
+            costEfficiency: 'Custom engine saves $2M+/year in licensing fees'
+        }
+    },
+    {
+        gameName: 'Among Us',
+        techStack: {
+            engine: 'Unity 2019.3',
+            language: 'C#',
+            backend: {
+                cloud: 'GCP',
+                services: ['Compute Engine', 'Cloud Storage', 'Firestore']
+            },
+            sdks: [
+                { name: 'Firebase', version: '9.0' },
+                { name: 'Unity Ads', version: '3.7' },
+                { name: 'Google Play', version: '19.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android', 'PC', 'Switch']
+        },
+        insights: {
+            enginePopularity: 'Unity = 92% of indie multiplayer games',
+            costEfficiency: 'GCP Firestore scales to 500K CCU with 40% lower costs vs competitors'
+        }
+    },
+    {
+        gameName: 'Subway Surfers',
+        techStack: {
+            engine: 'Unity 2021.3',
+            language: 'C#',
+            backend: {
+                cloud: 'Firebase',
+                services: ['Firestore', 'Cloud Functions', 'Authentication']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.2' },
+                { name: 'Unity Ads', version: '4.3' },
+                { name: 'ironSource', version: '7.2' },
+                { name: 'AppLovin', version: '11.5' },
+                { name: 'Facebook SDK', version: '14.1' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Unity = 95% of endless runners',
+            costEfficiency: 'Firebase bundled pricing saves 55% vs multi-provider setup'
+        }
+    },
+    {
+        gameName: 'Brawl Stars',
+        techStack: {
+            engine: 'Custom Supercell Engine',
+            language: 'C++',
+            backend: {
+                cloud: 'AWS',
+                services: ['EC2', 'S3', 'DynamoDB', 'ElastiCache', 'CloudFront']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.0' },
+                { name: 'Adjust', version: '4.4' },
+                { name: 'Google Play Games', version: '21.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Custom engines enable 10ms latency advantage in competitive games',
+            costEfficiency: 'DynamoDB + ElastiCache handles 50M DAU with 99.99% uptime'
+        }
+    },
+    {
+        gameName: 'Free Fire',
+        techStack: {
+            engine: 'Unity 2020.3',
+            language: 'C#',
+            backend: {
+                cloud: 'AWS',
+                services: ['EC2', 'S3', 'DynamoDB', 'GameLift']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.1' },
+                { name: 'Adjust', version: '4.3' },
+                { name: 'Unity Ads', version: '4.2' },
+                { name: 'Google Play', version: '21.0' },
+                { name: 'Facebook SDK', version: '14.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Unity = 85% of battle royale games',
+            costEfficiency: 'AWS GameLift reduces server costs by 48% with auto-scaling'
+        }
+    },
+    {
+        gameName: 'Monopoly GO',
+        techStack: {
+            engine: 'Unity 2022.2',
+            language: 'C#',
+            backend: {
+                cloud: 'Azure',
+                services: ['Virtual Machines', 'Cosmos DB', 'Blob Storage']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.3' },
+                { name: 'Unity Ads', version: '4.5' },
+                { name: 'ironSource', version: '7.4' },
+                { name: 'Adjust', version: '4.6' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Unity = 91% of board game adaptations',
+            costEfficiency: 'Azure Cosmos DB global replication ensures <100ms latency worldwide'
+        }
+    },
+    {
+        gameName: 'Stumble Guys',
+        techStack: {
+            engine: 'Unity 2021.3',
+            language: 'C#',
+            backend: {
+                cloud: 'GCP',
+                services: ['Compute Engine', 'Cloud Storage', 'Firestore', 'Cloud Run']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.2' },
+                { name: 'Unity Ads', version: '4.4' },
+                { name: 'AppLovin', version: '11.6' },
+                { name: 'Google Play Games', version: '22.0' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android', 'PC']
+        },
+        insights: {
+            enginePopularity: 'Unity = 88% of party games',
+            costEfficiency: 'GCP Cloud Run serverless architecture saves 60% on idle server costs'
+        }
+    },
+    {
+        gameName: 'Royal Match',
+        techStack: {
+            engine: 'Unity 2022.1',
+            language: 'C#',
+            backend: {
+                cloud: 'AWS',
+                services: ['EC2', 'S3', 'DynamoDB', 'CloudWatch']
+            },
+            sdks: [
+                { name: 'Firebase', version: '10.3' },
+                { name: 'ironSource', version: '7.5' },
+                { name: 'Unity Ads', version: '4.6' },
+                { name: 'Facebook SDK', version: '15.0' },
+                { name: 'Adjust', version: '4.7' }
+            ],
+            crossPlatform: true,
+            platforms: ['iOS', 'Android']
+        },
+        insights: {
+            enginePopularity: 'Unity = 94% of puzzle games',
+            costEfficiency: 'AWS CloudWatch + Lambda automation reduces ops costs by 70%'
+        }
+    }
+];
+
 

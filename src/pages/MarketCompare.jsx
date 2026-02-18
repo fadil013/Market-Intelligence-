@@ -14,10 +14,11 @@ import {
 } from 'recharts';
 import { Store, Smartphone, ShoppingBag } from 'lucide-react';
 // eslint-disable-next-line no-unused-vars
-import { platformComparisonData, allGames, monetizationData, marketingData, publisherData } from '../data/mockData';
+import { platformComparisonData, allGames, monetizationData, marketingData, publisherData, techStackData } from '../data/mockData';
 import MonetizationAnalysis from '../components/MonetizationAnalysis';
 import CreativeIntelligence from '../components/CreativeIntelligence';
 import PublisherTracking from '../components/PublisherTracking';
+import TechStackDetection from '../components/TechStackDetection';
 
 const CustomPieTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -203,6 +204,15 @@ const MarketCompare = () => {
                     <p className="text-gray-400 text-sm">Track publisher performance, predict next moves, and identify M&A targets</p>
                 </div>
                 <PublisherTracking publisherData={publisherData} />
+            </div>
+
+            {/* Tech Stack & Engine Detection */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-xl font-bold text-white mb-2">Tech Stack & Engine Detection</h3>
+                    <p className="text-gray-400 text-sm">Game engine analysis, SDK integration patterns, and backend infrastructure insights</p>
+                </div>
+                <TechStackDetection techStackData={techStackData} />
             </div>
         </div>
     );
