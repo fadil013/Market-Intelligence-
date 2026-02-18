@@ -713,4 +713,405 @@ export const monetizationData = [
     }
 ];
 
+// Creative & Marketing Intelligence Data
+export const marketingData = [
+    {
+        gameName: 'Genshin Impact',
+        icon: '🌌',
+        adCreativeBreakdown: {
+            playable: { usage: '20%', effectiveness: 'high' },
+            ugc: { usage: '40%', effectiveness: 'high' },
+            video: { usage: '35%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'medium' }
+        },
+        topAdNetworks: [
+            { network: 'Meta Ads', spend: '$2.5M', installs: '850K', cpi: '$2.94' },
+            { network: 'TikTok Ads', spend: '$1.8M', installs: '720K', cpi: '$2.50' },
+            { network: 'Google Ads', spend: '$1.2M', installs: '500K', cpi: '$2.40' }
+        ],
+        cpiData: {
+            global: '$2.67',
+            byCountry: {
+                'USA': '$8.50',
+                'Japan': '$6.20',
+                'China': '$4.80',
+                'UK': '$5.50',
+                'Germany': '$4.90',
+                'South Korea': '$5.30',
+                'Brazil': '$1.80',
+                'India': '$0.65'
+            }
+        },
+        growthType: {
+            viral: 45,
+            paid: 55,
+            kFactor: 1.8
+        }
+    },
+    {
+        gameName: 'Roblox',
+        icon: '🟦',
+        adCreativeBreakdown: {
+            playable: { usage: '15%', effectiveness: 'medium' },
+            ugc: { usage: '55%', effectiveness: 'high' },
+            video: { usage: '25%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'low' }
+        },
+        topAdNetworks: [
+            { network: 'Meta Ads', spend: '$3.2M', installs: '1.2M', cpi: '$2.67' },
+            { network: 'Google Ads', spend: '$2.1M', installs: '850K', cpi: '$2.47' },
+            { network: 'TikTok Ads', spend: '$1.5M', installs: '680K', cpi: '$2.21' }
+        ],
+        cpiData: {
+            global: '$2.45',
+            byCountry: {
+                'USA': '$7.80',
+                'UK': '$5.20',
+                'Japan': '$4.50',
+                'China': '$3.80',
+                'Germany': '$4.60',
+                'South Korea': '$4.20',
+                'Brazil': '$1.50',
+                'India': '$0.55'
+            }
+        },
+        growthType: {
+            viral: 62,
+            paid: 38,
+            kFactor: 2.3
+        }
+    },
+    {
+        gameName: 'PUBG Mobile',
+        icon: '🎮',
+        adCreativeBreakdown: {
+            playable: { usage: '30%', effectiveness: 'high' },
+            ugc: { usage: '25%', effectiveness: 'medium' },
+            video: { usage: '40%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'low' }
+        },
+        topAdNetworks: [
+            { network: 'Google Ads', spend: '$2.8M', installs: '1.1M', cpi: '$2.55' },
+            { network: 'Meta Ads', spend: '$2.3M', installs: '920K', cpi: '$2.50' },
+            { network: 'Unity Ads', spend: '$1.4M', installs: '580K', cpi: '$2.41' }
+        ],
+        cpiData: {
+            global: '$2.52',
+            byCountry: {
+                'USA': '$9.20',
+                'China': '$5.50',
+                'Japan': '$7.10',
+                'UK': '$6.30',
+                'Germany': '$5.80',
+                'South Korea': '$6.50',
+                'Brazil': '$2.10',
+                'India': '$0.70'
+            }
+        },
+        growthType: {
+            viral: 38,
+            paid: 62,
+            kFactor: 1.5
+        }
+    },
+    {
+        gameName: 'Coin Master',
+        icon: '🎰',
+        adCreativeBreakdown: {
+            playable: { usage: '25%', effectiveness: 'medium' },
+            ugc: { usage: '15%', effectiveness: 'low' },
+            video: { usage: '50%', effectiveness: 'high' },
+            static: { usage: '10%', effectiveness: 'low' }
+        },
+        topAdNetworks: [
+            { network: 'Meta Ads', spend: '$4.2M', installs: '1.5M', cpi: '$2.80' },
+            { network: 'ironSource', spend: '$2.5M', installs: '950K', cpi: '$2.63' },
+            { network: 'Unity Ads', spend: '$1.8M', installs: '720K', cpi: '$2.50' }
+        ],
+        cpiData: {
+            global: '$2.72',
+            byCountry: {
+                'USA': '$10.50',
+                'UK': '$7.20',
+                'Germany': '$6.50',
+                'Japan': '$5.80',
+                'China': '$4.20',
+                'South Korea': '$5.20',
+                'Brazil': '$2.30',
+                'India': '$0.85'
+            }
+        },
+        growthType: {
+            viral: 22,
+            paid: 78,
+            kFactor: 0.8
+        }
+    },
+    {
+        gameName: 'Royal Match',
+        icon: '👑',
+        adCreativeBreakdown: {
+            playable: { usage: '45%', effectiveness: 'high' },
+            ugc: { usage: '10%', effectiveness: 'low' },
+            video: { usage: '40%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'low' },
+            fake: { usage: '15%', effectiveness: 'medium' }
+        },
+        topAdNetworks: [
+            { network: 'Meta Ads', spend: '$5.8M', installs: '2.1M', cpi: '$2.76' },
+            { network: 'Google Ads', spend: '$3.2M', installs: '1.3M', cpi: '$2.46' },
+            { network: 'Unity Ads', spend: '$2.1M', installs: '850K', cpi: '$2.47' }
+        ],
+        cpiData: {
+            global: '$2.65',
+            byCountry: {
+                'USA': '$11.20',
+                'UK': '$7.80',
+                'Germany': '$6.90',
+                'Japan': '$5.50',
+                'China': '$3.90',
+                'South Korea': '$4.80',
+                'Brazil': '$2.00',
+                'India': '$0.75'
+            }
+        },
+        growthType: {
+            viral: 18,
+            paid: 82,
+            kFactor: 0.6
+        }
+    },
+    {
+        gameName: 'Subway Surfers',
+        icon: '🛹',
+        adCreativeBreakdown: {
+            playable: { usage: '35%', effectiveness: 'high' },
+            ugc: { usage: '30%', effectiveness: 'medium' },
+            video: { usage: '30%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'low' }
+        },
+        topAdNetworks: [
+            { network: 'Unity Ads', spend: '$1.8M', installs: '920K', cpi: '$1.96' },
+            { network: 'Meta Ads', spend: '$1.5M', installs: '780K', cpi: '$1.92' },
+            { network: 'AppLovin', spend: '$1.2M', installs: '640K', cpi: '$1.88' }
+        ],
+        cpiData: {
+            global: '$1.95',
+            byCountry: {
+                'USA': '$6.50',
+                'UK': '$4.20',
+                'Germany': '$3.90',
+                'Japan': '$3.50',
+                'China': '$2.80',
+                'South Korea': '$3.20',
+                'Brazil': '$1.20',
+                'India': '$0.45'
+            }
+        },
+        growthType: {
+            viral: 52,
+            paid: 48,
+            kFactor: 1.9
+        }
+    },
+    {
+        gameName: 'Candy Crush Saga',
+        icon: '🍬',
+        adCreativeBreakdown: {
+            playable: { usage: '50%', effectiveness: 'high' },
+            ugc: { usage: '5%', effectiveness: 'low' },
+            video: { usage: '40%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'low' }
+        },
+        topAdNetworks: [
+            { network: 'Meta Ads', spend: '$3.5M', installs: '1.4M', cpi: '$2.50' },
+            { network: 'Google Ads', spend: '$2.2M', installs: '950K', cpi: '$2.32' },
+            { network: 'ironSource', spend: '$1.6M', installs: '680K', cpi: '$2.35' }
+        ],
+        cpiData: {
+            global: '$2.42',
+            byCountry: {
+                'USA': '$9.80',
+                'UK': '$6.50',
+                'Germany': '$5.80',
+                'Japan': '$4.90',
+                'China': '$3.50',
+                'South Korea': '$4.20',
+                'Brazil': '$1.70',
+                'India': '$0.60'
+            }
+        },
+        growthType: {
+            viral: 28,
+            paid: 72,
+            kFactor: 1.1
+        }
+    },
+    {
+        gameName: 'Honor of Kings',
+        icon: '👑',
+        adCreativeBreakdown: {
+            playable: { usage: '25%', effectiveness: 'high' },
+            ugc: { usage: '35%', effectiveness: 'high' },
+            video: { usage: '35%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'medium' }
+        },
+        topAdNetworks: [
+            { network: 'TikTok Ads', spend: '$3.8M', installs: '1.5M', cpi: '$2.53' },
+            { network: 'Meta Ads', spend: '$2.9M', installs: '1.2M', cpi: '$2.42' },
+            { network: 'Google Ads', spend: '$1.8M', installs: '780K', cpi: '$2.31' }
+        ],
+        cpiData: {
+            global: '$2.45',
+            byCountry: {
+                'China': '$5.20',
+                'USA': '$8.90',
+                'Japan': '$6.80',
+                'South Korea': '$6.20',
+                'UK': '$5.50',
+                'Germany': '$4.90',
+                'Brazil': '$1.90',
+                'India': '$0.68'
+            }
+        },
+        growthType: {
+            viral: 48,
+            paid: 52,
+            kFactor: 1.7
+        }
+    },
+    {
+        gameName: 'Monopoly GO!',
+        icon: '🎲',
+        adCreativeBreakdown: {
+            playable: { usage: '40%', effectiveness: 'high' },
+            ugc: { usage: '20%', effectiveness: 'medium' },
+            video: { usage: '35%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'low' }
+        },
+        topAdNetworks: [
+            { network: 'Meta Ads', spend: '$4.5M', installs: '1.8M', cpi: '$2.50' },
+            { network: 'Google Ads', spend: '$3.1M', installs: '1.3M', cpi: '$2.38' },
+            { network: 'Unity Ads', spend: '$2.2M', installs: '920K', cpi: '$2.39' }
+        ],
+        cpiData: {
+            global: '$2.48',
+            byCountry: {
+                'USA': '$10.20',
+                'UK': '$7.10',
+                'Germany': '$6.20',
+                'Japan': '$5.20',
+                'China': '$3.80',
+                'South Korea': '$4.50',
+                'Brazil': '$1.80',
+                'India': '$0.72'
+            }
+        },
+        growthType: {
+            viral: 32,
+            paid: 68,
+            kFactor: 1.3
+        }
+    },
+    {
+        gameName: 'Clash of Clans',
+        icon: '⚔️',
+        adCreativeBreakdown: {
+            playable: { usage: '30%', effectiveness: 'high' },
+            ugc: { usage: '25%', effectiveness: 'high' },
+            video: { usage: '40%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'low' }
+        },
+        topAdNetworks: [
+            { network: 'Meta Ads', spend: '$2.8M', installs: '1.1M', cpi: '$2.55' },
+            { network: 'Google Ads', spend: '$2.1M', installs: '880K', cpi: '$2.39' },
+            { network: 'ironSource', spend: '$1.5M', installs: '620K', cpi: '$2.42' }
+        ],
+        cpiData: {
+            global: '$2.48',
+            byCountry: {
+                'USA': '$9.50',
+                'UK': '$6.80',
+                'Germany': '$5.90',
+                'Japan': '$5.50',
+                'China': '$4.10',
+                'South Korea': '$4.80',
+                'Brazil': '$1.90',
+                'India': '$0.70'
+            }
+        },
+        growthType: {
+            viral: 42,
+            paid: 58,
+            kFactor: 1.6
+        }
+    },
+    {
+        gameName: 'Honkai: Star Rail',
+        icon: '🚆',
+        adCreativeBreakdown: {
+            playable: { usage: '25%', effectiveness: 'high' },
+            ugc: { usage: '38%', effectiveness: 'high' },
+            video: { usage: '32%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'medium' }
+        },
+        topAdNetworks: [
+            { network: 'TikTok Ads', spend: '$2.3M', installs: '920K', cpi: '$2.50' },
+            { network: 'Meta Ads', spend: '$1.9M', installs: '780K', cpi: '$2.44' },
+            { network: 'Google Ads', spend: '$1.4M', installs: '590K', cpi: '$2.37' }
+        ],
+        cpiData: {
+            global: '$2.46',
+            byCountry: {
+                'USA': '$8.20',
+                'Japan': '$6.50',
+                'China': '$5.10',
+                'UK': '$5.80',
+                'Germany': '$5.20',
+                'South Korea': '$5.60',
+                'Brazil': '$1.70',
+                'India': '$0.62'
+            }
+        },
+        growthType: {
+            viral: 44,
+            paid: 56,
+            kFactor: 1.7
+        }
+    },
+    {
+        gameName: 'ChatGPT',
+        icon: '🤖',
+        adCreativeBreakdown: {
+            playable: { usage: '10%', effectiveness: 'low' },
+            ugc: { usage: '45%', effectiveness: 'high' },
+            video: { usage: '40%', effectiveness: 'high' },
+            static: { usage: '5%', effectiveness: 'medium' }
+        },
+        topAdNetworks: [
+            { network: 'Google Ads', spend: '$1.8M', installs: '950K', cpi: '$1.89' },
+            { network: 'Meta Ads', spend: '$1.3M', installs: '720K', cpi: '$1.81' },
+            { network: 'TikTok Ads', spend: '$0.9M', installs: '480K', cpi: '$1.88' }
+        ],
+        cpiData: {
+            global: '$1.86',
+            byCountry: {
+                'USA': '$5.80',
+                'UK': '$4.20',
+                'Germany': '$3.80',
+                'Japan': '$3.50',
+                'China': '$2.90',
+                'South Korea': '$3.20',
+                'Brazil': '$1.10',
+                'India': '$0.42'
+            }
+        },
+        growthType: {
+            viral: 68,
+            paid: 32,
+            kFactor: 2.5
+        }
+    }
+];
+
 

@@ -14,7 +14,9 @@ import {
 } from 'recharts';
 import { Store, Smartphone, ShoppingBag } from 'lucide-react';
 // eslint-disable-next-line no-unused-vars
-import { platformComparisonData, allGames } from '../data/mockData';
+import { platformComparisonData, allGames, monetizationData, marketingData } from '../data/mockData';
+import MonetizationAnalysis from '../components/MonetizationAnalysis';
+import CreativeIntelligence from '../components/CreativeIntelligence';
 
 const CustomPieTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -182,6 +184,15 @@ const MarketCompare = () => {
                     <p className="text-gray-400 text-sm">ARPU rankings, IAP/Ads revenue breakdown, and paywall strategies</p>
                 </div>
                 <MonetizationAnalysis monetizationData={monetizationData} />
+            </div>
+
+            {/* Creative & Marketing Intelligence */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-xl font-bold text-white mb-2">Creative & Marketing Intelligence</h3>
+                    <p className="text-gray-400 text-sm">Ad creative performance, network spend, CPI analysis, and viral vs paid growth</p>
+                </div>
+                <CreativeIntelligence marketingData={marketingData} />
             </div>
         </div>
     );
