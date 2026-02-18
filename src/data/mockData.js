@@ -1114,4 +1114,206 @@ export const marketingData = [
     }
 ];
 
+// Gameplay Mechanic Tagging Data
+export const mechanicData = {
+    mechanics: [
+        {
+            name: 'gacha system',
+            popularity: 85,
+            trend: 28,
+            gameCount: 342,
+            category: 'Monetization',
+            exampleGames: ['Genshin Impact', 'Honkai: Star Rail', 'Fate/Grand Order']
+        },
+        {
+            name: 'merge mechanic',
+            popularity: 78,
+            trend: 42,
+            gameCount: 256,
+            category: 'Core Loop',
+            exampleGames: ['Merge Dragons', 'Merge Mansion', 'Merge Gardens']
+        },
+        {
+            name: 'idle progression',
+            popularity: 72,
+            trend: -15,
+            gameCount: 418,
+            category: 'Core Loop',
+            exampleGames: ['AFK Arena', 'Idle Heroes', 'Almost a Hero']
+        },
+        {
+            name: 'battle pass',
+            popularity: 68,
+            trend: 18,
+            gameCount: 189,
+            category: 'Monetization',
+            exampleGames: ['PUBG Mobile', 'Call of Duty Mobile', 'Fortnite']
+        },
+        {
+            name: 'character collection',
+            popularity: 65,
+            trend: 22,
+            gameCount: 324,
+            category: 'Progression',
+            exampleGames: ['Genshin Impact', 'Marvel Strike Force', 'AFK Arena']
+        },
+        {
+            name: 'base building',
+            popularity: 62,
+            trend: -8,
+            gameCount: 283,
+            category: 'Progression',
+            exampleGames: ['Clash of Clans', 'Rise of Kingdoms', 'State of Survival']
+        },
+        {
+            name: 'pvp arena',
+            popularity: 58,
+            trend: 12,
+            gameCount: 267,
+            category: 'Social',
+            exampleGames: ['Brawl Stars', 'Clash Royale', 'PUBG Mobile']
+        },
+        {
+            name: 'auto-battler',
+            popularity: 55,
+            trend: 35,
+            gameCount: 142,
+            category: 'Core Loop',
+            exampleGames: ['Auto Chess', 'Teamfight Tactics', 'Dota Underlords']
+        },
+        {
+            name: 'deckbuilding',
+            popularity: 52,
+            trend: 16,
+            gameCount: 178,
+            category: 'Core Loop',
+            exampleGames: ['Hearthstone', 'Marvel Snap', 'Legends of Runeterra']
+        },
+        {
+            name: 'roguelike',
+            popularity: 48,
+            trend: 24,
+            gameCount: 156,
+            category: 'Core Loop',
+            exampleGames: ['Hades', 'Dead Cells', 'Slay the Spire']
+        },
+        {
+            name: 'city builder',
+            popularity: 45,
+            trend: 42,
+            gameCount: 198,
+            category: 'Progression',
+            exampleGames: ['SimCity BuildIt', 'Township', 'City Island']
+        },
+        {
+            name: 'guild system',
+            popularity: 42,
+            trend: 8,
+            gameCount: 245,
+            category: 'Social',
+            exampleGames: ['Clash of Clans', 'Summoners War', 'RAID: Shadow Legends']
+        },
+        {
+            name: 'energy system',
+            popularity: 40,
+            trend: -12,
+            gameCount: 356,
+            category: 'Monetization',
+            exampleGames: ['Candy Crush', 'Coin Master', 'Homescapes']
+        },
+        {
+            name: 'prestige system',
+            popularity: 38,
+            trend: 10,
+            gameCount: 167,
+            category: 'Progression',
+            exampleGames: ['Cookie Clicker', 'Adventure Capitalist', 'Egg Inc']
+        },
+        {
+            name: 'co-op raids',
+            popularity: 35,
+            trend: 18,
+            gameCount: 134,
+            category: 'Social',
+            exampleGames: ['Genshin Impact', 'Destiny 2', 'Monster Hunter']
+        },
+        {
+            name: 'extraction loop',
+            popularity: 32,
+            trend: 45,
+            gameCount: 89,
+            category: 'Core Loop',
+            exampleGames: ['Escape from Tarkov Mobile', 'The Cycle', 'Dark and Darker']
+        },
+        {
+            name: 'skill tree',
+            popularity: 30,
+            trend: 5,
+            gameCount: 212,
+            category: 'Progression',
+            exampleGames: ['Path of Exile', 'Diablo Immortal', 'Borderlands']
+        },
+        {
+            name: 'leaderboards',
+            popularity: 28,
+            trend: -5,
+            gameCount: 387,
+            category: 'Social',
+            exampleGames: ['Subway Surfers', 'Temple Run', 'Candy Crush']
+        },
+        {
+            name: 'loot boxes',
+            popularity: 25,
+            trend: -18,
+            gameCount: 178,
+            category: 'Monetization',
+            exampleGames: ['FIFA Mobile', 'NBA 2K Mobile', 'Overwatch']
+        },
+        {
+            name: 'season pass',
+            popularity: 22,
+            trend: 14,
+            gameCount: 145,
+            category: 'Monetization',
+            exampleGames: ['Apex Legends Mobile', 'PUBG Mobile', 'Free Fire']
+        }
+    ],
+    combinations: [
+        { combination: 'Merge + City Builder', gameCount: 45, avgRevenue: 12.5, trend: 42 },
+        { combination: 'Gacha + RPG', gameCount: 78, avgRevenue: 28.3, trend: 28 },
+        { combination: 'Idle + Collection', gameCount: 62, avgRevenue: 8.7, trend: -8 },
+        { combination: 'Auto-Battler + Deckbuilding', gameCount: 34, avgRevenue: 15.2, trend: 35 },
+        { combination: 'Base Building + PvP', gameCount: 56, avgRevenue: 18.9, trend: 12 },
+        { combination: 'Roguelike + Deckbuilding', gameCount: 42, avgRevenue: 9.4, trend: 24 },
+        { combination: 'Extraction + Battle Royale', gameCount: 28, avgRevenue: 22.1, trend: 45 },
+        { combination: 'Gacha + Auto-Battler', gameCount: 38, avgRevenue: 16.8, trend: 31 },
+        { combination: 'City Builder + Match-3', gameCount: 51, avgRevenue: 11.3, trend: 18 },
+        { combination: 'Idle + Prestige', gameCount: 67, avgRevenue: 6.2, trend: 10 },
+        { combination: 'PvP + Guild System', gameCount: 49, avgRevenue: 14.6, trend: 8 },
+        { combination: 'Co-op + Raid Mechanics', gameCount: 31, avgRevenue: 19.7, trend: 18 }
+    ],
+    trendAlerts: [
+        {
+            message: "Merge + City Builder is trending +42% WoW 🔥",
+            details: "45 games with this combination averaging $12.5M revenue"
+        },
+        {
+            message: "Extraction loop mechanics surging +45% 📈",
+            details: "New genre emerging with high engagement rates"
+        },
+        {
+            message: "Gacha systems in puzzle games up +28% 🎰",
+            details: "Traditional puzzle games adopting collection mechanics"
+        },
+        {
+            message: "Idle progression mechanics declining -15% 📉",
+            details: "Market showing fatigue, active gameplay trending up"
+        },
+        {
+            message: "Auto-Battler + Gacha combination hot +31% 🚀",
+            details: "38 games leveraging this combo with strong monetization"
+        }
+    ]
+};
+
 

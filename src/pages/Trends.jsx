@@ -10,8 +10,9 @@ import {
     Cell,
 } from 'recharts';
 import { TrendingUp, Flame, ArrowUpRight } from 'lucide-react';
-import { allGames, genreIntelligence } from '../data/mockData';
+import { allGames, genreIntelligence, mechanicData } from '../data/mockData';
 import GenreIntelligence from '../components/GenreIntelligence';
+import MechanicTagging from '../components/MechanicTagging';
 
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
@@ -145,6 +146,17 @@ const BoostTracker = () => {
                     <p className="text-gray-400">Hybrid detection, mechanics tagging, and genre trend analysis</p>
                 </div>
                 <GenreIntelligence genreData={genreIntelligence} />
+            </div>
+
+            {/* Mechanic Tagging - Phase 7 */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                        🔧 Gameplay Mechanic Tagging
+                    </h3>
+                    <p className="text-gray-400">AI-powered mechanic detection, trend analysis, and combination insights</p>
+                </div>
+                <MechanicTagging mechanicData={mechanicData} />
             </div>
         </div>
     );
