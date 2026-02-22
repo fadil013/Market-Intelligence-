@@ -188,51 +188,36 @@ const CreativeIntelligence = ({ marketingData }) => {
             </div>
 
             {/* View Mode Switcher */}
-            <div className="flex gap-2 flex-wrap">
-                <button
-                    onClick={() => setViewMode('creative')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'creative'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <Film className="w-4 h-4 inline mr-2" />
-                    Ad Creatives
-                </button>
-                <button
-                    onClick={() => setViewMode('networks')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'networks'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <Users className="w-4 h-4 inline mr-2" />
-                    Ad Networks
-                </button>
-                <button
-                    onClick={() => setViewMode('cpi')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'cpi'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <DollarSign className="w-4 h-4 inline mr-2" />
-                    CPI Analysis
-                </button>
-                <button
-                    onClick={() => setViewMode('growth')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'growth'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <TrendingUp className="w-4 h-4 inline mr-2" />
-                    Growth Type
-                </button>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                {[
+                    { mode: 'creative', label: 'Ad Creatives', Icon: Film, activeColor: '#7c3aed' },
+                    { mode: 'networks', label: 'Ad Networks', Icon: Users, activeColor: '#2563eb' },
+                    { mode: 'cpi', label: 'CPI Analysis', Icon: DollarSign, activeColor: '#059669' },
+                    { mode: 'growth', label: 'Growth Type', Icon: TrendingUp, activeColor: '#ea580c' },
+                ].map(({ mode, label, Icon, activeColor }) => (
+                    <button
+                        key={mode}
+                        onClick={() => setViewMode(mode)}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '10px 20px',
+                            borderRadius: '8px',
+                            fontWeight: 600,
+                            fontSize: '14px',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s',
+                            border: viewMode === mode ? 'none' : '1px solid #475569',
+                            background: viewMode === mode ? activeColor : '#1e293b',
+                            color: '#ffffff',
+                            boxShadow: viewMode === mode ? `0 4px 14px ${activeColor}60` : 'none',
+                        }}
+                    >
+                        <Icon size={16} />
+                        {label}
+                    </button>
+                ))}
             </div>
 
             {/* Ad Creatives View */}

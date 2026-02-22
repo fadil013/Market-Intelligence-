@@ -138,51 +138,36 @@ const CloneDetection = ({ cloneData }) => {
             </div>
 
             {/* View Mode Switcher */}
-            <div className="flex gap-2 flex-wrap">
-                <button
-                    onClick={() => setViewMode('overview')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'overview'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <Shield className="w-4 h-4 inline mr-2" />
-                    Overview
-                </button>
-                <button
-                    onClick={() => setViewMode('saturation')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'saturation'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <AlertTriangle className="w-4 h-4 inline mr-2" />
-                    Saturation Analysis
-                </button>
-                <button
-                    onClick={() => setViewMode('timeline')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'timeline'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <Calendar className="w-4 h-4 inline mr-2" />
-                    Clone Timeline
-                </button>
-                <button
-                    onClick={() => setViewMode('publishers')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                        viewMode === 'publishers'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
-                    }`}
-                >
-                    <TrendingUp className="w-4 h-4 inline mr-2" />
-                    Fast Followers
-                </button>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                {[
+                    { mode: 'overview', label: 'Overview', Icon: Shield, activeColor: '#7c3aed' },
+                    { mode: 'saturation', label: 'Saturation Analysis', Icon: AlertTriangle, activeColor: '#dc2626' },
+                    { mode: 'timeline', label: 'Clone Timeline', Icon: Calendar, activeColor: '#2563eb' },
+                    { mode: 'publishers', label: 'Fast Followers', Icon: TrendingUp, activeColor: '#059669' },
+                ].map(({ mode, label, Icon, activeColor }) => (
+                    <button
+                        key={mode}
+                        onClick={() => setViewMode(mode)}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '10px 20px',
+                            borderRadius: '8px',
+                            fontWeight: 600,
+                            fontSize: '14px',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s',
+                            border: viewMode === mode ? 'none' : '1px solid #475569',
+                            background: viewMode === mode ? activeColor : '#1e293b',
+                            color: '#ffffff',
+                            boxShadow: viewMode === mode ? `0 4px 14px ${activeColor}60` : 'none',
+                        }}
+                    >
+                        <Icon size={16} />
+                        {label}
+                    </button>
+                ))}
             </div>
 
             {/* Overview View */}

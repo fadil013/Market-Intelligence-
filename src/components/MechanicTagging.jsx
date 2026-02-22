@@ -137,52 +137,37 @@ const MechanicTagging = ({ mechanicData }) => {
                 </div>
             </div>
 
-            {/* View Mode Switcher - Professional with Perfect Contrast */}
-            <div className="flex gap-3 flex-wrap">
-                <button
-                    onClick={() => setViewMode('tagcloud')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'tagcloud'
-                            ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-purple-500/50'
-                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
-                    }`}
-                >
-                    <Tags className="w-4 h-4 inline mr-2" />
-                    Tag Cloud
-                </button>
-                <button
-                    onClick={() => setViewMode('trends')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'trends'
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-blue-500/50'
-                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
-                    }`}
-                >
-                    <TrendingUp className="w-4 h-4 inline mr-2" />
-                    Trends
-                </button>
-                <button
-                    onClick={() => setViewMode('combinations')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'combinations'
-                            ? 'bg-gradient-to-r from-cyan-600 to-cyan-500 text-white shadow-cyan-500/50'
-                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
-                    }`}
-                >
-                    <Box className="w-4 h-4 inline mr-2" />
-                    Combinations
-                </button>
-                <button
-                    onClick={() => setViewMode('hot')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'hot'
-                            ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-orange-500/50'
-                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
-                    }`}
-                >
-                    <Flame className="w-4 h-4 inline mr-2" />
-                    Hot This Week
-                </button>
+            {/* View Mode Switcher - Guaranteed inline styles */}
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                {[
+                    { mode: 'tagcloud', label: 'Tag Cloud', Icon: Tags, activeColor: '#7c3aed' },
+                    { mode: 'trends', label: 'Trends', Icon: TrendingUp, activeColor: '#2563eb' },
+                    { mode: 'combinations', label: 'Combinations', Icon: Box, activeColor: '#0891b2' },
+                    { mode: 'hot', label: 'Hot This Week', Icon: Flame, activeColor: '#ea580c' },
+                ].map(({ mode, label, Icon, activeColor }) => (
+                    <button
+                        key={mode}
+                        onClick={() => setViewMode(mode)}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '10px 20px',
+                            borderRadius: '8px',
+                            fontWeight: 600,
+                            fontSize: '14px',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s',
+                            border: viewMode === mode ? 'none' : '1px solid #475569',
+                            background: viewMode === mode ? activeColor : '#1e293b',
+                            color: '#ffffff',
+                            boxShadow: viewMode === mode ? `0 4px 14px ${activeColor}60` : 'none',
+                        }}
+                    >
+                        <Icon size={16} />
+                        {label}
+                    </button>
+                ))}
             </div>
 
             {/* Tag Cloud View */}
