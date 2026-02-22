@@ -251,6 +251,85 @@ const PredictiveAI = () => {
                 </div>
                 <BetaLaunchMonitoring betaGamesData={betaGamesData} />
             </div>
+
+            {/* Simplified Prediction View - TL Request */}
+            <div className="glass-panel p-6">
+                <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2">đź"Š Quick Forecast Summary</h3>
+                    <p className="text-gray-400 text-sm">One glance = full understanding</p>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    {forecastData.slice(0, 6).map((game, index) => {
+                        const getStatusIcon = (trend) => {
+                            if (trend === 'up') return '📈';
+                            if (trend === 'stable') return '☑️';
+                            return '⚠️';
+                        };
+
+                        const getOutlook = (confidence, score) => {
+                            if (confidence === 'high' && score >= 70) return 'High';
+                            if (confidence === 'medium' || (score >= 50 && score < 70)) return 'Medium';
+                            return 'Low';
+                        };
+
+                        return (
+                            <div key={index} className="bg-slate-900/60 border border-gray-700 rounded-lg p-4 font-mono text-sm">
+                                <div className="border-b border-gray-700 pb-2 mb-3">
+                                    <div className="flex items-center justify-between text-white font-semibold">
+                                        <span className="truncate">{game.name}</span>
+                                        <span className="text-purple-400">Score: {game.score}</span>
+                                    </div>
+                                    <div className="flex items-center justify-between mt-1 text-gray-400 text-xs">
+                                        <span>Rank: #{game.currentRank}</span>
+                                    </div>
+                                </div>
+                                
+                                <div className="flex items-center justify-between mb-3 text-xs">
+                                    <span className="text-emerald-400">
+                                        {getStatusIcon(game.trend)} {game.trend === 'up' ? 'Rising' : game.trend === 'stable' ? 'Steady' : 'Declining'}
+                                    </span>
+                                    <span className={`px-2 py-0.5 rounded ${
+                                        getOutlook(game.confidence, game.score) === 'High' 
+                                            ? 'bg-emerald-500/20 text-emerald-300' 
+                                            : getOutlook(game.confidence, game.score) === 'Medium'
+                                            ? 'bg-yellow-500/20 text-yellow-300'
+                                            : 'bg-red-500/20 text-red-300'
+                                    }`}>
+                                        Outlook: {getOutlook(game.confidence, game.score)}
+                                    </span>
+                                </div>
+
+                                <div className="border-t border-b border-gray-700 py-2 mb-2">
+                                    <div className="text-[10px] text-gray-500 uppercase tracking-wide mb-1">🔥 Key Metrics</div>
+                                    <div className="grid grid-cols-5 gap-2 text-center">
+                                        <div>
+                                            <div className="text-xs text-gray-400">Velocity</div>
+                                            <div className="text-white font-bold">{game.breakdown.velocity}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs text-gray-400">Regional</div>
+                                            <div className="text-white font-bold">{game.breakdown.regional}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs text-gray-400">Genre</div>
+                                            <div className="text-white font-bold">{game.breakdown.genre}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs text-gray-400">Revenue</div>
+                                            <div className="text-white font-bold">{game.breakdown.revenue}</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-xs text-gray-400">Sentiment</div>
+                                            <div className="text-white font-bold">{game.breakdown.sentiment}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+
             {/* Model Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="glass-panel p-6 border-l-4 border-emerald-500">

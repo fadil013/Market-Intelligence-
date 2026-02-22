@@ -116,19 +116,32 @@ const TrendingCategories = () => {
                         <div className="flex items-start gap-4">
                             <div 
                                 style={{
-                                    width: '52px',
-                                    height: '52px',
-                                    borderRadius: '12px',
-                                    background: `${category.color}20`,
-                                    border: `1px solid ${category.color}40`,
+                                    width: '56px',
+                                    height: '56px',
+                                    borderRadius: '14px',
+                                    background: `linear-gradient(135deg, ${category.color}50, ${category.color}20)`,
+                                    border: `2px solid ${category.color}60`,
+                                    boxShadow: `0 4px 12px ${category.color}30`,
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    fontSize: '24px',
-                                    flexShrink: 0
+                                    fontSize: '28px',
+                                    flexShrink: 0,
+                                    position: 'relative',
+                                    overflow: 'hidden'
                                 }}
                             >
-                                {category.icon}
+                                <div style={{ position: 'relative', zIndex: 10 }}>
+                                    {category.icon}
+                                </div>
+                                <div 
+                                    style={{
+                                        position: 'absolute',
+                                        inset: 0,
+                                        background: 'linear-gradient(to bottom right, rgba(255,255,255,0.15), transparent)',
+                                        mixBlendMode: 'overlay'
+                                    }}
+                                />
                             </div>
 
                             <div className="flex-1 min-w-0">

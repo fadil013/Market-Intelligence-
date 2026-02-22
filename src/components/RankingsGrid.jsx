@@ -20,10 +20,18 @@ const RankingItem = ({ item, type, rank, onClick, compact }) => {
             <div className="flex items-center gap-3">
                 <span className="text-gray-500 font-bold w-4 text-center text-xs">{rank}</span>
                 <div
-                    className={`${compact ? 'w-8 h-8 text-lg' : 'w-10 h-10 text-xl'} rounded-lg flex items-center justify-center shadow-lg ring-1 ring-white/10`}
-                    style={{ background: `${item.color}20`, border: `1px solid ${item.color}40` }}
+                    className={`${compact ? 'w-9 h-9 text-xl' : 'w-12 h-12 text-2xl'} rounded-xl flex items-center justify-center shadow-2xl ring-2 ring-white/20 relative overflow-hidden`}
+                    style={{ 
+                        background: `linear-gradient(135deg, ${item.color}40, ${item.color}20)`, 
+                        border: `2px solid ${item.color}60`,
+                        boxShadow: `0 4px 12px ${item.color}30`
+                    }}
                 >
-                    {item.icon}
+                    <div className="relative z-10">{item.icon}</div>
+                    <div 
+                        className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
+                        style={{ mixBlendMode: 'overlay' }}
+                    />
                 </div>
                 <div className="min-w-0">
                     <div className="flex items-center gap-2">

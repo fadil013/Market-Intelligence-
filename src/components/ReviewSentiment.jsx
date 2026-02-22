@@ -93,14 +93,14 @@ const ReviewSentiment = ({ reviewData }) => {
                 </div>
             </div>
 
-            {/* View Mode Switcher */}
-            <div className="flex gap-2 flex-wrap">
+            {/* View Mode Switcher - Improved Readability */}
+            <div className="flex gap-3 mb-2 flex-wrap">
                 <button
                     onClick={() => setViewMode('features')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'features'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-purple-500/50'
+                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
                     }`}
                 >
                     <ThumbsUp className="w-4 h-4 inline mr-2" />
@@ -108,10 +108,10 @@ const ReviewSentiment = ({ reviewData }) => {
                 </button>
                 <button
                     onClick={() => setViewMode('complaints')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'complaints'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-red-500/50'
+                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
                     }`}
                 >
                     <ThumbsDown className="w-4 h-4 inline mr-2" />
@@ -119,10 +119,10 @@ const ReviewSentiment = ({ reviewData }) => {
                 </button>
                 <button
                     onClick={() => setViewMode('requests')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'requests'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-blue-500/50'
+                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
                     }`}
                 >
                     <Sparkles className="w-4 h-4 inline mr-2" />
@@ -130,10 +130,10 @@ const ReviewSentiment = ({ reviewData }) => {
                 </button>
                 <button
                     onClick={() => setViewMode('timeline')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'timeline'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-emerald-500/50'
+                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
                     }`}
                 >
                     <TrendingUp className="w-4 h-4 inline mr-2" />

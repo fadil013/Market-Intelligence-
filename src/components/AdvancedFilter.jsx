@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Search, Map, Calendar, Tag, Filter, ChevronDown, X } from 'lucide-react';
 
 const FilterSection = ({ title, icon: Icon, children }) => {
@@ -35,6 +35,28 @@ const AdvancedFilter = ({
     onReset,
     onClose
 }) => {
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const categories = ['All Categories', 'Casual', 'Hypercasual', 'Midcore'];
+    const categoryCounts = {
+        'All Categories': undefined,
+        'Casual': '127,415',
+        'Hypercasual': '57,790',
+        'Midcore': '23,364'
+    };
+
+    const filteredCategories = categories.filter(cat => 
+        cat.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const clearSearch = () => {
+        setSearchQuery('');
+    };
+
     return (
         <aside className="filter-panel-right">
             <div className="filter-header">
@@ -52,9 +74,20 @@ const AdvancedFilter = ({
                 <Search className="filter-search-icon" size={20} />
                 <input
                     type="text"
-                    placeholder="Search apps or tags..."
+                    placeholder="Search categories or tags..."
                     className="filter-search-input"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
                 />
+                {searchQuery && (
+                    <button 
+                        onClick={clearSearch}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                        aria-label="Clear search"
+                    >
+                        <X size={16} />
+                    </button>
+                )}
             </div>
 
             <div className="filter-content">
@@ -74,29 +107,24 @@ const AdvancedFilter = ({
                 </FilterSection>
 
                 <FilterSection title="Top Categories" icon={Tag}>
-                    <FilterOption 
-                        label="All Categories" 
-                        active={activeFilters.category === 'All'}
-                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'All' })}
-                    />
-                    <FilterOption 
-                        label="Casual" 
-                        count="127,415"
-                        active={activeFilters.category === 'Casual'}
-                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'Casual' })}
-                    />
-                    <FilterOption 
-                        label="Hypercasual" 
-                        count="57,790"
-                        active={activeFilters.category === 'Hypercasual'}
-                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'Hypercasual' })}
-                    />
-                    <FilterOption 
-                        label="Midcore" 
-                        count="23,364"
-                        active={activeFilters.category === 'Midcore'}
-                        onClick={() => onFilterChange && onFilterChange({ ...activeFilters, category: 'Midcore' })}
-                    />
+                    {filteredCategories.length > 0 ? (
+                        filteredCategories.map(cat => (
+                            <FilterOption 
+                                key={cat}
+                                label={cat}
+                                count={categoryCounts[cat]}
+                                active={activeFilters.category === cat || (cat === 'All Categories' && activeFilters.category === 'All')}
+                                onClick={() => onFilterChange && onFilterChange({ 
+                                    ...activeFilters, 
+                                    category: cat === 'All Categories' ? 'All' : cat 
+                                })}
+                            />
+                        ))
+                    ) : (
+                        <div className="text-sm text-gray-500 py-2 px-3">
+                            No categories found
+                        </div>
+                    )}
                 </FilterSection>
 
                 <FilterSection title="Geography" icon={Map}>
@@ -127,7 +155,7 @@ const AdvancedFilter = ({
                 <button className="btn-apply" onClick={onApply}>
                     Apply Filters
                 </button>
-                <button className="btn-reset" onClick={onReset}>
+                <button className="btn-reset" onClick={() => { onReset(); clearSearch(); }}>
                     Reset to Defaults
                 </button>
             </div>
