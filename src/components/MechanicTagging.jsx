@@ -137,14 +137,14 @@ const MechanicTagging = ({ mechanicData }) => {
                 </div>
             </div>
 
-            {/* View Mode Switcher */}
-            <div className="flex gap-2 flex-wrap">
+            {/* View Mode Switcher - Professional with Perfect Contrast */}
+            <div className="flex gap-3 flex-wrap">
                 <button
                     onClick={() => setViewMode('tagcloud')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'tagcloud'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-purple-500/50'
+                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
                     }`}
                 >
                     <Tags className="w-4 h-4 inline mr-2" />
@@ -152,10 +152,10 @@ const MechanicTagging = ({ mechanicData }) => {
                 </button>
                 <button
                     onClick={() => setViewMode('trends')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'trends'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-blue-500/50'
+                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
                     }`}
                 >
                     <TrendingUp className="w-4 h-4 inline mr-2" />
@@ -163,10 +163,10 @@ const MechanicTagging = ({ mechanicData }) => {
                 </button>
                 <button
                     onClick={() => setViewMode('combinations')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'combinations'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-cyan-600 to-cyan-500 text-white shadow-cyan-500/50'
+                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
                     }`}
                 >
                     <Box className="w-4 h-4 inline mr-2" />
@@ -174,10 +174,10 @@ const MechanicTagging = ({ mechanicData }) => {
                 </button>
                 <button
                     onClick={() => setViewMode('hot')}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
                         viewMode === 'hot'
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
+                            ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-orange-500/50'
+                            : 'bg-slate-900/90 text-white hover:bg-slate-800 border border-slate-700'
                     }`}
                 >
                     <Flame className="w-4 h-4 inline mr-2" />
