@@ -36,14 +36,29 @@ const Overview = () => {
         timePeriod: 'Feb 2026'
     });
 
+    // Genre → Category mapping (mirrors the filter logic)
+    const genreToCategoryMap = {
+        'Casual': 'Casual', 'Sandbox': 'Casual',
+        'Puzzle': 'Hypercasual', 'Hypercasual': 'Hypercasual',
+        'RPG': 'Midcore', 'MOBA': 'Midcore', 'Strategy': 'Midcore',
+        'Shooter': 'Midcore', 'Battle Royale': 'Midcore',
+    };
+
     const handleAppSelect = (app) => {
         setSelectedApp(null);
         setSelectedGameData(null);
         setTimeout(() => {
             setSelectedApp(app.name);
-            // Find the full game data from allGames
             const fullGameData = allGames.find(g => g.name === app.name);
-            setSelectedGameData(fullGameData || app);
+            const data = fullGameData || app;
+            setSelectedGameData(data);
+            // Auto-update the category filter based on the selected app's genre
+            if (data.genre) {
+                const mappedCategory = genreToCategoryMap[data.genre];
+                if (mappedCategory) {
+                    setActiveFilters(prev => ({ ...prev, category: mappedCategory }));
+                }
+            }
         }, 50);
     };
 
@@ -357,6 +372,7 @@ const Overview = () => {
                     onDomainChange={handleDomainChange}
                     activeFilters={activeFilters}
                     onFilterChange={setActiveFilters}
+                    selectedAppData={selectedGameData}
                     onApply={() => {
                         handleApplyFilters();
                         setFiltersPanelOpen(false);

@@ -2,7 +2,7 @@ import React from 'react';
 import { TrendingUp, TrendingDown, Minus, Crown, ExternalLink, Zap, Target, Award, Trophy } from 'lucide-react';
 import VelocityBadge from './VelocityBadge';
 import RankSparkline from './RankSparkline';
-// Professional blue color scheme
+import GameIcon from './GameIcon';
 
 const RankingItem = ({ item, type, rank, onClick, compact }) => {
     const handleLinkClick = (e) => {
@@ -19,20 +19,13 @@ const RankingItem = ({ item, type, rank, onClick, compact }) => {
         >
             <div className="flex items-center gap-3">
                 <span className="text-gray-500 font-bold w-4 text-center text-xs">{rank}</span>
-                <div
-                    className={`${compact ? 'w-9 h-9 text-xl' : 'w-12 h-12 text-2xl'} rounded-xl flex items-center justify-center shadow-2xl ring-2 ring-white/20 relative overflow-hidden`}
-                    style={{ 
-                        background: `linear-gradient(135deg, ${item.color}40, ${item.color}20)`, 
-                        border: `2px solid ${item.color}60`,
-                        boxShadow: `0 4px 12px ${item.color}30`
-                    }}
-                >
-                    <div className="relative z-10">{item.icon}</div>
-                    <div 
-                        className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"
-                        style={{ mixBlendMode: 'overlay' }}
-                    />
-                </div>
+                <GameIcon
+                    name={item.name}
+                    fallback={item.icon}
+                    color={item.color}
+                    size={compact ? 36 : 48}
+                    borderRadius={compact ? 8 : 12}
+                />
                 <div className="min-w-0">
                     <div className="flex items-center gap-2">
                         <h4 className={`text-white font-semibold ${compact ? 'text-xs' : 'text-sm'} transition-colors truncate max-w-[100px]`} style={{ ':hover': { color: '#60a5fa' } }}>{item.name}</h4>

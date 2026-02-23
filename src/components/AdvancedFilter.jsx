@@ -33,9 +33,19 @@ const AdvancedFilter = ({
     onFilterChange,
     onApply,
     onReset,
-    onClose
+    onClose,
+    selectedAppData = null,
 }) => {
     const [searchQuery, setSearchQuery] = useState('');
+
+    // Dynamic category counts driven by selectedAppData genre
+    const genreToCategoryMap = {
+        'Casual': 'Casual', 'Sandbox': 'Casual',
+        'Puzzle': 'Hypercasual', 'Hypercasual': 'Hypercasual',
+        'RPG': 'Midcore', 'MOBA': 'Midcore', 'Strategy': 'Midcore',
+        'Shooter': 'Midcore', 'Battle Royale': 'Midcore',
+    };
+    const appCategory = selectedAppData?.genre ? genreToCategoryMap[selectedAppData.genre] : null;
 
     const categories = ['All Categories', 'Casual', 'Hypercasual', 'Midcore'];
     const categoryCounts = {
@@ -69,6 +79,42 @@ const AdvancedFilter = ({
                     <X size={20} />
                 </button>
             </div>
+
+            {/* Selected App Info Card */}
+            {selectedAppData && (
+                <div style={{
+                    margin: '0 16px 12px',
+                    padding: '12px 14px',
+                    borderRadius: '10px',
+                    background: `linear-gradient(135deg, ${selectedAppData.color || '#7c3aed'}18, ${selectedAppData.color || '#7c3aed'}08)`,
+                    border: `1px solid ${selectedAppData.color || '#7c3aed'}40`,
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                        <span style={{ fontSize: '22px' }}>{selectedAppData.icon || '🎮'}</span>
+                        <div style={{ minWidth: 0 }}>
+                            <div style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '13px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                {selectedAppData.name}
+                            </div>
+                            <div style={{ color: '#94a3b8', fontSize: '11px' }}>
+                                {selectedAppData.genre || selectedAppData.type || 'App'} · {selectedAppData.platform || ''}
+                            </div>
+                        </div>
+                    </div>
+                    {appCategory && (
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <span style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 600 }}>CATEGORY:</span>
+                            <span style={{
+                                padding: '2px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: 700,
+                                background: `${selectedAppData.color || '#7c3aed'}25`,
+                                color: selectedAppData.color || '#a78bfa',
+                                border: `1px solid ${selectedAppData.color || '#7c3aed'}40`,
+                            }}>
+                                {appCategory}
+                            </span>
+                        </div>
+                    )}
+                </div>
+            )}
 
             <div className="filter-search-container">
                 <Search className="filter-search-icon" size={20} />

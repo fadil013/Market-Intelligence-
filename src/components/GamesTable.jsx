@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { TrendingUp, TrendingDown, Star } from 'lucide-react';
 import VelocityBadge from './VelocityBadge';
 import PlatformIndicators from './PlatformIndicators';
+import GameIcon from './GameIcon';
 
 const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) => {
     const [genreFilter, setGenreFilter] = useState('All');
@@ -72,12 +73,13 @@ const GamesTable = React.memo(({ games, genres, businessModels, onGameSelect }) 
                             <td className="text-muted">{index + 1}</td>
                             <td>
                                 <div className="game-cell">
-                                    <div
-                                        className="game-avatar text-xl flex items-center justify-center p-0 overflow-hidden"
-                                        style={{ backgroundColor: `${game.color}20`, border: `1px solid ${game.color}40` }}
-                                    >
-                                        {game.icon || game.name.charAt(0)}
-                                    </div>
+                                    <GameIcon
+                                        name={game.name}
+                                        fallback={game.icon || game.name.charAt(0)}
+                                        color={game.color || '#8b5cf6'}
+                                        size={40}
+                                        borderRadius={10}
+                                    />
                                     <div>
                                         <div className="game-name">{game.name}</div>
                                         <div className="game-region">{game.studioRegion}</div>

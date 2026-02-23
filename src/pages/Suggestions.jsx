@@ -1,6 +1,6 @@
 import React from 'react';
-import { Lightbulb, TrendingUp, Target, Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
-import { aiSuggestions, opportunityData } from '../data/mockData';
+import { Lightbulb, TrendingUp, Target, Sparkles, ArrowRight, CheckCircle, Shield, Zap } from 'lucide-react';
+import { aiSuggestions, opportunityData, lowCompetitionData } from '../data/mockData';
 import AIOpportunityEngine from '../components/AIOpportunityEngine';
 
 const Suggestions = () => {
@@ -136,6 +136,102 @@ const Suggestions = () => {
                         <p className="text-white font-semibold">Cross-Platform Sync</p>
                         <p className="text-gray-400 text-sm">45% better retention rates</p>
                     </div>
+                </div>
+            </div>
+
+            {/* Low Competition Categories - NEW Feature */}
+            <div className="glass-panel p-6">
+                <div className="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+                            <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'linear-gradient(135deg, #10b981, #059669)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(16,185,129,0.4)' }}>
+                                <Shield size={20} style={{ color: '#fff' }} />
+                            </div>
+                            Low Competition Categories
+                        </h3>
+                        <p className="text-gray-400 mt-1 text-sm">Market segments with high opportunity &amp; less crowded competition — ideal for new entries</p>
+                    </div>
+                    <div style={{ padding: '6px 14px', borderRadius: '20px', background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.3)', color: '#34d399', fontSize: '12px', fontWeight: 700 }}>
+                        🎯 {lowCompetitionData.length} Opportunities
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {lowCompetitionData.map((cat, i) => (
+                        <div key={i} style={{
+                            background: `linear-gradient(135deg, ${cat.color}12, ${cat.color}06)`,
+                            border: `1px solid ${cat.color}30`,
+                            borderRadius: '14px',
+                            padding: '20px',
+                            transition: 'all 0.2s',
+                            cursor: 'pointer',
+                            position: 'relative',
+                            overflow: 'hidden',
+                        }}
+                            onMouseEnter={e => { e.currentTarget.style.border = `1px solid ${cat.color}70`; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                            onMouseLeave={e => { e.currentTarget.style.border = `1px solid ${cat.color}30`; e.currentTarget.style.transform = 'translateY(0)'; }}
+                        >
+                            {/* Glow accent */}
+                            <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '80px', height: '80px', borderRadius: '50%', background: `${cat.color}18`, filter: 'blur(20px)' }} />
+
+                            {/* Header */}
+                            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <span style={{ fontSize: '28px' }}>{cat.icon}</span>
+                                    <div>
+                                        <h4 style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '14px', margin: 0, lineHeight: 1.3 }}>{cat.category}</h4>
+                                        <span style={{ fontSize: '11px', color: '#10b981', fontWeight: 700 }}>{cat.cagr} CAGR</span>
+                                    </div>
+                                </div>
+                                {/* Opportunity score badge */}
+                                <div style={{
+                                    background: cat.opportunityScore >= 85 ? 'rgba(16,185,129,0.2)' : cat.opportunityScore >= 75 ? 'rgba(251,191,36,0.2)' : 'rgba(59,130,246,0.2)',
+                                    color: cat.opportunityScore >= 85 ? '#34d399' : cat.opportunityScore >= 75 ? '#fbbf24' : '#60a5fa',
+                                    padding: '4px 8px', borderRadius: '6px', fontSize: '13px', fontWeight: 800,
+                                    lineHeight: 1,
+                                }}>
+                                    {cat.opportunityScore}
+                                    <div style={{ fontSize: '8px', fontWeight: 600, opacity: 0.8, textAlign: 'center' }}>OPP</div>
+                                </div>
+                            </div>
+
+                            {/* Stats row */}
+                            <div style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                                <div style={{ flex: 1, background: 'rgba(255,255,255,0.04)', borderRadius: '8px', padding: '8px', textAlign: 'center' }}>
+                                    <div style={{ fontSize: '10px', color: '#64748b', fontWeight: 600, marginBottom: '2px' }}>Games</div>
+                                    <div style={{ fontSize: '14px', fontWeight: 700, color: '#f1f5f9' }}>{cat.gamesInMarket.toLocaleString()}</div>
+                                </div>
+                                <div style={{ flex: 1, background: 'rgba(255,255,255,0.04)', borderRadius: '8px', padding: '8px', textAlign: 'center' }}>
+                                    <div style={{ fontSize: '10px', color: '#64748b', fontWeight: 600, marginBottom: '2px' }}>Avg Rev</div>
+                                    <div style={{ fontSize: '14px', fontWeight: 700, color: '#f1f5f9' }}>{cat.avgRevenue}</div>
+                                </div>
+                                <div style={{ flex: 1, background: 'rgba(255,255,255,0.04)', borderRadius: '8px', padding: '8px', textAlign: 'center' }}>
+                                    <div style={{ fontSize: '10px', color: '#64748b', fontWeight: 600, marginBottom: '2px' }}>Competition</div>
+                                    <div style={{ fontSize: '14px', fontWeight: 700, color: cat.competitionScore <= 15 ? '#10b981' : cat.competitionScore <= 25 ? '#fbbf24' : '#f87171' }}>
+                                        {cat.competitionScore < 20 ? 'Low' : cat.competitionScore < 28 ? 'Medium' : 'Moderate'}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Rationale */}
+                            <p style={{ color: '#94a3b8', fontSize: '12px', margin: '0 0 12px', lineHeight: 1.5 }}>{cat.rationale}</p>
+
+                            {/* Gaps */}
+                            <div>
+                                <div style={{ fontSize: '10px', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '6px' }}>Key Gaps</div>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                                    {cat.topGaps.map((gap, gi) => (
+                                        <span key={gi} style={{
+                                            padding: '3px 8px', borderRadius: '4px', fontSize: '11px', fontWeight: 600,
+                                            background: `${cat.color}15`,
+                                            color: cat.color,
+                                            border: `1px solid ${cat.color}30`,
+                                        }}>{gap}</span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
 

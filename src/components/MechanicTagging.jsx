@@ -515,19 +515,94 @@ const MechanicTagging = ({ mechanicData }) => {
                         </div>
                     </div>
 
-                    {/* Trend Alerts */}
-                    <div className="glass-panel p-6 bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30">
-                        <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                            <Zap className="w-6 h-6 text-yellow-400" />
-                            Trend Alerts
-                        </h3>
-                        <div className="space-y-3">
-                            {mechanicData.trendAlerts && mechanicData.trendAlerts.map((alert, index) => (
-                                <div key={index} className="p-4 rounded-lg bg-gray-800/50 border border-purple-500/30">
-                                    <p className="text-white text-lg">{alert.message}</p>
-                                    <p className="text-gray-400 text-sm mt-1">{alert.details}</p>
+                    {/* Trend Alerts — Redesigned Live Feed */}
+                    <div style={{
+                        background: 'linear-gradient(135deg, #0f0720 0%, #160a2e 40%, #0a0f20 100%)',
+                        border: '1px solid rgba(139,92,246,0.35)',
+                        borderRadius: '16px',
+                        overflow: 'hidden',
+                        boxShadow: '0 0 40px rgba(139,92,246,0.15), 0 8px 32px rgba(0,0,0,0.4)'
+                    }}>
+                        {/* Header */}
+                        <div style={{
+                            background: 'linear-gradient(90deg, rgba(139,92,246,0.4) 0%, rgba(236,72,153,0.3) 50%, rgba(59,130,246,0.3) 100%)',
+                            borderBottom: '1px solid rgba(139,92,246,0.3)',
+                            padding: '18px 24px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between'
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                <div style={{
+                                    width: '40px', height: '40px', borderRadius: '10px',
+                                    background: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
+                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                    boxShadow: '0 4px 14px rgba(251,191,36,0.4)'
+                                }}>
+                                    <Zap style={{ width: '22px', height: '22px', color: '#0f172a' }} />
                                 </div>
-                            ))}
+                                <div>
+                                    <h3 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: '20px', margin: 0 }}>⚡ Trend Alerts</h3>
+                                    <p style={{ color: '#a78bfa', fontSize: '12px', margin: 0 }}>Real-time mechanic intelligence</p>
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <div style={{
+                                    width: '8px', height: '8px', borderRadius: '50%',
+                                    background: '#10b981', boxShadow: '0 0 8px #10b981',
+                                    animation: 'pulse 2s infinite'
+                                }} />
+                                <span style={{ color: '#10b981', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em' }}>LIVE</span>
+                            </div>
+                        </div>
+
+                        {/* Alert Items */}
+                        <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                            {mechanicData.trendAlerts && mechanicData.trendAlerts.map((alert, index) => {
+                                const isPositive = alert.message.includes('+');
+                                const isDecline = alert.message.includes('-') && !alert.message.startsWith('-');
+                                const accentColors = [
+                                    { border: '#f97316', bg: 'rgba(249,115,22,0.08)', num: 'rgba(249,115,22,0.9)', icon: '🔥' },
+                                    { border: '#10b981', bg: 'rgba(16,185,129,0.08)', num: 'rgba(16,185,129,0.9)', icon: '📈' },
+                                    { border: '#8b5cf6', bg: 'rgba(139,92,246,0.08)', num: 'rgba(139,92,246,0.9)', icon: '🎰' },
+                                    { border: '#ef4444', bg: 'rgba(239,68,68,0.08)',   num: 'rgba(239,68,68,0.9)',   icon: '📉' },
+                                    { border: '#06b6d4', bg: 'rgba(6,182,212,0.08)',   num: 'rgba(6,182,212,0.9)',   icon: '🚀' },
+                                ];
+                                const c = accentColors[index % accentColors.length];
+                                return (
+                                    <div key={index} style={{
+                                        display: 'flex',
+                                        alignItems: 'flex-start',
+                                        gap: '14px',
+                                        background: c.bg,
+                                        border: `1px solid ${c.border}30`,
+                                        borderLeft: `3px solid ${c.border}`,
+                                        borderRadius: '10px',
+                                        padding: '14px 16px',
+                                        transition: 'all 0.2s',
+                                    }}>
+                                        {/* Number badge */}
+                                        <div style={{
+                                            width: '28px', height: '28px', borderRadius: '50%',
+                                            background: c.num, display: 'flex',
+                                            alignItems: 'center', justifyContent: 'center',
+                                            fontSize: '13px', fontWeight: 800, color: '#0f172a',
+                                            flexShrink: 0
+                                        }}>
+                                            {index + 1}
+                                        </div>
+                                        <div style={{ flex: 1, minWidth: 0 }}>
+                                            <p style={{ color: '#f1f5f9', fontWeight: 600, fontSize: '14px', margin: 0, lineHeight: 1.4 }}>
+                                                {alert.message}
+                                            </p>
+                                            <p style={{ color: '#64748b', fontSize: '12px', margin: '6px 0 0 0', lineHeight: 1.4 }}>
+                                                {alert.details}
+                                            </p>
+                                        </div>
+                                        <span style={{ fontSize: '18px', flexShrink: 0 }}>{c.icon}</span>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

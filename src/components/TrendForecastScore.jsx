@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
 import { TrendingUp, TrendingDown, Zap, AlertTriangle, Target, Award, Sparkles, Activity } from 'lucide-react';
+import GameIcon from './GameIcon';
 
 const TrendForecastScore = ({ forecastData }) => {
   const [selectedGame, setSelectedGame] = useState(null);
@@ -9,11 +10,11 @@ const TrendForecastScore = ({ forecastData }) => {
   const sortedByScore = [...forecastData].sort((a, b) => b.forecastScore.score - a.forecastScore.score);
 
   const getScoreColor = (score) => {
-    if (score >= 85) return { bg: 'from-green-500/20 to-green-600/20', border: 'border-green-500/30', text: 'text-green-400', icon: 'text-green-400' };
-    if (score >= 70) return { bg: 'from-blue-500/20 to-blue-600/20', border: 'border-blue-500/30', text: 'text-blue-400', icon: 'text-blue-400' };
-    if (score >= 50) return { bg: 'from-purple-500/20 to-purple-600/20', border: 'border-purple-500/30', text: 'text-purple-400', icon: 'text-purple-400' };
-    if (score >= 30) return { bg: 'from-yellow-500/20 to-yellow-600/20', border: 'border-yellow-500/30', text: 'text-yellow-400', icon: 'text-yellow-400' };
-    return { bg: 'from-red-500/20 to-red-600/20', border: 'border-red-500/30', text: 'text-red-400', icon: 'text-red-400' };
+    if (score >= 85) return { bg: 'from-green-500/20 to-green-600/20', border: 'border-green-500/30', text: 'text-green-400', icon: 'text-green-400', hex: '#10b981' };
+    if (score >= 70) return { bg: 'from-blue-500/20 to-blue-600/20', border: 'border-blue-500/30', text: 'text-blue-400', icon: 'text-blue-400', hex: '#3b82f6' };
+    if (score >= 50) return { bg: 'from-purple-500/20 to-purple-600/20', border: 'border-purple-500/30', text: 'text-purple-400', icon: 'text-purple-400', hex: '#8b5cf6' };
+    if (score >= 30) return { bg: 'from-yellow-500/20 to-yellow-600/20', border: 'border-yellow-500/30', text: 'text-yellow-400', icon: 'text-yellow-400', hex: '#f59e0b' };
+    return { bg: 'from-red-500/20 to-red-600/20', border: 'border-red-500/30', text: 'text-red-400', icon: 'text-red-400', hex: '#ef4444' };
   };
 
   const getScoreCategory = (score) => {
@@ -163,6 +164,8 @@ const TrendForecastScore = ({ forecastData }) => {
                     <div className={`text-6xl font-bold ${colors.text}`}>{score}</div>
                     <div className="text-sm text-gray-400">Score</div>
                   </div>
+                  {/* Real game icon via iTunes API */}
+                  <GameIcon name={game.gameName} fallback="🎮" color={colors.hex} size={52} borderRadius={12} />
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       {index === 0 && <Award className="w-5 h-5 text-yellow-400" />}
@@ -195,32 +198,23 @@ const TrendForecastScore = ({ forecastData }) => {
                 </div>
               </div>
 
-              {/* Factor Breakdown */}
-              <div className="grid grid-cols-5 gap-3 mb-4">
-                <div className="bg-white/10 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">Velocity</p>
-                  <p className="text-lg font-bold text-white">{Math.round(game.forecastScore.breakdown.velocity)}</p>
-                  <p className="text-xs text-gray-500">25% weight</p>
-                </div>
-                <div className="bg-white/10 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">Regional</p>
-                  <p className="text-lg font-bold text-white">{Math.round(game.forecastScore.breakdown.regional)}</p>
-                  <p className="text-xs text-gray-500">20% weight</p>
-                </div>
-                <div className="bg-white/10 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">Genre</p>
-                  <p className="text-lg font-bold text-white">{Math.round(game.forecastScore.breakdown.genre)}</p>
-                  <p className="text-xs text-gray-500">20% weight</p>
-                </div>
-                <div className="bg-white/10 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">Revenue</p>
-                  <p className="text-lg font-bold text-white">{Math.round(game.forecastScore.breakdown.revenue)}</p>
-                  <p className="text-xs text-gray-500">20% weight</p>
-                </div>
-                <div className="bg-white/10 rounded p-3">
-                  <p className="text-xs text-gray-400 mb-1">Sentiment</p>
-                  <p className="text-lg font-bold text-white">{Math.round(game.forecastScore.breakdown.sentiment)}</p>
-                  <p className="text-xs text-gray-500">15% weight</p>
+              {/* Factor Breakdown — compact single row with pipes */}
+              <div style={{ marginBottom: '16px' }}>
+                <p style={{ color: '#64748b', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, marginBottom: '8px' }}>Key Metrics</p>
+                <div style={{ display: 'flex', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+                  {[
+                    ['Velocity', Math.round(game.forecastScore.breakdown.velocity), '25%'],
+                    ['Regional', Math.round(game.forecastScore.breakdown.regional), '20%'],
+                    ['Genre',    Math.round(game.forecastScore.breakdown.genre),    '20%'],
+                    ['Revenue',  Math.round(game.forecastScore.breakdown.revenue),  '20%'],
+                    ['Sentiment',Math.round(game.forecastScore.breakdown.sentiment),'15%'],
+                  ].map(([label, val, weight], i, arr) => (
+                    <div key={label} style={{ flex: 1, padding: '10px 6px', textAlign: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
+                      <div style={{ fontSize: '10px', color: '#64748b', fontWeight: 600, marginBottom: '4px', whiteSpace: 'nowrap' }}>{label}</div>
+                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#f1f5f9', lineHeight: 1 }}>{val}</div>
+                      <div style={{ fontSize: '9px', color: '#475569', marginTop: '3px' }}>{weight}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
 

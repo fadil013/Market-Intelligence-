@@ -15,6 +15,7 @@ import { Brain, TrendingUp, AlertCircle, CheckCircle, Calendar } from 'lucide-re
 import { predictiveData, betaGamesData, forecastData } from '../data/mockData';
 import BetaLaunchMonitoring from '../components/BetaLaunchMonitoring';
 import TrendForecastScore from '../components/TrendForecastScore';
+import GameIcon from '../components/GameIcon';
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -276,8 +277,11 @@ const PredictiveAI = () => {
                         return (
                             <div key={index} style={{ background: '#0f172a', border: '1px solid #334155', borderRadius: '8px', padding: '16px', fontFamily: 'monospace' }}>
                                 <div style={{ borderBottom: '1px solid #334155', paddingBottom: '10px', marginBottom: '12px' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#f1f5f9', fontWeight: 700 }}>
-                                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{game.gameName}</span>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                                            <GameIcon name={game.gameName} fallback="🎮" color="#8b5cf6" size={36} borderRadius={8} />
+                                            <span style={{ color: '#f1f5f9', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{game.gameName}</span>
+                                        </div>
                                         <span style={{ color: '#a78bfa', flexShrink: 0, marginLeft: '8px' }}>Score: {fs.score}</span>
                                     </div>
                                     <div style={{ color: '#94a3b8', fontSize: '12px', marginTop: '4px' }}>Rank: #{game.currentRank}</div>
