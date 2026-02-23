@@ -13,7 +13,7 @@ import {
     ChevronRight,
     Activity
 } from 'lucide-react';
-import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 const AIOpportunityEngine = ({ opportunityData }) => {
     const [selectedPriority, setSelectedPriority] = useState('all');
@@ -260,12 +260,6 @@ const AIOpportunityEngine = ({ opportunityData }) => {
                                 else if (entry.priority === 'WATCH') color = '#64748b'; // gray
                                 return <Cell key={`cell-${index}`} fill={color} />;
                             })}
-                            <LabelList
-                                dataKey="name"
-                                position="bottom"
-                                style={{ fill: '#cbd5e1', fontSize: '10px', fontWeight: 600 }}
-                                offset={10}
-                            />
                         </Scatter>
                     </ScatterChart>
                 </ResponsiveContainer>
