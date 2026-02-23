@@ -13,7 +13,7 @@ import {
     ChevronRight,
     Activity
 } from 'lucide-react';
-import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
 
 const AIOpportunityEngine = ({ opportunityData }) => {
     const [selectedPriority, setSelectedPriority] = useState('all');
@@ -71,7 +71,8 @@ const AIOpportunityEngine = ({ opportunityData }) => {
 
     // Prepare matrix data for scatter chart
     const matrixData = opportunityData.map(opp => ({
-        name: opp.niche,
+        name: opp.niche.length > 14 ? opp.niche.substring(0, 14) + '…' : opp.niche,
+        fullName: opp.niche,
         demand: opp.demandScore,
         competition: opp.competitionScore,
         revenue: opp.revenuePotential,
@@ -181,36 +182,73 @@ const AIOpportunityEngine = ({ opportunityData }) => {
                     <Target className="w-5 h-5 text-purple-400" />
                     Demand vs Competition Matrix
                 </h3>
-                <ResponsiveContainer width="100%" height={400}>
-                    <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                <ResponsiveContainer width="100%" height={420}>
+                    <ScatterChart margin={{ top: 20, right: 30, bottom: 50, left: 50 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
                         <XAxis 
                             type="number" 
                             dataKey="competition" 
-                            name="Competition" 
-                            stroke="#94a3b8"
-                            label={{ value: 'Competition Score (Lower = Better)', position: 'bottom', fill: '#94a3b8' }}
+                            name="Competition"
+                            stroke="#475569"
+                            tick={{ fill: '#94a3b8', fontSize: 12 }}
+                            tickLine={false}
+                            axisLine={{ stroke: '#334155' }}
+                            label={{ value: 'Competition Score  (lower = better opportunity)', position: 'insideBottom', offset: -30, fill: '#64748b', fontSize: 12, fontWeight: 600 }}
                         />
                         <YAxis 
                             type="number" 
                             dataKey="demand" 
-                            name="Demand" 
-                            stroke="#94a3b8"
-                            label={{ value: 'Demand Score', angle: -90, position: 'left', fill: '#94a3b8' }}
+                            name="Demand"
+                            stroke="#475569"
+                            tick={{ fill: '#94a3b8', fontSize: 12 }}
+                            tickLine={false}
+                            axisLine={{ stroke: '#334155' }}
+                            label={{ value: 'Demand Score', angle: -90, position: 'insideLeft', offset: 15, fill: '#64748b', fontSize: 12, fontWeight: 600 }}
                         />
-                        <ZAxis type="number" dataKey="size" range={[100, 400]} />
+                        <ZAxis type="number" dataKey="size" range={[80, 350]} />
                         <Tooltip
-                            contentStyle={{
-                                backgroundColor: '#1e293b',
-                                border: '1px solid #334155',
-                                borderRadius: '8px'
-                            }}
-                            formatter={(value, name) => [value, name === 'demand' ? 'Demand' : name === 'competition' ? 'Competition' : name]}
-                            labelFormatter={(label, payload) => {
-                                if (payload && payload[0]) {
-                                    return `${payload[0].payload.name}`;
-                                }
-                                return label;
+                            content={({ active, payload }) => {
+                                if (!active || !payload || !payload.length) return null;
+                                const d = payload[0].payload;
+                                const priorityColor = d.priority === 'HIGH PRIORITY' ? '#10b981'
+                                    : d.priority === 'MEDIUM PRIORITY' ? '#f59e0b'
+                                    : d.priority === 'LOW PRIORITY' ? '#6366f1' : '#64748b';
+                                return (
+                                    <div style={{
+                                        background: 'linear-gradient(135deg, #1e293b, #0f172a)',
+                                        border: `1px solid ${priorityColor}50`,
+                                        borderLeft: `3px solid ${priorityColor}`,
+                                        borderRadius: '10px',
+                                        padding: '12px 16px',
+                                        minWidth: '200px',
+                                        boxShadow: `0 8px 24px rgba(0,0,0,0.5), 0 0 12px ${priorityColor}20`,
+                                    }}>
+                                        <p style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '14px', marginBottom: '8px' }}>{d.fullName || d.name}</p>
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
+                                                <span style={{ color: '#64748b', fontSize: '12px', fontWeight: 600 }}>Competition</span>
+                                                <span style={{ color: '#f87171', fontWeight: 700, fontSize: '13px' }}>{d.competition}</span>
+                                            </div>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
+                                                <span style={{ color: '#64748b', fontSize: '12px', fontWeight: 600 }}>Demand</span>
+                                                <span style={{ color: '#34d399', fontWeight: 700, fontSize: '13px' }}>{d.demand}</span>
+                                            </div>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
+                                                <span style={{ color: '#64748b', fontSize: '12px', fontWeight: 600 }}>Market Size</span>
+                                                <span style={{ color: '#60a5fa', fontWeight: 700, fontSize: '13px' }}>{d.size}</span>
+                                            </div>
+                                        </div>
+                                        <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                                            <span style={{
+                                                fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
+                                                color: priorityColor,
+                                                background: `${priorityColor}15`,
+                                                padding: '2px 8px', borderRadius: '4px',
+                                                border: `1px solid ${priorityColor}30`,
+                                            }}>{d.priority}</span>
+                                        </div>
+                                    </div>
+                                );
                             }}
                         />
                         <Scatter name="Opportunities" data={matrixData}>
@@ -222,6 +260,12 @@ const AIOpportunityEngine = ({ opportunityData }) => {
                                 else if (entry.priority === 'WATCH') color = '#64748b'; // gray
                                 return <Cell key={`cell-${index}`} fill={color} />;
                             })}
+                            <LabelList
+                                dataKey="name"
+                                position="bottom"
+                                style={{ fill: '#cbd5e1', fontSize: '10px', fontWeight: 600 }}
+                                offset={10}
+                            />
                         </Scatter>
                     </ScatterChart>
                 </ResponsiveContainer>
