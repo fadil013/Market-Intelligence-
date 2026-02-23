@@ -212,39 +212,39 @@ const AIOpportunityEngine = ({ opportunityData }) => {
                                 const d = payload[0].payload;
                                 const priorityColor = d.priority === 'HIGH PRIORITY' ? '#10b981'
                                     : d.priority === 'MEDIUM PRIORITY' ? '#f59e0b'
-                                    : d.priority === 'LOW PRIORITY' ? '#6366f1' : '#64748b';
+                                    : d.priority === 'LOW PRIORITY' ? '#6366f1' : '#94a3b8';
                                 return (
                                     <div style={{
-                                        background: 'linear-gradient(135deg, #1e293b, #0f172a)',
-                                        border: `1px solid ${priorityColor}50`,
-                                        borderLeft: `3px solid ${priorityColor}`,
+                                        background: '#0f172a',
+                                        border: `2px solid ${priorityColor}`,
                                         borderRadius: '10px',
-                                        padding: '12px 16px',
-                                        minWidth: '200px',
-                                        boxShadow: `0 8px 24px rgba(0,0,0,0.5), 0 0 12px ${priorityColor}20`,
+                                        padding: '14px 18px',
+                                        minWidth: '210px',
+                                        boxShadow: `0 8px 30px rgba(0,0,0,0.7), 0 0 20px ${priorityColor}30`,
+                                        fontFamily: 'sans-serif',
                                     }}>
-                                        <p style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '14px', marginBottom: '8px' }}>{d.fullName || d.name}</p>
-                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
-                                                <span style={{ color: '#64748b', fontSize: '12px', fontWeight: 600 }}>Competition</span>
-                                                <span style={{ color: '#f87171', fontWeight: 700, fontSize: '13px' }}>{d.competition}</span>
+                                        <p style={{ color: '#ffffff', fontWeight: 800, fontSize: '15px', marginBottom: '10px', borderBottom: '1px solid rgba(255,255,255,0.12)', paddingBottom: '8px' }}>{d.fullName || d.name}</p>
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                <span style={{ color: '#cbd5e1', fontSize: '12px', fontWeight: 600 }}>⚔️ Competition</span>
+                                                <span style={{ color: '#fca5a5', fontWeight: 800, fontSize: '15px' }}>{d.competition}</span>
                                             </div>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
-                                                <span style={{ color: '#64748b', fontSize: '12px', fontWeight: 600 }}>Demand</span>
-                                                <span style={{ color: '#34d399', fontWeight: 700, fontSize: '13px' }}>{d.demand}</span>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                <span style={{ color: '#cbd5e1', fontSize: '12px', fontWeight: 600 }}>📈 Demand</span>
+                                                <span style={{ color: '#6ee7b7', fontWeight: 800, fontSize: '15px' }}>{d.demand}</span>
                                             </div>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '24px' }}>
-                                                <span style={{ color: '#64748b', fontSize: '12px', fontWeight: 600 }}>Market Size</span>
-                                                <span style={{ color: '#60a5fa', fontWeight: 700, fontSize: '13px' }}>{d.size}</span>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                <span style={{ color: '#cbd5e1', fontSize: '12px', fontWeight: 600 }}>📦 Market Size</span>
+                                                <span style={{ color: '#93c5fd', fontWeight: 800, fontSize: '15px' }}>{d.size}</span>
                                             </div>
                                         </div>
-                                        <div style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                                        <div style={{ marginTop: '10px', paddingTop: '8px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                                             <span style={{
-                                                fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em',
+                                                fontSize: '11px', fontWeight: 800, letterSpacing: '0.06em',
                                                 color: priorityColor,
-                                                background: `${priorityColor}15`,
-                                                padding: '2px 8px', borderRadius: '4px',
-                                                border: `1px solid ${priorityColor}30`,
+                                                background: `${priorityColor}20`,
+                                                padding: '3px 10px', borderRadius: '4px',
+                                                border: `1px solid ${priorityColor}60`,
                                             }}>{d.priority}</span>
                                         </div>
                                     </div>

@@ -88,17 +88,27 @@ const TrendForecastScore = ({ forecastData }) => {
   return (
     <div className="space-y-6">
       {/* Master Header */}
-      <div className="bg-gradient-to-r from-purple-600/30 via-pink-600/30 to-blue-600/30 rounded-xl p-8 border border-purple-500/40 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+      <div style={{
+        background: 'linear-gradient(135deg, #0d1117 0%, #161b27 40%, #0d1117 100%)',
+        border: '1px solid rgba(139,92,246,0.4)',
+        borderRadius: '16px',
+        padding: '32px',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 4px 32px rgba(139,92,246,0.12)',
+      }}>
+        {/* Subtle accent glows — no pink */}
+        <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(99,102,241,0.12)', filter: 'blur(60px)' }} />
+        <div style={{ position: 'absolute', bottom: '-40px', left: '20%', width: '160px', height: '160px', borderRadius: '50%', background: 'rgba(6,182,212,0.08)', filter: 'blur(50px)' }} />
         <div className="relative z-10">
-          <h2 className="text-4xl font-bold text-white mb-3 flex items-center gap-3">
-            <Sparkles className="w-8 h-8 text-yellow-400" />
+          <h2 style={{ color: '#f1f5f9', fontSize: '28px', fontWeight: 800, marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <Sparkles style={{ width: '28px', height: '28px', color: '#fbbf24' }} />
             Trend Forecast Score
-            <span className="text-2xl font-normal text-purple-300">MASTER FEATURE</span>
+            <span style={{ fontSize: '14px', fontWeight: 700, color: '#818cf8', letterSpacing: '0.08em', padding: '3px 10px', borderRadius: '6px', background: 'rgba(99,102,241,0.15)', border: '1px solid rgba(99,102,241,0.3)' }}>MASTER FEATURE</span>
           </h2>
-          <p className="text-gray-200 text-lg mb-4">30-60 day predictive intelligence using multi-factor analysis</p>
-          <p className="text-gray-300 text-sm max-w-3xl">
-            Combines Velocity Score (25%), Regional Breakout (20%), Genre Growth (20%), Revenue Efficiency (20%), 
+          <p style={{ color: '#94a3b8', fontSize: '15px', marginBottom: '8px' }}>30-60 day predictive intelligence using multi-factor analysis</p>
+          <p style={{ color: '#64748b', fontSize: '13px', maxWidth: '700px', lineHeight: 1.6 }}>
+            Combines Velocity Score (25%), Regional Breakout (20%), Genre Growth (20%), Revenue Efficiency (20%),
             and Review Sentiment (15%) into a comprehensive trend prediction system.
           </p>
         </div>
@@ -106,41 +116,26 @@ const TrendForecastScore = ({ forecastData }) => {
 
       {/* Summary KPIs */}
       <div className="grid grid-cols-4 gap-4">
-        <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-lg p-4 border border-green-500/30">
-          <div className="flex items-center gap-2 mb-2">
-            <Zap className="w-5 h-5 text-green-400" />
-            <p className="text-sm text-gray-400">Explosive Growth</p>
+        {[
+          { label: 'Explosive Growth', value: explosiveGrowthCount, sub: 'Score ≥85', Icon: Zap, color: '#10b981' },
+          { label: 'Strong Uptrend',   value: strongUptrendCount,   sub: 'Score 70-84', Icon: TrendingUp, color: '#3b82f6' },
+          { label: 'Avg Forecast Score', value: avgScore,           sub: `across ${forecastData.length} games`, Icon: Activity, color: '#8b5cf6' },
+          { label: 'High Confidence', value: highConfidenceCount,  sub: 'reliable forecasts', Icon: Target, color: '#f59e0b' },
+        ].map(({ label, value, sub, Icon, color }) => (
+          <div key={label} style={{
+            background: `linear-gradient(135deg, ${color}18 0%, ${color}08 100%)`,
+            border: `1px solid ${color}35`,
+            borderRadius: '12px',
+            padding: '16px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <Icon style={{ width: '18px', height: '18px', color }} />
+              <p style={{ color: '#94a3b8', fontSize: '13px', fontWeight: 600, margin: 0 }}>{label}</p>
+            </div>
+            <p style={{ color: '#f1f5f9', fontSize: '32px', fontWeight: 800, margin: '0 0 4px', lineHeight: 1 }}>{value}</p>
+            <p style={{ color, fontSize: '12px', fontWeight: 600, margin: 0 }}>{sub}</p>
           </div>
-          <p className="text-3xl font-bold text-white">{explosiveGrowthCount}</p>
-          <p className="text-sm text-green-300">Score ≥85</p>
-        </div>
-        
-        <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-lg p-4 border border-blue-500/30">
-          <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="w-5 h-5 text-blue-400" />
-            <p className="text-sm text-gray-400">Strong Uptrend</p>
-          </div>
-          <p className="text-3xl font-bold text-white">{strongUptrendCount}</p>
-          <p className="text-sm text-blue-300">Score 70-84</p>
-        </div>
-
-        <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-lg p-4 border border-purple-500/30">
-          <div className="flex items-center gap-2 mb-2">
-            <Activity className="w-5 h-5 text-purple-400" />
-            <p className="text-sm text-gray-400">Avg Forecast Score</p>
-          </div>
-          <p className="text-3xl font-bold text-white">{avgScore}</p>
-          <p className="text-sm text-purple-300">across {forecastData.length} games</p>
-        </div>
-
-        <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 rounded-lg p-4 border border-yellow-500/30">
-          <div className="flex items-center gap-2 mb-2">
-            <Target className="w-5 h-5 text-yellow-400" />
-            <p className="text-sm text-gray-400">High Confidence</p>
-          </div>
-          <p className="text-3xl font-bold text-white">{highConfidenceCount}</p>
-          <p className="text-sm text-yellow-300">reliable forecasts</p>
-        </div>
+        ))}
       </div>
 
       {/* Games List */}
