@@ -93,52 +93,42 @@ const ReviewSentiment = ({ reviewData }) => {
                 </div>
             </div>
 
-            {/* View Mode Switcher - Improved Readability */}
-            <div className="flex gap-3 mb-2 flex-wrap">
-                <button
-                    onClick={() => setViewMode('features')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'features'
-                            ? 'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-purple-500/50'
-                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
-                    }`}
-                >
-                    <ThumbsUp className="w-4 h-4 inline mr-2" />
-                    Loved Features
-                </button>
-                <button
-                    onClick={() => setViewMode('complaints')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'complaints'
-                            ? 'bg-gradient-to-r from-red-600 to-red-500 text-white shadow-red-500/50'
-                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
-                    }`}
-                >
-                    <ThumbsDown className="w-4 h-4 inline mr-2" />
-                    Complaints
-                </button>
-                <button
-                    onClick={() => setViewMode('requests')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'requests'
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-blue-500/50'
-                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
-                    }`}
-                >
-                    <Sparkles className="w-4 h-4 inline mr-2" />
-                    Feature Requests
-                </button>
-                <button
-                    onClick={() => setViewMode('timeline')}
-                    className={`px-5 py-3 rounded-lg font-semibold transition-all shadow-lg ${
-                        viewMode === 'timeline'
-                            ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-emerald-500/50'
-                            : 'bg-gray-800/80 text-gray-200 hover:bg-gray-700 hover:text-white border border-gray-700'
-                    }`}
-                >
-                    <TrendingUp className="w-4 h-4 inline mr-2" />
-                    Sentiment Timeline
-                </button>
+            {/* View Mode Switcher */}
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '8px', flexWrap: 'wrap' }}>
+                {[
+                    { mode: 'features',   label: 'Loved Features',    Icon: ThumbsUp,   color: '#8b5cf6', glow: 'rgba(139,92,246,0.35)' },
+                    { mode: 'complaints', label: 'Complaints',         Icon: ThumbsDown, color: '#ef4444', glow: 'rgba(239,68,68,0.35)' },
+                    { mode: 'requests',   label: 'Feature Requests',   Icon: Sparkles,   color: '#3b82f6', glow: 'rgba(59,130,246,0.35)' },
+                    { mode: 'timeline',   label: 'Sentiment Timeline', Icon: TrendingUp, color: '#10b981', glow: 'rgba(16,185,129,0.35)' },
+                ].map(({ mode, label, Icon, color, glow }) => {
+                    const active = viewMode === mode;
+                    return (
+                        <button
+                            key={mode}
+                            onClick={() => setViewMode(mode)}
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '10px 18px',
+                                borderRadius: '10px',
+                                fontWeight: 600,
+                                fontSize: '14px',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                border: `1px solid ${active ? color : 'rgba(255,255,255,0.1)'}`,
+                                background: active
+                                    ? `linear-gradient(135deg, ${color}30 0%, ${color}18 100%)`
+                                    : 'rgba(255,255,255,0.04)',
+                                color: active ? '#f1f5f9' : '#94a3b8',
+                                boxShadow: active ? `0 0 16px ${glow}, 0 2px 8px rgba(0,0,0,0.4)` : 'none',
+                            }}
+                        >
+                            <Icon style={{ width: '16px', height: '16px', color: active ? color : '#64748b' }} />
+                            {label}
+                        </button>
+                    );
+                })}
             </div>
 
             {/* Loved Features View */}
