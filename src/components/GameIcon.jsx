@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 const iconCache = new Map();
 const pendingFetches = new Map();
 
-const LS_PREFIX = 'gameicon_v5_';
+const LS_PREFIX = 'gameicon_v6_';
 
 // ── Simple request queue: max 1 request per 80ms to avoid iTunes rate-limiting ──
 const requestQueue = [];
@@ -65,13 +65,16 @@ const KNOWN_ITUNES_IDS = {
   'Card Clash':         '625257520',   // Hearthstone
 };
 
-// Pre-load ALL v5 localStorage entries into memory on module init
+// Pre-load ALL v6 localStorage entries into memory on module init
+// Known-ID games with null are NOT pre-loaded — they must always retry until a real URL is fetched
 try {
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     if (key && key.startsWith(LS_PREFIX)) {
       const name = key.slice(LS_PREFIX.length);
       const val = localStorage.getItem(key);
+      // If this is a known-ID game and stored as null, skip — force re-fetch
+      if (val === 'null' && KNOWN_ITUNES_IDS[name]) continue;
       iconCache.set(name, val === 'null' ? null : val);
     }
   }
@@ -99,9 +102,13 @@ function fetchIconUrl(name) {
           const raw = result.artworkUrl512 || result.artworkUrl100;
           url = raw ? raw.replace(/\d+x\d+bb/, '256x256bb') : null;
         }
-        // Always cache (including null) to prevent retry storms
-        iconCache.set(name, url);
-        try { localStorage.setItem(LS_PREFIX + name, url ?? 'null'); } catch (_) {}
+        // Known-ID games: NEVER cache null (rate-limit glitch) — retry every load until real URL
+        // Unknown games: cache null to prevent retry storms
+        const isKnownId = !!KNOWN_ITUNES_IDS[name];
+        if (url !== null || !isKnownId) {
+          iconCache.set(name, url);
+          try { localStorage.setItem(LS_PREFIX + name, url ?? 'null'); } catch (_) {}
+        }
         return url;
       })
       .catch(() => {
