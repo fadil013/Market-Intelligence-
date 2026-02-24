@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AreaChart, Area, LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { MessageSquare, ThumbsUp, ThumbsDown, AlertTriangle, TrendingUp, Sparkles, Users } from 'lucide-react';
+import GameIcon from './GameIcon';
 
 const ReviewSentiment = ({ reviewData }) => {
     const [selectedGame, setSelectedGame] = useState(null);
@@ -195,7 +196,7 @@ const ReviewSentiment = ({ reviewData }) => {
                             <div key={index} className="glass-panel p-6">
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-3xl">{game.icon}</span>
+                                        <GameIcon name={game.gameName} fallback={game.icon} color="#ef4444" size={44} borderRadius={10} />
                                         <div>
                                             <h4 className="text-white font-bold">{game.gameName}</h4>
                                             <div className="flex items-center gap-2">
@@ -256,14 +257,14 @@ const ReviewSentiment = ({ reviewData }) => {
                         <h3 className="text-xl font-bold text-white mb-4">Top Feature Requests Across All Games</h3>
                         <div className="space-y-3">
                             {reviewData
-                                .flatMap(game => game.featureRequests.map(req => ({ ...req, game: game.gameName, icon: game.icon })))
+                                .flatMap(game => game.featureRequests.map(req => ({ ...req, game: game.gameName, gameName: game.gameName, icon: game.icon })))
                                 .sort((a, b) => b.votes - a.votes)
                                 .slice(0, 12)
                                 .map((request, index) => (
                                     <div key={index} className="p-4 rounded-lg bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 transition-all">
                                         <div className="flex items-center justify-between mb-2">
                                             <div className="flex items-center gap-3">
-                                                <span className="text-2xl">{request.icon}</span>
+                                                <GameIcon name={request.gameName} fallback={request.icon} color="#3b82f6" size={36} borderRadius={8} />
                                                 <div>
                                                     <h4 className="text-white font-medium">{request.request}</h4>
                                                     <p className="text-gray-400 text-sm">{request.game}</p>
@@ -341,7 +342,7 @@ const ReviewSentiment = ({ reviewData }) => {
                                     .map((game, index) => (
                                         <div key={index} className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-xl">{game.icon}</span>
+                                                <GameIcon name={game.gameName} fallback={game.icon} color="#10b981" size={32} borderRadius={7} />
                                                 <div>
                                                     <p className="text-white font-medium text-sm">{game.gameName}</p>
                                                     <p className="text-green-400 text-xs">{(game.sentimentScore * 100).toFixed(0)}% sentiment</p>
@@ -364,7 +365,7 @@ const ReviewSentiment = ({ reviewData }) => {
                                     .map((game, index) => (
                                         <div key={index} className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-xl">{game.icon}</span>
+                                                <GameIcon name={game.gameName} fallback={game.icon} color="#f59e0b" size={32} borderRadius={7} />
                                                 <div>
                                                     <p className="text-white font-medium text-sm">{game.gameName}</p>
                                                     <p className="text-yellow-400 text-xs">{(game.sentimentScore * 100).toFixed(0)}% sentiment</p>
@@ -387,7 +388,7 @@ const ReviewSentiment = ({ reviewData }) => {
                                     .map((game, index) => (
                                         <div key={index} className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                                             <div className="flex items-center gap-2">
-                                                <span className="text-xl">{game.icon}</span>
+                                                <GameIcon name={game.gameName} fallback={game.icon} color="#ef4444" size={32} borderRadius={7} />
                                                 <div>
                                                     <p className="text-white font-medium text-sm">{game.gameName}</p>
                                                     <p className="text-red-400 text-xs">{(game.sentimentScore * 100).toFixed(0)}% sentiment</p>
@@ -406,7 +407,7 @@ const ReviewSentiment = ({ reviewData }) => {
                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50" onClick={() => setSelectedGame(null)}>
                     <div className="glass-panel p-6 max-w-3xl w-full max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-4xl">{selectedGame.icon}</span>
+                            <GameIcon name={selectedGame.gameName} fallback={selectedGame.icon} color="#8b5cf6" size={56} borderRadius={12} />
                             <div>
                                 <h3 className="text-2xl font-bold text-white">{selectedGame.gameName}</h3>
                                 <div className="flex items-center gap-3 mt-1">

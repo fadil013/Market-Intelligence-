@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter, ZAxis } from 'recharts';
 import { Copy, AlertTriangle, CheckCircle, XCircle, Shield, TrendingUp, Calendar, Percent } from 'lucide-react';
+import GameIcon from './GameIcon';
 
 const CloneDetection = ({ cloneData }) => {
     const [selectedGame, setSelectedGame] = useState(null);
@@ -178,7 +179,7 @@ const CloneDetection = ({ cloneData }) => {
                             <div key={index} className={`glass-panel p-6 border ${getSaturationBg(game.cloneAnalysis.saturationLevel)}`}>
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-3xl">{game.icon}</span>
+                                        <GameIcon name={game.trendGame} fallback={game.icon} color="#f97316" size={44} borderRadius={10} />
                                         <div>
                                             <h4 className="text-white font-bold">{game.trendGame}</h4>
                                             <div className="flex items-center gap-2">
@@ -292,7 +293,7 @@ const CloneDetection = ({ cloneData }) => {
                             {cloneData.map((game, index) => (
                                 <div key={index} className="p-4 rounded-lg bg-gray-800/50 border border-gray-700/50">
                                     <div className="flex items-center gap-2 mb-3">
-                                        <span className="text-2xl">{game.icon}</span>
+                                        <GameIcon name={game.trendGame} fallback={game.icon} color="#3b82f6" size={36} borderRadius={8} />
                                         <h4 className="text-white font-medium">{game.trendGame}</h4>
                                     </div>
                                     <div className="space-y-2">
@@ -340,7 +341,7 @@ const CloneDetection = ({ cloneData }) => {
                     {cloneData.map((game, gameIndex) => (
                         <div key={gameIndex} className="glass-panel p-6">
                             <div className="flex items-center gap-3 mb-6">
-                                <span className="text-3xl">{game.icon}</span>
+                                <GameIcon name={game.trendGame} fallback={game.icon} color="#8b5cf6" size={44} borderRadius={10} />
                                 <div>
                                     <h3 className="text-xl font-bold text-white">{game.trendGame}</h3>
                                     <p className="text-gray-400 text-sm">{game.cloneAnalysis.similarGamesCount} clones detected</p>
@@ -443,7 +444,7 @@ const CloneDetection = ({ cloneData }) => {
                 <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50" onClick={() => setSelectedGame(null)}>
                     <div className="glass-panel p-6 max-w-4xl w-full max-h-[80vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-4xl">{selectedGame.icon}</span>
+                            <GameIcon name={selectedGame.trendGame} fallback={selectedGame.icon} color="#8b5cf6" size={56} borderRadius={12} />
                             <div>
                                 <h3 className="text-2xl font-bold text-white">{selectedGame.trendGame}</h3>
                                 <div className="flex items-center gap-2 mt-1">

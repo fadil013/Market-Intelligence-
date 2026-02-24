@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DollarSign, TrendingUp, Users, Target, Zap, Wallet, CreditCard, Film } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import GameIcon from './GameIcon';
 
 /**
  * Monetization Analysis Component
@@ -185,7 +186,7 @@ const MonetizationAnalysis = ({ monetizationData = [] }) => {
                             >
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-2xl">{game.icon}</span>
+                                        <GameIcon name={game.name} fallback={game.icon} color="#10b981" size={40} borderRadius={9} />
                                         <div>
                                             <h4 className="text-white font-bold text-sm">{game.name}</h4>
                                             <p className="text-gray-400 text-xs">{game.genre}</p>
@@ -252,7 +253,7 @@ const MonetizationAnalysis = ({ monetizationData = [] }) => {
                         return (
                             <div key={game.name} className="glass-panel p-5">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <span className="text-2xl">{game.icon}</span>
+                                    <GameIcon name={game.name} fallback={game.icon} color="#f59e0b" size={40} borderRadius={9} />
                                     <div>
                                         <h4 className="text-white font-bold text-base">{game.name}</h4>
                                         <p className="text-gray-400 text-xs">{game.businessModel} Model</p>
@@ -330,7 +331,7 @@ const MonetizationAnalysis = ({ monetizationData = [] }) => {
                                     }}
                                 >
                                     <div className="flex items-center gap-3 mb-4">
-                                        <span className="text-2xl">{game.icon}</span>
+                                        <GameIcon name={game.name} fallback={game.icon} color="#6366f1" size={40} borderRadius={9} />
                                         <div>
                                             <h4 className="text-white font-bold text-sm">{game.name}</h4>
                                             <p className="text-gray-400 text-xs">{game.businessModel}</p>
@@ -432,7 +433,7 @@ const MonetizationAnalysis = ({ monetizationData = [] }) => {
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="text-3xl">{selectedGame.icon}</span>
+                            <GameIcon name={selectedGame.name} fallback={selectedGame.icon} color="#8b5cf6" size={56} borderRadius={12} />
                             <div>
                                 <h3 className="text-white font-bold text-xl">{selectedGame.name}</h3>
                                 <p className="text-gray-400 text-sm">{selectedGame.businessModel} Model</p>
