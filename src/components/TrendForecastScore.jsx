@@ -115,7 +115,7 @@ const TrendForecastScore = ({ forecastData }) => {
       </div>
 
       {/* Summary KPIs */}
-      <div className="grid grid-cols-4 gap-4">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
         {[
           { label: 'Explosive Growth', value: explosiveGrowthCount, sub: 'Score ≥85', Icon: Zap, color: '#10b981' },
           { label: 'Strong Uptrend',   value: strongUptrendCount,   sub: 'Score 70-84', Icon: TrendingUp, color: '#3b82f6' },
