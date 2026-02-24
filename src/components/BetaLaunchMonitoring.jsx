@@ -90,7 +90,7 @@ const BetaLaunchMonitoring = ({ betaGamesData }) => {
   return (
     <div className="space-y-6">
       {/* Summary KPIs */}
-      <div className="grid grid-cols-4 gap-4">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
         <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-lg p-4 border border-green-500/30">
           <div className="flex items-center gap-2 mb-2">
             <Rocket className="w-5 h-5 text-green-400" />

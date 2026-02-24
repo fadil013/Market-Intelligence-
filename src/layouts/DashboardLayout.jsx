@@ -1,6 +1,17 @@
-import React, { useState } from 'react';
-import { Outlet, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { Gamepad2, LayoutDashboard, TrendingUp, BarChart3, Brain, Lightbulb, Menu, X } from 'lucide-react';
+
+// Scrolls the main content area to top on every route change
+const ScrollToTop = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+        const main = document.querySelector('.main-content-new');
+        if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
+        else window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, [pathname]);
+    return null;
+};
 
 const DashboardLayout = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,6 +26,7 @@ const DashboardLayout = () => {
 
     return (
         <div className="app-container-new">
+            <ScrollToTop />
             <header className="top-nav">
                 <button 
                     className="mobile-menu-toggle" 
