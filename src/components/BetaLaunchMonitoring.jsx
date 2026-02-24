@@ -168,12 +168,12 @@ const BetaLaunchMonitoring = ({ betaGamesData }) => {
       {/* Watch List View */}
       {viewMode === 'watchlist' && (
         <div className="space-y-4">
-          <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg p-5 border border-green-500/30">
-            <h4 className="text-white font-bold mb-2 flex items-center gap-2">
-              <Award className="w-5 h-5 text-green-400" />
+          <div style={{ background: 'linear-gradient(135deg, rgba(15,23,42,0.9) 0%, rgba(30,41,59,0.8) 100%)', borderRadius: '10px', padding: '20px', border: '1px solid rgba(99,102,241,0.25)', borderLeft: '3px solid #6366f1' }}>
+            <h4 style={{ color: '#f1f5f9', fontWeight: 700, marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Award style={{ width: '18px', height: '18px', color: '#6366f1' }} />
               Top Beta Games to Watch
             </h4>
-            <p className="text-gray-300 text-sm">Pre-global launch intelligence from {totalTestMarkets} test markets</p>
+            <p style={{ color: '#94a3b8', fontSize: '13px', margin: 0 }}>Pre-global launch intelligence from {totalTestMarkets} test markets</p>
           </div>
 
           <div className="grid grid-cols-1 gap-4">
