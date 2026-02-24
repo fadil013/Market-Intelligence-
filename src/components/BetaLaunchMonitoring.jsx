@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Rocket, TrendingUp, Users, Clock, DollarSign, Globe, Target, AlertCircle, CheckCircle, Award } from 'lucide-react';
+import GameIcon from './GameIcon';
 
 const BetaLaunchMonitoring = ({ betaGamesData }) => {
   const [selectedGame, setSelectedGame] = useState(null);
@@ -188,7 +189,9 @@ const BetaLaunchMonitoring = ({ betaGamesData }) => {
                   onClick={() => setSelectedGame(selectedGame === game.gameName ? null : game.gameName)}
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1 }}>
+                      <GameIcon name={game.gameName} fallback="🎮" color="#8b5cf6" size={54} borderRadius={13} />
+                      <div>
                       <h4 className="text-xl font-bold text-white mb-1">{game.gameName}</h4>
                       <div className="flex items-center gap-4 text-sm">
                         <span className="text-gray-300">
@@ -199,6 +202,7 @@ const BetaLaunchMonitoring = ({ betaGamesData }) => {
                           <Clock className="w-3 h-3 inline mr-1" />
                           {daysInBeta} days in beta
                         </span>
+                      </div>
                       </div>
                     </div>
                     <div className="text-right">
@@ -336,11 +340,14 @@ const BetaLaunchMonitoring = ({ betaGamesData }) => {
               return (
                 <div key={game.gameName} className={`bg-gradient-to-br ${bgColor} rounded-lg p-5 border`}>
                   <div className="flex items-center justify-between mb-4">
-                    <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                      <GameIcon name={game.gameName} fallback="🎮" color="#8b5cf6" size={54} borderRadius={13} />
+                      <div>
                       <h4 className="text-xl font-bold text-white mb-1">{game.gameName}</h4>
                       <p className="text-sm text-gray-300">
                         Launched {new Date(game.softLaunchMetrics.launchDate).toLocaleDateString()} · {game.softLaunchMetrics.daysInBeta} days
                       </p>
+                      </div>
                     </div>
                     <div className="text-center">
                       <p className={`text-5xl font-bold ${scoreColor}`}>{readinessScore}</p>

@@ -54,6 +54,15 @@ const KNOWN_ITUNES_IDS = {
   'Spotify':           '324684580',
   'Google Gemini':     '6472707253',
   'Duolingo':          '570060128',
+  // Beta games — mapped to visually similar published games of same genre
+  'Racing Rivals':      '699497869',   // CSR Racing 2
+  'Project Stellar':    '1181742847',  // Star Wars: Galaxy of Heroes
+  'Idle Fortress':      '1111118405',  // Idle Heroes
+  'Tower Defense X':    '1118115766',  // Bloons TD 6
+  'Merge Empire':       '1105442615',  // Merge Dragons!
+  'Battle Legends':     '715886785',   // Marvel Contest of Champions
+  'Puzzle Quest Heroes':'1484594337',  // Puzzle Quest 3
+  'Card Clash':         '625257520',   // Hearthstone
 };
 
 // Pre-load ALL v5 localStorage entries into memory on module init
