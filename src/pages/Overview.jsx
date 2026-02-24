@@ -64,7 +64,8 @@ const Overview = () => {
 
     const handleDomainChange = (domain) => {
         setSelectedDomain(domain);
-        setActiveFilters({ ...activeFilters, domain });
+        // Reset category to All when switching domains so stale game/app categories don't collide
+        setActiveFilters({ ...activeFilters, domain, category: 'All' });
     };
 
     const handleApplyFilters = () => {
@@ -93,14 +94,33 @@ const Overview = () => {
             'Midcore': ['RPG', 'MOBA', 'Strategy', 'Shooter', 'Battle Royale'],
         };
 
+        // App subcategory → app name mapping
+        const appCategoryToNames = {
+            'Social Media':      ['TikTok', 'Instagram', 'Facebook', 'Snapchat', 'WhatsApp'],
+            'AI & Productivity': ['ChatGPT', 'Google Gemini', 'Microsoft Copilot'],
+            'Entertainment':     ['YouTube', 'Spotify', 'Netflix', 'Disney+', 'Toca Boca World', 'YouTube Kids'],
+            'Camera & Effects':  ['CapCut', 'Instagram', 'Snapchat'],
+            'Finance':           ['Google One', 'PayPal', 'Cash App'],
+            'Beauty & Style':    ['VSCO', 'Facetune'],
+            'Education':         ['Duolingo', 'Khan Academy'],
+            'Health & Fitness':  ['Strava', 'Calm', 'MyFitnessPal'],
+            'Utility':           ['Google One', 'Files by Google', '1Password'],
+            'Fashion & Design':  ['Pinterest', 'Etsy', 'SHEIN'],
+        };
+
         const filterItems = (items) => {
             return items.filter(item => {
                 const game = allGames.find(g => g.name === item.name);
                 // Category filter
                 if (activeFilters.category && activeFilters.category !== 'All' && activeFilters.category !== 'All Categories') {
-                    if (!game) return true;
-                    const targetGenres = categoryToGenres[activeFilters.category] || [];
-                    if (!targetGenres.includes(game.genre)) return false;
+                    if (selectedDomain === 'Apps') {
+                        const allowedNames = appCategoryToNames[activeFilters.category] || [];
+                        if (!allowedNames.includes(item.name)) return false;
+                    } else {
+                        if (!game) return true;
+                        const targetGenres = categoryToGenres[activeFilters.category] || [];
+                        if (!targetGenres.includes(game.genre)) return false;
+                    }
                 }
                 // Geography filter
                 if (activeFilters.geography && activeFilters.geography !== 'Worldwide') {
@@ -128,8 +148,8 @@ const Overview = () => {
         };
 
         return allGames.filter(game => {
-            // Category filter
-            if (activeFilters.category && activeFilters.category !== 'All' && activeFilters.category !== 'All Categories') {
+            // Category filter — skip for Apps domain (app categories don't map to game genres)
+            if (selectedDomain !== 'Apps' && activeFilters.category && activeFilters.category !== 'All' && activeFilters.category !== 'All Categories') {
                 const targetGenres = categoryToGenres[activeFilters.category] || [];
                 if (!targetGenres.includes(game.genre)) return false;
             }
@@ -140,7 +160,7 @@ const Overview = () => {
             }
             return true;
         });
-    }, [activeFilters]);
+    }, [selectedDomain, activeFilters]);
 
     return (
         <div className="overview-container-new">

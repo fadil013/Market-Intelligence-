@@ -47,13 +47,30 @@ const AdvancedFilter = ({
     };
     const appCategory = selectedAppData?.genre ? genreToCategoryMap[selectedAppData.genre] : null;
 
-    const categories = ['All Categories', 'Casual', 'Hypercasual', 'Midcore'];
-    const categoryCounts = {
-        'All Categories': undefined,
-        'Casual': '127,415',
-        'Hypercasual': '57,790',
-        'Midcore': '23,364'
-    };
+    // Domain-specific subcategories
+    const GAME_CATEGORIES = [
+        { label: 'All Categories', count: undefined },
+        { label: 'Casual',         count: '127,415' },
+        { label: 'Hypercasual',    count: '57,790' },
+        { label: 'Midcore',        count: '23,364' },
+    ];
+    const APP_CATEGORIES = [
+        { label: 'All Categories',    count: undefined },
+        { label: 'Social Media',      count: '45,231' },
+        { label: 'AI & Productivity', count: '38,420' },
+        { label: 'Entertainment',     count: '29,100' },
+        { label: 'Camera & Effects',  count: '18,770' },
+        { label: 'Finance',           count: '14,230' },
+        { label: 'Beauty & Style',    count: '12,940' },
+        { label: 'Education',         count: '11,580' },
+        { label: 'Health & Fitness',  count: '9,870'  },
+        { label: 'Utility',           count: '8,340'  },
+        { label: 'Fashion & Design',  count: '6,120'  },
+    ];
+
+    const rawCategories = selectedDomain === 'Apps' ? APP_CATEGORIES : GAME_CATEGORIES;
+    const categories = rawCategories.map(c => c.label);
+    const categoryCounts = Object.fromEntries(rawCategories.map(c => [c.label, c.count]));
 
     const filteredCategories = categories.filter(cat => 
         cat.toLowerCase().includes(searchQuery.toLowerCase())
