@@ -6,7 +6,53 @@ const pendingFetches = new Map();
 
 const LS_PREFIX = 'gameicon_v6_';
 
-// ── Simple request queue: max 1 request per 80ms to avoid iTunes rate-limiting ──
+// ── HARDCODED icon URLs — no API calls needed for these, load instantly ──────
+const STATIC_ICON_URLS = {
+  'Genshin Impact':     'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d3/f5/2a/d3f52a60-8dd5-e433-226a-5468f9bcfd0f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/256x256bb.jpg',
+  'Roblox':             'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f7/f6/3d/f7f63dc8-8ee2-8128-d681-1859535e95f0/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/256x256bb.jpg',
+  'PUBG Mobile':        'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ca/e5/2f/cae52f82-4e0d-b5c7-91c1-384d83e1d742/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/256x256bb.jpg',
+  'Coin Master':        'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/4f/c7/70/4fc770bb-2a54-a009-2416-290969953e46/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/256x256bb.jpg',
+  'Royal Match':        'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/20/76/ca/2076ca78-a84d-d309-d87c-6d77834c44a0/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/256x256bb.jpg',
+  'Subway Surfers':     'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/fe/37/acfe372d-b304-c2a4-5ac1-b374d00b84d8/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Candy Crush Saga':   'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/70/95/79/70957916-1024-5cd7-156e-058193251eca/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Honor of Kings':     'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/5e/41/31/5e413126-7b5a-982e-6069-33a66e775097/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/256x256bb.jpg',
+  'Honkai: Star Rail':  'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c4/80/aa/c480aab0-bbcd-2487-68bc-e69ad9c5d677/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Monopoly GO!':       'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4b/68/49/4b6849bb-b35b-9300-fa94-a2a25970ba4c/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Clash of Clans':     'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0b/a8/68/0ba868f8-1fcd-c461-1ce5-24d72cd405b7/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Clash Royale':       'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/07/e6/2c/07e62c14-7adc-a4ef-a390-17be4ccddb98/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/256x256bb.jpg',
+  'Pokémon GO':         'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/67/c4/3f/67c43f35-4482-857d-1348-7337cb313024/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Among Us':           'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6c/8f/fb/6c8ffb21-53c4-1fae-7095-d3224c584a1b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Minecraft':          'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a2/38/7e/a2387e22-fd28-6b3b-691d-dd07a837fcad/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/256x256bb.jpg',
+  'Brawl Stars':        'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/27/e0/90/27e090b3-46c8-2ff8-85b1-30dc2618584f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/256x256bb.jpg',
+  'Free Fire':          'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4b/8d/ba/4b8dba37-a240-f450-9f99-c3a611c96536/AppIcon-1767797054-1x_U007emarketing-0-8-0-85-220-0.png/256x256bb.jpg',
+  'ChatGPT':            'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/08/57/30/0857301d-c153-efb2-4965-bbee96afac38/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-P3-85-220.png/256x256bb.jpg',
+  'TikTok':             'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/c5/ca/1fc5ca5b-7bca-34ff-d5d5-f48292fc79f7/AppIcon_TikTok-0-0-1x_U007epad-0-1-0-0-85-220.png/256x256bb.jpg',
+  'Instagram':          'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4a/37/c3/4a37c3f9-5f06-e885-2c3e-03e8dcd698aa/Prod-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/256x256bb.jpg',
+  'Facebook':           'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e7/dd/ea/e7ddeaa1-8a5f-afe4-72e3-fae43b514c3c/Icon-Production-0-0-1x_U007epad-0-1-0-85-220.png/256x256bb.jpg',
+  'YouTube':            'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/8b/d1/36/8bd136c3-1844-128e-41c0-472731be32b8/logo_youtube_2024_q4_color-0-0-1x_U007emarketing-0-0-0-7-0-0-0-85-220.png/256x256bb.jpg',
+  'Snapchat':           'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/80/1a/fe/801afe49-b131-c1a3-8b1f-7dbcbfb825ea/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/256x256bb.jpg',
+  'WhatsApp':           'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/de/08/3f/de083fa7-c179-9c25-7093-576eb965123e/AppIcon-0-0-1x_U007epad-0-0-0-1-0-0-sRGB-0-85-220.png/256x256bb.jpg',
+  'Netflix':            'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/73/12/96/731296b0-5306-4402-04ad-99193aeaf6e8/AppIcon-0-0-1x_U007emarketing-0-11-0-sRGB-0-85-220.png/256x256bb.jpg',
+  'Spotify':            'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1c/38/91/1c3891a1-9f3b-374e-c7a4-f2132560de4e/AppIcon-0-0-1x_U007epad-0-1-0-0-sRGB-85-220.png/256x256bb.jpg',
+  'Google Gemini':      'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6a/38/34/6a38349f-c454-7abe-427b-822af16c459d/AppIcon-0-1x_U007epad-0-0-0-1-0-0-0-0-85-220-0.png/256x256bb.jpg',
+  'Duolingo':           'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/8c/2e/fc/8c2efc2c-1efc-50ea-a0b1-16ab54db9102/AppIcon-0-0-1x_U007epad-0-1-85-220.png/256x256bb.jpg',
+  // Beta game icons (mapped to same-genre published games)
+  'Racing Rivals':      'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ac/49/b0/ac49b0bb-d225-fa41-2d99-8e4fbfe0de99/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/256x256bb.jpg',
+  'Idle Fortress':      'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/de/4f/e2/de4fe2a0-99c7-197a-6d8b-d584e52f444e/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/256x256bb.jpg',
+  'Tower Defense X':    'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d0/04/96/d0049697-4c34-48ae-47b9-d614731a279c/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Merge Empire':       'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b5/02/1c/b5021c21-b7a7-2262-dee4-c9c0ac7a125b/AppIcon-0-0-1x_U007emarketing-0-9-0-85-220.png/256x256bb.jpg',
+  'Battle Legends':     'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f2/e3/5c/f2e35c33-e65d-66fd-76eb-ffd126142934/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/256x256bb.jpg',
+  'Puzzle Quest Heroes':'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/c0/43/e5/c043e5c8-ac77-0611-27dd-05dfc4143f47/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/256x256bb.jpg',
+  'Card Clash':         'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/21/7b/b7/217bb7d8-7206-27f9-590b-42ac11f7e6c5/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/256x256bb.jpg',
+  'Project Stellar':    'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/27/e0/90/27e090b3-46c8-2ff8-85b1-30dc2618584f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/256x256bb.jpg',
+};
+
+// Pre-cache all static URLs immediately — no API needed, no rate-limiting ever
+for (const [name, url] of Object.entries(STATIC_ICON_URLS)) {
+  iconCache.set(name, url);
+}
+
+// ── Simple request queue for unknown games only (80ms between requests) ───────
 const requestQueue = [];
 let queueRunning = false;
 
@@ -24,71 +70,13 @@ function drainQueue() {
   next().finally(() => setTimeout(drainQueue, 80));
 }
 
-// Known iTunes App IDs — exact lookup
-const KNOWN_ITUNES_IDS = {
-  'Genshin Impact':    '1517783697',
-  'Roblox':            '431946152',
-  'PUBG Mobile':       '1330123889',
-  'Coin Master':       '406889139',
-  'Royal Match':       '1482155847',
-  'Subway Surfers':    '512939461',
-  'Candy Crush Saga':  '553834731',
-  'Honor of Kings':    '1598505024',
-  'Honkai: Star Rail': '1614401138',
-  'Monopoly GO!':      '1621704780',
-  'Clash of Clans':    '529479190',
-  'Clash Royale':      '1053012308',
-  'Pokémon GO':        '1094591345',
-  'Among Us':          '1351568542',
-  'Minecraft':         '479516143',
-  'Brawl Stars':       '1261853421',
-  'Free Fire':         '1300146617',
-  'ChatGPT':           '6448311069',
-  'TikTok':            '835599320',
-  'Instagram':         '389801252',
-  'Facebook':          '284882215',
-  'YouTube':           '544007664',
-  'Snapchat':          '447188370',
-  'WhatsApp':          '310633997',
-  'Netflix':           '363590051',
-  'Spotify':           '324684580',
-  'Google Gemini':     '6472707253',
-  'Duolingo':          '570060128',
-  // Beta games — mapped to visually similar published games of same genre
-  'Racing Rivals':      '699497869',   // CSR Racing 2
-  'Project Stellar':    '1181742847',  // Star Wars: Galaxy of Heroes
-  'Idle Fortress':      '1111118405',  // Idle Heroes
-  'Tower Defense X':    '1118115766',  // Bloons TD 6
-  'Merge Empire':       '1105442615',  // Merge Dragons!
-  'Battle Legends':     '715886785',   // Marvel Contest of Champions
-  'Puzzle Quest Heroes':'1484594337',  // Puzzle Quest 3
-  'Card Clash':         '625257520',   // Hearthstone
-};
-
-// Pre-load ALL v6 localStorage entries into memory on module init
-// Known-ID games with null are NOT pre-loaded — they must always retry until a real URL is fetched
-try {
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key && key.startsWith(LS_PREFIX)) {
-      const name = key.slice(LS_PREFIX.length);
-      const val = localStorage.getItem(key);
-      // If this is a known-ID game and stored as null, skip — force re-fetch
-      if (val === 'null' && KNOWN_ITUNES_IDS[name]) continue;
-      iconCache.set(name, val === 'null' ? null : val);
-    }
-  }
-} catch (_) {}
-
 function fetchIconUrl(name) {
+  // Static URL available — return immediately, no API call
+  if (STATIC_ICON_URLS[name]) return Promise.resolve(STATIC_ICON_URLS[name]);
   if (pendingFetches.has(name)) return pendingFetches.get(name);
 
   const promise = enqueueRequest(() => {
-    const knownId = KNOWN_ITUNES_IDS[name];
-    const apiUrl = knownId
-      ? `https://itunes.apple.com/lookup?id=${knownId}&entity=software`
-      : `https://itunes.apple.com/search?term=${encodeURIComponent(name.replace(/[!':#]/g, '').trim())}&media=software&limit=1&entity=software`;
-
+    const apiUrl = `https://itunes.apple.com/search?term=${encodeURIComponent(name.replace(/[!':#]/g, '').trim())}&media=software&limit=1&entity=software`;
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
 
@@ -102,19 +90,11 @@ function fetchIconUrl(name) {
           const raw = result.artworkUrl512 || result.artworkUrl100;
           url = raw ? raw.replace(/\d+x\d+bb/, '256x256bb') : null;
         }
-        // Known-ID games: NEVER cache null (rate-limit glitch) — retry every load until real URL
-        // Unknown games: cache null to prevent retry storms
-        const isKnownId = !!KNOWN_ITUNES_IDS[name];
-        if (url !== null || !isKnownId) {
-          iconCache.set(name, url);
-          try { localStorage.setItem(LS_PREFIX + name, url ?? 'null'); } catch (_) {}
-        }
+        iconCache.set(name, url);
+        try { localStorage.setItem(LS_PREFIX + name, url ?? 'null'); } catch (_) {}
         return url;
       })
-      .catch(() => {
-        clearTimeout(timer);
-        return null; // Don't cache network failures — retry next load
-      });
+      .catch(() => { clearTimeout(timer); return null; });
   }).finally(() => pendingFetches.delete(name));
 
   pendingFetches.set(name, promise);
@@ -123,8 +103,8 @@ function fetchIconUrl(name) {
 
 /**
  * GameIcon — shows the real App Store icon for a game/app.
- * localStorage-persisted: fetched once ever, instant on all subsequent loads.
- * Shows shimmer skeleton while loading, emoji fallback only on failure.
+ * Known games use hardcoded CDN URLs — zero API calls, instant load.
+ * Unknown games fall back to throttled iTunes search.
  */
 const GameIcon = ({ name, fallback = '🎮', color = '#8b5cf6', size = 48, borderRadius = 12 }) => {
   const cached = iconCache.has(name) ? iconCache.get(name) : undefined;
