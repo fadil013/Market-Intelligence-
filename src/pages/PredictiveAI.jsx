@@ -304,7 +304,7 @@ const PredictiveAI = () => {
                                         {[['Velocity', breakdown.velocity], ['Regional', breakdown.regional], ['Genre', breakdown.genre], ['Revenue', breakdown.revenue], ['Sentiment', breakdown.sentiment]].map(([label, val]) => (
                                             <div key={label}>
                                                 <div style={{ fontSize: '10px', color: '#94a3b8' }}>{label}</div>
-                                                <div style={{ color: '#f1f5f9', fontWeight: 700, fontSize: '14px' }}>{val}</div>
+                                                <div style={{ color: '#ffffff', fontWeight: 700, fontSize: '14px' }}>{val}</div>
                                             </div>
                                         ))}
                                     </div>

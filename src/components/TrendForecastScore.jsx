@@ -205,9 +205,9 @@ const TrendForecastScore = ({ forecastData }) => {
                     ['Sentiment',Math.round(game.forecastScore.breakdown.sentiment),'15%'],
                   ].map(([label, val, weight], i, arr) => (
                     <div key={label} style={{ flex: 1, padding: '10px 6px', textAlign: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                      <div style={{ fontSize: '10px', color: '#64748b', fontWeight: 600, marginBottom: '4px', whiteSpace: 'nowrap' }}>{label}</div>
-                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#f1f5f9', lineHeight: 1 }}>{val}</div>
-                      <div style={{ fontSize: '9px', color: '#475569', marginTop: '3px' }}>{weight}</div>
+                      <div style={{ fontSize: '10px', color: '#94a3b8', fontWeight: 600, marginBottom: '4px', whiteSpace: 'nowrap' }}>{label}</div>
+                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#ffffff', lineHeight: 1 }}>{val}</div>
+                      <div style={{ fontSize: '9px', color: '#64748b', marginTop: '3px' }}>{weight}</div>
                     </div>
                   ))}
                 </div>
