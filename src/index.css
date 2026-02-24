@@ -1780,6 +1780,11 @@ body {
   }
 }
 
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* Tablet Breakpoint (1024px and below) */
 @media (max-width: 1024px) {
   .filter-panel-right {
