@@ -68,9 +68,8 @@ const Overview = () => {
     };
 
     const handleApplyFilters = () => {
-        console.log('Filters applied:', activeFilters);
         setFiltersApplied(true);
-        // Filters will be applied via useMemo below
+        setFiltersPanelOpen(false); // close panel, filters already reactive
     };
 
     const handleResetFilters = () => {
@@ -84,54 +83,64 @@ const Overview = () => {
         setFiltersApplied(false);
     };
 
-    // Filter rankings based on active filters
+    // Filter rankings based on active filters — reactive, no Apply button needed
     const currentRankings = useMemo(() => {
         const baseRankings = selectedDomain === 'Games' ? gameRankings : appRankings;
-        
-        if (!filtersApplied || activeFilters.category === 'All') {
-            return baseRankings;
-        }
 
-        // Filter based on category - map category to genres
         const categoryToGenres = {
             'Casual': ['Casual', 'Sandbox'],
-            'Hypercasual': ['Puzzle', 'Casual'],
-            'Midcore': ['RPG', 'MOBA', 'Strategy', 'Shooter']
+            'Hypercasual': ['Puzzle', 'Hypercasual', 'Casual'],
+            'Midcore': ['RPG', 'MOBA', 'Strategy', 'Shooter', 'Battle Royale'],
         };
 
-        const targetGenres = categoryToGenres[activeFilters.category] || [];
-        
-        // Filter each ranking list
-        const filterByGenre = (items) => {
+        const filterItems = (items) => {
             return items.filter(item => {
                 const game = allGames.find(g => g.name === item.name);
-                if (!game) return true; // Keep items not in allGames (like apps)
-                return targetGenres.includes(game.genre);
+                // Category filter
+                if (activeFilters.category && activeFilters.category !== 'All' && activeFilters.category !== 'All Categories') {
+                    if (!game) return true;
+                    const targetGenres = categoryToGenres[activeFilters.category] || [];
+                    if (!targetGenres.includes(game.genre)) return false;
+                }
+                // Geography filter
+                if (activeFilters.geography && activeFilters.geography !== 'Worldwide') {
+                    if (!game) return true;
+                    const markets = game.markets || [];
+                    if (!markets.includes(activeFilters.geography) && !markets.includes('Worldwide')) return false;
+                }
+                return true;
             });
         };
 
         return {
-            topFree: filterByGenre(baseRankings.topFree),
-            topGrossing: filterByGenre(baseRankings.topGrossing),
-            topFeatured: filterByGenre(baseRankings.topFeatured)
+            topFree: filterItems(baseRankings.topFree),
+            topGrossing: filterItems(baseRankings.topGrossing),
+            topFeatured: filterItems(baseRankings.topFeatured),
         };
-    }, [selectedDomain, activeFilters, filtersApplied]);
+    }, [selectedDomain, activeFilters]);
 
-    // Filter games for the table
+    // Filter games for the table — reactive
     const filteredGames = useMemo(() => {
-        if (!filtersApplied || activeFilters.category === 'All') {
-            return allGames;
-        }
-
         const categoryToGenres = {
             'Casual': ['Casual', 'Sandbox'],
-            'Hypercasual': ['Puzzle', 'Casual'],
-            'Midcore': ['RPG', 'MOBA', 'Strategy', 'Shooter']
+            'Hypercasual': ['Puzzle', 'Hypercasual', 'Casual'],
+            'Midcore': ['RPG', 'MOBA', 'Strategy', 'Shooter', 'Battle Royale'],
         };
 
-        const targetGenres = categoryToGenres[activeFilters.category] || [];
-        return allGames.filter(game => targetGenres.includes(game.genre));
-    }, [activeFilters, filtersApplied]);
+        return allGames.filter(game => {
+            // Category filter
+            if (activeFilters.category && activeFilters.category !== 'All' && activeFilters.category !== 'All Categories') {
+                const targetGenres = categoryToGenres[activeFilters.category] || [];
+                if (!targetGenres.includes(game.genre)) return false;
+            }
+            // Geography filter
+            if (activeFilters.geography && activeFilters.geography !== 'Worldwide') {
+                const markets = game.markets || [];
+                if (!markets.includes(activeFilters.geography) && !markets.includes('Worldwide')) return false;
+            }
+            return true;
+        });
+    }, [activeFilters]);
 
     return (
         <div className="overview-container-new">
@@ -143,8 +152,8 @@ const Overview = () => {
             >
                 <SlidersHorizontal size={20} />
                 <span>Filters</span>
-                {filtersApplied && activeFilters.category !== 'All' && (
-                    <div className="filter-badge">1</div>
+                {(activeFilters.category !== 'All' || activeFilters.geography !== 'Worldwide') && (
+                    <div className="filter-badge">!</div>
                 )}
             </button>
             
@@ -160,7 +169,7 @@ const Overview = () => {
                             </div>
                         </div>
                         
-                        {filtersApplied && activeFilters.category !== 'All' && (
+                        {(activeFilters.category !== 'All' || activeFilters.geography !== 'Worldwide') && (
                             <div style={{ 
                                 background: 'linear-gradient(135deg, rgba(107,114,128,0.15), rgba(75,85,99,0.1))', 
                                 border: '1px solid rgba(107,114,128,0.3)',
@@ -179,7 +188,7 @@ const Overview = () => {
                                 }}></div>
                                 <div>
                                     <div style={{ color: '#f9fafb', fontWeight: 700, fontSize: '14px', marginBottom: '4px' }}>
-                                        Filters Active: {activeFilters.category} Games
+                                        Filters Active: {activeFilters.category !== 'All' ? activeFilters.category : ''}{activeFilters.geography !== 'Worldwide' ? ` · ${activeFilters.geography}` : ''}
                                     </div>
                                     <div style={{ color: '#9ca3af', fontSize: '12px' }}>
                                         Showing {currentRankings.topFree.length} rankings and {filteredGames.length} games
@@ -325,8 +334,10 @@ const Overview = () => {
                             <div className="section-header" style={{ marginBottom: '20px' }}>
                                 <h2 className="section-title">Top Games Leaderboard</h2>
                                 <div style={{ fontSize: '12px', color: '#9ca3af', fontWeight: 600 }}>
-                                    {filtersApplied && activeFilters.category !== 'All' 
-                                        ? `${filteredGames.length} ${activeFilters.category} games` 
+                                    {(activeFilters.category !== 'All' && activeFilters.category !== 'All Categories')
+                                        ? `${filteredGames.length} ${activeFilters.category} games`
+                                        : activeFilters.geography !== 'Worldwide'
+                                        ? `${filteredGames.length} games in ${activeFilters.geography}`
                                         : 'Top 15 performers'}
                                 </div>
                             </div>

@@ -653,7 +653,16 @@ const MechanicTagging = ({ mechanicData }) => {
 
                         <button
                             onClick={() => setSelectedMechanic(null)}
-                            className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors"
+                            style={{
+                                width: '100%', padding: '10px',
+                                background: 'rgba(139,92,246,0.15)',
+                                border: '1px solid rgba(139,92,246,0.4)',
+                                borderRadius: '10px', color: '#a78bfa',
+                                fontSize: '14px', fontWeight: 700, cursor: 'pointer',
+                                transition: 'all 0.2s',
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(139,92,246,0.28)'}
+                            onMouseLeave={e => e.currentTarget.style.background = 'rgba(139,92,246,0.15)'}
                         >
                             Close
                         </button>

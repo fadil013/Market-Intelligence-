@@ -153,7 +153,21 @@ const ReviewSentiment = ({ reviewData }) => {
                                     </div>
                                     <button
                                         onClick={() => setSelectedGame(game)}
-                                        className="px-3 py-1 rounded bg-purple-600 hover:bg-purple-700 text-white text-sm transition-colors"
+                                        style={{
+                                            padding: '6px 14px',
+                                            borderRadius: '8px',
+                                            background: 'rgba(139,92,246,0.15)',
+                                            border: '1px solid rgba(139,92,246,0.4)',
+                                            color: '#a78bfa',
+                                            fontSize: '12px',
+                                            fontWeight: 700,
+                                            cursor: 'pointer',
+                                            letterSpacing: '0.04em',
+                                            whiteSpace: 'nowrap',
+                                            transition: 'all 0.2s',
+                                        }}
+                                        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.28)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.7)'; }}
+                                        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(139,92,246,0.15)'; e.currentTarget.style.borderColor = 'rgba(139,92,246,0.4)'; }}
                                     >
                                         Details
                                     </button>
@@ -494,7 +508,16 @@ const ReviewSentiment = ({ reviewData }) => {
 
                         <button
                             onClick={() => setSelectedGame(null)}
-                            className="mt-6 w-full py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors"
+                            style={{
+                                marginTop: '24px', width: '100%', padding: '10px',
+                                background: 'rgba(139,92,246,0.15)',
+                                border: '1px solid rgba(139,92,246,0.4)',
+                                borderRadius: '10px', color: '#a78bfa',
+                                fontSize: '14px', fontWeight: 700, cursor: 'pointer',
+                                transition: 'all 0.2s',
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.background = 'rgba(139,92,246,0.28)'}
+                            onMouseLeave={e => e.currentTarget.style.background = 'rgba(139,92,246,0.15)'}
                         >
                             Close
                         </button>
