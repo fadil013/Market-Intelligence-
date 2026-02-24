@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 const iconCache = new Map();
 const pendingFetches = new Map();
 
-const LS_PREFIX = 'gameicon_v4_'; // bumped to v4 — clears any stale wrong-icon caches
+const LS_PREFIX = 'gameicon_v5_'; // bumped to v5 — clears stale null-cached entries
 
 // Known iTunes App IDs — uses lookup?id= for exact, correct icons
 const KNOWN_ITUNES_IDS = {
@@ -63,11 +63,17 @@ function fetchIconUrl(name) {
       clearTimeout(timer);
       let url = null;
       if (data.results?.length > 0) {
-        const raw = data.results[0].artworkUrl100;
-        url = raw ? raw.replace('100x100bb', '256x256bb') : null;
+        const result = data.results[0];
+        // Prefer 512px artwork, fall back to 100px
+        const raw = result.artworkUrl512 || result.artworkUrl100;
+        url = raw ? raw.replace(/\d+x\d+bb/, '256x256bb') : null;
       }
-      iconCache.set(name, url);
-      try { localStorage.setItem(LS_PREFIX + name, url ?? 'null'); } catch (_) {}
+      // For known IDs: if we got null (API glitch), don't cache — always retry
+      const isKnownId = !!KNOWN_ITUNES_IDS[name];
+      if (url !== null || !isKnownId) {
+        iconCache.set(name, url);
+        try { localStorage.setItem(LS_PREFIX + name, url ?? 'null'); } catch (_) {}
+      }
       return url;
     })
     .catch(() => {
