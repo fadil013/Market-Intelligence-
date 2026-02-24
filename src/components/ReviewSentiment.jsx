@@ -140,7 +140,7 @@ const ReviewSentiment = ({ reviewData }) => {
                             <div key={index} className="glass-panel p-6">
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-3xl">{game.icon}</span>
+                                        <GameIcon name={game.gameName} fallback={game.icon} color="#8b5cf6" size={44} borderRadius={10} />
                                         <div>
                                             <h4 className="text-white font-bold">{game.gameName}</h4>
                                             <div className="flex items-center gap-2">
@@ -173,11 +173,12 @@ const ReviewSentiment = ({ reviewData }) => {
                                     </button>
                                 </div>
 
-                                <div className="space-y-2">
-                                    <p className="text-gray-400 text-sm font-medium flex items-center gap-2">
+                                <div>
+                                    <p className="text-gray-400 text-sm font-medium flex items-center gap-2 mb-3">
                                         <ThumbsUp className="w-4 h-4 text-green-400" />
                                         Most Loved Features
                                     </p>
+                                    <div className="space-y-2">
                                     {game.lovedFeatures.slice(0, 3).map((feature, i) => (
                                         <div key={i} className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
                                             <div className="flex items-center justify-between mb-1">
@@ -195,6 +196,7 @@ const ReviewSentiment = ({ reviewData }) => {
                                             </div>
                                         </div>
                                     ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -225,11 +227,12 @@ const ReviewSentiment = ({ reviewData }) => {
                                     </div>
                                 </div>
 
-                                <div className="space-y-2">
-                                    <p className="text-gray-400 text-sm font-medium flex items-center gap-2">
+                                <div>
+                                    <p className="text-gray-400 text-sm font-medium flex items-center gap-2 mb-3">
                                         <ThumbsDown className="w-4 h-4 text-red-400" />
                                         Top Complaints
                                     </p>
+                                    <div className="space-y-2">
                                     {game.complaints.slice(0, 3).map((complaint, i) => (
                                         <div key={i} className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                                             <div className="flex items-center justify-between mb-1">
@@ -247,6 +250,7 @@ const ReviewSentiment = ({ reviewData }) => {
                                             </div>
                                         </div>
                                     ))}
+                                    </div>
                                 </div>
 
                                 {game.churnSignals.length > 0 && (
