@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { jsPDF } from 'jspdf';
 import { 
     Sparkles, 
     TrendingUp,
@@ -14,6 +15,147 @@ import {
     Activity
 } from 'lucide-react';
 import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+
+const generatePDF = (opp, allOpportunities) => {
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+    const W = 210, margin = 18;
+    let y = 0;
+
+    const col = { bg: [10, 15, 30], accent: [99, 102, 241], green: [52, 211, 153], yellow: [251, 191, 36], text: [241, 245, 249], muted: [100, 116, 139], border: [30, 41, 59] };
+
+    // Background
+    doc.setFillColor(...col.bg);
+    doc.rect(0, 0, W, 297, 'F');
+
+    // Header bar
+    doc.setFillColor(...col.accent);
+    doc.rect(0, 0, W, 22, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(13); doc.setFont('helvetica', 'bold');
+    doc.text('ONYX GAMES', margin, 14);
+    doc.setFontSize(8); doc.setFont('helvetica', 'normal');
+    doc.text('Market Intelligence Platform', margin, 19);
+    const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    doc.text(`Generated: ${dateStr}`, W - margin, 14, { align: 'right' });
+    doc.text('Confidential — Internal Use Only', W - margin, 19, { align: 'right' });
+
+    y = 32;
+
+    // Title
+    doc.setTextColor(...col.text);
+    doc.setFontSize(18); doc.setFont('helvetica', 'bold');
+    doc.text('Market Opportunity Report', margin, y); y += 8;
+    doc.setFontSize(11); doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...col.muted);
+    doc.text('AI-Powered Niche Analysis & Strategic Recommendations', margin, y); y += 12;
+
+    // Divider
+    doc.setDrawColor(...col.border); doc.setLineWidth(0.4);
+    doc.line(margin, y, W - margin, y); y += 10;
+
+    // Priority badge and niche title
+    const priColor = opp.recommendation === 'HIGH PRIORITY' ? col.green : opp.recommendation === 'MEDIUM PRIORITY' ? col.yellow : [148, 163, 184];
+    doc.setFillColor(...priColor);
+    doc.roundedRect(margin, y - 5, 40, 8, 2, 2, 'F');
+    doc.setTextColor(10, 15, 30); doc.setFontSize(7); doc.setFont('helvetica', 'bold');
+    doc.text(opp.recommendation, margin + 20, y, { align: 'center' }); y += 6;
+
+    doc.setTextColor(...col.text);
+    doc.setFontSize(16); doc.setFont('helvetica', 'bold');
+    doc.text(opp.niche, margin, y); y += 8;
+    doc.setFontSize(9); doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...col.muted);
+    doc.text('Market Opportunity Analysis — Onyx Games Intelligence', margin, y); y += 12;
+
+    // Metrics row
+    const metrics = [
+        { label: 'DEMAND SCORE', value: `${opp.demandScore}/100`, color: opp.demandScore >= 80 ? col.green : col.yellow },
+        { label: 'COMPETITION', value: `${opp.competitionScore}/100 ↓`, color: col.green },
+        { label: 'REVENUE POTENTIAL', value: opp.revenuePotential, color: col.green },
+        { label: 'WINDOW CLOSES IN', value: opp.timeToSaturation, color: [96, 165, 250] },
+    ];
+    const boxW = (W - margin * 2 - 9) / 4;
+    metrics.forEach((m, i) => {
+        const bx = margin + i * (boxW + 3);
+        doc.setFillColor(...col.border); doc.roundedRect(bx, y, boxW, 18, 2, 2, 'F');
+        doc.setTextColor(...col.muted); doc.setFontSize(6); doc.setFont('helvetica', 'bold');
+        doc.text(m.label, bx + boxW / 2, y + 5, { align: 'center' });
+        doc.setTextColor(...m.color); doc.setFontSize(9); doc.setFont('helvetica', 'bold');
+        doc.text(m.value, bx + boxW / 2, y + 13, { align: 'center' });
+    });
+    y += 26;
+
+    // Why This Opportunity
+    doc.setFillColor(...col.border); doc.roundedRect(margin, y, W - margin * 2, 8 + opp.reasoning.length * 7, 2, 2, 'F');
+    doc.setTextColor(...col.accent); doc.setFontSize(9); doc.setFont('helvetica', 'bold');
+    doc.text('WHY THIS OPPORTUNITY', margin + 4, y + 6); y += 10;
+    opp.reasoning.forEach(r => {
+        doc.setTextColor(...col.green); doc.setFontSize(8); doc.text('✓', margin + 4, y);
+        doc.setTextColor(...col.text); doc.setFont('helvetica', 'normal');
+        const lines = doc.splitTextToSize(r, W - margin * 2 - 14);
+        doc.text(lines, margin + 10, y); y += lines.length * 5 + 2;
+    });
+    y += 6;
+
+    // Comparable Games
+    doc.setTextColor(...col.accent); doc.setFontSize(9); doc.setFont('helvetica', 'bold');
+    doc.text('COMPARABLE SUCCESS STORIES', margin, y); y += 6;
+    doc.setFontSize(8); doc.setFont('helvetica', 'normal'); doc.setTextColor(...col.text);
+    opp.comparableGames.forEach((g, i) => {
+        doc.setFillColor(...col.border); doc.roundedRect(margin + i * 52, y, 48, 8, 2, 2, 'F');
+        doc.text(g, margin + i * 52 + 24, y + 5, { align: 'center' });
+    });
+    y += 14;
+
+    // Recommended Mechanics
+    doc.setTextColor(...col.accent); doc.setFontSize(9); doc.setFont('helvetica', 'bold');
+    doc.text('RECOMMENDED GAME MECHANICS', margin, y); y += 6;
+    let mx = margin;
+    opp.suggestedMechanics.forEach(m => {
+        const tw = doc.getTextWidth(m) + 8;
+        if (mx + tw > W - margin) { mx = margin; y += 9; }
+        doc.setFillColor(99, 102, 241, 0.3); doc.roundedRect(mx, y - 4, tw, 7, 2, 2, 'F');
+        doc.setTextColor(...col.text); doc.setFontSize(7); doc.setFont('helvetica', 'normal');
+        doc.text(m, mx + 4, y); mx += tw + 3;
+    });
+    y += 14;
+
+    // All Opportunities Summary Table
+    doc.line(margin, y, W - margin, y); y += 8;
+    doc.setTextColor(...col.accent); doc.setFontSize(10); doc.setFont('helvetica', 'bold');
+    doc.text('ALL MARKET OPPORTUNITIES SUMMARY', margin, y); y += 8;
+    // Table header
+    doc.setFillColor(...col.border); doc.rect(margin, y, W - margin * 2, 7, 'F');
+    doc.setTextColor(...col.muted); doc.setFontSize(7); doc.setFont('helvetica', 'bold');
+    doc.text('NICHE', margin + 2, y + 5);
+    doc.text('DEMAND', margin + 82, y + 5);
+    doc.text('COMPETITION', margin + 104, y + 5);
+    doc.text('REVENUE', margin + 134, y + 5);
+    doc.text('PRIORITY', margin + 158, y + 5);
+    y += 9;
+    allOpportunities.forEach((o, i) => {
+        if (i % 2 === 0) { doc.setFillColor(20, 28, 48); doc.rect(margin, y - 4, W - margin * 2, 7, 'F'); }
+        const isThis = o.niche === opp.niche;
+        if (isThis) { doc.setTextColor(99, 102, 241); } else { doc.setTextColor(241, 245, 249); }
+        doc.setFontSize(7); doc.setFont('helvetica', isThis ? 'bold' : 'normal');
+        doc.text(o.niche.substring(0, 40), margin + 2, y);
+        doc.text(String(o.demandScore), margin + 86, y);
+        doc.text(String(o.competitionScore), margin + 110, y);
+        doc.text(o.revenuePotential, margin + 134, y);
+        const pc = o.recommendation === 'HIGH PRIORITY' ? col.green : o.recommendation === 'MEDIUM PRIORITY' ? col.yellow : col.muted;
+        doc.setTextColor(...pc);
+        doc.text(o.recommendation, margin + 158, y);
+        y += 7;
+    });
+
+    // Footer
+    doc.setDrawColor(...col.border); doc.line(margin, 280, W - margin, 280);
+    doc.setTextColor(...col.muted); doc.setFontSize(7); doc.setFont('helvetica', 'normal');
+    doc.text('© Onyx Games Intelligence Platform — Confidential', margin, 286);
+    doc.text('Page 1 of 1', W - margin, 286, { align: 'right' });
+
+    doc.save(`Onyx_Opportunity_Report_${opp.niche.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().slice(0, 10)}.pdf`);
+};
 
 const AIOpportunityEngine = ({ opportunityData }) => {
     const [selectedPriority, setSelectedPriority] = useState('all');
@@ -424,8 +566,13 @@ const AIOpportunityEngine = ({ opportunityData }) => {
                                         </div>
 
                                         {/* Action Button */}
-                                        <button className="w-full px-4 py-3 rounded-lg bg-purple-500/20 text-purple-400 font-semibold hover:bg-purple-500/30 transition-colors flex items-center justify-center gap-2">
-                                            <Zap className="w-4 h-4" />
+                                        <button
+                                            onClick={() => generatePDF(opp, opportunityData)}
+                                            style={{ width: '100%', padding: '12px 16px', borderRadius: '8px', background: 'rgba(99,102,241,0.18)', border: '1px solid rgba(99,102,241,0.4)', color: '#a5b4fc', fontWeight: 700, fontSize: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }}
+                                            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.3)'; e.currentTarget.style.borderColor = 'rgba(99,102,241,0.7)'; }}
+                                            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.18)'; e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)'; }}
+                                        >
+                                            <Zap style={{ width: '16px', height: '16px' }} />
                                             Generate Full Report
                                         </button>
                                     </div>

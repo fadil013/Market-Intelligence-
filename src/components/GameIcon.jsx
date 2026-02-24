@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 const iconCache = new Map();
 const pendingFetches = new Map();
 
-const LS_PREFIX = 'gameicon_v3_';
+const LS_PREFIX = 'gameicon_v4_'; // bumped to v4 — clears any stale wrong-icon caches
 
 // Known iTunes App IDs — uses lookup?id= for exact, correct icons
 const KNOWN_ITUNES_IDS = {
