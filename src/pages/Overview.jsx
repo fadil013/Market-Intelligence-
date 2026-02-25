@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { SlidersHorizontal } from 'lucide-react';
 import StatsGrid from '../components/StatsGrid';
 import PlatformComparisonChart from '../components/PlatformComparisonChart';
@@ -29,6 +29,7 @@ const Overview = () => {
     const [filtersApplied, setFiltersApplied] = useState(false);
     const [filtersPanelOpen, setFiltersPanelOpen] = useState(false);
     const [regionalMetric, setRegionalMetric] = useState('growth');
+    const prevFiltersRef = useRef(null);
     const [activeFilters, setActiveFilters] = useState({
         domain: 'Games',
         category: 'All',
@@ -47,6 +48,8 @@ const Overview = () => {
     const handleAppSelect = (app) => {
         setSelectedApp(null);
         setSelectedGameData(null);
+        // Save current filters so we can restore them when user goes back
+        prevFiltersRef.current = { ...activeFilters };
         setTimeout(() => {
             setSelectedApp(app.name);
             const fullGameData = allGames.find(g => g.name === app.name);
@@ -60,6 +63,16 @@ const Overview = () => {
                 }
             }
         }, 50);
+    };
+
+    const handleCloseDetail = () => {
+        setSelectedApp(null);
+        setSelectedGameData(null);
+        // Restore filters that were active before opening the detail view
+        if (prevFiltersRef.current) {
+            setActiveFilters(prevFiltersRef.current);
+            prevFiltersRef.current = null;
+        }
     };
 
     const handleDomainChange = (domain) => {
@@ -384,7 +397,7 @@ const Overview = () => {
                         appName={selectedApp}
                         data={appDetailsData[selectedApp]}
                         gameData={selectedGameData}
-                        onClose={() => setSelectedApp(null)}
+                        onClose={handleCloseDetail}
                     />
                 )}
             </div>
