@@ -191,7 +191,7 @@ const Overview = () => {
             </button>
             
             {/* Main Content - Left Side */}
-            <div className="main-content-area">
+            <div className="main-content-area" style={selectedApp ? { padding: 0, maxWidth: '100%' } : {}}>
                 {!selectedApp ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', paddingBottom: '48px' }}>
                         <div className="page-header-new">
@@ -403,7 +403,7 @@ const Overview = () => {
             </div>
 
             {/* Filter Panel - Right Side */}
-            <div className={`filter-panel-wrapper ${filtersPanelOpen ? 'mobile-open' : ''}`}>
+            <div className={`filter-panel-wrapper ${filtersPanelOpen ? 'mobile-open' : ''}`} style={selectedApp ? { display: 'none' } : {}}>
                 {/* Mobile overlay */}
                 {filtersPanelOpen && (
                     <div 

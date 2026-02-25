@@ -155,7 +155,7 @@ const AppDetailView = ({ appName, data, onClose, gameData }) => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: 'rgba(10,15,30,0.97)', overflow: 'hidden' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 70px)', background: 'rgba(10,15,30,0.97)', overflow: 'hidden' }}>
 
             {/* ── STICKY HEADER ─────────────────────── */}
             <div style={{
