@@ -255,7 +255,7 @@ const TechStackDetection = ({ techStackData }) => {
           </div>
 
           {/* Key Insights */}
-          <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg p-5 border border-purple-500/30">
+          <div style={{ background: 'rgba(15,23,42,0.85)', borderRadius: '10px', padding: '20px', border: '1px solid rgba(99,102,241,0.2)', borderLeft: '3px solid #6366f1' }}>
             <h4 className="text-white font-bold mb-4 flex items-center gap-2">
               <Award className="w-5 h-5 text-purple-400" />
               Key Technical Insights
