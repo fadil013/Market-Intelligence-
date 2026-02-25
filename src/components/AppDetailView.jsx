@@ -1,339 +1,325 @@
-import React from 'react';
+﻿import React from 'react';
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-    BarChart, Bar, Cell, PieChart, Pie
+    PieChart, Pie, Cell
 } from 'recharts';
-import { X, TrendingUp, Download, DollarSign, Star, Globe, Smartphone, Activity, Flame, Target, Trophy, Zap } from 'lucide-react';
+import { X, TrendingUp, TrendingDown, Download, DollarSign, Star, Globe, Activity, Zap, Award, Users, BarChart2, Smartphone } from 'lucide-react';
+import GameIcon from './GameIcon';
+
+// Generate a plausible 7-day performance curve from velocity/boost data
+const generateHistory = (gameData) => {
+    if (!gameData) return [];
+    const base = gameData.monthlyRevenue / 30 / 1_000_000;
+    const dlBase = gameData.monthlyDownloads / 30 / 1_000_000;
+    const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const momentum = gameData.velocityTrend === 'surging' ? 0.06 :
+                     gameData.velocityTrend === 'rising'  ? 0.03 :
+                     gameData.velocityTrend === 'declining' ? -0.03 : 0.01;
+    return days.map((day, i) => ({
+        day,
+        revenue: parseFloat((base * (1 + momentum * i) * (0.92 + Math.random() * 0.16)).toFixed(2)),
+        downloads: parseFloat((dlBase * (1 + momentum * i) * (0.92 + Math.random() * 0.16)).toFixed(2)),
+    }));
+};
+
+// Build geo distribution from markets array
+const generateGeo = (gameData) => {
+    if (!gameData) return [];
+    const marketColors = {
+        'USA': '#3b82f6', 'China': '#ef4444', 'Japan': '#f59e0b',
+        'Europe': '#10b981', 'Worldwide': '#8b5cf6', 'India': '#ec4899',
+        'Others': '#64748b',
+    };
+    const markets = gameData.markets || ['Worldwide'];
+    const perMarket = Math.floor(80 / markets.length);
+    const result = markets.map((m, i) => ({
+        region: m, percentage: i === 0 ? perMarket + 5 : perMarket,
+        color: marketColors[m] || `hsl(${i * 70},60%,55%)`
+    }));
+    const used = result.reduce((s, r) => s + r.percentage, 0);
+    if (used < 100) result.push({ region: 'Others', percentage: 100 - used, color: '#64748b' });
+    return result;
+};
+
+const RankBadge = ({ label, value, color }) => (
+    <div style={{ textAlign: 'center', flex: 1 }}>
+        <div style={{ fontSize: 11, color: '#94a3b8', marginBottom: 4, fontWeight: 500 }}>{label}</div>
+        <div style={{
+            fontSize: 15, fontWeight: 700,
+            color: value < 0 ? '#10b981' : value > 0 ? '#f87171' : '#94a3b8',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 3
+        }}>
+            {value < 0 ? <TrendingUp size={13} /> : value > 0 ? <TrendingDown size={13} /> : null}
+            {value === 0 ? 'â€”' : `${Math.abs(value)}`}
+        </div>
+    </div>
+);
+
+const StatCard = ({ icon, label, value, sub, accent }) => (
+    <div style={{
+        background: 'rgba(30,41,59,0.7)', borderRadius: 10, padding: '14px 16px',
+        border: `1px solid rgba(${accent || '99,102,241'},0.18)`, flex: 1
+    }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+            <span style={{ fontSize: 11, color: '#94a3b8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{label}</span>
+            <span style={{ color: `rgb(${accent || '99,102,241'})`, opacity: 0.8 }}>{icon}</span>
+        </div>
+        <div style={{ fontSize: 20, fontWeight: 800, color: '#f1f5f9' }}>{value}</div>
+        {sub && <div style={{ fontSize: 11, color: '#64748b', marginTop: 3 }}>{sub}</div>}
+    </div>
+);
+
+const AccelBadge = ({ acceleration, velocityTrend }) => {
+    const map = {
+        explosive: { label: 'Explosive Growth', bg: 'rgba(16,185,129,0.15)', color: '#34d399', border: 'rgba(16,185,129,0.35)' },
+        high:      { label: 'High Acceleration', bg: 'rgba(99,102,241,0.15)', color: '#a5b4fc', border: 'rgba(99,102,241,0.35)' },
+        medium:    { label: 'Steady Momentum', bg: 'rgba(245,158,11,0.15)', color: '#fcd34d', border: 'rgba(245,158,11,0.35)' },
+        stable:    { label: 'Stable', bg: 'rgba(100,116,139,0.15)', color: '#94a3b8', border: 'rgba(100,116,139,0.3)' },
+        declining: { label: 'Declining', bg: 'rgba(248,113,113,0.12)', color: '#f87171', border: 'rgba(248,113,113,0.3)' },
+    };
+    const s = map[velocityTrend] || map[acceleration] || map.stable;
+    return (
+        <span style={{
+            padding: '3px 10px', borderRadius: 20, fontSize: 11, fontWeight: 700,
+            background: s.bg, color: s.color, border: `1px solid ${s.border}`
+        }}>{s.label}</span>
+    );
+};
 
 const AppDetailView = ({ appName, data, onClose, gameData }) => {
-    // Generate unique analytics based on the specific game
-    const generateCategoryData = () => {
-        const baseData = [
-            { name: 'Puzzle', games: 2847, revenue: 892000000, trend: '+42%', color: '#f59e0b', icon: '🧩' },
-            { name: 'Shooting', games: 1523, revenue: 1200000000, trend: '+38%', color: '#ef4444', icon: '🎯' },
-            { name: 'Racing', games: 892, revenue: 645000000, trend: '+35%', color: '#06b6d4', icon: '🏎️' },
-            { name: 'RPG', games: 1245, revenue: 1800000000, trend: '+28%', color: '#8b5cf6', icon: '⚔️' },
-            { name: 'Strategy', games: 756, revenue: 534000000, trend: '+22%', color: '#10b981', icon: '🎲' },
-            { name: 'Casual', games: 3421, revenue: 723000000, trend: '+18%', color: '#ec4899', icon: '🎮' }
-        ];
-
-        // If we have game data, prioritize its genre
-        if (gameData?.genre) {
-            const genreMap = {
-                'Puzzle': 0,
-                'Shooter': 1,
-                'Racing': 2,
-                'RPG': 3,
-                'Strategy': 4,
-                'Casual': 5,
-                'MOBA': 3, // Treat MOBA as RPG category
-                'Sandbox': 5 // Treat Sandbox as Casual
-            };
-            
-            const priorityIndex = genreMap[gameData.genre] ?? 0;
-            
-            // Reorder to show the game's genre first with boosted stats
-            const reordered = [...baseData];
-            const priorityItem = reordered[priorityIndex];
-            
-            // Boost the stats for the specific game's genre
-            priorityItem.games = Math.floor(priorityItem.games * 1.2);
-            priorityItem.revenue = Math.floor(priorityItem.revenue * 1.15);
-            const trendNum = parseInt(priorityItem.trend);
-            priorityItem.trend = `+${trendNum + 5}%`;
-            
-            reordered.splice(priorityIndex, 1);
-            reordered.unshift(priorityItem);
-            
-            return reordered;
-        }
-        
-        return baseData;
+    // Use persisted appDetailsData if available, otherwise build from gameData
+    const detail = data || {};
+    const history = detail.performanceHistory?.length ? detail.performanceHistory : generateHistory(gameData);
+    const geo = detail.geoDist?.length ? detail.geoDist : generateGeo(gameData);
+    const accentHex = gameData?.color || '#6366f1';
+    // Convert hex color to rgb components for CSS rgba usage
+    const hexToRgb = (hex) => {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return `${r},${g},${b}`;
     };
-    
-    const categoryData = generateCategoryData();
+    const accent = hexToRgb(accentHex.startsWith('#') ? accentHex : '#6366f1');
 
-    if (!data) return (
-        <div className="detail-panel glass-panel flex flex-col h-full" style={{ background: 'rgba(15,23,42,0.95)' }}>
-            <div className="sticky top-0 z-20 p-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.05)', background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(12px)' }}>
-                <button
-                    onClick={onClose}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-widest"
-                    style={{ background: 'rgba(255,255,255,0.05)', color: '#94a3b8', cursor: 'pointer', border: 'none' }}
-                >
-                    <X size={14} />
-                    Back to Listings
+    const bModel = gameData?.businessModel;
+    const genre = gameData?.genre;
+    const platform = gameData?.platform;
+    const rating = gameData?.rating ?? detail.rating;
+    const downloads = gameData?.monthlyDownloads
+        ? `${(gameData.monthlyDownloads / 1_000_000).toFixed(1)}M / mo`
+        : detail.downloads || 'â€”';
+    const revenue = gameData?.monthlyRevenue
+        ? `$${(gameData.monthlyRevenue / 1_000_000).toFixed(0)}M / mo`
+        : detail.revenue || 'â€”';
+    const velocityScore = gameData?.velocityScore ?? 0;
+    const boostScore = gameData?.boostScore ?? 0;
+    const rankHistory = gameData?.rankHistory || {};
+    const platformPresence = gameData?.platformPresence || {};
+
+    return (
+        <div style={{
+            display: 'flex', flexDirection: 'column', height: '100%',
+            background: 'rgba(10,15,30,0.97)', overflow: 'hidden'
+        }}>
+            {/* Sticky Header */}
+            <div style={{
+                position: 'sticky', top: 0, zIndex: 20, padding: '12px 16px',
+                borderBottom: '1px solid rgba(255,255,255,0.06)',
+                background: 'rgba(10,15,30,0.92)', backdropFilter: 'blur(12px)',
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between'
+            }}>
+                <button onClick={onClose} style={{
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    padding: '6px 12px', borderRadius: 8, fontSize: 12, fontWeight: 700,
+                    letterSpacing: '0.06em', textTransform: 'uppercase',
+                    background: 'rgba(255,255,255,0.05)', color: '#94a3b8',
+                    border: '1px solid rgba(255,255,255,0.08)', cursor: 'pointer'
+                }}>
+                    <X size={13} /> Close
                 </button>
+                <div style={{
+                    display: 'flex', alignItems: 'center', gap: 6,
+                    fontSize: 11, fontWeight: 700, color: '#10b981',
+                    background: 'rgba(16,185,129,0.1)', padding: '4px 10px',
+                    borderRadius: 20, border: '1px solid rgba(16,185,129,0.25)'
+                }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+                    Live Analytics
+                </div>
             </div>
-            <div className="flex-1 overflow-y-auto p-6">
-                {/* Header */}
-                <div className="flex flex-col items-center text-center gap-6 mb-16 pb-8 border-b border-white/10">
-                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-slate-800 ring-4 ring-white/5 shadow-2xl">
-                        🎮
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-black text-white mb-6 leading-tight">{appName}</h2>
-                        <p className="text-sm text-gray-400 font-medium leading-relaxed">Category Performance Analytics</p>
-                    </div>
-                </div>
 
-                {/* Trending Categories Header */}
-                <div className="flex items-center gap-3 mb-6 mt-8">
-                    <Flame className="text-orange-400" size={24} />
-                    <h3 className="text-xl font-bold text-white leading-tight">Top Trending Categories</h3>
-                </div>
+            {/* Scrollable Body */}
+            <div style={{ flex: 1, overflowY: 'auto', padding: '24px 20px', display: 'flex', flexDirection: 'column', gap: 20 }}>
 
-                {/* Category Cards */}
-                <div className="space-y-4">
-                    {categoryData.map((category, idx) => (
-                        <div 
-                            key={idx}
-                            className="glass-panel p-5 hover:bg-white/5 transition-all cursor-pointer"
-                            style={{ borderLeft: `3px solid ${category.color}` }}
-                        >
-                            <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                    <div 
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
-                                        style={{ background: `${category.color}20`, border: `1px solid ${category.color}40` }}
-                                    >
-                                        {category.icon}
-                                    </div>
-                                    <div>
-                                        <h4 className="text-white font-bold text-lg">{category.name}</h4>
-                                        <div className="flex items-center gap-3 mt-1">
-                                            <span className="text-gray-400 text-xs">{category.games.toLocaleString()} games</span>
-                                            <span className="text-gray-600">•</span>
-                                            <span className="text-gray-400 text-xs">${(category.revenue / 1000000).toFixed(0)}M revenue</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="text-right">
-                                    <div className="flex items-center gap-2 text-emerald-400 font-bold text-lg">
-                                        <TrendingUp size={18} />
-                                        {category.trend}
-                                    </div>
-                                    <span className="text-xs text-gray-500">30d growth</span>
-                                </div>
-                            </div>
+                {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                <div style={{
+                    background: `linear-gradient(135deg, rgba(${accent},0.12) 0%, rgba(${accent},0.04) 100%)`,
+                    border: `1px solid rgba(${accent},0.25)`,
+                    borderRadius: 14, padding: '20px 20px 18px',
+                    display: 'flex', alignItems: 'center', gap: 16
+                }}>
+                    <GameIcon name={appName} fallback={gameData?.icon || 'ðŸŽ®'} color={accentHex} size={64} borderRadius={16} />
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                        <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: '#f8fafc', lineHeight: 1.2 }}>{appName}</h2>
+                        <div style={{ marginTop: 6, display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                            {genre && <span style={{ padding: '2px 9px', borderRadius: 20, fontSize: 11, fontWeight: 700, background: `rgba(${accent},0.18)`, color: accentHex, border: `1px solid rgba(${accent},0.35)` }}>{genre}</span>}
+                            {platform && <span style={{ padding: '2px 9px', borderRadius: 20, fontSize: 11, fontWeight: 600, background: 'rgba(30,41,59,0.9)', color: '#94a3b8', border: '1px solid rgba(71,85,105,0.5)' }}>{platform}</span>}
+                            {bModel && <span style={{ padding: '2px 9px', borderRadius: 20, fontSize: 11, fontWeight: 600, background: 'rgba(30,41,59,0.9)', color: '#94a3b8', border: '1px solid rgba(71,85,105,0.5)' }}>{bModel}</span>}
                         </div>
-                    ))}
-                </div>
-
-                {/* Market Insights */}
-                <div className="mt-8">
-                    <div className="flex items-start gap-3 mb-6">
-                        <div className="mt-1">
-                            <Target className="text-blue-400" size={20} />
-                        </div>
-                        <div className="flex-1">
-                            <h3 className="text-lg font-bold text-white leading-tight">Market Insights</h3>
-                            {gameData?.genre && (
-                                <p className="text-sm text-gray-400 mt-1">{gameData.genre} Category</p>
+                        <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 10 }}>
+                            {rating && (
+                                <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, fontWeight: 700, color: '#fbbf24' }}>
+                                    <Star size={13} fill="#fbbf24" /> {rating}
+                                </span>
                             )}
+                            {gameData && <AccelBadge acceleration={gameData.acceleration} velocityTrend={gameData.velocityTrend} />}
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="glass-panel p-4">
-                            <Trophy className="text-amber-400 mb-3" size={20} />
-                            <p className="text-xs text-gray-400 uppercase mb-1">Market Position</p>
-                            <p className="text-white font-bold">{gameData?.genre || 'Gaming'} Leader</p>
-                            <p className="text-emerald-400 text-sm font-bold mt-1">
-                                {gameData?.rating ? `${gameData.rating}⭐ Rating` : 'Top Rated'}
-                            </p>
-                        </div>
-                        <div className="glass-panel p-4">
-                            <Zap className="text-purple-400 mb-3" size={20} />
-                            <p className="text-xs text-gray-400 uppercase mb-1">Growth Momentum</p>
-                            <p className="text-white font-bold">{categoryData[0]?.name || 'Top Category'}</p>
-                            <p className="text-emerald-400 text-sm font-bold mt-1">
-                                {gameData?.boostScore ? `+${gameData.boostScore}% Boost` : categoryData[0]?.trend || '+42% Growth'}
-                            </p>
-                        </div>
-                    </div>
-                    
-                    {gameData && (
-                        <div className="mt-6 glass-panel p-5" style={{ 
-                            background: 'linear-gradient(135deg, rgba(107,114,128,0.12), rgba(75,85,99,0.08))',
-                            borderLeft: `3px solid ${gameData.color || '#6b7280'}`
-                        }}>
-                            <div className="flex items-center gap-4 mb-4">
-                                <div 
-                                    className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl"
-                                    style={{ background: `${gameData.color || '#6b7280'}20`, border: `2px solid ${gameData.color || '#6b7280'}40` }}
-                                >
-                                    {gameData.icon || '🎮'}
-                                </div>
-                                <div className="flex-1">
-                                    <h4 className="text-white font-bold text-base">{appName} Performance</h4>
-                                    <p className="text-gray-400 text-xs mt-1">{gameData.studioRegion || 'Global'} • {gameData.platform || 'Multi-platform'}</p>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-3 gap-4">
-                                <div>
-                                    <p className="text-gray-400 text-[10px] uppercase font-bold mb-1">Downloads</p>
-                                    <p className="text-white font-bold text-sm">{(gameData.monthlyDownloads / 1000000).toFixed(1)}M</p>
-                                </div>
-                                <div>
-                                    <p className="text-gray-400 text-[10px] uppercase font-bold mb-1">Revenue</p>
-                                    <p className="text-emerald-400 font-bold text-sm">${(gameData.monthlyRevenue / 1000000).toFixed(0)}M</p>
-                                </div>
-                                <div>
-                                    <p className="text-gray-400 text-[10px] uppercase font-bold mb-1">Boost Score</p>
-                                    <p className="text-purple-400 font-bold text-sm">+{gameData.boostScore}%</p>
-                                </div>
-                            </div>
+                    {gameData?.studioRegion && (
+                        <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                            <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Studio</div>
+                            <div style={{ fontSize: 13, fontWeight: 700, color: '#cbd5e1', marginTop: 2 }}>{gameData.studioRegion}</div>
                         </div>
                     )}
                 </div>
-            </div>
-        </div>
-    );
 
-    return (
-        <div className="detail-panel glass-panel flex flex-col h-full animate-in slide-in-from-right duration-300">
-            <div className="sticky top-0 z-20 p-4 border-b border-white/5 bg-slate-900/60 backdrop-blur-md flex items-center justify-between">
-                <button
-                    onClick={onClose}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-widest"
-                    style={{ background: 'rgba(255,255,255,0.05)', color: '#94a3b8', cursor: 'pointer', border: 'none' }}
-                >
-                    <X size={14} />
-                    Back to Listings
-                </button>
-                <div className="live-badge scale-90">
-                    <div className="dot"></div>
-                    <span>Analytics Live</span>
-                </div>
-            </div>
-
-            <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
-                {/* Header */}
-                <div className="flex flex-col items-center text-center gap-6 mb-10">
-                    <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl bg-slate-800 ring-4 ring-white/5 shadow-2xl">
-                        {appName === 'TikTok' ? '🎵' : (appName === 'ChatGPT' ? '🤖' : '📱')}
-                    </div>
-                    <div className="flex-1">
-                        <h2 className="text-3xl font-black text-white mb-3">{appName}</h2>
-                        <div className="flex flex-wrap items-center justify-center gap-3">
-                            <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider" style={{ background: 'rgba(59,130,246,0.15)', color: '#60a5fa', boxShadow: '0 0 0 1px rgba(59,130,246,0.3)' }}>{data.category || 'App'}</span>
-                            <div className="flex items-center gap-1 text-amber-400">
-                                <Star size={12} fill="currentColor" />
-                                <span className="text-xs font-bold">{data.rating || '4.5'}</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-2 w-full">
-                        <div className="flex-1 p-3 glass-panel text-center">
-                            <p className="text-gray-400 text-[9px] uppercase font-bold mb-1">Store Rank</p>
-                            <p className="text-white font-black text-lg">#1</p>
-                        </div>
-                        <div className="flex-1 p-3 glass-panel text-center">
-                            <p className="text-gray-400 text-[9px] uppercase font-bold mb-1">Growth Score</p>
-                            <p className="text-emerald-400 font-black text-lg">98/100</p>
-                        </div>
-                    </div>
+                {/* â”€â”€ KEY METRICS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                    <StatCard icon={<Download size={15} />} label="Downloads" value={downloads} sub="monthly" accent={accent} />
+                    <StatCard icon={<DollarSign size={15} />} label="Revenue" value={revenue} sub="monthly" accent="16,185,129" />
+                    <StatCard icon={<Activity size={15} />} label="Velocity Score" value={`${velocityScore}/100`} sub="momentum index" accent="99,102,241" />
+                    <StatCard icon={<Zap size={15} />} label="Boost Score" value={`+${boostScore}%`} sub="30-day growth" accent="245,158,11" />
                 </div>
 
-                {/* Stats Stack */}
-                <div className="space-y-6 mb-8">
-                    <div className="glass-panel p-5" style={{ background: 'linear-gradient(to bottom right, rgba(59,130,246,0.08), transparent)' }}>
-                        <div className="flex items-start justify-between mb-2">
-                            <div>
-                                <p className="text-gray-400 text-xs font-medium mb-1">Estimated Revenue</p>
-                                <h3 className="text-2xl font-black text-white">{data.revenue}</h3>
-                            </div>
-                            <div className="p-2 rounded-lg" style={{ background: 'rgba(59,130,246,0.15)', color: '#3b82f6' }}>
-                                <DollarSign size={18} />
-                            </div>
+                {/* â”€â”€ RANK CHANGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                {(rankHistory['24h'] !== undefined || rankHistory['7d'] !== undefined) && (
+                    <div style={{
+                        background: 'rgba(30,41,59,0.6)', borderRadius: 12, padding: '14px 18px',
+                        border: '1px solid rgba(255,255,255,0.07)'
+                    }}>
+                        <div style={{ fontSize: 11, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12 }}>
+                            Rank Movement
                         </div>
-                        <div className="h-28">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <LineChart data={data.performanceHistory}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                                    <XAxis dataKey="day" hide />
-                                    <YAxis hide />
-                                    <Tooltip
-                                        contentStyle={{ background: '#1e293b', border: 'none', borderRadius: '12px', fontSize: '10px' }}
-                                        itemStyle={{ color: '#3b82f6' }}
-                                    />
-                                    <Line type="monotone" dataKey="revenue" stroke="#3b82f6" strokeWidth={3} dot={false} animationDuration={1000} />
-                                </LineChart>
-                            </ResponsiveContainer>
+                        <div style={{ display: 'flex', gap: 8 }}>
+                            <RankBadge label="24 Hours" value={rankHistory['24h'] ?? 0} />
+                            <div style={{ width: 1, background: 'rgba(255,255,255,0.06)' }} />
+                            <RankBadge label="7 Days" value={rankHistory['7d'] ?? 0} />
+                            <div style={{ width: 1, background: 'rgba(255,255,255,0.06)' }} />
+                            <RankBadge label="30 Days" value={rankHistory['30d'] ?? 0} />
                         </div>
                     </div>
+                )}
 
-                    <div className="glass-panel p-5" style={{ background: 'linear-gradient(to bottom right, rgba(16,185,129,0.08), transparent)' }}>
-                        <div className="flex items-start justify-between mb-2">
-                            <div>
-                                <p className="text-gray-400 text-xs font-medium mb-1">Total Downloads</p>
-                                <h3 className="text-2xl font-black text-white">{data.downloads}</h3>
-                            </div>
-                            <div className="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
-                                <Download size={18} />
-                            </div>
+                {/* â”€â”€ PLATFORM PRESENCE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                {Object.keys(platformPresence).length > 0 && (
+                    <div style={{
+                        background: 'rgba(30,41,59,0.6)', borderRadius: 12, padding: '14px 18px',
+                        border: '1px solid rgba(255,255,255,0.07)'
+                    }}>
+                        <div style={{ fontSize: 11, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <Smartphone size={13} /> Platform Presence
                         </div>
-                        <div className="h-28">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <LineChart data={data.performanceHistory}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                                    <XAxis dataKey="day" hide />
-                                    <YAxis hide />
-                                    <Tooltip
-                                        contentStyle={{ background: '#1e293b', border: 'none', borderRadius: '12px', fontSize: '10px' }}
-                                        itemStyle={{ color: '#10b981' }}
-                                    />
-                                    <Line type="monotone" dataKey="downloads" stroke="#10b981" strokeWidth={3} dot={false} animationDuration={1000} />
-                                </LineChart>
-                            </ResponsiveContainer>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                            {Object.entries(platformPresence).map(([store, info]) => (
+                                <div key={store} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                    <span style={{ fontSize: 13, color: '#cbd5e1', fontWeight: 600 }}>
+                                        {store === 'googlePlay' ? 'ðŸŸ¢ Google Play' : store === 'appStore' ? 'ðŸŽ App Store' : 'ðŸ“¦ Amazon'}
+                                    </span>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                        <span style={{ fontSize: 14, fontWeight: 800, color: '#f1f5f9' }}>#{info.rank}</span>
+                                        <span style={{
+                                            fontSize: 12, fontWeight: 700,
+                                            color: info.change < 0 ? '#10b981' : info.change > 0 ? '#f87171' : '#94a3b8'
+                                        }}>
+                                            {info.change < 0 ? `â–² ${Math.abs(info.change)}` : info.change > 0 ? `â–¼ ${info.change}` : 'â€“'}
+                                        </span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
+                    </div>
+                )}
+
+                {/* â”€â”€ REVENUE TREND CHART â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                <div style={{
+                    background: 'rgba(30,41,59,0.6)', borderRadius: 12, padding: '16px 18px',
+                    border: '1px solid rgba(255,255,255,0.07)'
+                }}>
+                    <div style={{ fontSize: 11, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <BarChart2 size={13} /> Revenue Trend (7 Days)
+                    </div>
+                    <div style={{ height: 110, marginTop: 8 }}>
+                        <ResponsiveContainer width="100%" height="100%">
+                            <LineChart data={history}>
+                                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" vertical={false} />
+                                <XAxis dataKey="day" stroke="#475569" tick={{ fontSize: 10, fill: '#64748b' }} axisLine={false} tickLine={false} />
+                                <YAxis hide />
+                                <Tooltip
+                                    contentStyle={{ background: '#1e293b', border: 'none', borderRadius: 10, fontSize: 11 }}
+                                    itemStyle={{ color: accentHex }}
+                                    labelStyle={{ color: '#94a3b8' }}
+                                />
+                                <Line type="monotone" dataKey="revenue" stroke={accentHex} strokeWidth={2.5} dot={false} />
+                            </LineChart>
+                        </ResponsiveContainer>
                     </div>
                 </div>
 
-                {/* Geography Section */}
-                <div className="glass-panel p-5">
-                    <div className="flex items-center gap-2 mb-4">
-                        <Globe size={16} className="text-blue-400" />
-                        <h3 className="text-sm font-bold text-white uppercase tracking-wider">Top Regions</h3>
+                {/* â”€â”€ GEO DISTRIBUTION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                <div style={{
+                    background: 'rgba(30,41,59,0.6)', borderRadius: 12, padding: '16px 18px',
+                    border: '1px solid rgba(255,255,255,0.07)'
+                }}>
+                    <div style={{ fontSize: 11, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <Globe size={13} /> Geographic Distribution
                     </div>
-                    <div className="space-y-4">
-                        <div className="h-40">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                        <div style={{ width: 100, height: 100, flexShrink: 0 }}>
                             <ResponsiveContainer width="100%" height="100%">
                                 <PieChart>
-                                    <Pie
-                                        data={data.geoDist}
-                                        innerRadius={45}
-                                        outerRadius={65}
-                                        paddingAngle={5}
-                                        dataKey="percentage"
-                                    >
-                                        {data.geoDist.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={entry.color} />
-                                        ))}
+                                    <Pie data={geo} innerRadius={30} outerRadius={46} paddingAngle={3} dataKey="percentage">
+                                        {geo.map((entry, i) => <Cell key={i} fill={entry.color} />)}
                                     </Pie>
-                                    <Tooltip />
                                 </PieChart>
                             </ResponsiveContainer>
                         </div>
-                        <div className="grid grid-cols-2 gap-3">
-                            {data.geoDist.map((region, idx) => (
-                                <div key={idx} className="space-y-1">
-                                    <div className="flex justify-between text-[10px]">
-                                        <span className="text-gray-400">{region.region}</span>
-                                        <span className="text-white font-bold">{region.percentage}%</span>
+                        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 7 }}>
+                            {geo.map((r, i) => (
+                                <div key={i}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
+                                        <span style={{ fontSize: 11, color: '#94a3b8' }}>{r.region}</span>
+                                        <span style={{ fontSize: 11, fontWeight: 700, color: '#f1f5f9' }}>{r.percentage}%</span>
                                     </div>
-                                    <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                                        <div
-                                            className="h-full transition-all duration-1000 ease-out"
-                                            style={{ width: `${region.percentage}%`, backgroundColor: region.color }}
-                                        />
+                                    <div style={{ height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.06)', overflow: 'hidden' }}>
+                                        <div style={{ height: '100%', width: `${r.percentage}%`, background: r.color, borderRadius: 2 }} />
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
+
+                {/* â”€â”€ MARKETS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+                {gameData?.markets?.length > 0 && (
+                    <div style={{
+                        background: 'rgba(30,41,59,0.6)', borderRadius: 12, padding: '14px 18px',
+                        border: '1px solid rgba(255,255,255,0.07)'
+                    }}>
+                        <div style={{ fontSize: 11, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 10, display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <Award size={13} /> Active Markets
+                        </div>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 7 }}>
+                            {gameData.markets.map((m, i) => (
+                                <span key={i} style={{
+                                    padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 600,
+                                    background: `rgba(${accent},0.1)`, color: '#cbd5e1',
+                                    border: `1px solid rgba(${accent},0.2)`
+                                }}>{m}</span>
+                            ))}
+                        </div>
+                    </div>
+                )}
+
             </div>
         </div>
     );
