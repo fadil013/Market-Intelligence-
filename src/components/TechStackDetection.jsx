@@ -121,50 +121,30 @@ const TechStackDetection = ({ techStackData }) => {
 
       {/* View Mode Switcher */}
       <div className="flex gap-2 flex-wrap">
-        <button
-          onClick={() => setViewMode('overview')}
-          className={`px-4 py-2 rounded-lg font-medium transition-all ${
-            viewMode === 'overview'
-              ? 'bg-purple-500 text-white'
-              : 'bg-white/5 text-gray-400 hover:bg-white/10'
-          }`}
-        >
-          <Cpu className="w-4 h-4 inline mr-2" />
-          Overview
-        </button>
-        <button
-          onClick={() => setViewMode('engines')}
-          className={`px-4 py-2 rounded-lg font-medium transition-all ${
-            viewMode === 'engines'
-              ? 'bg-purple-500 text-white'
-              : 'bg-white/5 text-gray-400 hover:bg-white/10'
-          }`}
-        >
-          <Code className="w-4 h-4 inline mr-2" />
-          Engines
-        </button>
-        <button
-          onClick={() => setViewMode('sdks')}
-          className={`px-4 py-2 rounded-lg font-medium transition-all ${
-            viewMode === 'sdks'
-              ? 'bg-purple-500 text-white'
-              : 'bg-white/5 text-gray-400 hover:bg-white/10'
-          }`}
-        >
-          <Package className="w-4 h-4 inline mr-2" />
-          SDKs
-        </button>
-        <button
-          onClick={() => setViewMode('backend')}
-          className={`px-4 py-2 rounded-lg font-medium transition-all ${
-            viewMode === 'backend'
-              ? 'bg-purple-500 text-white'
-              : 'bg-white/5 text-gray-400 hover:bg-white/10'
-          }`}
-        >
-          <Cloud className="w-4 h-4 inline mr-2" />
-          Backend
-        </button>
+        {[
+          { key: 'overview', icon: <Cpu style={{ width: 14, height: 14, display: 'inline', marginRight: 6 }} />, label: 'Overview' },
+          { key: 'engines',  icon: <Code style={{ width: 14, height: 14, display: 'inline', marginRight: 6 }} />, label: 'Engines' },
+          { key: 'sdks',     icon: <Package style={{ width: 14, height: 14, display: 'inline', marginRight: 6 }} />, label: 'SDKs' },
+          { key: 'backend',  icon: <Cloud style={{ width: 14, height: 14, display: 'inline', marginRight: 6 }} />, label: 'Backend' },
+        ].map(({ key, icon, label }) => (
+          <button
+            key={key}
+            onClick={() => setViewMode(key)}
+            style={viewMode === key ? {
+              padding: '8px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: 600,
+              background: 'rgba(99,102,241,0.2)', color: '#a5b4fc',
+              border: '1px solid rgba(99,102,241,0.45)', cursor: 'pointer', transition: 'all 0.15s',
+              display: 'flex', alignItems: 'center'
+            } : {
+              padding: '8px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: 500,
+              background: 'rgba(30,41,59,0.7)', color: '#cbd5e1',
+              border: '1px solid rgba(71,85,105,0.5)', cursor: 'pointer', transition: 'all 0.15s',
+              display: 'flex', alignItems: 'center'
+            }}
+          >
+            {icon}{label}
+          </button>
+        ))}
       </div>
 
       {/* Overview */}

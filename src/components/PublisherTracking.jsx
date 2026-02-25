@@ -152,11 +152,15 @@ const PublisherTracking = ({ publisherData }) => {
                             <button
                                 key={mode}
                                 onClick={() => setViewMode(mode)}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                                    viewMode === mode
-                                        ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                                        : 'bg-slate-700/50 text-gray-400 border border-slate-600/30 hover:bg-slate-600/50'
-                                }`}
+                                style={viewMode === mode ? {
+                                    padding: '8px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: 600,
+                                    background: 'rgba(99,102,241,0.2)', color: '#a5b4fc',
+                                    border: '1px solid rgba(99,102,241,0.45)', cursor: 'pointer', transition: 'all 0.15s'
+                                } : {
+                                    padding: '8px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: 500,
+                                    background: 'rgba(30,41,59,0.7)', color: '#cbd5e1',
+                                    border: '1px solid rgba(71,85,105,0.5)', cursor: 'pointer', transition: 'all 0.15s'
+                                }}
                             >
                                 {mode.charAt(0).toUpperCase() + mode.slice(1)}
                             </button>
