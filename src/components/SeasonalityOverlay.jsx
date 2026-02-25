@@ -196,10 +196,10 @@ const SeasonalityOverlay = ({ seasonalData }) => {
                         <select
                             value={selectedEventType}
                             onChange={(e) => setSelectedEventType(e.target.value)}
-                            className="w-full bg-slate-700/50 border border-slate-600/30 rounded-lg px-4 py-2 text-gray-300 text-sm focus:outline-none focus:border-purple-500/50"
+                            style={{ width: '100%', background: '#0f172a', color: '#cbd5e1', border: '1px solid rgba(71,85,105,0.5)', borderRadius: '8px', padding: '8px 14px', fontSize: '13px', outline: 'none', cursor: 'pointer' }}
                         >
                             {eventTypes.map(type => (
-                                <option key={type.id} value={type.id}>{type.label}</option>
+                                <option key={type.id} value={type.id} style={{ background: '#0f172a', color: '#cbd5e1' }}>{type.label}</option>
                             ))}
                         </select>
                     </div>
@@ -213,10 +213,10 @@ const SeasonalityOverlay = ({ seasonalData }) => {
                         <select
                             value={selectedImpact}
                             onChange={(e) => setSelectedImpact(e.target.value)}
-                            className="w-full bg-slate-700/50 border border-slate-600/30 rounded-lg px-4 py-2 text-gray-300 text-sm focus:outline-none focus:border-purple-500/50"
+                            style={{ width: '100%', background: '#0f172a', color: '#cbd5e1', border: '1px solid rgba(71,85,105,0.5)', borderRadius: '8px', padding: '8px 14px', fontSize: '13px', outline: 'none', cursor: 'pointer' }}
                         >
                             {impactLevels.map(level => (
-                                <option key={level} value={level}>
+                                <option key={level} value={level} style={{ background: '#0f172a', color: '#cbd5e1' }}>
                                     {level.charAt(0).toUpperCase() + level.slice(1)} Impact
                                 </option>
                             ))}
@@ -225,16 +225,20 @@ const SeasonalityOverlay = ({ seasonalData }) => {
                 </div>
 
                 {/* View Mode Switcher */}
-                <div className="flex gap-2">
+                <div style={{ display: 'flex', gap: 8, marginTop: 4 }}>
                     {['timeline', 'performance', 'insights'].map(mode => (
                         <button
                             key={mode}
                             onClick={() => setViewMode(mode)}
-                            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                                viewMode === mode
-                                    ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-                                    : 'bg-slate-700/50 text-gray-400 border border-slate-600/30 hover:bg-slate-600/50'
-                            }`}
+                            style={viewMode === mode ? {
+                                padding: '8px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: 600,
+                                background: 'rgba(99,102,241,0.2)', color: '#a5b4fc',
+                                border: '1px solid rgba(99,102,241,0.45)', cursor: 'pointer'
+                            } : {
+                                padding: '8px 18px', borderRadius: '8px', fontSize: '13px', fontWeight: 500,
+                                background: 'rgba(30,41,59,0.7)', color: '#cbd5e1',
+                                border: '1px solid rgba(71,85,105,0.5)', cursor: 'pointer'
+                            }}
                         >
                             {mode.charAt(0).toUpperCase() + mode.slice(1)}
                         </button>

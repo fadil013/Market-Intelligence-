@@ -15,13 +15,27 @@ const FilterSection = ({ title, icon: Icon, children }) => {
     );
 };
 
+const CATEGORY_ICONS = {
+    // Game categories
+    'All Categories': '🔍', 'Casual': '🎲', 'Hypercasual': '⚡', 'Midcore': '⚔️',
+    // App categories
+    'Social Media': '💬', 'AI & Productivity': '🤖', 'Entertainment': '🎬',
+    'Camera & Effects': '📷', 'Finance': '💳', 'Beauty & Style': '💄',
+    'Education': '🎓', 'Health & Fitness': '🏃', 'Utility': '⚙️', 'Fashion & Design': '👗',
+    // Domains
+    'Games': '🎮', 'Apps': '📱',
+};
+
 const FilterOption = ({ label, count, active, onClick }) => (
     <div 
         className={`filter-option-item ${active ? 'active' : ''}`}
         onClick={onClick}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
     >
-        <span className="text-sm font-medium">{label}</span>
+        {CATEGORY_ICONS[label] && (
+            <span style={{ fontSize: '14px', flexShrink: 0, width: '18px', textAlign: 'center' }}>{CATEGORY_ICONS[label]}</span>
+        )}
+        <span className="text-sm font-medium" style={{ flex: 1 }}>{label}</span>
         {count !== undefined && <span className="filter-option-count">{count}</span>}
     </div>
 );

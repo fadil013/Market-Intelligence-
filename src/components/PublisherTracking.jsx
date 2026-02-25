@@ -171,12 +171,12 @@ const PublisherTracking = ({ publisherData }) => {
                             <select
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value)}
-                                className="w-full bg-slate-700/50 border border-slate-600/30 rounded-lg px-4 py-2 text-gray-300 text-sm focus:outline-none focus:border-purple-500/50"
+                                style={{ width: '100%', background: '#0f172a', color: '#cbd5e1', border: '1px solid rgba(71,85,105,0.5)', borderRadius: '8px', padding: '8px 14px', fontSize: '13px', outline: 'none', cursor: 'pointer' }}
                             >
-                                <option value="revenue">Sort by Revenue</option>
-                                <option value="marketShare">Sort by Market Share</option>
-                                <option value="hitRate">Sort by Hit Rate</option>
-                                <option value="gameCount">Sort by Game Count</option>
+                                <option value="revenue" style={{ background: '#0f172a' }}>Sort by Revenue</option>
+                                <option value="marketShare" style={{ background: '#0f172a' }}>Sort by Market Share</option>
+                                <option value="hitRate" style={{ background: '#0f172a' }}>Sort by Hit Rate</option>
+                                <option value="gameCount" style={{ background: '#0f172a' }}>Sort by Game Count</option>
                             </select>
                         </div>
                     )}
