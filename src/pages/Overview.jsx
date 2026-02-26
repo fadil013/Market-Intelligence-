@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef } from 'react';
-import { SlidersHorizontal, ChevronLeft, ChevronRight } from 'lucide-react';
+import { SlidersHorizontal, ChevronLeft } from 'lucide-react';
 import StatsGrid from '../components/StatsGrid';
 import PlatformComparisonChart from '../components/PlatformComparisonChart';
 import GamesTable from '../components/GamesTable';
@@ -427,18 +427,19 @@ const Overview = () => {
                     }}
                     onReset={handleResetFilters}
                     onClose={() => setFiltersPanelOpen(false)}
+                    onToggleCollapse={() => setFilterCollapsed(true)}
                 />
             </div>
 
-            {/* Toggle button rendered LAST so it paints above the filter panel's stacking context */}
-            {!selectedApp && (
+            {/* Re-open button — only visible when panel is collapsed */}
+            {!selectedApp && filterCollapsed && (
                 <button
-                    className={`filter-panel-toggle-btn${filterCollapsed ? ' collapsed' : ''}`}
-                    onClick={() => setFilterCollapsed(c => !c)}
-                    aria-label={filterCollapsed ? 'Show filters' : 'Hide filters'}
-                    title={filterCollapsed ? 'Show Filters' : 'Hide Filters'}
+                    className="filter-panel-toggle-btn collapsed"
+                    onClick={() => setFilterCollapsed(false)}
+                    aria-label="Show filters"
+                    title="Show Filters"
                 >
-                    {filterCollapsed ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
+                    <ChevronLeft size={15} />
                 </button>
             )}
         </div>

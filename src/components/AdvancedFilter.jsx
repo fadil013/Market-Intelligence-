@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Map, Calendar, Tag, Filter, ChevronDown, X } from 'lucide-react';
+import { Search, Map, Calendar, Tag, Filter, ChevronDown, X, PanelRightClose } from 'lucide-react';
 
 const FilterSection = ({ title, icon: Icon, children }) => {
     return (
@@ -48,6 +48,7 @@ const AdvancedFilter = ({
     onApply,
     onReset,
     onClose,
+    onToggleCollapse,
     selectedAppData = null,
 }) => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -101,6 +102,21 @@ const AdvancedFilter = ({
     return (
         <aside className="filter-panel-right">
             <div className="filter-header">
+                <button
+                    onClick={onToggleCollapse}
+                    aria-label="Hide filters"
+                    title="Hide Filters"
+                    style={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        width: '30px', height: '30px', borderRadius: '8px', flexShrink: 0,
+                        background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
+                        color: '#e2e8f0', cursor: 'pointer', transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background='rgba(255,255,255,0.12)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.22)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background='rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.1)'; }}
+                >
+                    <PanelRightClose size={16} />
+                </button>
                 <h3 className="filter-title">Filters</h3>
                 <button 
                     className="filter-close-btn"
