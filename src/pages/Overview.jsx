@@ -403,18 +403,6 @@ const Overview = () => {
                 )}
             </div>
 
-            {/* Filter slide toggle - fixed to right edge, outside wrapper to avoid any clipping */}
-            {!selectedApp && (
-                <button
-                    className={`filter-panel-toggle-btn${filterCollapsed ? ' collapsed' : ''}`}
-                    onClick={() => setFilterCollapsed(c => !c)}
-                    aria-label={filterCollapsed ? 'Show filters' : 'Hide filters'}
-                    title={filterCollapsed ? 'Show Filters' : 'Hide Filters'}
-                >
-                    {filterCollapsed ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
-                </button>
-            )}
-
             {/* Filter Panel - Right Side */}
             <div
                 className={`filter-panel-wrapper ${filtersPanelOpen ? 'mobile-open' : ''} ${filterCollapsed ? 'filter-collapsed' : ''}`}
@@ -441,6 +429,18 @@ const Overview = () => {
                     onClose={() => setFiltersPanelOpen(false)}
                 />
             </div>
+
+            {/* Toggle button rendered LAST so it paints above the filter panel's stacking context */}
+            {!selectedApp && (
+                <button
+                    className={`filter-panel-toggle-btn${filterCollapsed ? ' collapsed' : ''}`}
+                    onClick={() => setFilterCollapsed(c => !c)}
+                    aria-label={filterCollapsed ? 'Show filters' : 'Hide filters'}
+                    title={filterCollapsed ? 'Show Filters' : 'Hide Filters'}
+                >
+                    {filterCollapsed ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
+                </button>
+            )}
         </div>
     );
 };
