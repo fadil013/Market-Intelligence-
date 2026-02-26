@@ -403,20 +403,23 @@ const Overview = () => {
                 )}
             </div>
 
+            {/* Filter slide toggle - fixed to right edge, outside wrapper to avoid any clipping */}
+            {!selectedApp && (
+                <button
+                    className={`filter-panel-toggle-btn${filterCollapsed ? ' collapsed' : ''}`}
+                    onClick={() => setFilterCollapsed(c => !c)}
+                    aria-label={filterCollapsed ? 'Show filters' : 'Hide filters'}
+                    title={filterCollapsed ? 'Show Filters' : 'Hide Filters'}
+                >
+                    {filterCollapsed ? <ChevronLeft size={15} /> : <ChevronRight size={15} />}
+                </button>
+            )}
+
             {/* Filter Panel - Right Side */}
             <div
                 className={`filter-panel-wrapper ${filtersPanelOpen ? 'mobile-open' : ''} ${filterCollapsed ? 'filter-collapsed' : ''}`}
                 style={selectedApp ? { display: 'none' } : {}}
             >
-                {/* PC slide toggle button */}
-                <button
-                    className="filter-panel-toggle-btn"
-                    onClick={() => setFilterCollapsed(c => !c)}
-                    aria-label={filterCollapsed ? 'Show filters' : 'Hide filters'}
-                    title={filterCollapsed ? 'Show Filters' : 'Hide Filters'}
-                >
-                    {filterCollapsed ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
-                </button>
                 {/* Mobile overlay */}
                 {filtersPanelOpen && (
                     <div 

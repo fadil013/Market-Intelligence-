@@ -1734,35 +1734,39 @@ body {
 }
 
 @media (min-width: 1025px) {
+  /* Tab button fixed to the left edge of the filter panel */
   .filter-panel-toggle-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    left: -16px;
-    top: 50%;
+    position: fixed;
+    right: 340px;
+    top: 50vh;
     transform: translateY(-50%);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(15, 20, 25, 0.98);
+    width: 22px;
+    height: 52px;
+    border-radius: 8px 0 0 8px;
+    background: rgba(20, 27, 36, 0.98);
     border: 1px solid var(--glass-border);
-    color: #9ca3af;
+    border-right: none;
+    color: #6b7280;
     cursor: pointer;
-    z-index: 20;
-    transition: color 0.2s, background 0.2s, border-color 0.2s, left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -2px 0 12px rgba(0,0,0,0.3);
+    z-index: 300;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s, background 0.2s;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.5);
+    padding: 0;
   }
 
   .filter-panel-toggle-btn:hover {
     color: #f9fafb;
     background: rgba(30, 41, 59, 0.98);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.18);
   }
 
-  /* When collapsed, move button to stay visible at the right edge */
-  .filter-panel-wrapper.filter-collapsed .filter-panel-toggle-btn {
-    left: -20px;
+  /* When panel is collapsed, slide button to stick to viewport's right edge */
+  .filter-panel-toggle-btn.collapsed {
+    right: 0;
+    border-radius: 8px 0 0 8px;
   }
 
   /* Slide the panel off-screen to the right */
@@ -1776,7 +1780,7 @@ body {
     pointer-events: none;
   }
 
-  /* Shrink the wrapper so main content expands */
+  /* Shrink the wrapper so main content expands smoothly */
   .filter-panel-wrapper.filter-collapsed {
     width: 0 !important;
     min-width: 0 !important;
