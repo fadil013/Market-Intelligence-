@@ -102,22 +102,24 @@ const AdvancedFilter = ({
     return (
         <aside className="filter-panel-right">
             <div className="filter-header">
+                <h3 className="filter-title">Filters</h3>
                 <button
                     onClick={onToggleCollapse}
                     aria-label="Hide filters"
                     title="Hide Filters"
                     style={{
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        width: '30px', height: '30px', borderRadius: '8px', flexShrink: 0,
-                        background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)',
-                        color: '#e2e8f0', cursor: 'pointer', transition: 'all 0.2s',
+                        display: 'flex', alignItems: 'center', gap: '7px',
+                        padding: '8px 14px', borderRadius: '10px', flexShrink: 0,
+                        background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
+                        color: '#cbd5e1', cursor: 'pointer', fontSize: '13px', fontWeight: 600,
+                        fontFamily: 'inherit', transition: 'all 0.2s', whiteSpace: 'nowrap',
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.background='rgba(255,255,255,0.12)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.22)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.background='rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.1)'; }}
+                    onMouseEnter={e => { e.currentTarget.style.background='rgba(255,255,255,0.14)'; e.currentTarget.style.color='#f8fafc'; e.currentTarget.style.borderColor='rgba(255,255,255,0.28)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.background='rgba(255,255,255,0.07)'; e.currentTarget.style.color='#cbd5e1'; e.currentTarget.style.borderColor='rgba(255,255,255,0.15)'; }}
                 >
-                    <PanelRightClose size={16} />
+                    <PanelRightClose size={15} />
+                    <span>Hide</span>
                 </button>
-                <h3 className="filter-title">Filters</h3>
                 <button 
                     className="filter-close-btn"
                     onClick={onClose}
