@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef } from 'react';
-import { SlidersHorizontal } from 'lucide-react';
+import { SlidersHorizontal, ChevronLeft, ChevronRight } from 'lucide-react';
 import StatsGrid from '../components/StatsGrid';
 import PlatformComparisonChart from '../components/PlatformComparisonChart';
 import GamesTable from '../components/GamesTable';
@@ -28,6 +28,7 @@ const Overview = () => {
     const [selectedDomain, setSelectedDomain] = useState('Games');
     const [filtersApplied, setFiltersApplied] = useState(false);
     const [filtersPanelOpen, setFiltersPanelOpen] = useState(false);
+    const [filterCollapsed, setFilterCollapsed] = useState(false);
     const [regionalMetric, setRegionalMetric] = useState('growth');
     const prevFiltersRef = useRef(null);
     const [activeFilters, setActiveFilters] = useState({
@@ -403,7 +404,19 @@ const Overview = () => {
             </div>
 
             {/* Filter Panel - Right Side */}
-            <div className={`filter-panel-wrapper ${filtersPanelOpen ? 'mobile-open' : ''}`} style={selectedApp ? { display: 'none' } : {}}>
+            <div
+                className={`filter-panel-wrapper ${filtersPanelOpen ? 'mobile-open' : ''} ${filterCollapsed ? 'filter-collapsed' : ''}`}
+                style={selectedApp ? { display: 'none' } : {}}
+            >
+                {/* PC slide toggle button */}
+                <button
+                    className="filter-panel-toggle-btn"
+                    onClick={() => setFilterCollapsed(c => !c)}
+                    aria-label={filterCollapsed ? 'Show filters' : 'Hide filters'}
+                    title={filterCollapsed ? 'Show Filters' : 'Hide Filters'}
+                >
+                    {filterCollapsed ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
+                </button>
                 {/* Mobile overlay */}
                 {filtersPanelOpen && (
                     <div 

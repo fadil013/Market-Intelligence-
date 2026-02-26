@@ -114,6 +114,7 @@ body {
   padding: 32px;
   overflow-y: auto;
   max-width: calc(100vw - 380px);
+  transition: max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .page-header-new {
@@ -1724,6 +1725,63 @@ body {
 /* Filter Panel Wrapper */
 .filter-panel-wrapper {
   position: relative;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* PC slide-out toggle button — hidden on mobile */
+.filter-panel-toggle-btn {
+  display: none;
+}
+
+@media (min-width: 1025px) {
+  .filter-panel-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(15, 20, 25, 0.98);
+    border: 1px solid var(--glass-border);
+    color: #9ca3af;
+    cursor: pointer;
+    z-index: 20;
+    transition: color 0.2s, background 0.2s, border-color 0.2s, left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -2px 0 12px rgba(0,0,0,0.3);
+  }
+
+  .filter-panel-toggle-btn:hover {
+    color: #f9fafb;
+    background: rgba(30, 41, 59, 0.98);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* When collapsed, move button to stay visible at the right edge */
+  .filter-panel-wrapper.filter-collapsed .filter-panel-toggle-btn {
+    left: -20px;
+  }
+
+  /* Slide the panel off-screen to the right */
+  .filter-panel-right {
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .filter-panel-wrapper.filter-collapsed .filter-panel-right {
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Shrink the wrapper so main content expands */
+  .filter-panel-wrapper.filter-collapsed {
+    width: 0 !important;
+    min-width: 0 !important;
+    overflow: visible;
+  }
 }
 
 /* Filter Panel Overlay */
