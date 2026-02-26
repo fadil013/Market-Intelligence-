@@ -434,12 +434,48 @@ const Overview = () => {
             {/* Re-open button — only visible when panel is collapsed */}
             {!selectedApp && filterCollapsed && (
                 <button
-                    className="filter-panel-toggle-btn collapsed"
                     onClick={() => setFilterCollapsed(false)}
                     aria-label="Show filters"
-                    title="Show Filters"
+                    style={{
+                        position: 'fixed',
+                        right: 0,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        zIndex: 99999,
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: '10px',
+                        width: '140px',
+                        height: '52px',
+                        borderRadius: '14px 0 0 14px',
+                        background: 'rgba(15, 23, 42, 0.97)',
+                        border: '1px solid rgba(148,163,184,0.35)',
+                        borderRight: 'none',
+                        color: '#e2e8f0',
+                        cursor: 'pointer',
+                        boxShadow: '-8px 0 40px rgba(0,0,0,0.7)',
+                        padding: '0 20px',
+                        fontSize: '14px',
+                        fontWeight: 700,
+                        fontFamily: 'inherit',
+                        letterSpacing: '0.03em',
+                        whiteSpace: 'nowrap',
+                        backdropFilter: 'blur(12px)',
+                        animation: 'filterTabIn 0.35s cubic-bezier(0.4,0,0.2,1)',
+                    }}
+                    onMouseEnter={e => {
+                        e.currentTarget.style.background = 'rgba(30,41,59,0.98)';
+                        e.currentTarget.style.color = '#ffffff';
+                        e.currentTarget.style.borderColor = 'rgba(148,163,184,0.6)';
+                    }}
+                    onMouseLeave={e => {
+                        e.currentTarget.style.background = 'rgba(15,23,42,0.97)';
+                        e.currentTarget.style.color = '#e2e8f0';
+                        e.currentTarget.style.borderColor = 'rgba(148,163,184,0.35)';
+                    }}
                 >
-                    <ChevronLeft size={18} />
+                    <ChevronLeft size={20} />
                     <span>Filters</span>
                 </button>
             )}

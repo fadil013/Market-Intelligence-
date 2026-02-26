@@ -1723,6 +1723,11 @@ body {
   text-align: center;
 }
 
+@keyframes filterTabIn {
+  from { transform: translateY(-50%) translateX(100%); opacity: 0; }
+  to   { transform: translateY(-50%) translateX(0);    opacity: 1; }
+}
+
 /* Filter Panel Wrapper */
 .filter-panel-wrapper {
   position: relative;
