@@ -1738,34 +1738,45 @@ body {
   /* Re-open tab — fixed to right edge, only shown when panel is collapsed */
   .filter-panel-toggle-btn.collapsed {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 8px;
     position: fixed;
     right: 0;
-    top: 100px;
-    width: 28px;
-    height: 56px;
-    border-radius: 10px 0 0 10px;
-    background: rgba(226, 232, 240, 0.12);
-    border: 1px solid rgba(226, 232, 240, 0.22);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 100px;
+    border-radius: 12px 0 0 12px;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.98));
+    border: 1px solid rgba(148, 163, 184, 0.25);
     border-right: none;
-    color: #e2e8f0;
+    color: #cbd5e1;
     cursor: pointer;
     z-index: 9999;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.4);
+    box-shadow: -6px 0 28px rgba(0, 0, 0, 0.6);
     padding: 0;
-    transition: background 0.2s, color 0.2s;
-    animation: slideInFromRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    animation: slideInFromRight 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    writing-mode: vertical-rl;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: inherit;
   }
 
   .filter-panel-toggle-btn.collapsed:hover {
-    background: rgba(226, 232, 240, 0.22);
-    color: #ffffff;
+    background: linear-gradient(180deg, rgba(51, 65, 85, 0.98), rgba(30, 41, 59, 0.98));
+    color: #f1f5f9;
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.7);
+    border-color: rgba(148, 163, 184, 0.45);
   }
 
   @keyframes slideInFromRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to   { transform: translateX(0);    opacity: 1; }
+    from { transform: translateY(-50%) translateX(100%); opacity: 0; }
+    to   { transform: translateY(-50%) translateX(0);    opacity: 1; }
   }
 
   /* Slide the panel off-screen to the right */

@@ -439,7 +439,8 @@ const Overview = () => {
                     aria-label="Show filters"
                     title="Show Filters"
                 >
-                    <ChevronLeft size={15} />
+                    <ChevronLeft size={16} />
+                    <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', writingMode: 'vertical-rl', lineHeight: 1 }}>Filters</span>
                 </button>
             )}
         </div>
